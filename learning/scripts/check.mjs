@@ -1,3 +1,5 @@
+import { managementChapters, managementLessons, managementAliases } from '../src/managementContent.js';
+import { managementSources } from '../src/managementSources.js';
 import './check-evolution.mjs';
 import { cnnSamples,cnnForward,attentionExample,initialGan,ganLosses,ganDiscriminatorGradient,ganGeneratorGradient,updateGanDiscriminator,updateGanGenerator,trainGanRound } from '../src/architectureMath.js';
 import { convolutionAt,distillationTeacher,distillationStudents,relativeEntropy } from '../src/aiOverviewMath.js';
@@ -331,6 +333,13 @@ autoencoder.samples.forEach((sample,i)=>{
 });
 assert.ok(autoencoder.testMSE<autoencoder.baselineMSE);
 
+// Management references must resolve to real bibliography entries.
+assert.equal(new Set(managementChapters.map(chapter=>chapter.slug)).size,3);
+for(const chapter of [...managementChapters,...managementLessons]){
+ const ids=[...chapter.reading,...chapter.sections.flatMap(section=>section.refs||[])];
+ for(const id of ids){assert.ok(managementSources[id],`Missing management source: ${id}`);assert.equal(new URL(managementSources[id].url).protocol,'https:');}
+}
+
 // Render all routes without a browser to catch missing components and internal links.
 const {createServer}=await import('vite');
 const server=await createServer({server:{middlewareMode:true,watch:null,ws:false},appType:'custom'});
@@ -338,7 +347,7 @@ try{
  const {default:App}=await server.ssrLoadModule('/src/App.jsx');
  const {evolutionLinks,evolutionAliases}=await server.ssrLoadModule('/src/EvolutionCourse.jsx');
  const {default:React}=await import('react');const {renderToStaticMarkup}=await import('react-dom/server');
- const routes=['/',...Object.keys(evolutionAliases),...evolutionLinks.map(([path])=>path),'/ai','/ai/discrete','/ai/graphs','/ai/learning','/ai/networks','/ai/training','/ai/practice','/ai/architectures','/ai/pretrained','/ai/systems','/ai-intro','/ai-intro/systems','/statistics','/statistics/basics','/statistics/inference','/statistics/variables','/statistics/experiments','/statistics/distributions','/statistics/choose','/statistics/methods','/statistics/checks','/statistics/tools','/statistics/python',...methods.map(m=>`/statistics/method/${m.id}`)];
+ const routes=['/',...Object.keys(managementAliases),...managementChapters.map(chapter=>`/management/${chapter.slug}`),...Object.keys(evolutionAliases),...evolutionLinks.map(([path])=>path),'/ai','/ai/discrete','/ai/graphs','/ai/learning','/ai/networks','/ai/training','/ai/practice','/ai/architectures','/ai/pretrained','/ai/systems','/ai-intro','/ai-intro/systems','/statistics','/statistics/basics','/statistics/inference','/statistics/variables','/statistics/experiments','/statistics/distributions','/statistics/choose','/statistics/methods','/statistics/checks','/statistics/tools','/statistics/python',...methods.map(m=>`/statistics/method/${m.id}`)];
  let homeHTML='',basicsHTML='',legacyDistributionHTML='',entryHTML='',inferenceHTML='',variablesHTML='',experimentsHTML='',chooseHTML='',legacyMethodsHTML='',checksHTML='';
  for(const route of routes){
   globalThis.location={hash:`#${route}`};
@@ -384,7 +393,7 @@ try{
  assert.ok(experimentsHTML.includes('確認実験'));assert.ok(!experimentsHTML.includes('タグチメソッド'));assert.ok(!experimentsHTML.includes('SN比'));
  assert.ok(experimentsHTML.includes('代表的な直交表一覧'));assert.ok(experimentsHTML.includes('線点図で、列の使い道を決める'));
  assert.equal(legacyDistributionHTML,basicsHTML,'Old distribution URL must open the merged basics lesson');
- assert.equal((homeHTML.match(/準備中/g)||[]).length,7);assert.ok(homeHTML.includes('href="#/evolution"'));assert.ok(homeHTML.includes('デザイン学入門'));assert.ok(homeHTML.includes('ウェブインタラクション入門'));
+ assert.equal((homeHTML.match(/準備中/g)||[]).length,6);assert.ok(homeHTML.includes('href="#/management"'));assert.ok(homeHTML.includes('href="#/evolution"'));assert.ok(homeHTML.includes('デザイン学入門'));assert.ok(homeHTML.includes('ウェブインタラクション入門'));
  const {default:Chooser}=await server.ssrLoadModule('/src/Chooser.jsx');
  const html=renderToStaticMarkup(React.createElement(Chooser,{answers:{...compare,dependency:'repeated'},setAnswers:()=>{}}));
  assert.ok(html.includes('対応のあるt検定'));assert.ok(html.includes('目的変数なし'));assert.ok(!html.includes('checked=""'));

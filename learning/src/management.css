@@ -1,0 +1,160 @@
+.management-course { min-width: 0; }
+.management-course p { text-align: left; }
+.management-course .section-body > p { max-width: 58em; }
+.management-epoch { margin-top: 24px; padding: 20px 24px; border-left: 3px solid var(--blue); background: var(--pale); }
+.management-epoch p { font-weight: 650; margin-top: 8px; }
+.management-citations { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; margin-top: 20px; font-size: .875rem; color: var(--muted); }
+.management-citations > span { color: var(--ink); font-weight: 650; }
+.management-citations a { overflow-wrap: anywhere; }
+.management-lenses button[aria-pressed=true] { border-color: var(--blue); background: #fff0f1; color: var(--blue); box-shadow: inset 3px 0 var(--blue); }
+.management-lens-detail { padding: 24px; margin-top: 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--pale); }
+.management-lens-detail dl { margin: 20px 0; display: grid; gap: 16px; }
+.management-lens-detail dt { font-size: .875rem; font-weight: 700; }
+.management-lens-detail dd { margin: 4px 0 0; }
+.management-lens-detail > a { font-size: .875rem; color: var(--blue); }
+.management-lenses { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.management-lenses button { padding: 10px 16px; min-height: 44px; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); font-size: 1rem; }
+.management-reading-list { margin-top: 24px; }
+.management-reading { padding: 24px 0; border-top: 1px solid var(--line); }
+.management-reading h3 { margin: 8px 0 12px; overflow-wrap: anywhere; }
+.management-reading > p:not(.eyebrow) { font-size: 1rem; }
+.management-reading details { margin-top: 16px; font-size: 1rem; }
+.management-bibliography, .management-access { color: var(--muted); font-size: .875rem; overflow-wrap: anywhere; }
+.management-exercise { margin-top: 20px; }
+.management-pagination { margin-top: 40px; display: grid; gap: 16px; border-top: 1px solid var(--line); padding-top: 24px; }
+.management-pagination > a:not(.next-link) { font-size: 1rem; color: var(--muted); }
+.management-pagination .next-link { margin: 0; }
+@media(max-width: 700px) {
+  .management-epoch, .management-lens-detail { padding: 16px; }
+  .management-reading details { padding: 12px 16px; }
+}
+@media(prefers-reduced-motion: reduce) {
+  .management-course * { scroll-behavior: auto; }
+}
+
+.management-definition { padding: 24px; border-left: 4px solid var(--blue); background: #fbf5f3; font-size: 1.2rem; font-weight: 650; }
+.management-concept-table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 1rem; }
+.management-concept-table caption { text-align: left; font-weight: 700; margin-bottom: 12px; }
+.management-concept-table th, .management-concept-table td { text-align: left; vertical-align: top; padding: 16px; border-bottom: 1px solid var(--line); overflow-wrap: anywhere; }
+.management-concept-table thead th { background: var(--pale); font-size: .875rem; }
+.management-concept-table th:first-child { width: 35%; }
+.management-concept-table tbody th { font-weight: 600; }
+.management-history { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--ink); }
+.management-history > h2 { font-size: 1.4rem; }
+.management-history > p { margin-top: 16px; max-width: 65em; }
+.management-history .management-history-note { font-size: .875rem; color: var(--muted); }
+.management-history .management-history-thesis { font-size: 1.125rem; max-width: 52em; }
+.management-history-axes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-block: 24px; }
+.management-history-axes > section { border-top: 3px solid var(--strand-color); padding-top: 12px; }
+.management-history-axes span { font-size: .8125rem; color: var(--strand-color); font-weight: 650; }
+.management-history-axes h3 { font-size: 1.05rem; margin-top: 4px; text-wrap: wrap; }
+.management-history-axes p { font-size: .875rem; margin-top: 8px; }
+.management-history > .management-history-note + .management-chronology { margin-top: 32px; }
+.management-strands-key { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-block: 24px 32px; padding-block: 16px; border-block: 1px solid var(--line); font-size: .8125rem; }
+.management-strands-key > span { font-weight: 600; }
+.management-strands-key ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.management-strands-key li { display: flex; align-items: center; gap: 7px; }
+.management-strands-key li::before { content: ''; width: 8px; height: 8px; background: var(--strand-color); border-radius: 50%; }
+.management-chronology { list-style: none; margin: 0; padding: 0; --date-width: 132px; --era-gap: 28px; }
+.management-era { display: grid; grid-template-columns: var(--date-width) minmax(0, 1fr); gap: var(--era-gap); position: relative; padding-bottom: 44px; }
+.management-era::before { content: ''; position: absolute; top: 16px; bottom: -16px; left: var(--date-width); border-left: 2px solid #cfceca; }
+.management-era:last-child::before { bottom: 0; }
+.management-era::after { content: ''; position: absolute; top: 13px; left: calc(var(--date-width) - 5px); width: 12px; height: 12px; background: #fff; border: 3px solid #4e4e48; border-radius: 50%; }
+.management-era-date { align-self: start; position: sticky; top: 24px; padding-right: 20px; line-height: 1.5; }
+.management-era-date > span { display: block; font-size: 1.2rem; font-weight: 750; letter-spacing: -.03em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.management-era-date > small { display: block; margin-top: 6px; color: var(--muted); font-size: .75rem; }
+.management-era-content { min-width: 0; }
+.management-era-content > h3 { font-size: 1.35rem; font-weight: 750; text-wrap: wrap; margin-bottom: 16px; }
+.management-era-shift { margin: 0 0 20px; padding: 16px 20px; background: #f6f6f3; display: grid; gap: 10px; border-radius: 4px; }
+.management-era-shift > div { display: grid; grid-template-columns: 7em minmax(0, 1fr); gap: 12px; }
+.management-era-shift dt { font-size: .8125rem; font-weight: 650; padding-top: 3px; color: #4e4e48; }
+.management-era-shift dd { margin: 0; font-size: 1rem; line-height: 1.85; }
+.management-era-shift > div + div dd { font-weight: 600; }
+.management-era-works { list-style: none; padding: 0; margin: 0; }
+.management-work { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 20px; padding: 20px 0; border-top: 1px solid var(--line); }
+.management-work-meta { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.management-work-date { font-size: 1rem; font-weight: 700; line-height: 1.5; font-variant-numeric: tabular-nums; }
+.management-work-date small { display: block; font-size: .75rem; font-weight: 400; color: var(--muted); }
+.management-work-strand { border-left: 3px solid var(--strand-color); padding-left: 8px; font-size: .75rem; color: var(--strand-color); font-weight: 600; }
+.management-work-main { min-width: 0; }
+.management-work-main h4 { margin: 0; font-size: 1.05rem; line-height: 1.65; font-weight: 700; overflow-wrap: anywhere; }
+.management-work-main h4 > span { display: block; margin-top: 2px; font-size: .875rem; font-weight: 400; color: var(--muted); }
+.management-work-main > p { font-size: 1rem; margin-top: 8px; text-align: left; line-height: 1.8; }
+.management-work-argument { margin: 12px 0 0; display: grid; gap: 10px; font-size: 1rem; }
+.management-work-argument > div { display: grid; grid-template-columns: 4.5em minmax(0, 1fr); gap: 12px; }
+.management-work-argument dt { font-size: .8125rem; font-weight: 650; color: var(--muted); padding-top: 3px; }
+.management-work-argument dd { margin: 0; }
+.management-work-argument ul { margin: 0; padding-left: 1.1em; font-weight: 650; }
+.management-work-argument li + li { margin-top: 4px; }
+.management-work-reading { margin-top: 8px; }
+.management-work-reading summary { color: var(--strand-color); font-size: .875rem; cursor: pointer; min-height: 44px; padding-block: 8px; }
+.management-work-reading[open] > summary { font-weight: 650; }
+.management-work-explanation { margin-top: 8px; padding: 20px; border-left: 2px solid var(--strand-color); background: #fafaf8; font-size: 1rem; }
+.management-work-explanation > p + p { margin-top: 16px; }
+.management-work-source { margin-top: 24px; border-top: 1px solid var(--line); padding-top: 16px; }
+.management-work-source h5 { margin: 0 0 12px; font-size: .875rem; }
+.management-work-source p { font-size: .875rem; overflow-wrap: anywhere; text-align: left; }
+.management-work-source p + p { margin-top: 12px; }
+.management-work-source a { color: var(--strand-color); }
+.management-history-back { display: inline-block; margin-top: 24px; color: var(--blue); font-size: .875rem; }
+.management-ideas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 32px; margin-block: 28px; }
+.management-ideas > section { border-top: 2px solid var(--line); padding-top: 16px; }
+.management-ideas h3 { font-size: 1.05rem; line-height: 1.7; margin: 0; }
+.management-ideas h3 > span { margin-right: .7em; color: var(--blue); font-variant-numeric: tabular-nums; }
+.management-ideas p { font-size: 1rem; line-height: 1.85; margin-top: 10px; }
+.management-topics { margin-top: 28px; }
+.management-topic { border-top: 1px solid var(--line); padding-block: 28px; scroll-margin-top: 24px; }
+.management-topic h3 { display: flex; align-items: baseline; gap: 14px; font-size: 1.25rem; line-height: 1.65; margin: 0; }
+.management-topic h3 > span { color: var(--blue); font-size: .875rem; font-variant-numeric: tabular-nums; }
+.management-topic .management-topic-question { font-size: 1.125rem; font-weight: 650; line-height: 1.8; margin-top: 12px; }
+.management-topic .management-topic-why { font-size: 1rem; line-height: 1.85; margin-top: 12px; }
+.management-topic-why > span { display: block; color: var(--muted); font-size: .8125rem; font-weight: 650; margin-bottom: 2px; }
+.management-topic-points { padding-left: 1.25em; margin-block: 18px 20px; font-size: 1rem; line-height: 1.85; }
+.management-topic-points li + li { margin-top: 12px; }
+.management-topic-points strong { display: block; font-weight: 650; }
+.management-course .section-body .management-topic-reading { padding: 0; margin-top: 20px; background: #fafaf8; border: 1px solid var(--line); border-radius: 4px; }
+.management-topic-reading > summary { padding: 14px 18px; font-size: .875rem; min-height: 44px; cursor: pointer; color: var(--blue); }
+.management-topic-reading > summary > span { display: block; margin-top: 4px; font-weight: 400; color: var(--muted); overflow-wrap: anywhere; }
+.management-topic-sources { padding: 0 20px 20px; }
+.management-topic-sources > section { border-top: 1px solid var(--line); padding-top: 20px; }
+.management-topic-sources > section + section { margin-top: 24px; }
+.management-topic-sources h4 { font-size: 1rem; line-height: 1.7; margin-top: 6px; overflow-wrap: anywhere; }
+.management-topic-sources h4 a { color: var(--blue); }
+.management-topic-sources p { font-size: 1rem; line-height: 1.85; margin-top: 12px; }
+.management-topic-sources .management-source-kind { font-size: .8125rem; font-weight: 650; color: var(--muted); margin: 0; }
+.management-topic-sources .management-bibliography, .management-topic-sources .management-access { font-size: .8125rem; }
+@media(max-width: 1200px) {
+  .management-chronology { --date-width: 112px; --era-gap: 24px; }
+  .management-era-date > span { font-size: 1.05rem; }
+  .management-era-shift > div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .management-work { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .management-work-meta { flex-direction: row; align-items: baseline; gap: 12px; }
+  .management-work-date small { display: inline; margin-left: 8px; }
+}
+@media(max-width: 700px) {
+  .management-ideas { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .management-topic h3 { font-size: 1.125rem; gap: 10px; }
+  .management-topic .management-topic-question { font-size: 1.0625rem; }
+  .management-topic-reading > summary { padding: 12px 14px; }
+  .management-topic-sources { padding: 0 14px 16px; }
+  .management-history-axes { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .management-work-argument > div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .management-chronology { --date-width: 0px; --era-gap: 20px; padding-left: 6px; }
+  .management-era { grid-template-columns: minmax(0, 1fr); gap: 8px; padding-left: 20px; padding-bottom: 32px; }
+  .management-era-date { position: static; padding: 0; display: flex; align-items: baseline; gap: 12px; }
+  .management-era-date > span { font-size: 1.15rem; }
+  .management-era-date > small { margin: 0; }
+  .management-era-content > h3 { font-size: 1.2rem; margin-top: 4px; }
+  .management-era-shift { padding: 14px; }
+  .management-work { padding-block: 16px; }
+  .management-work-main h4 { font-size: 1.05rem; }
+  .management-work-explanation { padding: 16px 12px; }
+  .management-concept-table th, .management-concept-table td { padding: 12px 8px; }
+  .management-concept-table th:first-child { width: 39%; }
+  .management-definition { padding: 16px; font-size: 1.125rem; }
+}
+@media print {
+  .management-era-date { position: static; }
+  .management-work-reading > summary { display: none; }
+  .management-work-reading > .management-work-explanation { display: block; }
+}
