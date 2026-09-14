@@ -1,71 +1,43 @@
-# 動態デザイン研究室 学習資料
+# 動態デザイン研究室の研究ガイド・学習資料
 
-研究に必要な知識を学ぶためのポータルと、Reactでつくったインタラクティブ教材です。
+ひとつのリポジトリから、独立した2つのディレクトリをGitHub Pagesへ公開します。
 
-公開先：<https://design-for-changes.github.io/learning/>
+| ディレクトリ | 内容 | 公開先 |
+| --- | --- | --- |
+| `research/` | 研究ガイド、InDesign・Wordによる論文作成ガイド | https://design-for-changes.github.io/lab-learning/research/ |
+| `learning/` | 既存の学習資料・統計解析入門 | https://design-for-changes.github.io/lab-learning/learning/ |
 
-## 教材
+研究ガイドは01の本文から始まる全5章です。05「AIと一緒につくる」は、学番ページの研究記録をAIが整理し、教員の判断に必要な状況をNotionにまとめる運用を扱います。各章にはサイドメニューから移動できます。InDesign・Wordの操作は「学生による補足ノート」の「論文を作成する前の準備」「いざ論文を書く」に統合しています。「いざ論文を書く」はNotionでの資料整理・原稿作成から始まり、InDesignでの組版へ進みます。旧 `research/indesign/` 以下のURLは該当箇所へ転送します。公開ルートは学習資料へ転送し、既存のハッシュ付き統計教材URLを引き継ぎます。
 
-現在の教材は **統計解析入門** です。
+## ローカルで確認
 
-1. 統計解析とは：記述と推測、母集団・標本、平均とばらつき、外れ値、分布・確率密度、標本分布、信頼区間・検定、因果と関連。
-2. データと変数：目的変数・説明変数、目的変数を置かない解析、尺度、対応と独立、線形と非線形。
-3. 解析を選ぶ：目的変数の有無、目的、データの種類、繰り返し測定などを選び、候補・理由・確認事項を比較。
-4. 手法を調べる：22の手法を具体例、入力、処理、出力、使う場面、出典で紹介。
-5. 解析の注意点：多重共線性、分布・残差、多重比較、欠測・外れ値、過学習と情報漏洩。
-6. 実施する方法：統計ソフト・表計算・Python・R、Pythonのライブラリ一覧と実行環境。
-
-各章は入門の説明と一覧を基本とし、図やAIへの質問例を補助に置いています。Pythonの実習は「実施する方法」から開く練習例として残しています。
-
-平均と中央値、対応する測定値、PCAの軸、正規分布の面積、説明変数の相関とVIFを操作できる図を含みます。教材の図とCSVは架空の例で、個人データを含みません。解析選択は候補を検討するための入口であり、すべての研究設計を網羅するものではありません。
-
-ポータルには、マネジメント入門、進化生物学入門、脳科学入門、心理学入門、人工知能入門、デザイン学入門、科学入門、経済学入門、ウェブインタラクション入門も準備中として配置しています。
-
-## 作業
-
-Node.js 24以降を推奨します。
+Node.js 24以降を推奨します。ルートで実行してください。
 
 ```sh
 npm ci
+npm run check
+npm run build
 npm run dev
 ```
 
-ローカルプレビュー：<http://127.0.0.1:4178/learning/>
+- 研究ガイド：http://127.0.0.1:4179/lab-learning/research/
+- 論文作成：http://127.0.0.1:4179/lab-learning/research/notes/
+- 学習資料：http://127.0.0.1:4179/lab-learning/learning/
 
-```sh
-npm run check
-npm run build
-```
+`npm run dev` は両サイトをビルドして静的な確認用サーバーを起動します。変更後は再ビルドしてください。学習資料だけの開発は `npm run dev:learning` で行います。
 
-`check` は図の計算、架空データと表示の一致、選択フローの全分岐、各ページのレンダリング、内部リンクと教材ダウンロードを確認します。ブラウザーの見た目やクリック操作の検査とは別です。
+## 編集と公開
 
-## 公開
+- `research/content/research.notion.md`：研究ガイド本文。InDesign・Wordの操作説明と05の学生向け依頼文もここで編集します。
+- `research/public/downloads/for-ai.md`：ゼミ前に学生と協働し、研究ガイドに基づく報告をNotionへ残すAI向けマニュアル。
+- `docs/archive/indesign-before-merge.md`：統合前の操作ガイドの編集原稿。
+- `research/scripts/navigation.mjs`：章のタイトル・説明・公開パス。
+- `research/scripts/build.mjs`：本文を静的HTMLへ変換します。
+- `research/scripts/indesign-redirects.mjs`：旧InDesignページとアンカーの転送先。
+- `research/public/`：研究ガイド本文のCSS・画像・開閉処理。共通のデザインは `learning/src/style.css` をビルド時に読み込みます。
+- `learning/`：既存のReact/Viteアプリ。教材本文・図の計算・解析選択は維持しています。
+- `scripts/assemble.mjs`：2つのビルドを `dist/research/` と `dist/learning/` へ集めます。
 
-`main` へのpushでGitHub Actionsが検証・ビルドし、`dist/`のみをGitHub Pagesへ公開します。GitHub PagesはGitHub Actionsによる公開に設定します。
+`main`へのpush時にGitHub Actionsがチェック・ビルドし、ルートの`dist/`のみを公開します。現在のVite baseは `/lab-learning/learning/` です。Notionの原本や非公開エクスポートは公開ディレクトリに含めません。
 
-Viteのbaseは `/learning/`。ページの切り替えにはハッシュを使うので、各教材のURLを直接開いたり更新したりできます。サーバーやAPIキーは不要です。旧 `/statistics/distributions` は、分布の説明を統合した `/statistics/basics` と同じ教材を表示します。
-
-## 編集する場所
-
-- `src/App.jsx`：ポータル、基礎、変数、手法ページ、ナビゲーション
-- `src/content.js`：手法の説明と出典
-- `src/chooser.js`：解析選択の質問・分岐・候補の根拠
-- `src/Chooser.jsx`：解析選択の画面
-- `src/Explorers.jsx`、`src/math.js`：動く図と計算
-- `src/DistributionLesson.jsx`：基礎ページ内の分布と確率
-- `src/InferenceLesson.jsx`：基礎ページ内の推定と検定
-- `src/ChecksLesson.jsx`：解析の注意点
-- `src/ToolsLesson.jsx`：実施する方法とライブラリ一覧
-- `src/PythonLesson.jsx`：Pythonの練習例
-- `src/style.css`：共通グリッドとレスポンシブ表示。文字サイズはrem、ルートは100%。
-- `public/data/`：練習用CSV、Pythonコード、Colabノート
-
-Pythonの確認用コードを変えた場合は、ノート内の確認用コードも更新します。教材の数値はSciPyによる対応のあるt検定で確認しています。
-
-## 補助機能の検証状況
-
-対応ブラウザーではWebMCPの `configure_analysis_choices` と `get_analysis_choices` を解析選択ページで登録します。画面と同じ選択状態・検証ルールを使用し、ページを離れると登録を解除します。非対応ブラウザーでは通常のフォームを使用できます。
-
-WebMCP対応ブラウザーで、条件設定から候補への反映と、画面からのリセットを確認しています。共通の分岐ロジックは自動検証しています。Colab画面での実行は未検証で、計算コードはローカルのPython環境で確認しています。
-
-デスクトップ幅・スマートフォン幅で、主要ページの表示と横にはみ出さないことを確認しています。正規分布の区間変更、多重共線性の相関スライダー、解析選択の操作もブラウザーで確認しています。
+移行時の原本・変更点・取得できない添付資料については [移行記録](docs/migration.md) を参照してください。

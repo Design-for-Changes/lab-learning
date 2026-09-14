@@ -1,0 +1,13 @@
+﻿record_id,shape,material,time_sec
+0,square,steel,28
+1,square,steel,30
+2,square,steel,32
+3,square,wood,24
+4,square,wood,26
+5,square,wood,28
+6,round,steel,22
+7,round,steel,24
+8,round,steel,26
+9,round,wood,18
+10,round,wood,20
+11,round,wood,22

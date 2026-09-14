@@ -1,4 +1,4 @@
-name: Publish learning site
+name: Publish research and learning
 on:
   push:
     branches: [main]

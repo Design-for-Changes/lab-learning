@@ -1,0 +1,76 @@
+import assert from 'node:assert/strict';
+import { readFile, readdir, access } from 'node:fs/promises';
+import { resolve, dirname } from 'node:path';
+import { runInNewContext } from 'node:vm';
+import { guides } from '../research/scripts/navigation.mjs';
+import { indesignRedirects } from '../research/scripts/indesign-redirects.mjs';
+
+const root = resolve('research/dist');
+async function htmlFiles(dir) {
+  const files = [];
+  for (const entry of await readdir(dir, { withFileTypes: true })) {
+    const path = resolve(dir, entry.name);
+    if (entry.isDirectory()) files.push(...await htmlFiles(path));
+    else if (entry.name.endsWith('.html')) files.push(path);
+  }
+  return files;
+}
+const files = await htmlFiles(root);
+assert.equal(files.length, guides.reduce((total, guide) => total + 1 + guide.chapters.length, 0) + indesignRedirects.length, 'Missing entry, chapter, or legacy redirect pages');
+const pages = new Map();
+for (const file of files) {
+  const html = await readFile(file, 'utf8');
+  assert.equal((html.match(/<h1(?: | >|>)/g) || []).length, 1, `${file}: expected one page title`);
+  assert.ok(!/file:\/\/|X-Amz-|<unknown|<mention-|GUIDEEQUATION|RESEARCH_URL|INDESIGN_URL|https:\/\/doi\//.test(html), `${file}: unresolved source reference`);
+  const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
+  assert.equal(new Set(ids).size, ids.length, `${file}: duplicate IDs`);
+  pages.set(file, { html, ids });
+}
+async function checkReference(from, href) {
+  if (/^https?:|^mailto:/.test(href)) return;
+  assert.ok(!href.startsWith('/'), `${from}: root-relative reference ${href}`);
+  const [pathname, anchor] = href.split('#');
+  const path = pathname ? resolve(dirname(from), pathname.endsWith('/') ? pathname + 'index.html' : pathname) : from;
+  // The sibling learning app is built and validated by its workspace.
+  if (path === resolve('research/learning/index.html')) return;
+  await access(path);
+  if (anchor) assert.ok(pages.get(path)?.ids.includes(anchor), `${from}: missing anchor ${href}`);
+  if (path.endsWith('.png')) {
+    const bytes = await readFile(path);
+    assert.equal(bytes.subarray(1, 4).toString(), 'PNG', `${from}: invalid PNG ${href}`);
+  }
+}
+let imageCount = 0;
+for (const [file, { html }] of pages) {
+  imageCount += (html.match(/<img /g) || []).length;
+  for (const [, href] of html.matchAll(/\b(?:href|src)="([^"]+)"/g)) await checkReference(file, href);
+}
+for (const guide of guides) {
+  for (const chapter of guide.chapters) assert.ok(pages.has(resolve(root, guide.path, chapter.slug, 'index.html')), `Missing ${chapter.slug}`);
+}
+const research = guides[0].chapters.map(chapter => pages.get(resolve(root, chapter.slug, 'index.html')).html).join('\n');
+assert.equal((research.match(/<details id=/g) || []).length, 30, 'Research explanations or references missing');
+assert.equal((research.match(/<img /g) || []).length, 2, 'Research figures missing');
+assert.ok(!/class="guide-search"|class="toc"|class="related-guide"|class="source-link"/.test(research), 'Removed sidebar content returned');
+assert.ok(!/<details id="[^"]+" open/.test(research), 'Explanations should initially be closed');
+const search = JSON.parse(await readFile(resolve(root, 'search-index.json'), 'utf8'));
+for (const item of search) await checkReference(resolve(root, 'index.html'), item.href);
+const anchors = JSON.parse(await readFile(resolve(root, 'anchor-map.json'), 'utf8'));
+for (const href of Object.values(anchors)) await checkReference(resolve(root, 'index.html'), href);
+for (const route of indesignRedirects) {
+  assert.ok(pages.has(resolve(root, route.path, 'index.html')), `Missing redirect ${route.path}`);
+  await checkReference(resolve(root, 'index.html'), route.target);
+  for (const id of route.anchors) assert.equal(anchors[id], route.target, `Legacy anchor lost: ${id}`);
+  const html = pages.get(resolve(root, route.path, 'index.html')).html;
+  const script = html.match(/<script>([\s\S]*?)<\/script>/)?.[1];
+  assert.ok(script, `Missing redirect script: ${route.path}`);
+  for (const id of ['', ...route.anchors]) {
+    let destination;
+    runInNewContext(script, { location: { hash: id ? '#' + id : '', search: '?review=legacy', replace: value => { destination = value; } } });
+    const url = new URL(destination, 'https://example.test/lab-learning/research/' + route.path);
+    assert.equal(url.pathname + url.hash, '/lab-learning/research/' + route.target, `Wrong redirect: ${route.path}#${id}`);
+    assert.equal(url.search, '?review=legacy', 'Legacy redirect lost its query');
+  }
+}
+assert.equal(await readFile(resolve(root, 'learning.css'), 'utf8'), await readFile('learning/src/style.css', 'utf8'), 'Shared design differs from learning');
+console.log(`Research: ${files.length} pages, ${search.length} search targets, ${imageCount} images, navigation and anchors passed.`);
