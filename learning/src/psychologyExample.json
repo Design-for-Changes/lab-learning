@@ -1,0 +1,581 @@
+{
+  "trials": [
+    {
+      "participant": "P01",
+      "trial": 1,
+      "condition": "congruent",
+      "word": "赤",
+      "ink_color": "red",
+      "rt_ms": 480,
+      "correct": 1
+    },
+    {
+      "participant": "P01",
+      "trial": 2,
+      "condition": "incongruent",
+      "word": "青",
+      "ink_color": "red",
+      "rt_ms": 580,
+      "correct": 1
+    },
+    {
+      "participant": "P01",
+      "trial": 3,
+      "condition": "congruent",
+      "word": "青",
+      "ink_color": "blue",
+      "rt_ms": 500,
+      "correct": 1
+    },
+    {
+      "participant": "P01",
+      "trial": 4,
+      "condition": "incongruent",
+      "word": "緑",
+      "ink_color": "blue",
+      "rt_ms": 600,
+      "correct": 1
+    },
+    {
+      "participant": "P01",
+      "trial": 5,
+      "condition": "congruent",
+      "word": "緑",
+      "ink_color": "green",
+      "rt_ms": 520,
+      "correct": 1
+    },
+    {
+      "participant": "P01",
+      "trial": 6,
+      "condition": "incongruent",
+      "word": "赤",
+      "ink_color": "green",
+      "rt_ms": 620,
+      "correct": 1
+    },
+    {
+      "participant": "P01",
+      "trial": 7,
+      "condition": "congruent",
+      "word": "赤",
+      "ink_color": "red",
+      "rt_ms": 500,
+      "correct": 1
+    },
+    {
+      "participant": "P01",
+      "trial": 8,
+      "condition": "incongruent",
+      "word": "青",
+      "ink_color": "red",
+      "rt_ms": 600,
+      "correct": 1
+    },
+    {
+      "participant": "P02",
+      "trial": 1,
+      "condition": "incongruent",
+      "word": "青",
+      "ink_color": "red",
+      "rt_ms": 740,
+      "correct": 1
+    },
+    {
+      "participant": "P02",
+      "trial": 2,
+      "condition": "congruent",
+      "word": "赤",
+      "ink_color": "red",
+      "rt_ms": 600,
+      "correct": 1
+    },
+    {
+      "participant": "P02",
+      "trial": 3,
+      "condition": "incongruent",
+      "word": "緑",
+      "ink_color": "blue",
+      "rt_ms": 760,
+      "correct": 1
+    },
+    {
+      "participant": "P02",
+      "trial": 4,
+      "condition": "congruent",
+      "word": "青",
+      "ink_color": "blue",
+      "rt_ms": 620,
+      "correct": 1
+    },
+    {
+      "participant": "P02",
+      "trial": 5,
+      "condition": "incongruent",
+      "word": "赤",
+      "ink_color": "green",
+      "rt_ms": 780,
+      "correct": 1
+    },
+    {
+      "participant": "P02",
+      "trial": 6,
+      "condition": "congruent",
+      "word": "緑",
+      "ink_color": "green",
+      "rt_ms": 640,
+      "correct": 1
+    },
+    {
+      "participant": "P02",
+      "trial": 7,
+      "condition": "incongruent",
+      "word": "青",
+      "ink_color": "red",
+      "rt_ms": 760,
+      "correct": 1
+    },
+    {
+      "participant": "P02",
+      "trial": 8,
+      "condition": "congruent",
+      "word": "赤",
+      "ink_color": "red",
+      "rt_ms": 620,
+      "correct": 1
+    },
+    {
+      "participant": "P03",
+      "trial": 1,
+      "condition": "congruent",
+      "word": "赤",
+      "ink_color": "red",
+      "rt_ms": 540,
+      "correct": 1
+    },
+    {
+      "participant": "P03",
+      "trial": 2,
+      "condition": "incongruent",
+      "word": "青",
+      "ink_color": "red",
+      "rt_ms": 620,
+      "correct": 1
+    },
+    {
+      "participant": "P03",
+      "trial": 3,
+      "condition": "congruent",
+      "word": "青",
+      "ink_color": "blue",
+      "rt_ms": 560,
+      "correct": 1
+    },
+    {
+      "participant": "P03",
+      "trial": 4,
+      "condition": "incongruent",
+      "word": "緑",
+      "ink_color": "blue",
+      "rt_ms": 640,
+      "correct": 1
+    },
+    {
+      "participant": "P03",
+      "trial": 5,
+      "condition": "congruent",
+      "word": "緑",
+      "ink_color": "green",
+      "rt_ms": 580,
+      "correct": 1
+    },
+    {
+      "participant": "P03",
+      "trial": 6,
+      "condition": "incongruent",
+      "word": "赤",
+      "ink_color": "green",
+      "rt_ms": 660,
+      "correct": 1
+    },
+    {
+      "participant": "P03",
+      "trial": 7,
+      "condition": "congruent",
+      "word": "赤",
+      "ink_color": "red",
+      "rt_ms": 560,
+      "correct": 1
+    },
+    {
+      "participant": "P03",
+      "trial": 8,
+      "condition": "incongruent",
+      "word": "青",
+      "ink_color": "red",
+      "rt_ms": 640,
+      "correct": 1
+    },
+    {
+      "participant": "P04",
+      "trial": 1,
+      "condition": "incongruent",
+      "word": "青",
+      "ink_color": "red",
+      "rt_ms": 740,
+      "correct": 1
+    },
+    {
+      "participant": "P04",
+      "trial": 2,
+      "condition": "congruent",
+      "word": "赤",
+      "ink_color": "red",
+      "rt_ms": 680,
+      "correct": 1
+    },
+    {
+      "participant": "P04",
+      "trial": 3,
+      "condition": "incongruent",
+      "word": "緑",
+      "ink_color": "blue",
+      "rt_ms": 760,
+      "correct": 1
+    },
+    {
+      "participant": "P04",
+      "trial": 4,
+      "condition": "congruent",
+      "word": "青",
+      "ink_color": "blue",
+      "rt_ms": 700,
+      "correct": 1
+    },
+    {
+      "participant": "P04",
+      "trial": 5,
+      "condition": "incongruent",
+      "word": "赤",
+      "ink_color": "green",
+      "rt_ms": 780,
+      "correct": 1
+    },
+    {
+      "participant": "P04",
+      "trial": 6,
+      "condition": "congruent",
+      "word": "緑",
+      "ink_color": "green",
+      "rt_ms": 720,
+      "correct": 1
+    },
+    {
+      "participant": "P04",
+      "trial": 7,
+      "condition": "incongruent",
+      "word": "青",
+      "ink_color": "red",
+      "rt_ms": 760,
+      "correct": 1
+    },
+    {
+      "participant": "P04",
+      "trial": 8,
+      "condition": "congruent",
+      "word": "赤",
+      "ink_color": "red",
+      "rt_ms": 700,
+      "correct": 1
+    },
+    {
+      "participant": "P05",
+      "trial": 1,
+      "condition": "congruent",
+      "word": "赤",
+      "ink_color": "red",
+      "rt_ms": 560,
+      "correct": 1
+    },
+    {
+      "participant": "P05",
+      "trial": 2,
+      "condition": "incongruent",
+      "word": "青",
+      "ink_color": "red",
+      "rt_ms": 660,
+      "correct": 1
+    },
+    {
+      "participant": "P05",
+      "trial": 3,
+      "condition": "congruent",
+      "word": "青",
+      "ink_color": "blue",
+      "rt_ms": 580,
+      "correct": 1
+    },
+    {
+      "participant": "P05",
+      "trial": 4,
+      "condition": "incongruent",
+      "word": "緑",
+      "ink_color": "blue",
+      "rt_ms": 680,
+      "correct": 1
+    },
+    {
+      "participant": "P05",
+      "trial": 5,
+      "condition": "congruent",
+      "word": "緑",
+      "ink_color": "green",
+      "rt_ms": 600,
+      "correct": 1
+    },
+    {
+      "participant": "P05",
+      "trial": 6,
+      "condition": "incongruent",
+      "word": "赤",
+      "ink_color": "green",
+      "rt_ms": 700,
+      "correct": 1
+    },
+    {
+      "participant": "P05",
+      "trial": 7,
+      "condition": "congruent",
+      "word": "赤",
+      "ink_color": "red",
+      "rt_ms": 580,
+      "correct": 1
+    },
+    {
+      "participant": "P05",
+      "trial": 8,
+      "condition": "incongruent",
+      "word": "青",
+      "ink_color": "red",
+      "rt_ms": 680,
+      "correct": 1
+    },
+    {
+      "participant": "P06",
+      "trial": 1,
+      "condition": "incongruent",
+      "word": "青",
+      "ink_color": "red",
+      "rt_ms": 820,
+      "correct": 1
+    },
+    {
+      "participant": "P06",
+      "trial": 2,
+      "condition": "congruent",
+      "word": "赤",
+      "ink_color": "red",
+      "rt_ms": 640,
+      "correct": 1
+    },
+    {
+      "participant": "P06",
+      "trial": 3,
+      "condition": "incongruent",
+      "word": "緑",
+      "ink_color": "blue",
+      "rt_ms": 840,
+      "correct": 1
+    },
+    {
+      "participant": "P06",
+      "trial": 4,
+      "condition": "congruent",
+      "word": "青",
+      "ink_color": "blue",
+      "rt_ms": 660,
+      "correct": 1
+    },
+    {
+      "participant": "P06",
+      "trial": 5,
+      "condition": "incongruent",
+      "word": "赤",
+      "ink_color": "green",
+      "rt_ms": 860,
+      "correct": 1
+    },
+    {
+      "participant": "P06",
+      "trial": 6,
+      "condition": "congruent",
+      "word": "緑",
+      "ink_color": "green",
+      "rt_ms": 680,
+      "correct": 1
+    },
+    {
+      "participant": "P06",
+      "trial": 7,
+      "condition": "incongruent",
+      "word": "青",
+      "ink_color": "red",
+      "rt_ms": 840,
+      "correct": 1
+    },
+    {
+      "participant": "P06",
+      "trial": 8,
+      "condition": "congruent",
+      "word": "赤",
+      "ink_color": "red",
+      "rt_ms": 660,
+      "correct": 1
+    },
+    {
+      "participant": "P07",
+      "trial": 1,
+      "condition": "congruent",
+      "word": "赤",
+      "ink_color": "red",
+      "rt_ms": 740,
+      "correct": 1
+    },
+    {
+      "participant": "P07",
+      "trial": 2,
+      "condition": "incongruent",
+      "word": "青",
+      "ink_color": "red",
+      "rt_ms": 780,
+      "correct": 1
+    },
+    {
+      "participant": "P07",
+      "trial": 3,
+      "condition": "congruent",
+      "word": "青",
+      "ink_color": "blue",
+      "rt_ms": 760,
+      "correct": 1
+    },
+    {
+      "participant": "P07",
+      "trial": 4,
+      "condition": "incongruent",
+      "word": "緑",
+      "ink_color": "blue",
+      "rt_ms": 800,
+      "correct": 1
+    },
+    {
+      "participant": "P07",
+      "trial": 5,
+      "condition": "congruent",
+      "word": "緑",
+      "ink_color": "green",
+      "rt_ms": 780,
+      "correct": 1
+    },
+    {
+      "participant": "P07",
+      "trial": 6,
+      "condition": "incongruent",
+      "word": "赤",
+      "ink_color": "green",
+      "rt_ms": 820,
+      "correct": 1
+    },
+    {
+      "participant": "P07",
+      "trial": 7,
+      "condition": "congruent",
+      "word": "赤",
+      "ink_color": "red",
+      "rt_ms": 760,
+      "correct": 1
+    },
+    {
+      "participant": "P07",
+      "trial": 8,
+      "condition": "incongruent",
+      "word": "青",
+      "ink_color": "red",
+      "rt_ms": 800,
+      "correct": 1
+    },
+    {
+      "participant": "P08",
+      "trial": 1,
+      "condition": "incongruent",
+      "word": "青",
+      "ink_color": "red",
+      "rt_ms": 620,
+      "correct": 1
+    },
+    {
+      "participant": "P08",
+      "trial": 2,
+      "condition": "congruent",
+      "word": "赤",
+      "ink_color": "red",
+      "rt_ms": 520,
+      "correct": 1
+    },
+    {
+      "participant": "P08",
+      "trial": 3,
+      "condition": "incongruent",
+      "word": "緑",
+      "ink_color": "blue",
+      "rt_ms": 640,
+      "correct": 1
+    },
+    {
+      "participant": "P08",
+      "trial": 4,
+      "condition": "congruent",
+      "word": "青",
+      "ink_color": "blue",
+      "rt_ms": 540,
+      "correct": 1
+    },
+    {
+      "participant": "P08",
+      "trial": 5,
+      "condition": "incongruent",
+      "word": "赤",
+      "ink_color": "green",
+      "rt_ms": 660,
+      "correct": 1
+    },
+    {
+      "participant": "P08",
+      "trial": 6,
+      "condition": "congruent",
+      "word": "緑",
+      "ink_color": "green",
+      "rt_ms": 560,
+      "correct": 1
+    },
+    {
+      "participant": "P08",
+      "trial": 7,
+      "condition": "incongruent",
+      "word": "青",
+      "ink_color": "red",
+      "rt_ms": 640,
+      "correct": 1
+    },
+    {
+      "participant": "P08",
+      "trial": 8,
+      "condition": "congruent",
+      "word": "赤",
+      "ink_color": "red",
+      "rt_ms": 540,
+      "correct": 1
+    }
+  ],
+  "output": "参加者: 8人 / 試行: 64回\n誤答率: 0.0%\n参加者  一致(ms)  不一致(ms)  差(ms)\nP01     500.0     600.0    100.0\nP02     620.0     760.0    140.0\nP03     560.0     640.0     80.0\nP04     700.0     760.0     60.0\nP05     580.0     680.0    100.0\nP06     660.0     840.0    180.0\nP07     760.0     800.0     40.0\nP08     540.0     640.0    100.0\n平均差（不一致−一致）: 100.0 ms"
+}
