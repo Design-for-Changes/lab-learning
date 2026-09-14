@@ -1,3 +1,4 @@
+import './check-evolution.mjs';
 import { cnnSamples,cnnForward,attentionExample,initialGan,ganLosses,ganDiscriminatorGradient,ganGeneratorGradient,updateGanDiscriminator,updateGanGenerator,trainGanRound } from '../src/architectureMath.js';
 import { convolutionAt,distillationTeacher,distillationStudents,relativeEntropy } from '../src/aiOverviewMath.js';
 import { cooccurrenceCounts } from '../src/cooccurrenceMath.js';
@@ -335,8 +336,9 @@ const {createServer}=await import('vite');
 const server=await createServer({server:{middlewareMode:true,watch:null,ws:false},appType:'custom'});
 try{
  const {default:App}=await server.ssrLoadModule('/src/App.jsx');
+ const {evolutionLinks,evolutionAliases}=await server.ssrLoadModule('/src/EvolutionCourse.jsx');
  const {default:React}=await import('react');const {renderToStaticMarkup}=await import('react-dom/server');
- const routes=['/','/ai','/ai/discrete','/ai/graphs','/ai/learning','/ai/networks','/ai/training','/ai/practice','/ai/architectures','/ai/pretrained','/ai/systems','/ai-intro','/ai-intro/systems','/statistics','/statistics/basics','/statistics/inference','/statistics/variables','/statistics/experiments','/statistics/distributions','/statistics/choose','/statistics/methods','/statistics/checks','/statistics/tools','/statistics/python',...methods.map(m=>`/statistics/method/${m.id}`)];
+ const routes=['/',...Object.keys(evolutionAliases),...evolutionLinks.map(([path])=>path),'/ai','/ai/discrete','/ai/graphs','/ai/learning','/ai/networks','/ai/training','/ai/practice','/ai/architectures','/ai/pretrained','/ai/systems','/ai-intro','/ai-intro/systems','/statistics','/statistics/basics','/statistics/inference','/statistics/variables','/statistics/experiments','/statistics/distributions','/statistics/choose','/statistics/methods','/statistics/checks','/statistics/tools','/statistics/python',...methods.map(m=>`/statistics/method/${m.id}`)];
  let homeHTML='',basicsHTML='',legacyDistributionHTML='',entryHTML='',inferenceHTML='',variablesHTML='',experimentsHTML='',chooseHTML='',legacyMethodsHTML='',checksHTML='';
  for(const route of routes){
   globalThis.location={hash:`#${route}`};
@@ -344,6 +346,14 @@ try{
   assert.ok(html.includes('id="main"'));assert.ok(!html.includes('ページが見つかりません'));assert.ok(!html.includes('undefined'));
   for(const m of html.matchAll(/href="#(\/[^\"]*)"/g))assert.ok(routes.includes(m[1]),`Invalid route ${m[1]}`);
   for(const m of html.matchAll(/href="\/lab-learning\/learning\/(data\/[^\"]*)"/g))await access(`public/${m[1]}`);
+  if(route.startsWith('/evolution')){
+   const main=html.match(/<main\b[\s\S]*?<\/main>/)?.[0]||'';
+   if(route!=='/evolution/design'){
+    assert.ok(!main.includes('note.com/yashizawa'), 'Author article belongs in the design part');
+    assert.ok(!main.includes('観察・試作')&&!main.includes('AIに聞く文章'), 'Core course teaches evolutionary biology');
+   }
+   if(route==='/evolution'||route==='/evolution/questions'||route==='/evolution/foundations')assert.ok(main.includes('<h1>前提（現代的な解釈）</h1>'));
+  }
   if(route==='/')homeHTML=html;
   if(route==='/statistics/choose')chooseHTML=html;
   if(route==='/statistics/methods')legacyMethodsHTML=html;
@@ -374,7 +384,7 @@ try{
  assert.ok(experimentsHTML.includes('確認実験'));assert.ok(!experimentsHTML.includes('タグチメソッド'));assert.ok(!experimentsHTML.includes('SN比'));
  assert.ok(experimentsHTML.includes('代表的な直交表一覧'));assert.ok(experimentsHTML.includes('線点図で、列の使い道を決める'));
  assert.equal(legacyDistributionHTML,basicsHTML,'Old distribution URL must open the merged basics lesson');
- assert.equal((homeHTML.match(/準備中/g)||[]).length,8);assert.ok(homeHTML.includes('デザイン学入門'));assert.ok(homeHTML.includes('ウェブインタラクション入門'));
+ assert.equal((homeHTML.match(/準備中/g)||[]).length,7);assert.ok(homeHTML.includes('href="#/evolution"'));assert.ok(homeHTML.includes('デザイン学入門'));assert.ok(homeHTML.includes('ウェブインタラクション入門'));
  const {default:Chooser}=await server.ssrLoadModule('/src/Chooser.jsx');
  const html=renderToStaticMarkup(React.createElement(Chooser,{answers:{...compare,dependency:'repeated'},setAnswers:()=>{}}));
  assert.ok(html.includes('対応のあるt検定'));assert.ok(html.includes('目的変数なし'));assert.ok(!html.includes('checked=""'));

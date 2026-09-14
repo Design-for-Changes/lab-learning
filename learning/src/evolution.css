@@ -1,0 +1,72 @@
+.evolution-explorer > p, .evolution-explorer > details { margin-top: 20px; }
+.evolution-explorer > .explorer-heading + p { margin-top: 0; }
+.evolution-figure { margin: 24px 0 0; }
+.evolution-figure figcaption { font-size: .875rem; color: var(--muted); margin-top: 12px; }
+.evolution-result { padding: 20px; border-left: 3px solid var(--blue); background: var(--pale); margin-top: 24px; }
+.evolution-formula { font-size: 1.3rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.evolution-cite { font-size: .875rem; color: var(--muted); }
+.evolution-cite a { overflow-wrap: anywhere; }
+.evolution-tree { max-width: 640px; }
+.evolution-history { container: evolution-history / inline-size; }
+.evolution-chronology { list-style: none; margin: 40px 0 0; padding: 0; }
+.evolution-event { position: relative; display: grid; grid-template-columns: 152px minmax(0,1fr); gap: 48px; padding-bottom: 32px; }
+.evolution-event::before { content: ''; position: absolute; left: 172px; top: 14px; bottom: -14px; width: 2px; background: var(--line); }
+.evolution-event::after { content: ''; position: absolute; left: 168px; top: 10px; width: 10px; height: 10px; border-radius: 50%; background: var(--blue); }
+.evolution-event:last-child { padding-bottom: 0; }
+.evolution-event:last-child::before { display: none; }
+.evolution-event-period { min-width: 0; }
+.evolution-event-date { font-size: 1.0625rem; font-weight: 700; font-variant-numeric: tabular-nums; text-align: left; white-space: nowrap; }
+.evolution-event-point { margin-top: 8px; color: var(--blue); font-size: 1rem; font-weight: 700; line-height: 1.65; text-align: left; }
+.evolution-event-point > span { display: inline-block; }
+.evolution-event-content { min-width: 0; padding-bottom: 24px; border-bottom: 1px solid var(--line); text-align: left; }
+.evolution-event-people { color: var(--muted); font-size: .875rem; text-align: left; }
+.evolution-event-content > h2 { margin-top: 4px; font-size: 1.25rem; text-align: left; }
+.evolution-event-summary { margin-top: 12px; }
+.evolution-event-more { margin-top: 8px; }
+.evolution-event-more > summary { width: fit-content; padding: 10px 0; min-height: 44px; color: var(--blue); cursor: pointer; font-size: .875rem; font-weight: 600; }
+.evolution-event-detail { display: grid; gap: 20px; min-width: 0; margin-top: 8px; padding: 20px; background: var(--pale); container: section-body / inline-size; }
+.evolution-event-detail > * { min-width: 0; margin: 0; }
+.evolution-event-detail > details { border: 1px solid var(--line); padding: 16px; background: white; }
+.evolution-event-detail > details > summary { cursor: pointer; font-weight: 600; }
+.evolution-event-detail > details > p, .evolution-event-detail > details > .evolution-explorer { margin-top: 20px; }
+.evolution-history-note { margin-top: 24px; font-size: .875rem; color: var(--muted); }
+.evolution-connections { margin-top: 40px; padding-block: 24px 32px; border-block: 1px solid var(--line); container: evolution-connections / inline-size; }
+.evolution-connection-choices { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.evolution-connection-choices button { min-height: 44px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 4px; background: white; color: var(--ink); font: inherit; font-size: .875rem; cursor: pointer; }
+.evolution-connection-choices button[aria-pressed=true] { color: var(--blue); border-color: var(--blue); background: #fff0f1; font-weight: 700; }
+.evolution-connection-chart { position: relative; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 112px 32px; max-width: 680px; margin: 32px auto; }
+.evolution-connection-lines { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.evolution-concept { position: relative; z-index: 1; display: grid; align-content: center; gap: 4px; min-width: 0; padding: 12px 16px; background: white; border: 1px solid var(--line); border-radius: 8px; color: var(--ink); font: inherit; text-align: left; cursor: pointer; }
+.evolution-concept.centered { justify-self: center; width: calc((100% - 32px) / 2); }
+.evolution-concept:hover { border-color: var(--blue); }
+.evolution-concept > span { color: var(--muted); font-size: .75rem; line-height: 1.5; }
+.evolution-concept > strong { font-size: 1rem; line-height: 1.5; }
+.evolution-concept > .evolution-concept-jump { color: var(--blue); }
+.evolution-connection-label { position: absolute; z-index: 2; transform: translate(-50%,-50%); width: max-content; max-width: 44%; margin: 0; padding: 3px 6px; background: white; color: var(--muted); font-size: .8125rem; line-height: 1.6; text-align: center; text-align-last: center; pointer-events: none; }
+.evolution-connection-label > span:not(.visually-hidden) { display: block; }
+.evolution-connection-explanation { padding: 16px 20px; background: var(--pale); }
+.evolution-connections > .evolution-cite { margin-top: 16px; }
+.evolution-connection-note { margin-top: 12px; color: var(--muted); font-size: .8125rem; }
+.evolution-event-content > h2 { scroll-margin-top: 24px; }
+.evolution-event-content > h2:focus { outline: 2px solid var(--blue); outline-offset: 6px; }
+@container evolution-connections (max-width: 480px) {
+  .evolution-connection-choices { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .evolution-connection-choices button { padding-inline: 6px; font-size: .8125rem; }
+  .evolution-connection-chart { gap: 128px 20px; }
+  .evolution-concept { padding: 10px; }
+  .evolution-concept.centered { width: calc((100% - 20px) / 2); }
+  .evolution-connection-label { font-size: .75rem; padding-inline: 3px; }
+}
+@container evolution-history (max-width: 600px) {
+  .evolution-event { grid-template-columns: minmax(0,1fr); gap: 8px; padding-left: 28px; }
+  .evolution-event::before { left: 4px; }
+  .evolution-event::after { left: 0; }
+  .evolution-event-period { padding-bottom: 4px; }
+  .evolution-event-detail { padding: 16px; }
+}
+@container section-body (max-width: 480px) {
+  .evolution-figure .plot text { font-size: 24px; }
+  .evolution-explorer { padding: 16px; }
+  .evolution-explorer .control { grid-template-columns: minmax(0,1fr); gap: 4px; }
+  .evolution-explorer input[type=range] { min-height: 40px; }
+}
