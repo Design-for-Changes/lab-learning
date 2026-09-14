@@ -1,0 +1,183 @@
+.neuro-explorer{min-width:0;padding:24px;border:1px solid var(--line);border-radius:12px;background:var(--pale)}
+.neuro-unknown-title>span{display:inline-block;max-width:100%}
+.neuro-explorer h3{font-size:1.15rem;margin:0 0 24px;text-align:left}
+.neuro-explorer h3>span{display:inline-block;max-width:100%}
+.neuro-explorer h4{font-size:1.12rem;margin:8px 0 12px}
+.neuro-signal-steps{list-style:none;padding:0;margin:0;display:grid;gap:22px}
+.neuro-signal-steps li{position:relative;margin:0;min-width:0}
+.neuro-signal-steps li+li:before{content:'↓';position:absolute;left:22px;top:-25px;color:var(--muted);font-size:18px;line-height:24px}
+.neuro-signal-steps button{display:flex;align-items:center;gap:16px;width:100%;text-align:left;padding:12px 16px;border:1px solid var(--line);border-radius:8px;color:var(--ink);background:#fff;font:inherit;font-weight:600;cursor:pointer}
+.neuro-signal-steps button>span{color:var(--muted);font-size:.8rem;font-variant-numeric:tabular-nums}
+.neuro-signal-steps button[aria-pressed=true]{border-color:var(--blue);box-shadow:inset 4px 0 var(--blue)}
+.neuro-explorer-detail{margin-top:24px;padding:20px;border-radius:8px;background:#fff;min-height:200px}
+.neuro-label{color:var(--blue);font-weight:600;font-size:.8rem;margin:0;text-align:left!important}
+.neuro-caption{font-size:.8rem;color:var(--muted);line-height:1.75;text-align:left!important}
+.neuro-explorer>.neuro-caption{margin:16px 0 0}
+.neuro-source{display:inline-block;font-size:.8rem;line-height:1.7;overflow-wrap:anywhere}
+.neuro-citation-list{display:grid;gap:8px}
+.neuro-levels{display:flex;align-items:center;flex-direction:column;gap:10px}
+.neuro-levels>div{display:grid;gap:5px;width:100%;padding:16px 20px;background:var(--pale);border-left:3px solid var(--blue);border-radius:0 8px 8px 0}
+.neuro-levels>span{font-size:1.2rem;color:var(--muted);line-height:1}
+.neuro-levels div span{font-size:.9rem;color:var(--muted)}
+.neuro-cell-list,.neuro-methods{display:grid;gap:16px}
+.neuro-cell-list article,.neuro-methods article{padding:22px;border:1px solid var(--line);border-radius:10px;min-width:0}
+.neuro-cell-list h3,.neuro-methods h3{margin:0 0 12px;font-size:1.05rem}
+.neuro-cell-list article>span{display:block;margin-top:16px;padding-top:12px;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted)}
+.neuro-switches{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.neuro-switches button{border:1px solid var(--line);background:#fff;color:var(--ink);font:inherit;font-size:.85rem;line-height:1.5;border-radius:6px;padding:10px 14px;cursor:pointer}
+.neuro-switches button[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.neuro-explorer button:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.neuro-circuit{max-width:450px;margin:0 auto 24px}
+.neuro-circuit-node{display:grid;gap:8px;text-align:center;padding:20px 12px;background:#fff;border:1px solid var(--line);border-radius:8px}
+.neuro-circuit-node>strong{font-size:1.04rem}
+.neuro-circuit-node>span{font-size:.82rem;color:var(--muted)}
+.neuro-edge{display:grid;grid-template-columns:38px 1fr;gap:16px;align-items:center;min-height:100px;margin:0 10%;position:relative}
+.neuro-edge p{font-size:.8rem;margin:0;padding:12px 0;text-align:left;line-height:1.7}
+.neuro-edge-line{height:100%;width:2px;position:relative;background:var(--blue);justify-self:center}
+.neuro-edge-line:after{content:'';position:absolute;bottom:0;left:-4px;border-left:5px solid transparent;border-right:5px solid transparent;border-top:9px solid var(--blue)}
+.neuro-edge.both .neuro-edge-line:before{content:'';position:absolute;top:0;left:-4px;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:9px solid var(--blue)}
+.neuro-edge.inhibit .neuro-edge-line:after{left:-7px;bottom:0;width:16px;height:3px;background:var(--blue);border:0}
+.neuro-function-links{display:grid;gap:12px}
+.neuro-function-links>div{display:grid;grid-template-columns:minmax(0,1fr) 32px minmax(0,1fr);gap:12px;align-items:center;padding:22px;background:var(--pale);border-radius:10px;text-align:center}
+.neuro-function-links span{font-size:1.4rem;color:var(--blue)}
+.neuro-function-links p{grid-column:1/-1;font-size:.88rem;margin:0;text-align:left}
+.neuro-practice{padding:24px;background:var(--pale);border-radius:10px}
+.neuro-practice h3{margin:0 0 16px}
+.neuro-practice ol{padding-left:1.4em}
+.neuro-practice li+li{margin-top:16px}
+.neuro-practice>p{font-size:.85rem;color:var(--muted)}
+.neuro-boundary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.neuro-boundary>div{padding:24px;min-width:0}
+.neuro-boundary>div+div{background:var(--pale);border-left:1px solid var(--line)}
+.neuro-boundary h3{font-size:.87rem;margin:0 0 16px;line-height:1.6}
+.neuro-boundary>div+div h3{color:var(--blue)}
+.neuro-boundary p{font-size:.94rem;line-height:1.9;margin:0}
+@media(max-width:700px){.neuro-explorer{padding:18px}.neuro-explorer-detail{padding:18px}.neuro-boundary{grid-template-columns:1fr}.neuro-boundary>div{padding:20px}.neuro-boundary>div+div{border-left:0;border-top:1px solid var(--line)}.neuro-cell-list article,.neuro-methods article,.neuro-function-links>div,.neuro-practice{padding:20px}.neuro-edge{margin:0 5%;grid-template-columns:24px 1fr;gap:12px}.neuro-switches{gap:6px}.neuro-switches button{padding:9px 11px}}
+.neuro-note-figure,.neuro-drawing{margin:0;padding:24px;border:1px solid var(--line);border-radius:12px;background:#fff;min-width:0;overflow:hidden}
+.neuro-figure-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:24px}
+.neuro-figure-heading h3{font-size:1.1rem;line-height:1.6;text-align:left;flex:1}
+.neuro-figure-heading>button,.neuro-dialog-heading>button{background:var(--pale);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font:inherit;font-size:.8rem;white-space:nowrap;color:var(--ink);cursor:pointer;flex-shrink:0}
+.neuro-note-figure>img{display:block;width:100%;height:auto;max-height:840px;object-fit:contain;margin:0 auto 24px}
+.neuro-note-figure figcaption,.neuro-drawing figcaption{border-top:1px solid var(--line);padding-top:20px;font-size:.9rem;line-height:1.9}
+.neuro-note-figure figcaption>a{display:block;margin-top:16px;font-size:.75rem;color:var(--muted)}
+.neuro-note-figure figcaption p,.neuro-drawing figcaption p{text-align:left}
+.neuro-figure-reading{padding-left:1.4em;margin:0}
+.neuro-figure-reading li{padding-left:3px;text-align:left}
+.neuro-figure-reading li+li{margin-top:12px}
+.neuro-figure-reading+p{margin-top:16px}
+.neuro-drawing>svg{display:block;width:100%;height:auto;overflow:visible;margin:12px 0 20px}
+.neuro-svg-label{font-size:19px;fill:#424950;font-weight:600}
+.neuro-figure-controls{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px}
+.neuro-figure-controls>button{font:inherit;font-size:.82rem;line-height:1.5;padding:10px 14px;border:1px solid var(--line);color:var(--ink);border-radius:6px;background:#fff;cursor:pointer}
+.neuro-figure-controls>button[aria-pressed=true]{border-color:var(--figure-accent,var(--blue));box-shadow:inset 0 -3px var(--figure-accent,var(--blue));background:var(--pale);font-weight:600}
+.neuro-drawing figcaption>strong{display:block;margin-bottom:8px;font-size:1rem}
+.neuro-drawing figcaption>.neuro-caption{margin-top:16px;font-size:.75rem}
+.neuro-note-figure button:focus-visible,.neuro-drawing button:focus-visible,.neuro-image-dialog button:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.neuro-brain-map [role=button]{cursor:pointer;transition:fill .15s}
+.neuro-brain-map [role=button]:focus-visible{outline:none;stroke:var(--blue);stroke-width:5}
+.neuro-brain-map [role=button]:hover{stroke:var(--blue);stroke-width:3}
+.neuro-image-dialog{box-sizing:border-box;width:min(96vw,1400px);max-width:96vw;max-height:94dvh;border:0;border-radius:12px;padding:24px;background:#fff;color:var(--ink);box-shadow:0 16px 100px #0006}
+.neuro-image-dialog::backdrop{background:#0009}
+.neuro-dialog-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:16px}
+.neuro-dialog-heading h3{font-size:1.1rem}
+.neuro-image-scroll{overflow:auto;max-height:72dvh;border:1px solid var(--line);background:#fff;overscroll-behavior:contain}
+.neuro-image-scroll:focus-visible{outline:2px solid var(--blue)}
+.neuro-image-scroll>img{display:block;width:100%;max-width:none;height:auto}
+.neuro-image-scroll.original-size>img{width:1200px}
+.neuro-image-dialog>p{font-size:.78rem;color:var(--muted);margin-top:12px;text-align:left}
+@media(max-width:700px){.neuro-note-figure,.neuro-drawing{padding:16px}.neuro-figure-heading{gap:10px;margin-bottom:16px}.neuro-figure-heading h3{font-size:1rem}.neuro-figure-heading>button{padding:7px 9px}.neuro-figure-heading>.neuro-label{display:none}.neuro-figure-controls{gap:7px}.neuro-figure-controls>button{padding:9px 11px;font-size:.8rem}.neuro-image-dialog{padding:16px}.neuro-dialog-heading h3{font-size:.95rem}.neuro-image-dialog>p{font-size:.75rem}}
+@media(prefers-reduced-motion:reduce){.neuro-brain-map [role=button]{transition:none}}
+
+/* Brain atlas: names stay on the map and match the description. */
+.neuro-atlas{margin:0;border:1px solid var(--line);border-radius:12px;padding:24px;background:#fff;min-width:0}
+.neuro-atlas .neuro-figure-heading h3{margin:0}
+.neuro-atlas-view{display:grid;gap:10px;text-align:left!important;margin:0}
+.neuro-atlas-view strong{font-size:.95rem}
+.neuro-atlas-view span{font-size:.86rem;line-height:1.8;color:var(--muted)}
+.neuro-atlas-map{display:block;width:100%;height:auto;margin:20px 0 16px;overflow:visible}
+.neuro-atlas-label text{font-size:27px;font-weight:650}
+.neuro-atlas-direction{font-size:19px;fill:#666f76}
+.neuro-atlas-map [role=button]{cursor:pointer}
+.neuro-atlas-map [role=button]:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
+.neuro-atlas-map path[role=button]:hover,.neuro-atlas-map ellipse[role=button]:hover{stroke-width:5}
+.neuro-atlas-map .neuro-atlas-label:hover text{text-decoration:underline}
+.neuro-atlas-hint{font-size:.78rem;line-height:1.8;text-align:left!important;color:var(--muted);margin:0 0 18px}
+.neuro-atlas-picks{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px}
+.neuro-atlas-picks button{display:flex;align-items:center;gap:9px;padding:10px 14px;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:6px;cursor:pointer;font:inherit;font-size:.85rem}
+.neuro-atlas-picks button>span{width:10px;height:10px;border-radius:50%;background:var(--atlas-color);flex-shrink:0}
+.neuro-atlas-picks button[aria-pressed=true]{background:var(--atlas-pale);border-color:var(--atlas-color);box-shadow:inset 0 -2px var(--atlas-color);font-weight:600}
+.neuro-atlas button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.neuro-atlas-description{border:1px solid var(--atlas-color);border-left:5px solid var(--atlas-color);padding:22px;background:#fff;border-radius:8px}
+.neuro-atlas-description h4{font-size:1.15rem;margin:0 0 20px}
+.neuro-atlas-description dl{margin:0;display:grid;gap:16px}
+.neuro-atlas-description dl>div{display:grid;grid-template-columns:72px minmax(0,1fr);gap:16px;align-items:start}
+.neuro-atlas-description dt{font-size:.8rem;font-weight:600;padding-top:3px;color:#535d65}
+.neuro-atlas-description dd{margin:0;font-size:.9rem;line-height:1.9}
+.neuro-atlas-description>p{margin:20px 0 0;padding-top:16px;border-top:1px solid var(--line);font-size:.84rem;line-height:1.8;text-align:left}
+.neuro-atlas>.neuro-caption{margin:20px 0 0}
+.neuro-atlas>.neuro-caption a{display:block;margin-top:10px}
+.neuro-network-title{margin:0;text-align:left!important;font-size:.95rem;font-weight:600}
+.neuro-connectivity>svg{max-height:340px}
+.neuro-type-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:0 0 24px}
+.neuro-type-cards article{padding:18px;border:1px solid var(--line);border-radius:8px;background:var(--pale);min-width:0}
+.neuro-type-cards article>span{font-size:.78rem;color:#606c77;display:block;margin-bottom:12px}
+.neuro-type-cards h4{font-size:1rem;line-height:1.6;margin:0 0 16px}
+.neuro-type-cards p{font-size:.88rem;text-align:left;margin:0}
+.neuro-type-cards .neuro-type-example{font-size:.8rem;padding-top:14px;margin-top:14px;border-top:1px solid var(--line);color:var(--muted)}
+.neuro-type-cards svg{display:block;width:100%;height:auto;max-height:150px;margin-bottom:18px}
+.neuro-type-cards .neuro-effect-sign{font:28px/1.5 Arial,sans-serif;color:#54738d;letter-spacing:6px}
+.neuro-types-note{font-size:.88rem;line-height:1.9;text-align:left!important;margin:0 0 24px}
+.neuro-neuron-types figcaption>p{margin:0 0 18px}.neuro-neuron-types figcaption>p:last-child{margin-bottom:0}
+@container section-body (max-width:560px){.neuro-atlas{padding:16px}.neuro-atlas-description{padding:18px}.neuro-atlas-description dl>div{grid-template-columns:1fr;gap:6px}.neuro-atlas-description h4{font-size:1.1rem}.neuro-atlas-picks button{padding:9px 11px}.neuro-type-cards{grid-template-columns:1fr}.neuro-type-cards article{padding:18px}.neuro-atlas-label text{font-size:29px}}
+
+.neuro-supplement>p,.neuro-supplement>.neuro-explorer{margin-top:20px}
+
+.neuro-hypothesis-quote{margin:0;padding:24px;border-left:4px solid var(--blue);background:var(--pale)}
+.neuro-hypothesis-quote p{margin:0;font-size:1.1rem;font-weight:600;text-align:left;line-height:1.9}
+.neuro-hypothesis-quote footer{margin-top:12px;font-size:.8rem;color:var(--muted)}
+@media(max-width:700px){.neuro-hypothesis-quote{padding:18px}.neuro-hypothesis-quote p{font-size:1rem}}
+
+.neuro-mirror-figure{margin:0;padding:24px;border:1px solid var(--line);border-radius:12px;min-width:0}
+.neuro-mirror-figure>figcaption{font-size:.9rem;font-weight:600;margin-bottom:24px}
+.neuro-mirror-conditions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.neuro-mirror-conditions>div{display:grid;gap:12px;text-align:center;align-content:start;min-width:0}
+.neuro-mirror-conditions>div>span:first-child{font-size:.8rem;color:var(--muted)}
+.neuro-mirror-conditions strong{display:grid;align-content:center;align-self:stretch;min-height:90px;padding:14px;border:1px solid var(--line);border-radius:8px;background:var(--pale);font-size:.94rem}
+.neuro-mirror-arrow{font-size:2rem;color:var(--blue);line-height:1}
+.neuro-mirror-response{display:flex;gap:20px;align-items:center;margin-top:14px;padding:20px;border:1px solid var(--blue);border-radius:8px}
+.neuro-mirror-response svg{color:var(--blue);flex:0 0 90px;width:90px;height:75px}
+.neuro-mirror-response>div{display:grid;gap:10px;min-width:0}
+.neuro-mirror-response>div>span{font-size:.8rem;color:var(--muted)}
+.neuro-mirror-figure>.neuro-caption{margin:18px 0 0}
+@container section-body (max-width:560px){.neuro-mirror-figure{padding:16px}.neuro-mirror-conditions{gap:10px}.neuro-mirror-conditions strong{font-size:.85rem;padding:12px 8px}.neuro-mirror-response{padding:14px;gap:10px}.neuro-mirror-response svg{flex-basis:60px;width:60px;height:60px}.neuro-mirror-response strong{font-size:.9rem}}
+
+.neuro-summation>svg{max-height:470px}
+.neuro-summation figcaption>p{margin:0 0 14px}
+.neuro-summation figcaption>p:last-child{margin-bottom:0}
+
+.neuro-emotion-network{margin:0;min-width:0;padding:24px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.neuro-emotion-map{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain}
+.neuro-emotion-map:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.neuro-emotion-map svg{display:block;width:100%;height:auto}
+.neuro-emotion-scroll-hint{display:none}
+.neuro-emotion-node-name{font-size:21px;font-weight:650;fill:#263744}
+.neuro-emotion-node-sub{font-size:12px;fill:#536779}
+.neuro-emotion-edge-label{font-size:15px;fill:#54738d}
+.neuro-emotion-reading{margin-top:18px;padding:18px;border-left:3px solid var(--blue);background:var(--pale)}
+.neuro-emotion-reading strong{font-size:.95rem;line-height:1.7}
+.neuro-emotion-reading p{font-size:.9rem;text-align:left;margin:12px 0 0}
+.neuro-emotion-network figcaption>.neuro-caption{margin:18px 0 0}
+.neuro-emotion-network button:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+@container section-body (max-width:560px){.neuro-emotion-network{padding:16px}.neuro-emotion-network .neuro-switches{margin-bottom:12px}.neuro-emotion-reading{padding:16px}}
+@container section-body (max-width:400px){.neuro-emotion-map svg{min-width:560px}.neuro-emotion-scroll-hint{display:block;font-size:.8rem;color:var(--muted);margin:0 0 12px}}
+
+.neuro-open-questions{display:grid;gap:14px}
+.neuro-open-question{background:#fff;border-radius:8px}
+.neuro-open-question>summary{line-height:1.8}
+.neuro-question-content{display:grid;gap:22px;margin-top:24px}
+.neuro-question-content>*{min-width:0;margin:0}
+.neuro-question-content>.neuro-boundary p{margin:0}
+.neuro-question-content>ul{padding-left:1.4em}
+.neuro-question-content>ul li+li{margin-top:14px}
+.neuro-question-content details>ul{padding-left:1.4em}
+.neuro-open-question>summary:focus-visible{outline:3px solid var(--blue);outline-offset:5px}
