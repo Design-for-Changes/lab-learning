@@ -1,0 +1,108 @@
+.ai-partnership { min-width: 0; }
+.ai-partnership p, .ai-partnership li, .ai-partnership dd { text-align: left; }
+.ai-partnership .ai-partnership-key { border-left: 4px solid var(--blue); background: #fbf5f3; padding: 20px 24px; font-size: 1.125rem; font-weight: 650; }
+.ai-partnership h3 { font-size: 1.125rem; text-wrap: wrap; }
+.ai-partnership-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.ai-partnership-pair > section { border-top: 2px solid var(--line); padding-top: 16px; }
+.ai-partnership-pair p { margin-block: 12px; }
+.ai-partnership-pair > section > strong { display: block; color: var(--blue); font-size: .9375rem; }
+.ai-partnership .ai-partnership-flow { list-style: none; padding: 0; display: grid; gap: 24px; }
+.ai-partnership-flow li { position: relative; padding: 16px 20px; border: 1px solid var(--line); }
+.ai-partnership-flow li + li::before { content: '↓'; color: var(--blue); position: absolute; top: -26px; left: 20px; }
+.ai-partnership-flow strong, .ai-partnership-flow span { display: block; }
+.ai-partnership-flow span { margin-top: 6px; font-size: .9375rem; }
+.ai-partnership-example { border-left: 3px solid #a8aaa5; padding: 20px 24px; background: #f7f7f4; }
+.ai-partnership-example h3 { font-size: 1rem; }
+.ai-partnership-example p { margin: 12px 0 0; }
+.ai-partnership dt { font-weight: 650; font-size: .875rem; }
+.ai-partnership dd { margin: 4px 0 0; }
+.ai-partnership-checks { display: grid; gap: 18px; }
+.ai-partnership-checks > div { display: grid; grid-template-columns: 7em minmax(0, 1fr); gap: 16px; border-bottom: 1px solid var(--line); padding-bottom: 18px; }
+.ai-partnership-checks dt { padding-top: 3px; }
+.ai-partnership-checks dd { margin: 0; }
+.ai-partnership-example .ai-partnership-checks { margin: 20px 0 0; }
+.ai-partnership-example .ai-partnership-checks > div:last-child { border: 0; padding-bottom: 0; }
+.ai-partnership-detail { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); }
+.ai-partnership-detail dl { display: grid; gap: 18px; margin: 0; }
+.ai-partnership-detail p { margin: 16px 0 0; }
+.ai-partnership-detail p:first-child { margin-top: 0; }
+.ai-partnership .ai-partnership-source-note { margin: 24px 0 0; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: .8125rem; }
+.ai-partnership figure { min-width: 0; }
+.ai-partnership figcaption { margin-top: 16px; color: var(--muted); font-size: .8125rem; line-height: 1.8; text-align: left; }
+.ai-behavior-model, .ai-behavior-workspace, .ai-behavior-mcp > div { border: 1px solid var(--line); padding: 20px; background: #f7f7f4; }
+.ai-behavior-model { border-top: 3px solid var(--blue); background: #fbf5f3; }
+.ai-behavior-model > span, .ai-behavior-mcp > div > span { display: block; margin-top: 8px; font-size: .9375rem; }
+.ai-partnership .ai-behavior-arrow, .ai-partnership .ai-behavior-mcp > p { text-align: center; text-align-last: center; margin: 12px 0; font-size: .875rem; color: var(--muted); }
+.ai-behavior-workspace > div { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
+.ai-behavior-workspace > div > span { border: 1px solid var(--line); padding: 12px; background: #fff; font-weight: 600; }
+.ai-behavior-workspace small { font-weight: 400; font-size: .8125rem; color: var(--muted); }
+.ai-behavior-mcp > div { background: #fff; }
+.ai-behavior-mcp > div:nth-of-type(2) { border-left: 4px solid var(--blue); background: #fbf5f3; }
+.ai-behavior-walkthrough { border: 1px solid var(--line); padding: 24px; }
+.ai-behavior-walkthrough > p { margin: 0; }
+.ai-behavior-places { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-block: 20px; }
+.ai-behavior-places > span { display: flex; flex-direction: column; justify-content: flex-end; min-height: 70px; padding: 10px 12px; border: 1px solid var(--line); font-size: .875rem; }
+.ai-behavior-places > span[data-active="true"] { border-color: var(--blue); background: #fbf5f3; font-weight: 650; }
+.ai-behavior-places small { color: var(--blue); font-size: .75rem; }
+.ai-behavior-walkthrough .segmented { display: flex; flex-wrap: wrap; gap: 8px; }
+.ai-behavior-walkthrough .segmented button { flex: 1 1 110px; margin: 0; padding: 10px 12px; }
+.ai-behavior-step { margin-top: 24px; border-top: 1px solid var(--line); padding-top: 20px; }
+.ai-behavior-step dl { display: grid; gap: 16px; margin: 20px 0; }
+.ai-behavior-step dt { color: var(--muted); }
+.ai-behavior-step p { margin: 0; }
+.ai-partnership .ai-partnership-environment { list-style: none; padding: 0; display: grid; gap: 24px; }
+.ai-partnership-environment > li { border-top: 1px solid var(--line); padding-top: 20px; }
+.ai-partnership-environment h3 { display: flex; align-items: baseline; gap: 12px; margin: 0; }
+.ai-partnership-environment h3 > span { color: var(--blue); font-size: .8125rem; flex: 0 0 auto; }
+.ai-partnership-environment p { margin: 10px 0 0; }
+.ai-partnership-records { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.ai-partnership-records > section { border-top: 3px solid var(--line); padding-top: 12px; }
+.ai-partnership-records > section > span { color: var(--blue); font-size: .8125rem; font-weight: 650; }
+.ai-partnership-records h3 { margin-top: 10px; }
+.ai-partnership-records p { margin: 10px 0; font-size: .9375rem; }
+.ai-partnership-records small { color: var(--muted); font-size: .8125rem; }
+.ai-partnership-tool-build, .ai-partnership-tool-use { border: 1px solid var(--line); padding: 20px; }
+.ai-partnership-tool-build { background: #fbf5f3; border-left: 4px solid var(--blue); }
+.ai-partnership-tool-build > span { display: block; font-size: .9375rem; margin-top: 10px; }
+.ai-partnership-tool-use { margin-top: 16px; }
+.ai-partnership-tool-use ol { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; list-style: none; padding: 0; margin: 16px 0 0; }
+.ai-partnership-tool-use li { border-top: 2px solid var(--line); padding-top: 10px; }
+.ai-partnership-tool-use li + li { position: relative; }
+.ai-partnership-tool-use li + li::before { content: '→'; position: absolute; left: -19px; top: 10px; color: var(--muted); }
+.ai-partnership-tool-use b { font-size: .9375rem; }
+.ai-partnership-tool-use li > span { display: block; font-size: .8125rem; margin-top: 8px; }
+.ai-environment-map { border: 1px solid var(--line); padding: 24px; }
+.ai-environment-map-title { font-weight: 650; border-bottom: 2px solid var(--blue); padding-bottom: 14px; }
+.ai-environment-map dl { margin: 0; }
+.ai-environment-map dl > div { display: grid; grid-template-columns: 7em minmax(0, 1fr); gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.ai-environment-map dt { color: var(--blue); padding-top: 3px; }
+.ai-environment-map dd { margin: 0; font-size: .9375rem; }
+.ai-environment-development { padding: 24px; border: 1px solid var(--line); background: #f7f7f4; }
+.ai-environment-development > p { margin: 0; }
+.ai-environment-development .segmented { margin-block: 20px 0; }
+.ai-environment-development .segmented button { flex: 1 1 150px; margin: 0; min-height: 44px; text-align: left; }
+.ai-environment-stage { margin-top: 24px; border-top: 1px solid var(--line); padding-top: 20px; }
+.ai-environment-stage h3 { margin: 0; }
+.ai-environment-stage dl { margin-block: 20px; display: grid; gap: 16px; }
+.ai-environment-stage dl > div { border-left: 3px solid var(--blue); padding: 12px 16px; background: #fff; }
+.ai-environment-stage dt { color: var(--muted); }
+.ai-environment-stage dd { margin-top: 8px; font-size: .9375rem; }
+.ai-environment-stage > p { margin: 0; }
+.ai-environment-maintenance { display: grid; gap: 20px; }
+.ai-environment-maintenance > div { border-top: 1px solid var(--line); padding-top: 18px; }
+.ai-environment-maintenance dt { font-size: 1rem; }
+.ai-environment-maintenance dd { margin-top: 8px; }
+@media(max-width: 700px) {
+ .ai-partnership-pair, .ai-partnership-records, .ai-behavior-workspace > div, .ai-partnership-tool-use ol { grid-template-columns: minmax(0, 1fr); }
+ .ai-partnership .ai-partnership-key, .ai-partnership-example, .ai-behavior-model, .ai-behavior-workspace, .ai-behavior-mcp > div, .ai-behavior-walkthrough, .ai-partnership-tool-build, .ai-partnership-tool-use { padding: 16px; }
+ .ai-partnership-checks > div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+ .ai-partnership .section-body details { padding: 14px 16px; }
+ .ai-behavior-places { grid-template-columns: minmax(0, 1fr); }
+ .ai-behavior-places > span { min-height: 0; flex-direction: row; justify-content: flex-start; align-items: center; gap: 12px; }
+ .ai-partnership-tool-use ol { gap: 28px; }
+ .ai-partnership-tool-use li + li::before { content: '↓'; left: 0; top: -28px; }
+ .ai-environment-map, .ai-environment-development { padding: 16px; }
+ .ai-environment-map dl > div { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+ .ai-environment-development .segmented { flex-direction: column; }
+ .ai-environment-development .segmented button { flex: auto; }
+}

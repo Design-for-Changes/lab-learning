@@ -1,15 +1,19 @@
 import { Next } from './Common.jsx';
 import Systems from './AiSystemsLesson.jsx';
+import Behavior from './AiBehaviorLesson.jsx';
+import Partnership from './AiPartnershipLesson.jsx';
 
 export const aiIntroLinks = [
  ['/ai-intro/systems', '01　現代的なAIの計算ロジック'],
+ ['/ai-intro/behavior', '02　AIの挙動特性'],
+ ['/ai-intro/partnership', '03　AIとの向き合い方'],
 ];
 
 export function resolveAiIntroRoute(path) {
  return path === '/ai-intro' || path === '/ai/systems' ? '/ai-intro/systems' : path;
 }
 
-const lessons = [Systems];
+const lessons = [Systems, Behavior, Partnership];
 
 export default function AiIntroCourse({ route }) {
  const index = aiIntroLinks.findIndex(([path]) => path === route);
