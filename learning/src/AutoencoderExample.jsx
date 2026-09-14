@@ -1,3 +1,4 @@
+import PageLink from './PageLink.jsx';
 import { useState } from 'react';
 import example from './autoencoderExample.json';
 import { LocalPythonCommands } from './LocalPythonCommands.jsx';
@@ -19,7 +20,7 @@ export default function AutoencoderExample(){
   <details><summary>自分のPythonで学習して、画像を比べる</summary>
    <p>ライブラリに含まれる手書き画像を使うので、自分で画像を集める必要はありません。次のコードは、入力画像そのものをお手本にして学習します。</p>
    <pre className="code-block"><code>{'model.fit(train, train)  # 入力と、復元のお手本は同じ画像\nrestored = model.predict(test)  # 別の画像で確かめる'}</code></pre>
-   <div className="download-row"><a href={`${import.meta.env.BASE_URL}data/ai/autoencoder.py`} download>オートエンコーダのPythonコード ↓</a></div>
+   <div className="download-row"><PageLink href={`${import.meta.env.BASE_URL}data/ai/autoencoder.py`} download>オートエンコーダのPythonコード ↓</PageLink></div>
    <LocalPythonCommands packages="numpy scikit-learn matplotlib" filename="autoencoder.py"/>
    <p>実行すると、元画像と復元画像を並べた<code>autoencoder-result.png</code>と、途中の数などを記録した<code>autoencoder-result.json</code>ができます。</p>
    <p>この実行例では、評価用{example.testCount}枚の平均二乗誤差は{example.testMSE.toFixed(4)}でした。各画素の差を二乗し、全画像で平均した値です。常に学習用の平均画像を返すだけの基準は{example.baselineMSE.toFixed(4)}。この基準より小さくなりましたが、数字の分類精度を測った値ではありません。</p>

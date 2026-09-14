@@ -1,3 +1,4 @@
+import PageLink from './PageLink.jsx';
 import { useState } from 'react';
 import { Section, Sources } from './Common.jsx';
 import './aiPartnership.css';
@@ -32,7 +33,7 @@ export default function AiBehaviorLesson() {
  return <div className="ai-partnership">
   <Section title="AIは、どこで、何を使って作業するのか">
    <p className="ai-partnership-key">AIの動きを理解するには、「どこで処理するか」「何に接続できるか」「何を通じて操作するか」を分けて見る。</p>
-   <p><a href="#/ai-intro/systems">01</a>で見たハーネスは、モデルの呼び出しや道具の実行を管理します。ここでは<strong>道具を使うAIエージェント</strong>を対象に、その実行環境と操作方法を整理します。使える機能は、アプリの実装と設定によって異なります。</p>
+   <p><PageLink href="#/ai-intro/systems">01</PageLink>で見たハーネスは、モデルの呼び出しや道具の実行を管理します。ここでは<strong>道具を使うAIエージェント</strong>を対象に、その実行環境と操作方法を整理します。使える機能は、アプリの実装と設定によって異なります。</p>
    <dl className="ai-partnership-checks">
     <div><dt>作業する場所</dt><dd><strong>ローカル／クラウド。</strong>手元のPCや外部の実行環境の、どこにファイルを置き、どこで処理を実行するか。</dd></div>
     <div><dt>道具との接続</dt><dd><strong>MCPなど。</strong>利用できる道具や資料を、AIアプリへどのような取り決めで提供するか。</dd></div>
@@ -52,7 +53,7 @@ export default function AiBehaviorLesson() {
    <p><strong>コードをつくることと、コードを実行することも別です。</strong>例えばCSVを集計するコードを書き、実行し、出てきた表を元データと照合する、という一連の作業になります。コマンドは、プログラムの実行などを文字で指示する方法です。</p>
    <p>例えばClaude APIのCode executionは、サービス側のコンテナという分離された環境でファイルを扱い、コードを実行します。<strong>利用者のPCと、そのコンテナのファイルは別物</strong>です。結果を受け渡す処理が必要で、再利用の方法や保存期限もサービスの仕様に従います。</p>
    <p>確認するのは、<strong>ファイルの保存先、処理の実行場所、モデルへ渡される情報</strong>です。手元でファイルを編集する構成でも、読み取った内容をクラウドのモデルへ送る場合があります。</p>
-   <p className="small-note">実装例：<a href="https://code.claude.com/docs/en/overview" target="_blank" rel="noreferrer">Claude Codeのファイル・コマンド操作</a> ／ <a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/code-execution-tool" target="_blank" rel="noreferrer">Code executionの実行環境とファイルの受け渡し</a>。</p>
+   <p className="small-note">実装例：<PageLink href="https://code.claude.com/docs/en/overview" target="_blank" rel="noreferrer">Claude Codeのファイル・コマンド操作</PageLink> ／ <PageLink href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/code-execution-tool" target="_blank" rel="noreferrer">Code executionの実行環境とファイルの受け渡し</PageLink>。</p>
   </Section>
 
   <Section title="MCPで、使える道具や資料につなぐ">
@@ -68,7 +69,7 @@ export default function AiBehaviorLesson() {
    <p><strong>API</strong>は、ソフトウェア同士が機能を呼び出す窓口です。MCPサーバーが、接続先のAPIを使って処理することもあります。MCPを使わず、AIアプリが直接APIに接続する構成もあります。</p>
    <p>接続しただけで、すべての情報や操作を使えるわけではありません。何ができるかは、提供されている機能、認証、与えられた権限によって決まります。</p>
    <p><strong>MCPは接続の仕組みであり、操作の正しさを保証するものではありません。</strong>道具に渡す値や、返された結果の解釈は、別に確かめる必要があります。</p>
-   <p className="small-note">出典：<a href="https://modelcontextprotocol.io/docs/learn/architecture" target="_blank" rel="noreferrer">MCP公式のアーキテクチャ説明</a>。MCPサーバーは、ローカルでもリモートでも動作します。</p>
+   <p className="small-note">出典：<PageLink href="https://modelcontextprotocol.io/docs/learn/architecture" target="_blank" rel="noreferrer">MCP公式のアーキテクチャ説明</PageLink>。MCPサーバーは、ローカルでもリモートでも動作します。</p>
    <details><summary>補足：MCPが提供する三つのもの</summary><div className="ai-partnership-detail"><dl><div><dt>Tools（道具）</dt><dd>検索、ファイル操作、予定の登録など、実行する機能。</dd></div><div><dt>Resources（資料）</dt><dd>文書やデータなど、文脈に取り込むための情報。</dd></div><div><dt>Prompts（ひな型）</dt><dd>決まった作業を進めるために再利用する指示の形。</dd></div></dl><p>どれをどう使うかはAIアプリの実装によって異なります。MCP自体が、作業の目的や進め方を決めるわけではありません。</p></div></details>
   </Section>
 
@@ -84,7 +85,7 @@ export default function AiBehaviorLesson() {
    <p>画面の配置や表示が変わると、操作先を取り違えることがあります。「保存を押した」という操作記録と、保存後の内容を分けて確かめます。</p>
    <div className="ai-partnership-example"><h3>ブラウザの自動操作は、画像を使う方法だけではない</h3><p>例えばPlaywright MCPは、ページ内のボタンや入力欄を、名前や役割などの構造化された情報としてAIへ渡します。この情報をアクセシビリティスナップショットと呼び、操作対象を指定するために使います。</p><p>画面の画像を読む方法と、ページの構造を読む方法は組み合わせることもできます。ブラウザの自動操作自体はAI専用の技術ではなく、AIエージェントはそれを道具として利用します。</p></div>
    <p><strong>サービスAPIはデータや機能を直接呼び出す窓口で、GUIは画面を通じて操作する窓口</strong>です。MCPは、どちらを扱う道具にも接続できます。この教材では、具体的な方式が分かるように「API経由の操作」「画面操作」「ブラウザの自動操作」と書き分けます。</p>
-   <p className="small-note">実装例：<a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool" target="_blank" rel="noreferrer">Anthropic Computer use</a> ／ <a href="https://github.com/microsoft/playwright-mcp" target="_blank" rel="noreferrer">Microsoft Playwright MCP</a>。</p>
+   <p className="small-note">実装例：<PageLink href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool" target="_blank" rel="noreferrer">Anthropic Computer use</PageLink> ／ <PageLink href="https://github.com/microsoft/playwright-mcp" target="_blank" rel="noreferrer">Microsoft Playwright MCP</PageLink>。</p>
   </Section>
 
   <Section title="作業は、複数の場所を行き来する">

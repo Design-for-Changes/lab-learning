@@ -1,3 +1,4 @@
+import PageLink from './PageLink.jsx';
 import { LocalPythonCommands } from './LocalPythonCommands.jsx';
 import { useState } from 'react';
 import { Section, Prompt } from './Common.jsx';
@@ -30,7 +31,7 @@ export function FactorialWorkedExample(){return <Section id="factorial-calculati
  <p>ここからは、<strong>別の架空データを使ったL8の計算練習</strong>です。サイズ・コントラスト・余白を全8通りに組み合わせ、別々の3人ずつ、合計24人に試してもらったとします。先ほどのL4の行平均とは異なるデータです。</p>
  <h3>1．一人ずつ記録し、条件ごとの平均を出す</h3><p>表計算ソフトには、<strong>1行に1人分、列に「参加者ID・条件・サイズ・コントラスト・余白・時間」</strong>を記録します。下の表は見やすいように、同じ条件の3人をまとめています。平均だけを残さず、一人ずつの値を保存してください。</p>
  <div className="table-scroll"><table className="data-table design-table factorial-raw"><caption>8条件 × 別々の3人＝24人の測定値</caption><thead><tr><th scope="col">条件</th><th scope="col">サイズ・コントラスト・余白</th><th scope="col">3人の時間<br/>（秒）</th><th scope="col">平均<br/>（秒）</th></tr></thead><tbody>{factorialRows.map(row=><tr key={row.condition}><th scope="row">{row.condition}</th><td>{row.levels.map((level,i)=>designFactors[i].levels[level-1]).join('・')}</td><td>{row.values.join('・')}</td><td>{row.average}</td></tr>)}</tbody></table></div>
- <p>条件1なら、<strong>（22 ＋ 24 ＋ 26）÷ 3＝24秒</strong>。ほかの条件も同じように平均します。3人は計算練習の人数であり、研究に十分な人数という意味ではありません。</p><p><a href={`${import.meta.env.BASE_URL}data/l8-screen-example.csv`} download>24人分の生データをCSVでダウンロード ↓</a></p><p className="small-note">CSVのsize・contrast・marginは、1＝小・低・狭い、2＝大・高・広いです。time_secが秒単位の時間です。</p>
+ <p>条件1なら、<strong>（22 ＋ 24 ＋ 26）÷ 3＝24秒</strong>。ほかの条件も同じように平均します。3人は計算練習の人数であり、研究に十分な人数という意味ではありません。</p><p><PageLink href={`${import.meta.env.BASE_URL}data/l8-screen-example.csv`} download>24人分の生データをCSVでダウンロード ↓</PageLink></p><p className="small-note">CSVのsize・contrast・marginは、1＝小・低・狭い、2＝大・高・広いです。time_secが秒単位の時間です。</p>
  <h3>2．主効果：一つの項目で分けて、平均を引き算する</h3><p>サイズなら「小の条件」と「大の条件」をまとめます。どちらにも、コントラストと余白の全組み合わせが入っています。</p><MainCalculation/>
  <h3>3．交互作用：条件ごとに、変化のしかたを比べる</h3><p>コントラストを低から高にするとき、小さいボタンでも大きいボタンでも、同じだけ速くなるでしょうか。</p><InteractionCalculation/>
  <h3>4．ばらつきと比べて、F値・p値を読む</h3><p>「測定のばらつきに比べても大きい差か」は、02の分散分析につながります。今回は3項目の主効果とすべての交互作用を入れた、三元配置分散分析です。</p>

@@ -1,3 +1,4 @@
+import PageLink from './PageLink.jsx';
 import { useId, useLayoutEffect, useRef, useState } from 'react';
 
 const diagrams = [
@@ -125,7 +126,7 @@ export default function EvolutionConnections({ references }) {
     </div>
     <ConnectionChart key={diagram.id} diagram={diagram}/>
     <p className="evolution-connection-explanation">{diagram.explanation}</p>
-    <p className="evolution-cite">文献：{diagram.sources.map((id, index) => <span key={id}>{index > 0 && ' ／ '}<a href={references[id][1]} target="_blank" rel="noreferrer">{references[id][0]}</a></span>)}</p>
+    <p className="evolution-cite">文献：{diagram.sources.map((id, index) => <span key={id}>{index > 0 && ' ／ '}<PageLink href={references[id][1]} target="_blank" rel="noreferrer">{references[id][0]}</PageLink></span>)}</p>
     <p className="evolution-connection-note">線は、理論や発見の関係を表します。破線の両矢印は、同じ過程を異なる形で説明できる関係です。各項目を押すと年表へ移ります。</p>
   </section>;
 }

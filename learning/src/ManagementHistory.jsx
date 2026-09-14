@@ -1,3 +1,4 @@
+import PageLink from './PageLink.jsx';
 import { useId } from 'react';
 import { managementLessons } from './managementContent.js';
 import { managementIntroduction } from './managementIntroduction.js';
@@ -29,7 +30,7 @@ function Literature({ work }) {
             const readingSource = managementSources[id];
             return <div className="management-work-source" key={id}>
             <h5>代表文献と読むポイント</h5>
-            <p><a href={readingSource.url} target="_blank" rel="noreferrer">{readingSource.title} ↗</a></p>
+            <p><PageLink href={readingSource.url} target="_blank" rel="noreferrer">{readingSource.title} ↗</PageLink></p>
             <p>{readingSource.author}（{readingSource.year}）. {readingSource.publication}</p>
             <p>{readingSource.reading}</p>
             <p className="small-note">リンク先：{readingSource.access}</p>

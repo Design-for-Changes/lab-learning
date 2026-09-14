@@ -1,3 +1,4 @@
+import './check-routing.mjs';
 import { managementChapters, managementLessons, managementAliases } from '../src/managementContent.js';
 import { managementSources } from '../src/managementSources.js';
 import './check-evolution.mjs';
@@ -352,7 +353,9 @@ try{
  let homeHTML='',basicsHTML='',legacyDistributionHTML='',entryHTML='',inferenceHTML='',variablesHTML='',experimentsHTML='',chooseHTML='',legacyMethodsHTML='',checksHTML='';
  for(const route of routes){
   globalThis.location={hash:`#${route}`};
-  const html=renderToStaticMarkup(React.createElement(App));
+  const rendered=renderToStaticMarkup(React.createElement(App));
+  // Keep content assertions expressed as logical routes; the built-page check validates real URLs.
+  const html=rendered.replace(/href="\/lab-learning\/learning\/([^"?]*\/|)"/g,(_,path)=>`href="#/${path.replace(/\/$/,'')}"`);
   assert.ok(html.includes('id="main"'));assert.ok(!html.includes('ページが見つかりません'));assert.ok(!html.includes('undefined'));
   for(const m of html.matchAll(/href="#(\/[^\"]*)"/g))assert.ok(routes.includes(m[1]),`Invalid route ${m[1]}`);
   for(const m of html.matchAll(/href="\/lab-learning\/learning\/(data\/[^\"]*)"/g))await access(`public/${m[1]}`);

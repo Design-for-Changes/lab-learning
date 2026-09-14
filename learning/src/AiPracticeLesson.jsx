@@ -1,3 +1,4 @@
+import PageLink from './PageLink.jsx';
 import { useState } from 'react';
 import { Section,Prompt,Sources } from './Common.jsx';
 import examples from './aiExampleResults.json';
@@ -42,7 +43,7 @@ export default function AiPracticeLesson(){return <>
  </Section>
  <Section title="3．二つのファイルを保存して、実行する">
   <ol className="exercise-list"><li>自分のPCに、<code>nn-practice</code>というフォルダーを作る。</li><li>下の二つを保存し、どちらもそのフォルダーへ入れる。</li><li>そのフォルダーを開いたターミナルで、下の命令を実行する。</li></ol>
-  <div className="download-row"><a href={`${base}data/ai/xor.csv`} download>① 問題と正解：xor.csv ↓</a><a href={`${base}data/ai/xor.py`} download>② 学習の手順：xor.py ↓</a></div>
+  <div className="download-row"><PageLink href={`${base}data/ai/xor.csv`} download>① 問題と正解：xor.csv ↓</PageLink><PageLink href={`${base}data/ai/xor.py`} download>② 学習の手順：xor.py ↓</PageLink></div>
   <pre className="code-block"><code>{'nn-practice/\n  xor.csv   ← 4問と正解\n  xor.py    ← 学習させる手順'}</code></pre>
   <p><strong>ターミナル</strong>は、文字でPCに命令を出す画面です。研究室で設定したPython環境を使います。普段VS Codeを使っているなら、上のフォルダーを開き、「ターミナル」から「新しいターミナル」を開けます。</p>
   <details><summary>ターミナルで保存先のフォルダーへ移動するには</summary><p><code>cd</code>は、作業するフォルダーを変える命令です。次の引用符の中を、実際の<code>nn-practice</code>フォルダーの場所に置き換えます。</p><pre className="code-block"><code>{'cd "nn-practiceフォルダーの実際のパス"'}</code></pre><p>Macなら例として<code>/Users/自分のユーザー名/Downloads/nn-practice</code>、Windowsなら<code>C:\Users\自分のユーザー名\Downloads\nn-practice</code>のような場所です。保存先が違えば、その場所を使います。</p></details>

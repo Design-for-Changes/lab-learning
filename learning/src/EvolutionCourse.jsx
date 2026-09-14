@@ -1,3 +1,4 @@
+import PageLink from './PageLink.jsx';
 import { Section, Sources, Next } from './Common.jsx';
 import { SelectionExplorer, HamiltonExplorer } from './EvolutionExplorers.jsx';
 import EvolutionConnections from './EvolutionConnections.jsx';
@@ -73,7 +74,7 @@ const references = {
   dutton: ['Dutton（2010）A Darwinian Theory of Beauty（TED）', 'https://www.ted.com/talks/denis_dutton_a_darwinian_theory_of_beauty'],
 };
 function Cite({ ids }) {
-  return <p className="evolution-cite">文献：{ids.map((id, i) => <span key={id}>{i > 0 && ' ／ '}<a href={references[id][1]} target="_blank" rel="noreferrer">{references[id][0]}</a></span>)}</p>;
+  return <p className="evolution-cite">文献：{ids.map((id, i) => <span key={id}>{i > 0 && ' ／ '}<PageLink href={references[id][1]} target="_blank" rel="noreferrer">{references[id][0]}</PageLink></span>)}</p>;
 }
 function Reading({ ids }) { return <Sources links={ids.map(id => references[id])}/>; }
 function Table({ headings, rows }) {

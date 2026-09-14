@@ -1,3 +1,4 @@
+import PageLink from './PageLink.jsx';
 import { Section, Prompt, Sources, Next } from './Common.jsx';
 import { FactorialWorkedExample } from './FactorialWorkedExample.jsx';
 import { LinearGraphGuide } from './LinearGraphGuide.jsx';
@@ -39,7 +40,7 @@ function OrthogonalArrayCatalog(){return <Section id="orthogonal-arrays" title="
  <p>L18（2¹ × 3⁷）なら、2種類に変える項目を1つと、3種類に変える項目を7つまで入れられます。例えば「表示方式は2種類、サイズなどは3種類」というときの候補です。L16のように同じ行数で違う表もあるので、<strong>Lの後の数字だけでなく、かっこの中も確認します。</strong></p>
  <p>一覧の「項目の上限」は、1項目を1列に置いたときの数です。すべての列を使う必要はありません。交互作用を調べるために列を空けるなど、知りたいことによって割り付け方が変わります。<strong>項目が収まるだけで、その表を使ってよいとは決まりません。</strong>どの効果が重なるかも確かめます。</p>
  <p>また、9行は「9人で十分」という意味ではありません。各行を何人で試すか、何回測るか、確認実験をどうするかは別に計画します。</p>
- <p className="note">ここでは代表的な表を掲載しています。各行の数字の並びや、ほかの水準の組み合わせは、<a href="https://support.minitab.com/en-us/minitab/help-and-how-to/statistical-modeling/doe/supporting-topics/taguchi-designs/catalogue-of-taguchi-designs/" target="_blank" rel="noreferrer">Minitabの直交表一覧（元の表も掲載） ↗</a>で確認できます。</p>
+ <p className="note">ここでは代表的な表を掲載しています。各行の数字の並びや、ほかの水準の組み合わせは、<PageLink href="https://support.minitab.com/en-us/minitab/help-and-how-to/statistical-modeling/doe/supporting-topics/taguchi-designs/catalogue-of-taguchi-designs/" target="_blank" rel="noreferrer">Minitabの直交表一覧（元の表も掲載） ↗</PageLink>で確認できます。</p>
  </Section>;}
 export default function ExperimentalDesignLesson(){return <>
  <p className="eyebrow">04 / 実験計画法</p><h1>全部試すと大変。実験をどう組み立てる？</h1>

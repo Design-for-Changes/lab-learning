@@ -1,3 +1,4 @@
+import PageLink from './PageLink.jsx';
 import { useState } from 'react';
 import { Section, Sources } from './Common.jsx';
 import './aiPartnership.css';
@@ -54,7 +55,7 @@ export default function AiPartnershipLesson() {
   <Section title="AIとの仕事を、マネジメントする">
    <p className="ai-partnership-key">目的に向かって仕事が進むように、必要なものと作業環境を用意し、結果を見ながら調整する。</p>
    <p><strong>マネジメント</strong>とは、目的を実現するために、人や道具、情報をどう使って仕事を進めるかを考え、実際の状況に合わせて調整することです。AIとの仕事にも、この見方が必要です。</p>
-   <p><a href="#/ai-intro/behavior">02</a>で見たように、道具を使えるAIは、ファイルを読み、プログラムを動かし、その結果を見て次の作業を考えられます。人が一つずつ操作を指定しなくても、ある範囲の仕事を進められるようになっています。</p>
+   <p><PageLink href="#/ai-intro/behavior">02</PageLink>で見たように、道具を使えるAIは、ファイルを読み、プログラムを動かし、その結果を見て次の作業を考えられます。人が一つずつ操作を指定しなくても、ある範囲の仕事を進められるようになっています。</p>
    <p>そこで考えるのは、<strong>何を目指すか、どこまで任せるか、必要なものはそろっているか、できたものは目的に合うか</strong>です。例えば、アプリが動いても、自分が比べたいものを比べられなければ、仕事は終わっていません。</p>
    <p>その土台になるのが、<strong>環境整備</strong>です。資料を置く場所、編集や計算に使う道具、結果を見る画面、やり直すための記録など、AIと自分が使う「作業場」をつくります。</p>
    <div className="ai-partnership-pair">
@@ -73,7 +74,7 @@ export default function AiPartnershipLesson() {
     <li><h3>途中から続けたり、戻したりできる記録</h3><p>作業中のファイル、変更の履歴、まだ残っていることを保存します。次回も読み直して続けられ、修正で壊れたときには前の状態へ戻せるようにします。</p></li>
    </ul>
    <p><strong>置いてあるだけでAIが必ず読めるとは限りません。</strong>実際にその資料を開けるか、道具を動かせるか、結果を見られるかを一緒に確かめます。使える機能は、AIアプリや接続の設定によって変わります。</p>
-   <p className="small-note">接続の仕組みは<a href="#/ai-intro/behavior">02「AIの挙動特性」</a>、道具や資料の提供方法は<a href="https://modelcontextprotocol.io/docs/learn/server-concepts" target="_blank" rel="noreferrer">MCP公式の説明</a>を参照してください。</p>
+   <p className="small-note">接続の仕組みは<PageLink href="#/ai-intro/behavior">02「AIの挙動特性」</PageLink>、道具や資料の提供方法は<PageLink href="https://modelcontextprotocol.io/docs/learn/server-concepts" target="_blank" rel="noreferrer">MCP公式の説明</PageLink>を参照してください。</p>
   </Section>
 
   <Section title="例：要件を整理する場所を用意して、開発する">
@@ -92,8 +93,8 @@ export default function AiPartnershipLesson() {
    <p>この例では、AIに資料を調べ、つくり方の案を出し、コードの変更と動作確認を進めてもらいます。自分は実際に使って「欲しかった比較ができるか」を判断します。追加したいことが出たら、今取り組むか、後にするかも整理します。</p>
    <p>そこから一部分をつくって動かし、使って気づいたことを次の修正に反映します。<strong>コードを直したら、決めたことも文書へ戻す。</strong>こうすると、次に作業するときも、その時点の考え方と動くものを参照できます。</p>
    <DevelopmentWorkspace/>
-   <p>このように、小さくつくって試し、分かったことに合わせて変えるのは、<strong>アジャイルな開発</strong>で重視される考え方です。最初の整理と、その後の変更の両方を支える作業場を用意します。<a href="https://agilemanifesto.org/iso/ja/principles.html" target="_blank" rel="noreferrer">アジャイル宣言の原則 ↗</a></p>
-   <details><summary>技術の補足：長い開発を続けるための環境</summary><div className="ai-partnership-detail"><p>Anthropicの開発事例では、機能の一覧、変更履歴、進捗の記録、アプリを起動する仕組み、ブラウザで動作を確かめる道具を組み合わせています。次の作業で状況を読み直し、動くものを確かめてから続きを進める構成です。</p><p>特定のWebアプリ開発での事例です。この章のフォルダー構成が最適だと実証されたわけではありません。</p><p><a href="https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents" target="_blank" rel="noreferrer">Anthropic：長時間の作業を支える仕組み ↗</a></p></div></details>
+   <p>このように、小さくつくって試し、分かったことに合わせて変えるのは、<strong>アジャイルな開発</strong>で重視される考え方です。最初の整理と、その後の変更の両方を支える作業場を用意します。<PageLink href="https://agilemanifesto.org/iso/ja/principles.html" target="_blank" rel="noreferrer">アジャイル宣言の原則 ↗</PageLink></p>
+   <details><summary>技術の補足：長い開発を続けるための環境</summary><div className="ai-partnership-detail"><p>Anthropicの開発事例では、機能の一覧、変更履歴、進捗の記録、アプリを起動する仕組み、ブラウザで動作を確かめる道具を組み合わせています。次の作業で状況を読み直し、動くものを確かめてから続きを進める構成です。</p><p>特定のWebアプリ開発での事例です。この章のフォルダー構成が最適だと実証されたわけではありません。</p><p><PageLink href="https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents" target="_blank" rel="noreferrer">Anthropic：長時間の作業を支える仕組み ↗</PageLink></p></div></details>
   </Section>
 
   <Section title="自分が使いやすい環境も、AIにつくってもらう">
@@ -105,7 +106,7 @@ export default function AiPartnershipLesson() {
    </figure>
    <p>自分はその画面を使って考え、使いにくいところが分かったら、AIと道具を直します。例えば「二つの条件を同時に比べたい」と気づいたら、比較できる表示を加えます。自分で直したデータや図も、AIが読み直せる形で残します。</p>
    <p><strong>自分にとって見やすく、操作しやすいことも、環境整備の一部です。</strong>つくった道具の計算が合うか、保存した結果を開き直せるかも、実際に使って確かめます。</p>
-   <details><summary>実例：授業用の道具「WeightedMDS For Web」</summary><div className="ai-partnership-detail"><p>キーワードと動画への重みを入力し、その関係を図で見る授業用ツールです。入力表、CSVの入出力、図の保存を一つの画面にまとめています。</p><p>自分が試したいことに合わせて作業環境をつくる、という発想の実例です。この紹介から、時間短縮や学習効果まで実証されたとは扱いません。</p><p><a href="https://weightedmds.vercel.app/" target="_blank" rel="noreferrer">WeightedMDS For Webを開く ↗</a></p></div></details>
+   <details><summary>実例：授業用の道具「WeightedMDS For Web」</summary><div className="ai-partnership-detail"><p>キーワードと動画への重みを入力し、その関係を図で見る授業用ツールです。入力表、CSVの入出力、図の保存を一つの画面にまとめています。</p><p>自分が試したいことに合わせて作業環境をつくる、という発想の実例です。この紹介から、時間短縮や学習効果まで実証されたとは扱いません。</p><p><PageLink href="https://weightedmds.vercel.app/" target="_blank" rel="noreferrer">WeightedMDS For Webを開く ↗</PageLink></p></div></details>
   </Section>
 
   <Section title="使って分かったことを、環境に反映する">
@@ -117,7 +118,7 @@ export default function AiPartnershipLesson() {
     <div><dt>文書が増えて、内容が食い違う</dt><dd>今の判断を反映し、不要になった説明や重複を整理する。</dd></div>
    </dl>
    <p>変えた後は、同じような作業で試します。<strong>手直しが減ったか、確かめやすくなったか、自分が使いやすくなったか。</strong>準備や手入れにかかる時間も含めて見ます。かえって手間が増えたなら、元に戻したり、もっと簡単な構成にしたりします。</p>
-   <details><summary>研究の補足：文書を足せば、成果が良くなるとは限らない</summary><div className="ai-partnership-detail"><p>Gloaguenほか（2026、6月改訂版）は、コード修正課題で指示ファイルの有無を比較しました。LLMが自動生成した指示ファイルを加えても、成功率の統計的に有意な改善は認められず、推論コストは増加しました。開発者が用意した文書は別条件で評価され、自動生成の文書とは結果が異なります。</p><p>要件を人と整理することや、この章の環境の更新方法を直接検証した研究ではありません。文書を増やした事実と、実際の仕事が改善したかを分けて考える根拠として参照しています。</p><p><a href="https://arxiv.org/abs/2602.11988v2" target="_blank" rel="noreferrer">原論文：Evaluating AGENTS.md（4.2節）↗</a></p></div></details>
+   <details><summary>研究の補足：文書を足せば、成果が良くなるとは限らない</summary><div className="ai-partnership-detail"><p>Gloaguenほか（2026、6月改訂版）は、コード修正課題で指示ファイルの有無を比較しました。LLMが自動生成した指示ファイルを加えても、成功率の統計的に有意な改善は認められず、推論コストは増加しました。開発者が用意した文書は別条件で評価され、自動生成の文書とは結果が異なります。</p><p>要件を人と整理することや、この章の環境の更新方法を直接検証した研究ではありません。文書を増やした事実と、実際の仕事が改善したかを分けて考える根拠として参照しています。</p><p><PageLink href="https://arxiv.org/abs/2602.11988v2" target="_blank" rel="noreferrer">原論文：Evaluating AGENTS.md（4.2節）↗</PageLink></p></div></details>
    <p className="ai-partnership-key">AIが仕事を進められる環境をつくる。自分が仕事を進めやすい環境も、AIとつくる。目的に合う結果が出ているかを見て、その環境と仕事の分担を調整する。これを、AIと協働するためのマネジメントとして考えます。</p>
   </Section>
   <Sources links={[

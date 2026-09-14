@@ -1,3 +1,4 @@
+import PageLink from './PageLink.jsx';
 import { Section,Sources } from './Common.jsx';
 import { LocalPythonCommands } from './LocalPythonCommands.jsx';
 import { CnnExplorer,ConvolutionIntro,AttentionExplorer,GanExplorer,SmallTable } from './ArchitectureExplorers.jsx';
@@ -91,7 +92,7 @@ export default function AiArchitecturesLesson(){return <>
   ]}/>
   <p><strong>CNNは計算の構造、教師あり・教師なしは学び方の区分です。</strong>例えば、CNNを使ったオートエンコーダで、ラベルのない画像を学ぶこともできます。「教師なしとCNNのどちらか一つ」という選び方にはなりません。</p>
   <p>新しい方法でも、05で見た過学習は起こり得ます。今回の目的に役立ったかを、学習に使わないデータで確かめます。</p>
-  <details><summary>補足の計算を、ローカルのPythonで実行する</summary><p>各節の「計算も確かめる」に対応する小さな練習です。CNNと注意機構は手で設定した数による計算例、GANは二つの小さなモデルを実際に更新する例です。</p><div className="download-row"><a href={`${import.meta.env.BASE_URL}data/ai/architectures.py`} download>CNN・注意機構・GANのPythonコード ↓</a></div><LocalPythonCommands packages="numpy" filename="architectures.py"/></details>
+  <details><summary>補足の計算を、ローカルのPythonで実行する</summary><p>各節の「計算も確かめる」に対応する小さな練習です。CNNと注意機構は手で設定した数による計算例、GANは二つの小さなモデルを実際に更新する例です。</p><div className="download-row"><PageLink href={`${import.meta.env.BASE_URL}data/ai/architectures.py`} download>CNN・注意機構・GANのPythonコード ↓</PageLink></div><LocalPythonCommands packages="numpy" filename="architectures.py"/></details>
   <p>では、こうしたモデルを毎回、自分のデータだけで一から学習するのでしょうか。次の08では、<strong>既に学習したモデルを使い、自分の課題へ合わせる方法</strong>に進みます。</p>
  </Section>
  <Sources links={[

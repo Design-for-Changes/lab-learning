@@ -1,3 +1,4 @@
+import { shareMetadata, SITE_URL, SITE_NAME } from '../../scripts/share-metadata.mjs';
 import { readFile, writeFile, mkdir, cp, rm } from 'node:fs/promises';
 import { marked } from 'marked';
 import katex from 'katex';
@@ -145,11 +146,12 @@ async function writePage(guide, chapter) {
   const root = rootFrom(path);
   const title = chapter?.title ?? guide.title;
   const description = chapter?.description ?? guide.description;
+  const metadata = shareMetadata({title:[title, chapter && guide.title !== title ? guide.title : '', SITE_NAME].filter(Boolean).join('｜'),description,url:new URL('research/' + path, SITE_URL).href});
   const breadcrumb = chapter ? '<nav class="breadcrumbs" aria-label="現在地"><a href="' + root + '">研究ガイド</a>' + (guide.id === 'indesign' ? '<span aria-hidden="true">/</span><a href="' + root + guide.path + '">InDesign</a>' : '') + '<span aria-hidden="true">/</span><span aria-current="page">' + escape(title) + '</span></nav>' : '';
   const eyebrow = chapter ? number(chapter.number) + ' / ' + guide.title : guide.id === 'research' ? 'RESEARCH GUIDE' : 'WRITING WITH InDesign';
   const heading = '<div class="page-heading">' + breadcrumb + '<p class="eyebrow">' + escape(eyebrow) + '</p><h1' + (chapter ? ' id="' + chapter.id + '"' : '') + '>' + escape(title) + '</h1></div>';
   const html = `<!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="${escape(description)}"><meta name="theme-color" content="#ffffff"><title>${escape(title)}｜動態デザイン研究室</title><link rel="icon" href="${root}favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="${root}learning.css"><link rel="stylesheet" href="${root}style.css"><link rel="stylesheet" href="${root}katex/katex.min.css"><script defer src="${root}guide.js"></script></head>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#ffffff">${metadata}<link rel="icon" href="${root}favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="${root}learning.css"><link rel="stylesheet" href="${root}style.css"><link rel="stylesheet" href="${root}katex/katex.min.css"><script defer src="${root}guide.js"></script></head>
 <body data-research-root="${root}" class="${chapter ? 'guide-reading' : 'guide-overview'}"><a class="skip" href="#main">本文へ</a><header class="site-header"><a class="wordmark" href="${root}">Research<span>動態デザイン研究室</span></a><nav aria-label="サイト"><a href="${root}" aria-current="page">研究ガイド</a><a href="${root}../learning/">学習資料</a></nav></header><div class="atlas">${sidebar(root, guide, chapter)}<main id="main" class="method-main" tabindex="-1">${heading}${chapter ? chapterPage(chapter, root) : overview(guide, root)}</main></div><footer class="site-footer"><span>動態デザイン研究室</span><a href="https://github.com/Design-for-Changes/lab-learning">GitHub ↗</a></footer></body></html>`;
   await mkdir('dist/' + path, { recursive: true });
   await writeFile('dist/' + path + 'index.html', html);
@@ -158,7 +160,8 @@ for (const guide of guides) {
   if (!guide.startAtFirstChapter) { await writePage(guide); continue; }
   const first = chapters.find(chapter => chapter.guide === guide);
   const href = './' + first.slug + '/';
-  const html = '<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>' + escape(first.title) + '｜動態デザイン研究室</title><script>location.replace(' + JSON.stringify(href) + '+location.search+location.hash);</script></head><body><h1>' + escape(first.title) + '</h1><a href="' + href + '">01から読む</a></body></html>';
+  const metadata = shareMetadata({title:[first.title,guide.title,SITE_NAME].join('｜'),description:first.description,url:new URL('research/' + first.path,SITE_URL).href});
+  const html = '<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">' + metadata + '<script>location.replace(' + JSON.stringify(href) + '+location.search+location.hash);</script></head><body><h1>' + escape(first.title) + '</h1><a href="' + href + '">01から読む</a></body></html>';
   await mkdir('dist/' + guide.path, { recursive: true });
   await writeFile('dist/' + guide.path + 'index.html', html);
 }
@@ -168,9 +171,10 @@ Object.assign(anchorPaths, legacyAnchors);
 for (const route of indesignRedirects) {
   const root = rootFrom(route.path);
   const target = root + route.target;
+  const metadata = shareMetadata({title:route.title + '｜' + SITE_NAME,description:route.title + 'に関する資料。統合先の補足ノートへ進みます。',url:new URL('research/' + route.target,SITE_URL).href});
   const choices = Object.fromEntries(Object.entries(legacyAnchors).map(([id, path]) => [id, root + path]));
   const script = 'const choices=' + JSON.stringify(choices) + ';let id="";try{id=decodeURIComponent(location.hash.slice(1));}catch{}const target=choices[id]||' + JSON.stringify(target) + ';const [path,anchor]=target.split("#");location.replace(path+location.search+(anchor?"#"+anchor:""));';
-  const html = '<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>' + escape(route.title) + '｜動態デザイン研究室</title><script>' + script + '</script></head><body><h1>' + escape(route.title) + '</h1><a href="' + target + '">統合先の補足ノートへ</a></body></html>';
+  const html = '<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">' + metadata + '<script>' + script + '</script></head><body><h1>' + escape(route.title) + '</h1><a href="' + target + '">統合先の補足ノートへ</a></body></html>';
   await mkdir('dist/' + route.path, { recursive: true });
   await writeFile('dist/' + route.path + 'index.html', html);
 }

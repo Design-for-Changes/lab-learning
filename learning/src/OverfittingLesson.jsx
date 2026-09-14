@@ -1,3 +1,4 @@
+import PageLink from './PageLink.jsx';
 import { useState } from 'react';
 import { Section } from './Common.jsx';
 import { LocalPythonCommands } from './LocalPythonCommands.jsx';
@@ -37,7 +38,7 @@ export default function OverfittingLesson(){
   <Section title="では、何を見て、どう直す？">
    <ol className="exercise-list"><li><strong>最初にデータを分ける。</strong>重みを学ぶ「学習用」、途中の選択に使う「検証用」、最後の評価に残す「テスト用」です。上の練習用・確認用・試験用に対応します。</li><li><strong>学習用と検証用を、同じ図で追う。</strong>検証用が悪くなるのに学習用だけよくなるなら、続ける前に設定を見直します。一度の上下だけで決めつけません。</li><li><strong>よかった時点の重みを保存し、学習を止める。</strong>検証用が一定期間改善しなければ止める方法が、早期終了（early stopping）です。上の比較なら、3000回より75回時点の損失が小さかったと読めます。</li><li><strong>モデルの複雑さやデータを見直す。</strong>中間層の部品を減らす、重みが大きくなりすぎないよう損失に罰則を加える「正則化」、実際に使う条件に合うデータを増やす、といった方法を検証します。</li><li><strong>選択を終えたら、残したテスト用で一度評価する。</strong>検証用を見て設定を選んだので、それとは別の答え合わせが必要です。この図では、テスト用40件の成績はまだ計算していません。</li></ol>
    <p>同じ人の繰り返し記録が両方に入る場合や、過去から未来を予測する場合は、人ごと・時期ごとに分けるなど、実際の使い方に合わせます。</p>
-   <details><summary>同じ例を、自分のPythonで確認する</summary><p>入力2個・中間層16個・出力1個のネットワークです。中間層はtanh（−1〜1に変換する関数）、出力はシグモイド関数。更新には歩幅を調整するAdamを使います。揺れに合わせすぎる例を観察するため、重みへの罰則は0にしています。標準化の平均・標準偏差も学習用だけから求めます。</p><div className="download-row"><a href={`${base}data/ai/overfitting.csv`} download>入力CSVを保存 ↓</a><a href={`${base}data/ai/overfitting.py`} download>Pythonコードを保存 ↓</a><a href={`${base}data/ai/overfitting-history.csv`} download>学習経過のCSV ↓</a></div><LocalPythonCommands packages="numpy pandas scikit-learn" filename="overfitting.py"/><pre className="code-block"><code>{example.output}</code></pre><p>乱数とデータの分け方を固定した教材用の一例です。「75回がどのデータでも最適」という意味ではありません。実行環境によって細部は変わる場合があります。</p></details>
+   <details><summary>同じ例を、自分のPythonで確認する</summary><p>入力2個・中間層16個・出力1個のネットワークです。中間層はtanh（−1〜1に変換する関数）、出力はシグモイド関数。更新には歩幅を調整するAdamを使います。揺れに合わせすぎる例を観察するため、重みへの罰則は0にしています。標準化の平均・標準偏差も学習用だけから求めます。</p><div className="download-row"><PageLink href={`${base}data/ai/overfitting.csv`} download>入力CSVを保存 ↓</PageLink><PageLink href={`${base}data/ai/overfitting.py`} download>Pythonコードを保存 ↓</PageLink><PageLink href={`${base}data/ai/overfitting-history.csv`} download>学習経過のCSV ↓</PageLink></div><LocalPythonCommands packages="numpy pandas scikit-learn" filename="overfitting.py"/><pre className="code-block"><code>{example.output}</code></pre><p>乱数とデータの分け方を固定した教材用の一例です。「75回がどのデータでも最適」という意味ではありません。実行環境によって細部は変わる場合があります。</p></details>
   </Section>
  </>;
 }

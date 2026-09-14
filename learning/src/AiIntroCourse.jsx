@@ -1,3 +1,4 @@
+import PageLink from './PageLink.jsx';
 import { Next } from './Common.jsx';
 import Systems from './AiSystemsLesson.jsx';
 import Behavior from './AiBehaviorLesson.jsx';
@@ -17,7 +18,7 @@ const lessons = [Systems, Behavior, Partnership];
 
 export default function AiIntroCourse({ route }) {
  const index = aiIntroLinks.findIndex(([path]) => path === route);
- if (index < 0) return <><h1>ページが見つかりません</h1><a href="#/ai-intro">AI入門へ戻る</a></>;
+ if (index < 0) return <><h1>ページが見つかりません</h1><PageLink href="#/ai-intro">AI入門へ戻る</PageLink></>;
  const Lesson = lessons[index];
  return <>
   <p className="eyebrow">AI入門 / {String(index + 1).padStart(2, '0')}</p>

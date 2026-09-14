@@ -21,6 +21,11 @@ const pages = new Map();
 for (const file of files) {
   const html = await readFile(file, 'utf8');
   assert.equal((html.match(/<h1(?: | >|>)/g) || []).length, 1, `${file}: expected one page title`);
+  const title = html.match(/<title>([\s\S]*?)<\/title>/)?.[1];
+  const shareTitle = html.match(/property="og:title" content="([^"]+)"/)?.[1];
+  assert.equal(shareTitle, title, `${file}: share title differs from page title`);
+  for (const property of ['og:description', 'og:url']) assert.ok(html.match(new RegExp(`property="${property}" content="[^"]+"`)), `${file}: missing ${property}`);
+  assert.ok(html.includes('<link rel="canonical" href="https://design-for-changes.github.io/lab-learning/research/'), `${file}: missing canonical URL`);
   assert.ok(!/file:\/\/|X-Amz-|<unknown|<mention-|GUIDEEQUATION|RESEARCH_URL|INDESIGN_URL|https:\/\/doi\//.test(html), `${file}: unresolved source reference`);
   const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
   assert.equal(new Set(ids).size, ids.length, `${file}: duplicate IDs`);

@@ -1,3 +1,4 @@
+import PageLink from './PageLink.jsx';
 import { useState } from 'react';
 import { Section, Sources } from './Common.jsx';
 import { SmallTable } from './ArchitectureExplorers.jsx';
@@ -40,7 +41,7 @@ function HarnessDiagram() {
 export default function AiSystemsLesson() {
  return <>
   <Section title="学んだモデルを、どう動かして仕事をさせる？">
-   <p><a href="#/ai">人工知能学習入門</a>では、ニューラルネットワークの仕組みと、重みを学習する方法を扱いました。この<strong>AI入門</strong>では、その続きとして、学習済みモデルで作業を進める仕組みを学びます。</p>
+   <p><PageLink href="#/ai">人工知能学習入門</PageLink>では、ニューラルネットワークの仕組みと、重みを学習する方法を扱いました。この<strong>AI入門</strong>では、その続きとして、学習済みモデルで作業を進める仕組みを学びます。</p>
    <p>AIが「資料を読む」「計算する」「結果を確かめる」と動くのは、どういう仕組みでしょうか。文章を扱う<strong>大規模言語モデル（Large Language Model：LLM）</strong>を使ったAIを例に、モデルの計算と、それを動かす周りのプログラムを順に見ます。</p>
    <div className="systems-pair"><div><strong>モデルの中</strong><span>入力をベクトルにし、学習した重みで計算して、次の出力を作る。</span></div><div><strong>モデルの周り</strong><span>何を入力し、どのツールを動かし、結果をどう渡し、いつ終えるかを管理する。</span></div></div>
   </Section>
@@ -81,11 +82,11 @@ export default function AiSystemsLesson() {
     ['ファインチューニングを行う', 'モデルの学習する重み'],
    ]}/>
    <p>資料を文脈へ追加する段階では、通常、重みは変えません。資料の選び方を間違えたり、大事な条件が要約で抜けたりすれば、答えも影響を受けます。</p>
-   <p>重みを変える学習については、<a href="#/ai/pretrained">人工知能学習入門の08「転移学習・知識蒸留」</a>で確認できます。</p>
+   <p>重みを変える学習については、<PageLink href="#/ai/pretrained">人工知能学習入門の08「転移学習・知識蒸留」</PageLink>で確認できます。</p>
   </Section>
   <Section title="Pythonで、周りのプログラムの役を確かめる">
    <p>下の例では、モデルが出すツールの要求を用意しておき、<strong>要求を受け取る→平均を計算する→結果を記録する→次の応答へ渡す</strong>処理を、自分のPCで動かします。実際の言語モデルには接続せず、ハーネス側の仕事に注目する練習です。</p>
-   <div className="download-row"><a href={`${import.meta.env.BASE_URL}data/ai/harness_demo.py`} download>ハーネスの練習用Pythonコード ↓</a></div>
+   <div className="download-row"><PageLink href={`${import.meta.env.BASE_URL}data/ai/harness_demo.py`} download>ハーネスの練習用Pythonコード ↓</PageLink></div>
    <LocalPythonCommands filename="harness_demo.py"/>
    <p>追加のライブラリは不要です。保存したファイルを実行すると、次の順番で表示されます。</p>
    <pre className="code-block"><code>{'[1] 利用者：10秒・12秒・14秒の平均を計算して\n[2] 模擬モデルの要求：mean([10, 12, 14])\n[3] ハーネス：許可したツールと入力を確認\n[4] 計算ツールの結果：12.0\n[5] ハーネス：結果を履歴へ追加\n[6] 模擬モデルの回答：平均は12.0秒です。'}</code></pre>
