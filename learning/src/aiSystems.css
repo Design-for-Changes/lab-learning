@@ -1,0 +1,43 @@
+.systems-pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
+.systems-pair > div { border: 1px solid var(--line); padding: 20px; }
+.systems-pair strong, .systems-pair span { display: block; }
+.systems-pair span { margin-top: 12px; }
+.systems-figure { margin: 0; }
+.systems-figure figcaption, .systems-visual figcaption { color: var(--muted); font-size: .875rem; margin-top: 16px; }
+.method-main .systems-route { list-style: none; padding: 0; display: grid; gap: 32px; }
+.method-main .systems-route li { border: 1px solid var(--line); padding: 16px; position: relative; text-align: left; }
+.systems-route li + li::before { content: '↓'; color: var(--blue); position: absolute; top: -30px; left: calc(50% - 8px); }
+.systems-route strong, .systems-route span { display: block; }
+.systems-route span { margin-top: 12px; }
+.systems-visual { container-type: inline-size; }
+.systems-visual > p { margin-block: 16px; }
+.systems-visual figure { margin: 24px 0; }
+.harness-boundary { border: 2px dashed #8c8c8c; padding: 20px; }
+.harness-boundary-label { display: block; margin-bottom: 16px; }
+.harness-context, .harness-model, .harness-tool { border: 1px solid var(--line); padding: 16px; background: #f5f5f5; text-align: center; }
+.harness-boundary span { display: block; margin-top: 8px; font-size: .875rem; }
+.harness-down { text-align: center; color: var(--blue); padding: 12px 0; }
+.harness-loop { display: grid; grid-template-columns: minmax(0,1fr) 52px minmax(0,1fr); align-items: center; gap: 8px; }
+.harness-exchange { color: var(--blue); text-align: center; white-space: nowrap; }
+.harness-boundary .harness-return { text-align: left; font-size: .875rem; margin-top: 16px; }
+.harness-boundary[data-active=context] .harness-context, .harness-boundary[data-active=model] .harness-model, .harness-boundary[data-active=tool] .harness-tool { border: 2px solid var(--blue); background: #fff0f1; }
+.harness-boundary[data-active=harness] { border: 2px solid var(--blue); }
+.harness-current { border-left: 3px solid var(--blue); padding: 16px; background: var(--pale); margin-bottom: 24px; }
+.harness-current > span { font-size: .875rem; color: var(--muted); }
+.harness-current h4 { margin: 12px 0; }
+.harness-current p { margin-block: 12px 0; text-align: left; }
+.harness-log { padding-left: 24px; font-size: .9375rem; }
+.harness-log li { margin-top: 12px; }
+.context-bundle { border: 2px solid #2362a0; padding: 20px; }
+.context-bundle > div { display: flex; flex-wrap: wrap; gap: 12px; margin-block: 16px; }
+.context-bundle span { border: 1px solid #2362a0; background: #edf4fb; padding: 8px 12px; font-size: .875rem; }
+.context-bundle p { text-align: left; font-size: .9375rem; }
+@media(max-width:600px) { .systems-pair { grid-template-columns: minmax(0,1fr); } }
+@container (max-width: 480px) {
+ .harness-boundary { padding: 12px; }
+ .harness-loop { grid-template-columns: minmax(0,1fr); }
+ .harness-exchange { display: flex; justify-content: center; gap: 20px; }
+ .harness-exchange span { font-size: 0; }
+ .harness-exchange span:first-child::after { content: '要求 ↓'; font-size: .875rem; }
+ .harness-exchange span:last-child::after { content: '結果 ↑'; font-size: .875rem; }
+}

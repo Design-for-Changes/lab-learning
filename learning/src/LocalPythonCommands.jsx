@@ -1,0 +1,3 @@
+export function LocalPythonCommands({packages,filename}){
+ return <><p>研究室で設定したPython環境を使います。コードや必要なデータを保存したフォルダーを、ターミナル（WindowsならPowerShellなど）で開きます。次は<strong>ターミナルに入力する命令</strong>で、Pythonコードの中には書きません。</p>{packages && <><p>必要なライブラリがまだ入っていなければ、先に準備します。</p><pre className="code-block"><code>{`python -m pip install ${packages}`}</code></pre></>}<p>コードを<code>{filename}</code>として保存したら、実行します。</p><pre className="code-block"><code>{`python ${filename}`}</code></pre><p className="small-note">普段の起動コマンドが<code>python3</code>や<code>py</code>なら、上の命令の<code>python</code>を同じように置き換えます。{packages && 'ライブラリの準備と実行には、同じPython環境を使ってください。'}</p></>;
+}

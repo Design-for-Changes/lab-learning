@@ -518,3 +518,5 @@ export const methods = [
 ];
 
 methods.push(...quantificationMethods);
+
+methods.push({id:'tsne',group:3,name:'t-SNE（t-distributed Stochastic Neighbor Embedding）',process:'元のデータで近い対象を、図の中でも近くに置くよう座標を調整する。',input:'人・製品ごとの数値の特徴。この例はカテゴリー回答を0/1に変換する。',output:'各対象の座標、設定値、近さのずれを表すKLダイバージェンス。',use:'似た回答や特徴のまとまりを、探索的に図で見たいとき。',note:'図だけでグループ数を確定しない。設定を変え、元のデータと照合する。',sources:[['t-SNEの原論文','https://www.jmlr.org/papers/v9/vandermaaten08a.html'],['scikit-learn：TSNE','https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html'],['t-SNEの図をどう読むか','https://distill.pub/2016/misread-tsne/']]});

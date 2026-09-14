@@ -1,3 +1,7 @@
+import { cnnSamples,cnnForward,attentionExample,initialGan,ganLosses,ganDiscriminatorGradient,ganGeneratorGradient,updateGanDiscriminator,updateGanGenerator,trainGanRound } from '../src/architectureMath.js';
+import { convolutionAt,distillationTeacher,distillationStudents,relativeEntropy } from '../src/aiOverviewMath.js';
+import { cooccurrenceCounts } from '../src/cooccurrenceMath.js';
+import { xorData,initialNetwork,networkGradient,networkLoss,trainNetwork,forwardNetwork,adjacency,linkLearningPairs } from '../src/aiMath.js';
 import assert from 'node:assert/strict';
 import { readFile, access } from 'node:fs/promises';
 import { mean,median,variance,regression,pca2,projectionVariance,chairPoints,pairedTimes,normalPDF,normalCDF,normalProbability,binomialPMF,poissonPMF,studentT3PDF,twoPredictorVIF,correlatedPoints } from '../src/math.js';
@@ -215,7 +219,7 @@ const baseline=await readFile('public/data/analysis.py','utf8');
 const notebookCode=notebook.cells.filter(c=>c.cell_type==='code').map(c=>c.source.join('')).join('\n');
 assert.ok(notebookCode.includes(baseline.slice(0,baseline.indexOf('# 練習では')).trim()));
 assert.ok(notebookCode.includes(baseline.slice(baseline.indexOf('# 練習では')).trim()));
-assert.equal(methods.length,26);assert.equal(new Set(methods.map(m=>m.id)).size,26);
+assert.equal(methods.length,27);assert.equal(new Set(methods.map(m=>m.id)).size,27);
 const methodExamples=JSON.parse(await readFile('src/methodExampleResults.json','utf8')).examples;
 assert.deepEqual(Object.keys(methodExamples).sort(),methods.map(m=>m.id).sort());
 assert.deepEqual(Object.keys(methodGuides).sort(),methods.map(m=>m.id).sort());
@@ -233,13 +237,106 @@ close(methodExamples.anova.output.rows[0][methodExamples.anova.output.columns.in
 assert.deepEqual(methodExamples.quant1.output.rows.map(row=>row[2]),[-3,3,2,-2]);
 console.log(`Math, practice data and ${leaves} complete analysis-choice paths passed.`);
 
+// Check backpropagation against independent finite differences for all nine parameters.
+const aiInitial=initialNetwork(),aiGradient=networkGradient(aiInitial);
+for(const key of ['w1','b1','w2','b2']){
+ const indices=key==='w1'?[[0,0],[0,1],[1,0],[1,1]]:key==='b2'?[[]]:[[0],[1]];
+ for(const index of indices){
+  const plus=structuredClone(aiInitial),minus=structuredClone(aiInitial),eps=1e-5;
+  const change=(m,d)=>{if(index.length===2)m[key][index[0]][index[1]]+=d;else if(index.length===1)m[key][index[0]]+=d;else m[key]+=d;};
+  change(plus,eps);change(minus,-eps);
+  const actual=index.reduce((v,i)=>v[i],aiGradient[key]);
+  close(actual,(networkLoss(plus)-networkLoss(minus))/(2*eps),1e-7);
+ }
+}
+const aiResults=JSON.parse(await readFile('src/aiExampleResults.json','utf8'));
+// Count document presence once per term, and compare with NumPy matrix multiplication.
+const wordData=JSON.parse(await readFile('src/cooccurrenceData.json','utf8'));
+const wordCounts=cooccurrenceCounts(wordData.documents,wordData.words);
+assert.deepEqual(wordCounts.counts,aiResults.cooccurrence.counts);
+assert.deepEqual(wordCounts.counts,[[3,0,3,1],[0,3,1,2],[3,1,4,1],[1,2,1,3]]);
+assert.deepEqual(cooccurrenceCounts([{terms:['a','a','b']},{terms:['a']}],['a','b']).counts,[[2,1],[1,1]]);
+assert.equal(linkLearningPairs.length,8);
+assert.deepEqual(linkLearningPairs.filter(r=>r.common).map(r=>r.pair),['A−D','B−D','C−E','C−F']);
+assert.equal(linkLearningPairs.filter(r=>r.common&&r.outcome).length,3);
+
+let trained=initialNetwork();
+for(let step=0;step<=5000;step++){
+ const checkpoint=aiResults.xor.snapshots.find(row=>row.step===step);
+ if(checkpoint){
+  xorData.forEach((row,i)=>close(forwardNetwork(trained,row).p,checkpoint.probabilities[i],1e-10));
+  const history=aiResults.xor.history.find(row=>row['更新回数']===step);
+  close(networkLoss(trained),history['平均損失'],1e-10);
+  assert.equal(xorData.filter((row,i)=>(checkpoint.probabilities[i]>=.5?1:0)===row[2]).length,history['正解数']);
+ }
+ if(step<5000)trained=trainNetwork(trained,1);
+}
+xorData.forEach((row,i)=>{const prediction=forwardNetwork(trained,row).p;close(prediction,aiResults.xor.probabilities[i],1e-10);assert.equal(prediction>=.5?1:0,row[2]);});
+const withBridge=adjacency(true),withoutBridge=adjacency(false);
+assert.equal(withBridge[2].reduce((a,b)=>a+b),3);assert.equal(withoutBridge[2].reduce((a,b)=>a+b),2);
+assert.equal(withBridge[0].reduce((sum,v,i)=>sum+v*withBridge[i][3],0),1);
+assert.equal(withoutBridge[0].reduce((sum,v,i)=>sum+v*withoutBridge[i][3],0),0);
+for(const id of ['graph','xor','cooccurrence'])assert.equal(await readFile(`public/data/ai/${id}.py`,'utf8'),aiResults[id].code);
+
+// Independently recompute the displayed loss and correct counts from recorded predictions.
+const overfit=JSON.parse(await readFile('src/overfittingExample.json','utf8'));
+assert.equal(new Set([...overfit.trainIds,...overfit.validationIds,...overfit.testIds]).size,160);
+assert.deepEqual([overfit.trainIds.length,overfit.validationIds.length,overfit.testIds.length],[90,30,40]);
+for(const row of overfit.snapshots)for(const key of ['train','validation']){
+ const probabilities=row[`${key}Probabilities`],labels=overfit[`${key}Labels`];
+ close(probabilities.reduce((sum,p,i)=>sum-(labels[i]*Math.log(p)+(1-labels[i])*Math.log(1-p))/labels.length,0),row[`${key}Loss`],1e-7);
+ assert.equal(probabilities.filter((p,i)=>Number(p>=.5)===labels[i]).length,row[`${key}Correct`]);
+}
+assert.ok(overfit.snapshots[2].trainLoss<overfit.snapshots[1].trainLoss);
+assert.ok(overfit.snapshots[2].validationLoss>overfit.snapshots[1].validationLoss);
+assert.equal(await readFile('public/data/ai/overfitting.py','utf8'),overfit.code);
+for(let row=0;row<3;row++)assert.deepEqual([0,1,2].map(column=>convolutionAt(row,column)),[3,0,-3]);
+close(relativeEntropy(distillationTeacher,distillationStudents[1]),0);
+close(relativeEntropy(distillationTeacher,distillationStudents[0]),.2*Math.log(5));
+
+// Compare the working architecture demos with the independent downloadable NumPy implementation.
+const architecture=JSON.parse(await readFile('src/architectureExampleResults.json','utf8'));
+assert.equal(await readFile('public/data/ai/architectures.py','utf8'),architecture.code);
+cnnSamples.forEach((sample,i)=>{const actual=cnnForward(sample.pixels);assert.deepEqual(actual.pooled,architecture.cnn[i].pooled);close(actual.verticalProbability,architecture.cnn[i].probability);});
+for(let i=0;i<3;i++){
+ const actual=attentionExample(i),reference=architecture.attention[i];
+ actual.weights.forEach((w,j)=>close(w,reference.weights[j]));actual.output.forEach((v,j)=>close(v,reference.output[j]));
+ const masked=attentionExample(i,true);close(masked.weights.reduce((a,b)=>a+b),1);masked.weights.slice(i+1).forEach(w=>assert.equal(w,0));
+}
+assert.deepEqual(attentionExample(0,true).output,[1,0]);
+const ganProbe={shift:-.3,w:.7,b:-.2},ganGradient=ganDiscriminatorGradient(ganProbe),eps=1e-5;
+for(const key of ['w','b'])close(ganGradient[key],(ganLosses({...ganProbe,[key]:ganProbe[key]+eps}).discriminator-ganLosses({...ganProbe,[key]:ganProbe[key]-eps}).discriminator)/(2*eps),1e-7);
+close(ganGeneratorGradient(ganProbe),(ganLosses({...ganProbe,shift:ganProbe.shift+eps}).generator-ganLosses({...ganProbe,shift:ganProbe.shift-eps}).generator)/(2*eps),1e-7);
+assert.equal(updateGanDiscriminator(ganProbe).shift,ganProbe.shift);
+assert.deepEqual([updateGanGenerator(ganProbe).w,updateGanGenerator(ganProbe).b],[ganProbe.w,ganProbe.b]);
+let ganModel=initialGan();for(let step=0;step<=1000;step++){
+ const reference=architecture.gan.find(r=>r.step===step);
+ if(reference)for(const key of ['shift','w','b'])close(ganModel[key],reference[key],1e-9);
+ if(step<1000)ganModel=trainGanRound(ganModel);
+}
+
+// Keep the displayed autoencoder results tied to the downloaded training example.
+const autoencoder=JSON.parse(await readFile('src/autoencoderExample.json','utf8'));
+assert.equal(await readFile('public/data/ai/autoencoder.py','utf8'),autoencoder.code);
+assert.equal(autoencoder.trainIds.length,autoencoder.trainCount);
+assert.equal(autoencoder.testIds.length,autoencoder.testCount);
+assert.equal(new Set([...autoencoder.trainIds,...autoencoder.testIds]).size,1797);
+assert.equal(autoencoder.trainCount+autoencoder.testCount,1797);
+autoencoder.samples.forEach((sample,i)=>{
+ assert.equal(sample.sourceIndex,autoencoder.testIds[i]);
+ assert.equal(sample.input.length,64);assert.equal(sample.restored.length,64);assert.equal(sample.code.length,16);
+ assert.ok([...sample.input,...sample.restored,...sample.code].every(Number.isFinite));
+ close(sample.input.reduce((sum,x,j)=>sum+(x-sample.restored[j])**2,0)/64,sample.mse);
+});
+assert.ok(autoencoder.testMSE<autoencoder.baselineMSE);
+
 // Render all routes without a browser to catch missing components and internal links.
 const {createServer}=await import('vite');
 const server=await createServer({server:{middlewareMode:true,watch:null,ws:false},appType:'custom'});
 try{
  const {default:App}=await server.ssrLoadModule('/src/App.jsx');
  const {default:React}=await import('react');const {renderToStaticMarkup}=await import('react-dom/server');
- const routes=['/','/statistics','/statistics/basics','/statistics/inference','/statistics/variables','/statistics/experiments','/statistics/distributions','/statistics/choose','/statistics/methods','/statistics/checks','/statistics/tools','/statistics/python',...methods.map(m=>`/statistics/method/${m.id}`)];
+ const routes=['/','/ai','/ai/discrete','/ai/graphs','/ai/learning','/ai/networks','/ai/training','/ai/practice','/ai/architectures','/ai/pretrained','/ai/systems','/ai-intro','/ai-intro/systems','/statistics','/statistics/basics','/statistics/inference','/statistics/variables','/statistics/experiments','/statistics/distributions','/statistics/choose','/statistics/methods','/statistics/checks','/statistics/tools','/statistics/python',...methods.map(m=>`/statistics/method/${m.id}`)];
  let homeHTML='',basicsHTML='',legacyDistributionHTML='',entryHTML='',inferenceHTML='',variablesHTML='',experimentsHTML='',chooseHTML='',legacyMethodsHTML='',checksHTML='';
  for(const route of routes){
   globalThis.location={hash:`#${route}`};
@@ -277,7 +374,7 @@ try{
  assert.ok(experimentsHTML.includes('確認実験'));assert.ok(!experimentsHTML.includes('タグチメソッド'));assert.ok(!experimentsHTML.includes('SN比'));
  assert.ok(experimentsHTML.includes('代表的な直交表一覧'));assert.ok(experimentsHTML.includes('線点図で、列の使い道を決める'));
  assert.equal(legacyDistributionHTML,basicsHTML,'Old distribution URL must open the merged basics lesson');
- assert.equal((homeHTML.match(/準備中/g)||[]).length,9);assert.ok(homeHTML.includes('デザイン学入門'));assert.ok(homeHTML.includes('ウェブインタラクション入門'));
+ assert.equal((homeHTML.match(/準備中/g)||[]).length,8);assert.ok(homeHTML.includes('デザイン学入門'));assert.ok(homeHTML.includes('ウェブインタラクション入門'));
  const {default:Chooser}=await server.ssrLoadModule('/src/Chooser.jsx');
  const html=renderToStaticMarkup(React.createElement(Chooser,{answers:{...compare,dependency:'repeated'},setAnswers:()=>{}}));
  assert.ok(html.includes('対応のあるt検定'));assert.ok(html.includes('目的変数なし'));assert.ok(!html.includes('checked=""'));

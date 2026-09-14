@@ -334,14 +334,17 @@ extra=pd.DataFrame({'軸':['軸1','軸2'],'固有値':eigenvalues[indices]});coo
 
 
 # Complete the example reports with the outputs used for interpretation.
+# The same 60 categorical responses as III: compare methods without changing people.
+add('tsne',EXAMPLES['mca'].split('# 選ばれた回数の違い')[0]+"\nfrom sklearn.manifold import TSNE\n# 3質問を同じ重さで比較。質問1個の回答が違うと、0/1列の二乗距離は2増える。\n# この例は頻度による列の標準化をしない。IDは入力に使わない。\nx=z.to_numpy()\nsettings=[(5,42),(15,42),(30,42),(15,7)]\nplots=[];summary=[];frames=[]\nfor perplexity,seed in settings:\n    model=TSNE(n_components=2,perplexity=perplexity,random_state=seed,\n               init='random',learning_rate='auto',max_iter=1000,method='exact')\n    xy=model.fit_transform(x)\n    points=pd.DataFrame(xy,index=df.index,columns=['座標1','座標2']).join(df).reset_index(names='回答者ID')\n    plots.append({'perplexity':perplexity,'seed':seed,'points':points})\n    summary.append({'perplexity':perplexity,'random_state':seed,'KLダイバージェンス':model.kl_divergence_,\n                    '反復回数':model.n_iter_,'学習率':model.learning_rate_})\n    frames.append(points.assign(perplexity=perplexity,random_state=seed))\nresult=plots[1]['points'].head(6)\nextra=pd.DataFrame(summary)\nall_coordinates=pd.concat(frames,ignore_index=True)\n")
+
 def extend(key,code): EXAMPLES[key]+=textwrap.dedent(code).strip()+'\n'
 extend('describe','''
 q=df.time_sec.quantile([.25,.75])
 extra=pd.DataFrame([{'第1四分位数':q.loc[.25],'第3四分位数':q.loc[.75],'四分位範囲_IQR':q.loc[.75]-q.loc[.25],'欠測数':df.time_sec.isna().sum()}])
 ''')
 extend('crosstab','''
-result['B_percent']=counts.B/counts.sum(axis=1)*100
-result['行合計']=counts.sum(axis=1)
+result['B_percent']=(counts.B/counts.sum(axis=1)*100).to_numpy()
+result['行合計']=counts.sum(axis=1).to_numpy()
 ''')
 extend('welch','''
 extra=pd.DataFrame({'群':['A','B'],'人数':[len(a),len(b)],'平均_秒':[a.mean(),b.mean()],'標準偏差_秒':[a.std(),b.std()]})
@@ -465,12 +468,14 @@ for key,body in EXAMPLES.items():
     code='# 架空データの計算練習。必要なパッケージは教材の手順で準備してください。\n'+body+'\nprint(result.round(4).to_string(index=False))\n'
     if 'extra=' in body or 'extra =' in body: code+='print(extra.round(4).to_string(index=False))\n'
     if key=='pca': code+='print(coordinates.rename_axis("製品ID").round(4).to_string())\n'
-    if key in ['quant1','quant2','quant3','mca']:
+    if key in ['quant1','quant2','quant3','mca','tsne']:
         code+='# 変換例の表示だけ重複をまとめる。解析には全員分を使う。\nprint(encoding.drop_duplicates().to_string(index=False))\n'
     if 'sample_scores=' in body: code+='print(sample_scores.rename_axis("回答者ID").round(4).to_string())\n'
     if 'more=' in body:
         code+='for title,frame in more.items():\n    print(title)\n    print(frame.round(4).to_string(index=False))\n'
-    ns={}
+    if key=='tsne':
+        code+="\nif __name__ == '__main__':\n    import matplotlib.pyplot as plt\n    all_coordinates.to_csv('tsne-coordinates.csv',index=False,encoding='utf-8-sig')\n    fig,axes=plt.subplots(2,2,figsize=(10,9))\n    colors={('reading','wood','natural'):'#cc2939',('work','steel','sharp'):'#2865b0',('chat','fabric','soft'):'#347a57'}\n    for ax,item in zip(axes.flat,plots):\n        points=item['points']\n        shades=[colors.get((r.purpose,r.material,r.style),'#aaa') for r in points.itertuples()]\n        ax.scatter(points['座標1'],points['座標2'],c=shades,alpha=.8)\n        ax.set(title=f\"perplexity={item['perplexity']}, seed={item['seed']}\",xlabel='Coordinate 1',ylabel='Coordinate 2')\n        ax.set_aspect('equal',adjustable='datalim')\n    fig.tight_layout()\n    fig.savefig('tsne-comparison.png',dpi=160)\n    plt.show()\n"
+    ns={'__name__':'example_generation'}
     with contextlib.redirect_stdout(io.StringIO()),warnings.catch_warnings(record=True) as caught:
         warnings.simplefilter('always')
         exec(compile(code,f'{key}.py','exec'),ns)
@@ -486,6 +491,9 @@ for key,body in EXAMPLES.items():
         output[key]['sampleScores']=table(ns['sample_scores'].reset_index(names='回答者ID'))
         output[key]['sampleProfiles']=table(ns['sample_profiles'])
         ns['sample_scores'].to_csv(ROOT/f'public/data/method-examples/{key}-scores.csv',index_label='回答者ID',encoding='utf-8-sig')
+    if key=='tsne':
+        output[key]['plots']=[{'perplexity':item['perplexity'],'seed':item['seed'],'points':table(item['points'])} for item in ns['plots']]
+        ns['all_coordinates'].to_csv(ROOT/'public/data/method-examples/tsne-coordinates.csv',index=False,encoding='utf-8-sig')
     output[key]['more']=[{'caption':title,'data':table(frame)} for title,frame in ns.get('more',{}).items()]
     print(key, len(df),result.round(3).to_dict('records'))
 versions={name:importlib.metadata.version(name) for name in ['numpy','pandas','scipy','statsmodels','scikit-learn','semopy']}
