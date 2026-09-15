@@ -14,7 +14,7 @@
     "currentHtml": "index.html",
     "currentData": "research.json",
     "memoData": "memo.json",
-    "questionsDocument": "questions.md",
+    "questionsDocument": "DEMO001_questions.md",
     "packageDir": "exports"
   },
   "research": {
