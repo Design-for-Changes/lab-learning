@@ -1,3 +1,4 @@
+import { checkCourseRegistry } from './check-course-registry.mjs';
 import { designStudyChapters, designStudyLinks, designStudyAliases, resolveDesignStudyRoute } from '../src/designStudyContent.js';
 import { designStudyHistory } from '../src/designStudyHistory.js';
 import { designStudySources } from '../src/designStudySources.js';
@@ -360,18 +361,13 @@ for (const [oldPath, newPath] of Object.entries(designStudyAliases)) {
 const {createServer}=await import('vite');
 const server=await createServer({server:{middlewareMode:true,watch:null,ws:false},appType:'custom'});
 try{
- const {default:App}=await server.ssrLoadModule('/src/App.jsx');
- const {scienceLinks}=await server.ssrLoadModule('/src/ScienceCourse.jsx');
- const {economicsLinks,economicsAliases}=await server.ssrLoadModule('/src/EconomicsCourse.jsx');
- const {neuroscienceLinks,neuroscienceAliases}=await server.ssrLoadModule('/src/NeuroscienceCourse.jsx');
- const {evolutionLinks,evolutionAliases}=await server.ssrLoadModule('/src/EvolutionCourse.jsx');
+ const {default:App,learningPaths}=await server.ssrLoadModule('/src/App.jsx');
+ checkCourseRegistry(await server.ssrLoadModule('/src/courseRegistry.jsx'));
  const {default:React}=await import('react');const {renderToStaticMarkup}=await import('react-dom/server');
- const {aiIntroLinks}=await server.ssrLoadModule('/src/AiIntroCourse.jsx');
- const routes=['/', '/design', ...designStudyLinks.map(([path]) => path), ...Object.keys(designStudyAliases), '/science',...scienceLinks.map(([path])=>path),...Object.keys(economicsAliases),...economicsLinks.map(([path])=>path),...Object.keys(neuroscienceAliases),...neuroscienceLinks.map(([path])=>path),'/psychology',...psychologyLinks.map(([path])=>path),...Object.keys(managementAliases),...managementChapters.map(chapter=>`/management/${chapter.slug}`),...Object.keys(evolutionAliases),...evolutionLinks.map(([path])=>path),'/ai','/ai/discrete','/ai/graphs','/ai/learning','/ai/networks','/ai/training','/ai/practice','/ai/architectures','/ai/pretrained','/ai/systems','/ai-intro',...aiIntroLinks.map(([path])=>path),'/statistics','/statistics/basics','/statistics/inference','/statistics/variables','/statistics/experiments','/statistics/distributions','/statistics/choose','/statistics/methods','/statistics/checks','/statistics/tools','/statistics/python',...methods.map(m=>`/statistics/method/${m.id}`)];
+ const routes=learningPaths;
  let homeHTML='',basicsHTML='',legacyDistributionHTML='',entryHTML='',inferenceHTML='',variablesHTML='',experimentsHTML='',chooseHTML='',legacyMethodsHTML='',checksHTML='';
  for(const route of routes){
-  globalThis.location={hash:`#${route}`};
-  const rendered=renderToStaticMarkup(React.createElement(App));
+  const rendered=renderToStaticMarkup(React.createElement(App, {initialRoute:route}));
   // Keep content assertions expressed as logical routes; the built-page check validates real URLs.
   const html=rendered.replace(/href="\/lab-learning\/learning\/([^"?]*\/|)"/g,(_,path)=>`href="#/${path.replace(/\/$/,'')}"`);
   assert.ok(html.includes('id="main"'));assert.ok(!html.includes('ページが見つかりません'),`Missing page for ${route}`);assert.ok(!html.includes('undefined'));
@@ -426,4 +422,4 @@ try{
  const html=renderToStaticMarkup(React.createElement(Chooser,{answers:{...compare,dependency:'repeated'},setAnswers:()=>{}}));
  assert.ok(html.includes('対応のあるt検定'));assert.ok(html.includes('目的変数なし'));assert.ok(!html.includes('checked=""'));
  console.log(`${routes.length} routes rendered; portal, candidate output, internal links and downloads passed.`);
-}finally{await server.close();delete globalThis.location;}
+}finally{await server.close();}

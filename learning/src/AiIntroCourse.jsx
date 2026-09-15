@@ -10,9 +10,11 @@ export const aiIntroLinks = [
  ['/ai-intro/partnership', '03　AIとの向き合い方'],
 ];
 
-export function resolveAiIntroRoute(path) {
- return path === '/ai-intro' || path === '/ai/systems' ? '/ai-intro/systems' : path;
-}
+export const aiIntroAliases = {
+ '/ai-intro': '/ai-intro/systems',
+ '/ai/systems': '/ai-intro/systems',
+};
+export const resolveAiIntroRoute = path => aiIntroAliases[path] || path;
 
 const lessons = [Systems, Behavior, Partnership];
 

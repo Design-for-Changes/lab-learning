@@ -26,7 +26,18 @@
 
 各章は `/lab-learning/learning/ai-intro/partnership/` のようなページ別URLを持ちます。`scripts/build-pages.mjs` が全ルートの本文と共有用メタ情報をHTMLに出力するため、JavaScriptを実行しない共有サービスにも章名と科目名が伝わります。旧 `#/...` URLは、開くと対応するページ別URLへ移動します。共有には移動後のURLを使います。すでに投稿された旧URLのプレビューは、投稿先のキャッシュや再取得の仕様に依存します。
 
-本文のリンクは `src/PageLink.jsx` を使います。既存の `href="#/…"` 指定をページ別URLへ変換し、外部リンク・資料のダウンロード・ページ内アンカーは維持します。ルート一覧は `App.jsx` の `learningPaths`、共有タイトルは本文の見出しと科目名から生成します。新しい章もこの一覧に含めてください。`npm run build` では、生成したHTMLのタイトル、共有用情報、内部リンクとファイルを確認します。
+本文のリンクは `src/PageLink.jsx` を使います。既存の `href="#/…"` 指定をページ別URLへ変換し、外部リンク・資料のダウンロード・ページ内アンカーは維持します。ルート一覧の `learningPaths` は `src/courseRegistry.jsx` の教材登録から生成し、共有タイトルは本文の見出しと科目名から生成します。`npm run build` では、生成したHTMLのタイトル、共有用情報、内部リンクとファイルを確認します。
+
+### 教材の登録と共通表示
+
+- `src/courseRegistry.jsx`：教材の名前・説明・入口・章一覧・表示コンポーネントを登録します。一覧、左メニュー、ページの選択、静的HTMLの生成はこの登録を参照します。
+- `src/CourseNavigation.jsx`：教材一覧と左メニューを表示します。
+- `src/App.jsx`：ページ全体の枠、ブラウザーのURL変更、共有情報とフォーカスの更新を担当します。
+- `src/StatisticsCourse.jsx`：統計の章と解析手法のページを選びます。基礎と変数の本文は `StatisticsBasicsLesson.jsx` と `StatisticsVariablesLesson.jsx` にあります。
+
+教材を追加するときは、教材側の章一覧とコンポーネントを用意して `courses` に登録します。入口は最初の章へ進みます。章を追加する場合は教材側の `links` を更新すると、メニューと生成対象に反映されます。旧URLは `aliases`、メニューに出さないページは `extraPaths` に登録します。準備中の教材は `path: null` と名前・説明だけを登録し、一覧に表示します。教材一覧は `courses` の順に並びます。各章の番号・名前・順番は教材側の `links` で管理します。
+
+ビルドと検証では `<App initialRoute={route}/>` に表示先を渡します。ブラウザー用の `location` を偽装する必要はありません。`scripts/check-course-registry.mjs` は登録の重複、旧URLの行き先、似た教材名のURLの区別を確認します。
 
 ## 作業
 

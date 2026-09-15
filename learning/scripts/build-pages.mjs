@@ -15,8 +15,7 @@ try {
  const pages = [];
  for (const requested of learningPaths) {
   const route = resolveLearningRoute(requested);
-  globalThis.location = { pathname:routePath(route), hash:'' };
-  const markup = renderToStaticMarkup(React.createElement(App));
+  const markup = renderToStaticMarkup(React.createElement(App, { initialRoute: route }));
   assert.ok(!markup.includes('ページが見つかりません'), requested);
   const metadata = learningMetadata(markup, route, courseForRoute(route));
   assert.ok(metadata.title && metadata.description, requested);
@@ -45,5 +44,4 @@ try {
  console.log(`Learning share pages: ${pages.length} HTML responses with unique page metadata; internal links and assets passed.`);
 } finally {
  await server.close();
- delete globalThis.location;
 }
