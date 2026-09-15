@@ -1,3 +1,4 @@
+import DtpCourse, { dtpLinks } from './DtpCourse.jsx';
 import WebCourse, { webLinks, webAliases } from './WebCourse.jsx';
 import DesignStudyCourse, { designStudyLinks, designStudyAliases } from './DesignStudyCourse.jsx';
 import ScienceCourse, { scienceLinks } from './ScienceCourse.jsx';
@@ -70,6 +71,11 @@ export const courses = [
     description: '画面・通信・データのつながりから、CMSの仕組みを学ぶ。',
     Component: WebCourse, links: webLinks, sidebarLabel: 'ウェブインタラクション入門のメニュー',
     aliases: webAliases,
+  },
+  {
+    path: '/dtp', title: 'DTP入門',
+    description: '文字組み・配置と、色・解像度・裁ち落としなど印刷の基本を学ぶ。',
+    Component: DtpCourse, links: dtpLinks, sidebarLabel: 'DTP入門のメニュー',
   },
   {
     path: '/ai-intro', title: 'AI入門',
