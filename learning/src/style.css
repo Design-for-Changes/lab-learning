@@ -456,3 +456,4 @@ input[type=search] { width: 100%; margin: 8px 0 24px; padding: 8px 12px; border:
  .ae-example-flow { grid-template-columns:minmax(0,1fr); }
  .ae-example-flow > div + div::before { content:'↓'; position:static; display:block; margin-bottom:12px; }
 }
+:where(.load-notice) { margin: 24px; padding: 16px; border: 1px solid currentColor; }

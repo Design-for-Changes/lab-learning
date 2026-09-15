@@ -1,3 +1,5 @@
+import { scienceChapters, scienceLinks } from './navigation/science.js';
+export { scienceChapters, scienceLinks, resolveScienceRoute } from './navigation/science.js';
 import PageLink from './PageLink.jsx';
 import { Section, Next } from './Common.jsx';
 import { scienceSources } from './scienceSources.js';
@@ -5,14 +7,9 @@ import { methodHistory, purposeHistory } from './scienceHistory.js';
 import { InferenceDiagram, PasteurQuadrant, ResearchPurpose } from './ScienceFigures.jsx';
 import './science.css';
 
-export const scienceChapters = [
- { slug:'foundations', title:'科学とは何か？' },
- { slug:'knowledge', title:'科学はどう知識をつくるのか？' },
- { slug:'history', title:'科学の歴史と考え方の変遷' },
- { slug:'contemporary', title:'現代の科学と主な論点' },
-];
-export const scienceLinks=scienceChapters.map((c,i)=>[`/science/${c.slug}`,`${String(i+1).padStart(2,'0')}　${c.title}`]);
-export const resolveScienceRoute=route=>route==='/science'?'/science/foundations':route;
+
+
+
 
 function References({ids}){return <div className="science-references" aria-label="この節の出典"><span>出典</span>{ids.map(id=><PageLink key={id} href={scienceSources[id].url} target="_blank" rel="noreferrer">{scienceSources[id].label} ↗</PageLink>)}</div>;}
 function Point({children}){return <p className="science-point">{children}</p>;}

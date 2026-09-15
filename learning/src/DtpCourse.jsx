@@ -1,13 +1,16 @@
+import { default as Table } from './DataTable.jsx';
+import { dtpLinks, resolveDtpRoute } from './navigation/dtp.js';
+export { dtpLinks, resolveDtpRoute } from './navigation/dtp.js';
 import { Section, Next } from './Common.jsx';
 import PageLink from './PageLink.jsx';
 import { TypeSpacingExplorer, PathRasterExplorer, ResolutionExplorer, BleedExplorer } from './DtpFigures.jsx';
 import { dtpSources } from './dtpSources.js';
 import './dtp.css';
 
-export const dtpLinks = [['/dtp/graphics', '01　グラフィックデザインの基本'], ['/dtp/printing', '02　印刷の基本']];
-export const resolveDtpRoute = route => route === '/dtp' ? '/dtp/graphics' : route;
+
+
 function Cite({ ids }) { return <div className="dtp-sources"><span>参考</span>{ids.map(id => <PageLink key={id} href={dtpSources[id][1]} target="_blank" rel="noreferrer">{dtpSources[id][0]} ↗</PageLink>)}</div>; }
-function Table({ headings, rows }) { return <div className="table-scroll"><table className="data-table"><thead><tr>{headings.map(heading => <th key={heading} scope="col">{heading}</th>)}</tr></thead><tbody>{rows.map(([label, ...cells]) => <tr key={label}><th scope="row">{label}</th>{cells.map((cell, i) => <td key={i}>{cell}</td>)}</tr>)}</tbody></table></div>; }
+
 function Point({ children }) { return <p className="dtp-point">{children}</p>; }
 
 function Graphics() { return <>

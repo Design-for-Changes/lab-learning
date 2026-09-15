@@ -1,5 +1,6 @@
+import { managementChapterInfo } from './navigation/management.js';
 export const managementIntroduction = {
-  slug: 'foundations', number: '01', title: 'マネジメントとは何か',
+  ...managementChapterInfo.foundations,
   sections: [
     {
       title: 'managementの語源',

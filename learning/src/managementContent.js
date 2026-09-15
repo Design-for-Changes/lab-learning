@@ -1,9 +1,11 @@
+export { managementAliases, resolveManagementRoute } from './navigation/management.js';
+import { managementChapterInfo } from './navigation/management.js';
 import { managementIntroduction } from './managementIntroduction.js';
 import { managementContemporary } from './managementContemporary.js';
 
 export const managementLessons = [
   {
-    slug: 'foundations', number: '01', title: 'マネジメントとは何か',
+    ...managementChapterInfo.foundations,
     period: '導入：目的・成果・協働',
     epoch: '個人の働きだけでなく、人々が協働して成果を生む条件に目を向ける。',
     scene: '研究室の6人で、地域の人に見てもらう共同展示をつくります。期限は6週間後。調査、制作、広報、設営を分担しましたが、制作が遅れ、何を優先するかも揃っていません。担当者に「頑張ろう」と伝えるだけで、状況は変わるでしょうか。以降の各章では、この架空の共同制作を別の角度から考えます。',
@@ -286,7 +288,7 @@ export const managementLenses = [
 export const managementChapters = [
   managementIntroduction,
   {
-    slug: 'history', number: '02', title: 'マネジメントの歴史と変遷',
+    ...managementChapterInfo.history,
     period: '科学的管理から、現代の組織論まで',
     epoch: '仕事・人間・組織について、何が問い直されてきたかを文献からたどる。',
     sections: [
@@ -316,14 +318,3 @@ export const managementChapters = [
   },
   managementContemporary,
 ];
-
-export const managementAliases = {
-  '/management': '/management/foundations',
-  '/management/classical': '/management/history',
-  '/management/people': '/management/history',
-  '/management/decisions': '/management/history',
-  '/management/environment': '/management/history',
-  '/management/knowledge': '/management/contemporary',
-  '/management/autonomy': '/management/contemporary',
-};
-export const resolveManagementRoute = path => managementAliases[path] || path;

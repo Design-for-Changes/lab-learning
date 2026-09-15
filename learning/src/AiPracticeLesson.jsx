@@ -1,3 +1,4 @@
+import DataTable from './DataTable.jsx';
 import PageLink from './PageLink.jsx';
 import { useState } from 'react';
 import { Section,Prompt,Sources } from './Common.jsx';
@@ -6,7 +7,7 @@ import { xorData } from './aiMath.js';
 
 const base=import.meta.env.BASE_URL;
 const example=examples.xor;
-function Table({head,rows}){return <>{head.length>4&&<p className="practice-table-hint">表を横にスクロールすると、答え合わせまで読めます。</p>}<div className={`table-scroll architecture-table ${head.length>4?'practice-results-table':''}`}><table className="data-table"><thead><tr>{head.map(h=><th key={h} scope="col">{h}</th>)}</tr></thead><tbody>{rows.map((row,i)=><tr key={i}>{row.map((cell,j)=><td key={j}>{cell}</td>)}</tr>)}</tbody></table></div></>;}
+function Table({head,rows}) { return <>{head.length>4&&<p className="practice-table-hint">表を横にスクロールすると、答え合わせまで読めます。</p>}<DataTable headings={head} rows={rows} rowHeaders={false} scrollClassName={`table-scroll architecture-table ${head.length>4?'practice-results-table':''}`}/></>; }
 const outputRows=probabilities=>xorData.map(([a,b,y],i)=>[a,b,y,probabilities[i].toFixed(6),probabilities[i]>=.5?1:0,(probabilities[i]>=.5?1:0)===y?'○ 正解':'× 間違い']);
 
 function LearningResults(){

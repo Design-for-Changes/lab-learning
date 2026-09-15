@@ -1,3 +1,4 @@
+import DataTable from './DataTable.jsx';
 import { useId, useState } from 'react';
 import PageLink from './PageLink.jsx';
 import { Section, Next } from './Common.jsx';
@@ -15,9 +16,7 @@ function References({ ids }) {
     return <p key={id}><PageLink href={source.url} target="_blank" rel="noreferrer">{source.name} ↗</PageLink><span>{source.note}</span></p>;
   })}</div>;
 }
-function DataTable({ headings, rows }) {
-  return <div className="table-scroll"><table className="data-table"><thead><tr>{headings.map(h => <th scope="col" key={h}>{h}</th>)}</tr></thead><tbody>{rows.map(([name, ...cells], i) => <tr key={i}><th scope="row">{name}</th>{cells.map((cell, j) => <td key={j}>{cell}</td>)}</tr>)}</tbody></table></div>;
-}
+
 function Choices({ label, options, value, onChange }) {
   return <div className="design-choices" role="group" aria-label={label}>{options.map((text, i) => <button key={text} type="button" aria-pressed={value === i} onClick={() => onChange(i)}>{text}</button>)}</div>;
 }

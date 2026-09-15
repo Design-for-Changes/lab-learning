@@ -1,9 +1,11 @@
+export { designStudyLinks, designStudyAliases, resolveDesignStudyRoute } from './navigation/design.js';
+import { designChapterInfo } from './navigation/design.js';
 import { designExperienceChapter, designDialogueSections } from './designStudyExperience.js';
 import { designUsabilitySections } from './designStudyUsability.js';
 export { designStudyHistory } from './designStudyHistory.js';
 
 export const designStudyChapters = [
-  { slug: 'foundations', title: '中心となる核がない学問', sections: [
+  { ...designChapterInfo.foundations, sections: [
     { title: '一つの中心から、全体を説明できない', lead: 'デザイン学には、全体の中心となる一つの核がありません。', paragraphs: [
       '形や色を考える人もいれば、ものの使われ方を調べる人、ものづくりの歴史を読む人、地域の仕組みを住民と考える人もいます。みんなデザインに関わっていますが、同じ一つの理論や方法から出発しているわけではありません。',
       '扱う対象が広いだけではありません。「何をデザインと考えるか」「何を大切にするか」「どう調べ、確かめるか」にも、異なる立場があります。だから、一つの定義を覚えて、それをすべてに当てはめようとすると、見えなくなる部分が出てきます。',
@@ -39,7 +41,7 @@ export const designStudyChapters = [
       '専門用語を覚えたら、身の回りのものを一つ挙げて説明してみてください。「それは何を指す言葉か」「どの場面で役立つか」が分かることを目指します。',
     ] },
   ] },
-  { slug: 'history', title: 'デザインの歴史と社会', sections: [
+  { ...designChapterInfo.history, sections: [
     { title: '形の流行と、その背景を一緒に見る', paragraphs: [
       '同じ椅子でも、手で一脚ずつつくる場合と、工場で大量につくる場合では、材料や組み立て方が変わります。誰が買えるか、誰がつくるか、どんな暮らしに合うかも変わります。',
       '歴史では、作品の名前や年代と一緒に「何が課題になり、何を大切にしたのか」を読みます。ここでは、工業化から、職業や企業内の仕事としてのデザイン、人の経験や参加への広がりを年代順にたどります。',
@@ -58,7 +60,7 @@ export const designStudyChapters = [
       ['思想・表現', '何をよいとし、何を変えようとしたか。その根拠となる記録はあるか。'],
     ] } },
   ] },
-  { slug: 'concepts', title: '使う人からデザインを考える', sections: [
+  { ...designChapterInfo.concepts, sections: [
     ...designUsabilitySections,
     ...designDialogueSections,
     { title: '同じ形でも、意味は変わる', paragraphs: [
@@ -68,7 +70,7 @@ export const designStudyChapters = [
     ], refs: ['cross', 'communication'] },
   ] },
   designExperienceChapter,
-  { slug: 'process', title: 'デザイン思考と、調査・試作・評価', sections: [
+  { ...designChapterInfo.process, sections: [
     { title: '調べることと、つくることを行き来する', paragraphs: [
       '「展示会の案内を大きくしてほしい」と頼まれたとします。まず来場者を観察してみることも、紙で仮の案内をつくって反応を見ることもできます。つくって初めて分かることもあり、試作の途中で観察に戻ったり、何を解決するか考え直したりします。',
       'この章では、こうした進め方に関わる「デザイン思考」を整理し、調査・発想・試作・評価を具体例で学びます。読む順番はありますが、作業をこの順で一度ずつ終えるという意味ではありません。分かったことや疑問に合わせて、どの活動にも行き来します。',
@@ -155,7 +157,7 @@ export const designStudyChapters = [
       '結果に応じて、案を直すことも、最初の問いを変えることもあります。設置した後も、混雑や案内先の変更に応じて見直します。',
     ], links: [['#/statistics/experiments', '比較のための実験計画を読む'], ['#/psychology/methods', '行動や回答を記録する方法を読む']] },
   ] },
-  { slug: 'research', title: 'デザインを研究する', sections: [
+  { ...designChapterInfo.research, sections: [
     { title: '自分の研究の位置を言葉にする', paragraphs: [
       '「デザインの研究をしています」だけでは、何をしているかは伝わりません。「何を対象に、何を明らかにし、どう確かめるのか」を説明します。',
       '例えば「展示会の案内を対象に、名称と矢印の配置が、初めて来た人の行き先の判断にどう関わるかを、比較実験で調べる」。同じ案内でも、表現の歴史を研究するなら、問いと方法は変わります。',
@@ -188,10 +190,3 @@ export const designStudyChapters = [
     ], refs: ['systemic'], links: [['/lab-learning/research/science/', '研究とは何かを理解する'], ['#/psychology/methods', '人を対象とする研究の注意点を読む']] },
   ] },
 ];
-
-export const designStudyLinks = designStudyChapters.map((chapter, index) => [`/design/${chapter.slug}`, `${String(index + 1).padStart(2, '0')}　${chapter.title}`]);
-export const designStudyAliases = {
-  '/design/dialogue': '/design/concepts',
-  '/design/inquiry': '/design/process',
-};
-export const resolveDesignStudyRoute = path => path === '/design' ? '/design/foundations' : designStudyAliases[path] || path;

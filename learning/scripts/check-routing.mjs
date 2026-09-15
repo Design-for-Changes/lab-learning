@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { pageHref, routeFromLocation, routePath } from '../src/pageRouting.js';
+import { pageHref, routeFromLocation, routePath, legacyRouteTarget } from '../src/pageRouting.js';
 import { learningMetadata } from '../src/pageMetadata.js';
 import { shareMetadata } from '../../scripts/share-metadata.mjs';
 
@@ -10,6 +10,8 @@ assert.equal(pageHref('#main'), '#main');
 assert.equal(pageHref('https://example.org/paper'), 'https://example.org/paper');
 assert.equal(pageHref('/lab-learning/learning/data/example.csv'), '/lab-learning/learning/data/example.csv');
 assert.equal(routePath('/statistics/basics#example'), '/lab-learning/learning/statistics/basics/#example');
+assert.equal(legacyRouteTarget({ hash: '#/dtp#dtp-type', search: '?v=review' }, route => route === '/dtp' ? '/dtp/graphics' : route), '/lab-learning/learning/dtp/graphics/?v=review#dtp-type');
+assert.equal(legacyRouteTarget({ hash: '#dtp-type' }, route => route), null, 'Section links stay on the current page');
 for (const route of ['/', '/ai-intro/partnership', '/statistics/method/pca']) {
  assert.equal(routeFromLocation({hash:'#'+route}), route);
  assert.equal(routeFromLocation({pathname:routePath(route),hash:''}), route);

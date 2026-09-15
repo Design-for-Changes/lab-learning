@@ -1,20 +1,15 @@
+import { aiIntroLinks } from './navigation/aiIntro.js';
+export { aiIntroLinks, aiIntroAliases, resolveAiIntroRoute } from './navigation/aiIntro.js';
 import PageLink from './PageLink.jsx';
 import { Next } from './Common.jsx';
 import Systems from './AiSystemsLesson.jsx';
 import Behavior from './AiBehaviorLesson.jsx';
 import Partnership from './AiPartnershipLesson.jsx';
 
-export const aiIntroLinks = [
- ['/ai-intro/systems', '01　現代的なAIの計算ロジック'],
- ['/ai-intro/behavior', '02　AIの挙動特性'],
- ['/ai-intro/partnership', '03　AIとの向き合い方'],
-];
 
-export const aiIntroAliases = {
- '/ai-intro': '/ai-intro/systems',
- '/ai/systems': '/ai-intro/systems',
-};
-export const resolveAiIntroRoute = path => aiIntroAliases[path] || path;
+
+
+
 
 const lessons = [Systems, Behavior, Partnership];
 

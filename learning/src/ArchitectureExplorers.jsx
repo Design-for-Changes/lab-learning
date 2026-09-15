@@ -1,7 +1,8 @@
+import DataTable from './DataTable.jsx';
 import { useState } from 'react';
 import { cnnFilters,cnnSamples,cnnForward,attentionWords,attentionVectors,attentionExample,ganReal,ganSeeds,initialGan,ganGenerate,ganJudge,ganLosses,updateGanDiscriminator,updateGanGenerator } from './architectureMath.js';
 
-export function SmallTable({head,rows}){return <div className="table-scroll architecture-table"><table className="data-table"><thead><tr>{head.map(h=><th key={h} scope="col">{h}</th>)}</tr></thead><tbody>{rows.map((row,i)=><tr key={i}>{row.map((cell,j)=>j===0?<th key={j} scope="row">{cell}</th>:<td key={j}>{cell}</td>)}</tr>)}</tbody></table></div>;}
+export function SmallTable({head,rows}) { return <DataTable headings={head} rows={rows} scrollClassName="table-scroll architecture-table"/>; }
 
 function Matrix({values,label,image=false,highlight,selected,onSelect}){
  return <div><p className="architecture-matrix-label"><strong>{label}</strong></p><div className="architecture-matrix" style={{gridTemplateColumns:`repeat(${values[0].length}, 28px)`}} role={onSelect?'group':'img'} aria-label={onSelect?label:`${label}。各行：${values.map(row=>row.join('、')).join('／')}`}>

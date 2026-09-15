@@ -1,3 +1,4 @@
+export { managementLinks } from './navigation/management.js';
 import PageLink from './PageLink.jsx';
 import { Section, Next } from './Common.jsx';
 import { managementChapters } from './managementContent.js';
@@ -6,9 +7,6 @@ import ManagementHistory from './ManagementHistory.jsx';
 import './management.css';
 export { resolveManagementRoute } from './managementContent.js';
 
-export const managementLinks = managementChapters.map(chapter => [
-  `/management/${chapter.slug}`, `${chapter.number}　${chapter.title}`,
-]);
 
 function SourceLink({ id }) {
   const source = managementSources[id];

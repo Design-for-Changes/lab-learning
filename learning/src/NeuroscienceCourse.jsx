@@ -1,3 +1,5 @@
+import { resolveNeuroscienceRoute } from './navigation/neuroscience.js';
+export { neuroscienceLinks, neuroscienceAliases, resolveNeuroscienceRoute } from './navigation/neuroscience.js';
 import PageLink from './PageLink.jsx';
 import { Section, Sources, Next } from './Common.jsx';
 import NeuroscienceUnknowns from './NeuroscienceUnknowns.jsx';
@@ -7,14 +9,9 @@ import { neuroscienceSources as references } from './neuroscienceSources.js';
 import './neuroscience.css';
 import { NoteFigure, SynapseFigure, GliaFigure, BrainRegionsFigure } from './NeuroscienceFigures.jsx';
 
-export const neuroscienceLinks = [
-  ['/neuroscience/cells', '01　細胞と信号'],
-  ['/neuroscience/circuits', '02　回路と認知機能'],
-  ['/neuroscience/design', '03　脳科学とデザイン'],
-  ['/neuroscience/unknowns', '04　いまだにわかっていないこと'],
-];
-export const neuroscienceAliases = { '/neuroscience': '/neuroscience/cells' };
-export const resolveNeuroscienceRoute = path => neuroscienceAliases[path] || path;
+
+
+
 
 function Reading({ids}) { return <Sources links={ids.map(id => references[id])}/>; }
 function Cite({id}) { return <PageLink className="neuro-source" href={references[id][1]} target="_blank" rel="noreferrer">{references[id][0]} ↗</PageLink>; }

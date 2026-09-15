@@ -1,30 +1,15 @@
+import { default as Table } from './DataTable.jsx';
+import { resolveEvolutionRoute } from './navigation/evolution.js';
+export { evolutionLinks, evolutionAliases, resolveEvolutionRoute } from './navigation/evolution.js';
 import PageLink from './PageLink.jsx';
 import { Section, Sources, Next } from './Common.jsx';
 import { SelectionExplorer, HamiltonExplorer } from './EvolutionExplorers.jsx';
 import EvolutionConnections from './EvolutionConnections.jsx';
 import './evolution.css';
 
-export const evolutionLinks = [
-  ['/evolution/foundations', '01　前提（現代的な解釈）'],
-  ['/evolution/history', '02　進化生物学の成立と発展'],
-  ['/evolution/design', '03　進化生物学とデザイン'],
-];
-export const evolutionAliases = {
-  '/evolution': '/evolution/foundations',
-  '/evolution/questions': '/evolution/foundations',
-  '/evolution/basics': '/evolution/foundations',
-  '/evolution/inheritance': '/evolution/foundations',
-  '/evolution/selection': '/evolution/foundations',
-  '/evolution/drift': '/evolution/foundations',
-  '/evolution/speciation': '/evolution/foundations',
-  '/evolution/sexual-selection': '/evolution/history',
-  '/evolution/cooperation': '/evolution/history',
-  '/evolution/altruism': '/evolution/history',
-  '/evolution/multilevel': '/evolution/history',
-  '/evolution/explanations': '/evolution/foundations',
-  '/evolution/behavior': '/evolution/foundations',
-};
-export const resolveEvolutionRoute = path => evolutionAliases[path] || path;
+
+
+
 
 const references = {
   lamarck: ['Lamarck（1809／再刊1830）Philosophie zoologique', 'https://www.biodiversitylibrary.org/item/105887'],
@@ -77,9 +62,7 @@ function Cite({ ids }) {
   return <p className="evolution-cite">文献：{ids.map((id, i) => <span key={id}>{i > 0 && ' ／ '}<PageLink href={references[id][1]} target="_blank" rel="noreferrer">{references[id][0]}</PageLink></span>)}</p>;
 }
 function Reading({ ids }) { return <Sources links={ids.map(id => references[id])}/>; }
-function Table({ headings, rows }) {
-  return <div className="table-scroll"><table className="data-table"><thead><tr>{headings.map(h => <th scope="col" key={h}>{h}</th>)}</tr></thead><tbody>{rows.map(([label, ...cells]) => <tr key={label}><th scope="row">{label}</th>{cells.map((cell, i) => <td key={i}>{cell}</td>)}</tr>)}</tbody></table></div>;
-}
+
 
 function Heading({ number, title }) {
   return <><p className="eyebrow">{number} / 進化生物学入門</p><h1>{title}</h1></>;

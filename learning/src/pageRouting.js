@@ -19,3 +19,9 @@ export function routeFromLocation(current) {
  if (!pathname.startsWith(learningBase)) return '/';
  return '/' + pathname.slice(learningBase.length).replace(/(?:\/)?index\.html$/, '').replace(/\/+$/, '');
 }
+
+export function legacyRouteTarget(current, resolveRoute) {
+ if (!current.hash?.startsWith('#/')) return null;
+ const target = new URL(current.hash.slice(1), 'https://routes.invalid');
+ return routePath(resolveRoute(routeFromLocation(current))) + (current.search || '') + target.hash;
+}

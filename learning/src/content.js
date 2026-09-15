@@ -1,10 +1,9 @@
+import { methodInfo } from './methodCatalog.js';
 import { quantificationMethods } from './quantificationMethods.js';
 export const groupNames = ["全体像を見る","違いを比べる","関係・予測","項目・位置をまとめる","グループに分ける","好み・構造","複雑な予測"];
 export const methods = [
   {
-    "id": "describe",
-    "group": 0,
-    "name": "記述統計・可視化",
+    ...methodInfo('describe'),
     "process": "数値を集計し、分布やばらつきを図で見る。",
     "input": "人・製品・試行ごとの測定値。",
     "output": "件数、平均、中央値、標準偏差、ヒストグラム、箱ひげ図など。",
@@ -23,9 +22,7 @@ export const methods = [
     ]
   },
   {
-    "id": "crosstab",
-    "group": 0,
-    "name": "クロス集計",
+    ...methodInfo('crosstab'),
     "process": "カテゴリーの組み合わせごとに、件数や割合を数える。",
     "input": "人ごとのカテゴリー回答。例：利用経験の有無と、選んだ製品。",
     "output": "「誰が何を選んだか」が分かる度数表・割合の表。",
@@ -44,9 +41,7 @@ export const methods = [
     ]
   },
   {
-    "id": "welch",
-    "group": 1,
-    "name": "Welchのt検定",
+    ...methodInfo('welch'),
     "process": "2群の平均差を、データのばらつきと人数を踏まえて検討する。",
     "input": "別々の参加者による2群の量的データ。例：各群が画面AかBを使った操作時間。",
     "output": "平均差、その信頼区間、検定統計量、p値。",
@@ -65,9 +60,7 @@ export const methods = [
     ]
   },
   {
-    "id": "paired",
-    "group": 1,
-    "name": "対応のあるt検定",
+    ...methodInfo('paired'),
     "process": "同じ人のAとBの差を取り、その差の平均を検討する。",
     "input": "参加者ごとに組になった2条件の量的データ。",
     "output": "個人内の平均差、その信頼区間、検定統計量、p値。",
@@ -86,9 +79,7 @@ export const methods = [
     ]
   },
   {
-    "id": "anova",
-    "group": 1,
-    "name": "分散分析（ANOVA）",
+    ...methodInfo('anova'),
     "process": "条件による平均の違いを、条件内のばらつきと照らして調べる。",
     "input": "グループ・条件を表す変数と、時間などの量的な結果。",
     "output": "要因の効果の検定、効果量、必要に応じて条件間の比較。",
@@ -114,9 +105,7 @@ export const methods = [
     ]
   },
   {
-    "id": "ranks",
-    "group": 1,
-    "name": "ノンパラメトリック検定",
+    ...methodInfo('ranks'),
     "process": "値の順位、または個人内の変化の方向などを使い、条件の違いを調べる。",
     "input": "順序に意味があるデータ。独立か対応ありか、2条件か3条件以上かを区別する。",
     "output": "検定統計量、p値、手法に応じた差・効果の指標。",
@@ -152,9 +141,7 @@ export const methods = [
     ]
   },
   {
-    "id": "categorical",
-    "group": 1,
-    "name": "カイ二乗検定・Fisherの正確確率検定",
+    ...methodInfo('categorical'),
     "process": "カテゴリー間の関連を、クロス集計の件数から調べる。",
     "input": "独立した対象を数えた度数表。例：画面A／B × 成功／失敗。",
     "output": "関連についてのp値。割合の差やオッズ比なども併せて確認する。",
@@ -177,9 +164,7 @@ export const methods = [
     ]
   },
   {
-    "id": "mcnemar",
-    "group": 1,
-    "name": "McNemar検定",
+    ...methodInfo('mcnemar'),
     "process": "対応する2条件で、二値の結果が逆方向に変わった人数を比べる。",
     "input": "同じ人のA・Bそれぞれの成功／失敗など、組になった二値データ。",
     "output": "変化の方向ごとの件数と、成功率などの差に関する検定結果。",
@@ -198,9 +183,7 @@ export const methods = [
     ]
   },
   {
-    "id": "correlation",
-    "group": 2,
-    "name": "相関分析",
+    ...methodInfo('correlation'),
     "process": "2つの変数が一緒にどう変わるかを数値にする。",
     "input": "同じ対象について測った2つの量、または順位。",
     "output": "関係の向きと強さを表す相関係数、散布図など。",
@@ -223,9 +206,7 @@ export const methods = [
     ]
   },
   {
-    "id": "regression",
-    "group": 2,
-    "name": "回帰分析（単回帰分析・重回帰分析）",
+    ...methodInfo('regression'),
     "process": "1つまたは複数の説明変数と、結果の関係を式で表す。",
     "input": "対象ごとの量的な結果と、関係を調べる項目。カテゴリーも適切に符号化して使える。",
     "output": "回帰係数、予測値、信頼区間、当てはまりや残差の情報。",
@@ -248,9 +229,7 @@ export const methods = [
     ]
   },
   {
-    "id": "logistic",
-    "group": 2,
-    "name": "ロジスティック回帰分析",
+    ...methodInfo('logistic'),
     "process": "説明変数から、ある結果が起こる確率をモデル化する。",
     "input": "成功／失敗などの二値の結果と、対象ごとの説明変数。",
     "output": "予測確率、回帰係数、オッズ比など。",
@@ -273,9 +252,7 @@ export const methods = [
     ]
   },
   {
-    "id": "mixed",
-    "group": 2,
-    "name": "混合効果モデル",
+    ...methodInfo('mixed'),
     "process": "条件との関係に加えて、人や集団ごとの違いをモデルに組み込む。",
     "input": "参加者・集団のID、繰り返し測った結果、条件や説明変数。",
     "output": "条件との関係の推定値と、人・集団によるばらつきの推定など。",
@@ -298,9 +275,7 @@ export const methods = [
     ]
   },
   {
-    "id": "pca",
-    "group": 3,
-    "name": "主成分分析（PCA）",
+    ...methodInfo('pca'),
     "process": "複数の項目を組み合わせ、データのばらつきをよく表す少数の軸を作る。",
     "input": "人や製品ごとの、複数の量的な項目。",
     "output": "各軸への項目の重み、寄与率、各対象の主成分得点。",
@@ -319,9 +294,7 @@ export const methods = [
     ]
   },
   {
-    "id": "factor",
-    "group": 3,
-    "name": "因子分析",
+    ...methodInfo('factor'),
     "process": "項目同士に共通する変動を、直接は測れない少数の因子で説明する。",
     "input": "同じ人が回答した複数の質問項目など。",
     "output": "因子負荷量、因子間の関係、モデルに応じた因子得点や適合の情報。",
@@ -340,9 +313,7 @@ export const methods = [
     ]
   },
   {
-    "id": "ca",
-    "group": 3,
-    "name": "対応分析（CA／コレスポンデンス分析）",
+    ...methodInfo('ca'),
     "process": "クロス集計表の行・列の構成比の違いを、少数の軸で表す。",
     "input": "2つのカテゴリー変数をクロス集計した度数表。例：ブランド × 選ばれた印象語。",
     "output": "行と列の座標、各軸が表す情報の割合、寄与度など。",
@@ -361,9 +332,7 @@ export const methods = [
     ]
   },
   {
-    "id": "mca",
-    "group": 3,
-    "name": "多重対応分析（MCA）",
+    ...methodInfo('mca'),
     "process": "複数のカテゴリー回答の組み合わせを、少数の軸にまとめる。",
     "input": "1行が1人などの、複数のカテゴリー変数を持つ表。",
     "output": "回答者とカテゴリーの座標、軸の情報量や寄与度など。",
@@ -382,9 +351,7 @@ export const methods = [
     ]
   },
   {
-    "id": "mds",
-    "group": 3,
-    "name": "多次元尺度構成法（MDS）",
+    ...methodInfo('mds'),
     "process": "対象同士の違いの大きさを、点同士の距離でなるべく再現する。",
     "input": "製品同士の非類似度、または測定値から計算した距離の表。",
     "output": "各対象の座標、元の違いをどれくらい再現できたかを表す指標。",
@@ -403,9 +370,7 @@ export const methods = [
     ]
   },
   {
-    "id": "cluster",
-    "group": 4,
-    "name": "クラスター分析",
+    ...methodInfo('cluster'),
     "process": "選んだ特徴や距離に基づいて、似た対象を同じグループにまとめる。",
     "input": "対象ごとの特徴量、または対象同士の距離・類似度。",
     "output": "グループへの所属、各グループの特徴。階層的な方法なら樹形図も得られる。",
@@ -424,9 +389,7 @@ export const methods = [
     ]
   },
   {
-    "id": "conjoint",
-    "group": 5,
-    "name": "コンジョイント分析",
+    ...methodInfo('conjoint'),
     "process": "要素の組み合わせを評価・選択してもらい、要素ごとの好みを推定する。",
     "input": "形・素材・価格などの組み合わせと、それに対する選択・順位・評定。",
     "output": "各属性の水準に対応する部分効用や、モデルに基づく選択の予測など。",
@@ -445,9 +408,7 @@ export const methods = [
     ]
   },
   {
-    "id": "sem",
-    "group": 5,
-    "name": "構造方程式モデリング（SEM／共分散構造分析）",
+    ...methodInfo('sem'),
     "process": "観測項目や潜在変数の関係をモデルとして置き、データとの整合を調べる。",
     "input": "複数の測定・質問項目と、それらがどう関係するかという仮説。",
     "output": "パス係数、因子負荷量、適合度指標など。",
@@ -466,9 +427,7 @@ export const methods = [
     ]
   },
   {
-    "id": "forest",
-    "group": 6,
-    "name": "決定木・ランダムフォレスト",
+    ...methodInfo('forest'),
     "process": "項目の値でデータを枝分かれさせて予測する。ランダムフォレストは複数の木を組み合わせる。",
     "input": "対象ごとの特徴量と、予測したい数値・カテゴリー。",
     "output": "予測値・予測クラス、決定木の分岐、変数の重要度など。",
@@ -491,9 +450,7 @@ export const methods = [
     ]
   },
   {
-    "id": "neural",
-    "group": 6,
-    "name": "ニューラルネットワーク（教師あり学習）",
+    ...methodInfo('neural'),
     "process": "入力から出力への変換を層状に組み合わせ、予測の誤りが小さくなるよう調整する。",
     "input": "特徴量・画像などの入力と、それに対応する正解の結果。",
     "output": "学習済みのモデル、新しいデータへの予測値や分類結果。",
@@ -519,4 +476,4 @@ export const methods = [
 
 methods.push(...quantificationMethods);
 
-methods.push({id:'tsne',group:3,name:'t-SNE（t-distributed Stochastic Neighbor Embedding）',process:'元のデータで近い対象を、図の中でも近くに置くよう座標を調整する。',input:'人・製品ごとの数値の特徴。この例はカテゴリー回答を0/1に変換する。',output:'各対象の座標、設定値、近さのずれを表すKLダイバージェンス。',use:'似た回答や特徴のまとまりを、探索的に図で見たいとき。',note:'図だけでグループ数を確定しない。設定を変え、元のデータと照合する。',sources:[['t-SNEの原論文','https://www.jmlr.org/papers/v9/vandermaaten08a.html'],['scikit-learn：TSNE','https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html'],['t-SNEの図をどう読むか','https://distill.pub/2016/misread-tsne/']]});
+methods.push({...methodInfo('tsne'),process:'元のデータで近い対象を、図の中でも近くに置くよう座標を調整する。',input:'人・製品ごとの数値の特徴。この例はカテゴリー回答を0/1に変換する。',output:'各対象の座標、設定値、近さのずれを表すKLダイバージェンス。',use:'似た回答や特徴のまとまりを、探索的に図で見たいとき。',note:'図だけでグループ数を確定しない。設定を変え、元のデータと照合する。',sources:[['t-SNEの原論文','https://www.jmlr.org/papers/v9/vandermaaten08a.html'],['scikit-learn：TSNE','https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html'],['t-SNEの図をどう読むか','https://distill.pub/2016/misread-tsne/']]});

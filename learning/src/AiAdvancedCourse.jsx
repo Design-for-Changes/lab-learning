@@ -1,8 +1,9 @@
+import DataTable from './DataTable.jsx';
 import { useState } from 'react';
 import { Section,Sources } from './Common.jsx';
 import { distillationTeacher,distillationStudents,relativeEntropy } from './aiOverviewMath.js';
 
-function Table({head,rows,className=''}){return <div className={`table-scroll ${className}`}><table className="data-table"><thead><tr>{head.map(h=><th key={h}>{h}</th>)}</tr></thead><tbody>{rows.map((row,i)=><tr key={i}>{row.map((v,j)=>j===0?<th key={j}>{v}</th>:<td key={j}>{v}</td>)}</tr>)}</tbody></table></div>;}
+function Table({head,rows,className=''}) { return <DataTable headings={head} rows={rows} scrollClassName={`table-scroll ${className}`}/>; }
 function Flow({steps,label}){return <ol className="ai-flow" aria-label={label}>{steps.map(([title,body])=><li key={title}><strong>{title}</strong><span>{body}</span></li>)}</ol>;}
 function Check({question,answer}){return <div className="note"><h3>ここまで分かればよい</h3><p>{question}</p><details><summary>答えを確認する</summary><p>{answer}</p></details></div>;}
 

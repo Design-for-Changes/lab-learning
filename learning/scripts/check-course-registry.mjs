@@ -8,6 +8,7 @@ export function checkCourseRegistry({ courses, learningPaths, resolveLearningRou
 
   for (const course of availableCourses) {
     assert.ok(course.links.length, `${course.path}: missing first chapter`);
+    assert.match(course.module, /^\/src\/\w+Course\.jsx$/, `${course.path}: missing course module`);
     for (const [path] of course.links) {
       assert.equal(findCourse(path), course, `${path}: wrong course navigation`);
       assert.ok(learningPaths.includes(path), `${path}: not included in the static build`);

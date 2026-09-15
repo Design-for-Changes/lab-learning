@@ -1,5 +1,6 @@
+import { managementChapterInfo } from './navigation/management.js';
 export const managementContemporary = {
-  slug: 'contemporary', number: '03', title: '現代的なマネジメントの考え方と主要トピック',
+  ...managementChapterInfo.contemporary,
   sections: [
     {
       title: '押さえたい四つの考え方',

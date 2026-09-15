@@ -1,3 +1,6 @@
+import DataTable from './DataTable.jsx';
+import { aiLinks } from './navigation/ai.js';
+export { aiLinks } from './navigation/ai.js';
 import PageLink from './PageLink.jsx';
 import OverfittingLesson from './OverfittingLesson.jsx';
 import { Architectures,PretrainedModels } from './AiAdvancedCourse.jsx';
@@ -9,16 +12,7 @@ import { LocalPythonCommands } from './LocalPythonCommands.jsx';
 import examples from './aiExampleResults.json';
 import Practice from './AiPracticeLesson.jsx';
 
-export const aiLinks=[
- ['/ai/discrete','01　離散数学の基礎'],
- ['/ai/graphs','02　グラフとマイニング'],
- ['/ai/learning','03　確率と学習の種類'],
- ['/ai/networks','04　ニューラルネットワーク'],
- ['/ai/training','05　重みを学習する'],
- ['/ai/practice','06　Pythonで実行し、結果を読む'],
- ['/ai/architectures','07　ニューラルネットワークの応用'],
- ['/ai/pretrained','08　転移学習・知識蒸留'],
-];
+
 const base=import.meta.env.BASE_URL;
 const prerequisitesSource=['Google：機械学習を学ぶ前の数学','https://developers.google.com/machine-learning/crash-course/prereqs-and-prework'];
 const curriculumSource=['Stanford CS229：学習内容と前提知識','https://cs229.stanford.edu/'];
@@ -26,7 +20,7 @@ const mathSource=['MIT：Mathematics for Computer Science','https://ocw.mit.edu/
 const graphSource=['Stanford：Machine Learning with Graphs','https://web.stanford.edu/class/cs224w/'];
 const networkSource=['PyTorch：ニューラルネットワークの構築','https://docs.pytorch.org/tutorials/beginner/basics/buildmodel_tutorial.html'];
 const trainingSource=['PyTorch：モデルのパラメーターを最適化する','https://docs.pytorch.org/tutorials/beginner/basics/optimization_tutorial.html'];
-function Table({head,rows}){return <div className="table-scroll"><table className="data-table design-table"><thead><tr>{head.map(h=><th key={h} scope="col">{h}</th>)}</tr></thead><tbody>{rows.map((r,i)=><tr key={i}>{r.map((v,j)=>j===0?<th scope="row" key={j}>{v}</th>:<td key={j}>{v}</td>)}</tr>)}</tbody></table></div>;}
+function Table({head,rows}) { return <DataTable headings={head} rows={rows} tableClassName="design-table"/>; }
 function Exercise({question,answer}){return <div className="note"><h3>確かめてみよう</h3><p>{question}</p><details><summary>考え方を確認する</summary><p>{answer}</p></details></div>;}
 
 function Discrete(){return <>

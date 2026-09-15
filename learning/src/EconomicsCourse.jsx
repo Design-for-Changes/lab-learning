@@ -1,3 +1,5 @@
+import { resolveEconomicsRoute } from './navigation/economics.js';
+export { economicsLinks, economicsAliases, resolveEconomicsRoute } from './navigation/economics.js';
 import { Section, Next } from './Common.jsx';
 import { BudgetExplorer, MarketExplorer, GDPExplorer, ThriftExplorer, EconFlow } from './EconomicsExplorers.jsx';
 import { productionAt } from './economicsMath.js';
@@ -6,15 +8,9 @@ import EconomicsHistory from './EconomicsHistory.jsx';
 import EconomicsMethods from './EconomicsMethods.jsx';
 import './economics.css';
 
-export const economicsLinks = [
-  ['/economics/basics', '01　経済学の基本'],
-  ['/economics/history', '02　経済学の成立と展開'],
-  ['/economics/micro', '03　ミクロ経済学'],
-  ['/economics/macro', '04　マクロ経済学'],
-  ['/economics/methods', '05　研究アプローチ'],
-];
-export const economicsAliases = { '/economics': '/economics/basics', '/economics/design': '/economics/basics' };
-export const resolveEconomicsRoute = route => economicsAliases[route] || route;
+
+
+
 
 function Basics() {
   return <>

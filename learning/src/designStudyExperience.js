@@ -1,4 +1,5 @@
-export const designExperienceChapter = { slug: 'experience', title: '使いやすさと、使う人の経験', sections: [
+import { designChapterInfo } from './navigation/design.js';
+export const designExperienceChapter = { ...designChapterInfo.experience, sections: [
   { title: '同じ道具でも、経験は変わる', paragraphs: [
     '初めて使うカメラ。買う前は「難しそう」、最初の撮影では「思ったより簡単」、旅行で使い続けると「自分の相棒みたい」。同じカメラでも、その人の経験は変わっていきます。',
     'ユーザーエクスペリエンス（User Experience：UX）は、製品やサービスの使用、あるいは使用を予想することから生じる、その人の知覚や反応を扱う言葉です。使っている一瞬だけでなく、期待や、使った後の記憶も考えます。',

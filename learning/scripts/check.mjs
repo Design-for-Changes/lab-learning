@@ -1,3 +1,4 @@
+import './check-loading.mjs';
 import './check-web.mjs';
 import { checkCourseRegistry } from './check-course-registry.mjs';
 import { designStudyChapters, designStudyLinks, designStudyAliases, resolveDesignStudyRoute } from '../src/designStudyContent.js';
@@ -363,12 +364,13 @@ const {createServer}=await import('vite');
 const server=await createServer({server:{middlewareMode:true,watch:null,ws:false},appType:'custom'});
 try{
  const {default:App,learningPaths}=await server.ssrLoadModule('/src/App.jsx');
- checkCourseRegistry(await server.ssrLoadModule('/src/courseRegistry.jsx'));
+ const registry = await server.ssrLoadModule('/src/courseRegistry.jsx');
+ checkCourseRegistry(registry);
  const {default:React}=await import('react');const {renderToStaticMarkup}=await import('react-dom/server');
  const routes=learningPaths;
  let homeHTML='',basicsHTML='',legacyDistributionHTML='',entryHTML='',inferenceHTML='',variablesHTML='',experimentsHTML='',chooseHTML='',legacyMethodsHTML='',checksHTML='';
  for(const route of routes){
-  const rendered=renderToStaticMarkup(React.createElement(App, {initialRoute:route}));
+  const rendered=renderToStaticMarkup(React.createElement(App, {initialRoute:route, Course:await registry.loadCourse(route)}));
   // Keep content assertions expressed as logical routes; the built-page check validates real URLs.
   const html=rendered.replace(/href="\/lab-learning\/learning\/([^"?]*\/|)"/g,(_,path)=>`href="#/${path.replace(/\/$/,'')}"`);
   assert.ok(html.includes('id="main"'));assert.ok(!html.includes('ページが見つかりません'),`Missing page for ${route}`);assert.ok(!html.includes('undefined'));

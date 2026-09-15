@@ -26,18 +26,25 @@
 
 各章は `/lab-learning/learning/ai-intro/partnership/` のようなページ別URLを持ちます。`scripts/build-pages.mjs` が全ルートの本文と共有用メタ情報をHTMLに出力するため、JavaScriptを実行しない共有サービスにも章名と科目名が伝わります。旧 `#/...` URLは、開くと対応するページ別URLへ移動します。共有には移動後のURLを使います。すでに投稿された旧URLのプレビューは、投稿先のキャッシュや再取得の仕様に依存します。
 
-本文のリンクは `src/PageLink.jsx` を使います。既存の `href="#/…"` 指定をページ別URLへ変換し、外部リンク・資料のダウンロード・ページ内アンカーは維持します。ルート一覧の `learningPaths` は `src/courseRegistry.jsx` の教材登録から生成し、共有タイトルは本文の見出しと科目名から生成します。`npm run build` では、生成したHTMLのタイトル、共有用情報、内部リンクとファイルを確認します。
+本文のリンクは `src/PageLink.jsx` を使います。既存の `href="#/…"` 指定をページ別URLへ変換し、外部リンク・資料のダウンロード・ページ内アンカーは維持します。ルート一覧の `learningPaths` は `src/courseRegistry.jsx` の教材登録から生成し、共有タイトルは本文の見出しと科目名から生成します。`npm run build` では、生成したHTMLのタイトル、共有用情報、内部リンクとファイル、教材ごとの読み込み範囲を確認します。
 
 ### 教材の登録と共通表示
 
-- `src/courseRegistry.jsx`：教材の名前・説明・入口・章一覧・表示コンポーネントを登録します。一覧、左メニュー、ページの選択、静的HTMLの生成はこの登録を参照します。
+- `src/courseRegistry.jsx`：教材の名前・説明・章一覧・表示ファイルを登録します。一覧、左メニュー、ページの選択、静的HTMLの生成はこの登録を参照します。教材本文はここで直接importせず、`loadCourse(route)` で必要な教材だけを読み込みます。
+- `src/navigation/`：教材ごとの章名・URL・旧URLの対応を置きます。教材本文から独立した、章情報の管理元です。教材側の既存exportもここを参照します。
+- `src/methodCatalog.js`：解析手法のID・名前・分類です。詳しい説明は `content.js` と `quantificationMethods.js` に残し、一覧やURLの生成時に本文を読み込まない構成にしています。
 - `src/CourseNavigation.jsx`：教材一覧と左メニューを表示します。
-- `src/App.jsx`：ページ全体の枠、ブラウザーのURL変更、共有情報とフォーカスの更新を担当します。
+- `src/App.jsx`：読み込み済みの教材を受け取り、ページ全体の枠、共有情報、フォーカスを管理します。
+- `src/main.jsx`：URLから表示先を決め、教材を読み込み、操作機能を接続します。公開用HTMLは `hydrateRoot` で引き継ぎ、開発サーバーの空のHTMLでは `createRoot` を使います。旧ハッシュURLの移動処理もここで一度だけ登録します。
+- `src/courseLoader.js`：同じ教材への同時読み込みをまとめ、失敗した読み込みは再試行できるようにします。
+- `src/DataTable.jsx`：比較表の見出し・行見出し・キャプション・スクロール枠を共通化します。教材固有のクラスを渡せるため、見た目は各教材のCSSで管理します。計算結果の書式や操作を持つ専用の表は各教材に置きます。
 - `src/StatisticsCourse.jsx`：統計の章と解析手法のページを選びます。基礎と変数の本文は `StatisticsBasicsLesson.jsx` と `StatisticsVariablesLesson.jsx` にあります。
 
-教材を追加するときは、教材側の章一覧とコンポーネントを用意して `courses` に登録します。入口は最初の章へ進みます。章を追加する場合は教材側の `links` を更新すると、メニューと生成対象に反映されます。旧URLは `aliases`、メニューに出さないページは `extraPaths` に登録します。準備中の教材は `path: null` と名前・説明だけを登録し、一覧に表示します。教材一覧は `courses` の順に並びます。各章の番号・名前・順番は教材側の `links` で管理します。
+教材を追加するときは、`navigation/` に章一覧を用意し、`courses` に `path`・名前・説明・`links`・`module` を登録します。`module` は `/src/DtpCourse.jsx` のように指定します。入口は最初の章へ進みます。章を追加する場合は `navigation/` の `links` と教材の表示先を更新します。旧URLは `aliases`、メニューに出さないページは `extraPaths` に登録します。準備中の教材は `path: null` と名前・説明だけを登録します。教材一覧は `courses` の順に並びます。
 
-ビルドと検証では `<App initialRoute={route}/>` に表示先を渡します。ブラウザー用の `location` を偽装する必要はありません。`scripts/check-course-registry.mjs` は登録の重複、旧URLの行き先、似た教材名のURLの区別を確認します。
+ビルドと検証では `const Course = await loadCourse(route)` の後に `<App initialRoute={route} Course={Course}/>` を描画します。ブラウザー用の `location` を偽装する必要はありません。公開HTMLは `renderToString` で生成し、Viteのmanifestを使って、そのページに必要なCSSとJavaScriptの先読みを付けます。`scripts/page-assets.mjs` は通常のimportだけをたどり、他教材の動的importを先読みしません。
+
+`scripts/check-course-registry.mjs` は登録の重複、旧URLの行き先、似た教材名のURLの区別を、`scripts/check-loading.mjs` は読み込みの共有・再試行・ページごとの依存ファイルを確認します。ビルドでも、一覧や教材ページが関係のない教材のコードを読み込まないことを検査します。
 
 ## 作業
 
@@ -65,7 +72,7 @@ Viteのbaseは `/lab-learning/learning/`。ページの切り替えにはハッ�
 
 ## 編集する場所
 
-- `src/App.jsx`：ポータル、基礎、変数、手法ページ、ナビゲーション
+- `src/App.jsx`・`src/CourseNavigation.jsx`：ページ全体の枠、教材一覧、ナビゲーション
 - `src/content.js`：手法の説明と出典
 - `src/chooser.js`：旧フォームの分岐ロジック（現在の画面では未使用）
 - `src/Chooser.jsx`、`src/AnalysisMap.jsx`：タブを使わない選択チャート
@@ -148,6 +155,7 @@ t-SNEはIII類と同じ60人の回答を使い、4設定の座標・図と元の
 - `scripts/check-evolution.mjs`：選択のモデルを独立した閉形式の計算と比較し、境界値とハミルトンのルールを検証。
 
 構成、年代の扱い、図の意味、文献の位置づけは `../docs/evolution-editorial-notes.md` に記録しています。
+
 
 ## マネジメント入門
 

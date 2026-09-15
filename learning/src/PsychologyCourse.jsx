@@ -1,3 +1,4 @@
+import { default as Table } from './DataTable.jsx';
 import PageLink from './PageLink.jsx';
 import { useState } from 'react';
 import { Section, Sources, Next } from './Common.jsx';
@@ -9,7 +10,7 @@ import './psychology.css';
 
 export { psychologyLinks, resolvePsychologyRoute } from './psychologyContent.js';
 function Cite({ids}) { return <p className="psych-cite">確認する文献：{ids.map((id,i)=><span key={id}>{i>0&&' ／ '}<PageLink href={psychologySources[id][1]} target="_blank" rel="noreferrer">{psychologySources[id][0]}</PageLink></span>)}</p>; }
-function Table({headings,rows,caption}) { return <div className="table-scroll"><table className="data-table">{caption&&<caption>{caption}</caption>}<thead><tr>{headings.map(h=><th scope="col" key={h}>{h}</th>)}</tr></thead><tbody>{rows.map(([name,...cells],index)=><tr key={`${index}-${name}`}><th scope="row">{name}</th>{cells.map((cell,i)=><td key={i}>{cell}</td>)}</tr>)}</tbody></table></div>; }
+
 
 function Foundations() { return <>
   <Section title="見えない心を、どうやって調べる？">
