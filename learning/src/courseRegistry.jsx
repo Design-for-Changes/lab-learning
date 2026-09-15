@@ -1,3 +1,4 @@
+import WebCourse, { webLinks, webAliases } from './WebCourse.jsx';
 import DesignStudyCourse, { designStudyLinks, designStudyAliases } from './DesignStudyCourse.jsx';
 import ScienceCourse, { scienceLinks } from './ScienceCourse.jsx';
 import EconomicsCourse, { economicsLinks, economicsAliases } from './EconomicsCourse.jsx';
@@ -65,8 +66,10 @@ export const courses = [
     aliases: economicsAliases,
   },
   {
-    path: null, title: 'ウェブインタラクション入門',
-    description: 'ウェブ上の操作と応答を、つくりながら学ぶ。',
+    path: '/web', title: 'ウェブインタラクション入門',
+    description: '画面・通信・データのつながりから、CMSの仕組みを学ぶ。',
+    Component: WebCourse, links: webLinks, sidebarLabel: 'ウェブインタラクション入門のメニュー',
+    aliases: webAliases,
   },
   {
     path: '/ai-intro', title: 'AI入門',

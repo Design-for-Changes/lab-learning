@@ -1,3 +1,4 @@
+import './check-web.mjs';
 import { checkCourseRegistry } from './check-course-registry.mjs';
 import { designStudyChapters, designStudyLinks, designStudyAliases, resolveDesignStudyRoute } from '../src/designStudyContent.js';
 import { designStudyHistory } from '../src/designStudyHistory.js';
@@ -387,6 +388,12 @@ try{
    if(route==='/economics')assert.ok(main.includes('<h1>経済学の基本</h1>'));
    assert.ok(!/<details[^>]*\bopen(?:=|\s|>)/.test(main),'Supplementary reading starts closed');
   }
+  if(route.startsWith('/web')){
+   const main=html.match(/<main\b[\s\S]*?<\/main>/)?.[0]||'';
+   assert.equal((html.match(/class="chapter-nav"[\s\S]*?<\/nav>/)?.[0].match(/<a /g)||[]).length,6);
+   if(route==='/web')assert.ok(main.includes('<h1>フロントエンドとバックエンド</h1>'));
+   assert.ok(!/<details[^>]*\bopen(?:=|\s|>)/.test(main),'Supplementary reading starts closed');
+  }
   if(route==='/')homeHTML=html;
   if(route==='/statistics/choose')chooseHTML=html;
   if(route==='/statistics/methods')legacyMethodsHTML=html;
@@ -417,7 +424,7 @@ try{
  assert.ok(experimentsHTML.includes('確認実験'));assert.ok(!experimentsHTML.includes('タグチメソッド'));assert.ok(!experimentsHTML.includes('SN比'));
  assert.ok(experimentsHTML.includes('代表的な直交表一覧'));assert.ok(experimentsHTML.includes('線点図で、列の使い道を決める'));
  assert.equal(legacyDistributionHTML,basicsHTML,'Old distribution URL must open the merged basics lesson');
- assert.equal((homeHTML.match(/準備中/g)||[]).length,1);assert.ok(homeHTML.includes('href="#/design"'));assert.ok(homeHTML.includes('href="#/science"'));assert.ok(homeHTML.includes('href="#/economics"'));assert.ok(homeHTML.includes('href="#/neuroscience"'));assert.ok(homeHTML.includes('href="#/psychology"'));assert.ok(homeHTML.includes('href="#/management"'));assert.ok(homeHTML.includes('href="#/evolution"'));assert.ok(homeHTML.includes('デザイン学入門'));assert.ok(homeHTML.includes('ウェブインタラクション入門'));
+ assert.equal((homeHTML.match(/準備中/g)||[]).length,0);assert.ok(homeHTML.includes('href="#/web"'));assert.ok(homeHTML.includes('href="#/design"'));assert.ok(homeHTML.includes('href="#/science"'));assert.ok(homeHTML.includes('href="#/economics"'));assert.ok(homeHTML.includes('href="#/neuroscience"'));assert.ok(homeHTML.includes('href="#/psychology"'));assert.ok(homeHTML.includes('href="#/management"'));assert.ok(homeHTML.includes('href="#/evolution"'));assert.ok(homeHTML.includes('デザイン学入門'));assert.ok(homeHTML.includes('ウェブインタラクション入門'));
  const {default:Chooser}=await server.ssrLoadModule('/src/Chooser.jsx');
  const html=renderToStaticMarkup(React.createElement(Chooser,{answers:{...compare,dependency:'repeated'},setAnswers:()=>{}}));
  assert.ok(html.includes('対応のあるt検定'));assert.ok(html.includes('目的変数なし'));assert.ok(!html.includes('checked=""'));

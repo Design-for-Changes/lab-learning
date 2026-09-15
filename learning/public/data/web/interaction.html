@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>カードを選択するインタラクション</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 24px; background: #fafafa; color: #202020; font: 16px/1.7 system-ui, sans-serif; }
+    main { display: grid; gap: 28px; justify-items: center; max-width: 420px; margin: auto; }
+    button { font: inherit; min-height: 44px; padding: 8px 16px; color: white; background: #202020; border: 1px solid #202020; border-radius: 3px; cursor: pointer; }
+    button:focus-visible { outline: 3px solid #cc2939; outline-offset: 4px; }
+    .card { width: min(100%, 280px); padding: 24px; border: 1px solid #555; background: white; transition: transform 300ms ease, background-color 300ms ease; }
+    .card strong { display: block; font-size: 20px; margin: 0 0 12px; }
+    .card p { margin: 0; }
+    .card.is-selected { transform: translateY(-8px) rotate(-3deg); background-color: #ffe6e8; }
+    @media (prefers-reduced-motion: reduce) { .card { transition: none; } }
+  </style>
+</head>
+<body>
+  <main>
+    <button id="toggle" aria-pressed="false" aria-controls="card">カードを選択する</button>
+    <div id="card" class="card">
+      <strong>展示のお知らせ</strong>
+      <p>9月の研究室展を開催します。</p>
+    </div>
+    <noscript>JavaScriptを有効にすると、ボタンで表示を変えられます。</noscript>
+  </main>
+  <script>
+    const button = document.querySelector("#toggle");
+    const card = document.querySelector("#card");
+    let selected = false;
+
+    button.addEventListener("click", () => {
+      selected = !selected;
+      card.classList.toggle("is-selected", selected);
+      button.setAttribute("aria-pressed", String(selected));
+      button.textContent = selected ? "選択を解除する" : "カードを選択する";
+    });
+  </script>
+</body>
+</html>
