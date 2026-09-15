@@ -1,0 +1,93 @@
+{
+  "formatVersion": 2,
+  "revision": {
+    "id": null,
+    "previousId": null,
+    "savedAt": null,
+    "reason": ""
+  },
+  "student": {
+    "studentId": "",
+    "name": ""
+  },
+  "paths": {
+    "currentHtml": "",
+    "currentData": "",
+    "memoData": "memo.json",
+    "packageDir": "",
+    "questionsDocument": "questions.md"
+  },
+  "research": {
+    "title": "",
+    "purpose": "",
+    "question": "",
+    "contribution": "",
+    "hypothesis": "",
+    "currentPlan": "",
+    "sourceIds": [],
+    "studentConfirmedAt": null
+  },
+  "sources": [],
+  "workRecords": [],
+  "feedback": [],
+  "issues": [],
+  "inputRequests": [],
+  "seminars": [],
+  "handoff": {
+    "latestSeminarId": null,
+    "unresolvedIssueIds": [],
+    "pendingRequestIds": [],
+    "nextQuestions": [],
+    "importedMemoIds": []
+  },
+  "projectId": null,
+  "setup": {
+    "operatingSystem": "",
+    "agreedAt": null,
+    "sourceLocations": [],
+    "shortcut": {
+      "requested": null,
+      "name": "",
+      "targetHtml": "",
+      "destination": "",
+      "approval": {
+        "status": "not_asked",
+        "approvedAt": null
+      },
+      "createdAt": null
+    }
+  },
+  "submission": {
+    "seminarId": null,
+    "targetDate": null,
+    "zipPath": "",
+    "packagedRevisionId": null,
+    "packagedAt": null,
+    "includedSourceIds": [],
+    "excludedSourceIds": [],
+    "notionPageUrl": "",
+    "uploadState": "not_uploaded",
+    "studentReportedAt": null
+  },
+  "researchStatus": {
+    "summary": "",
+    "updatedAt": null,
+    "sourceIds": [],
+    "nextTaskIds": []
+  },
+  "researchPlan": [],
+  "paperOutline": [],
+  "logs": [],
+  "questions": {
+    "generatedAt": null,
+    "seminarDate": null,
+    "items": []
+  },
+  "argumentMap": {
+    "updatedAt": null,
+    "focusLinkId": null,
+    "nodes": [],
+    "links": [],
+    "routes": []
+  }
+}

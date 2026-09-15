@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>研究進捗・ゼミ資料｜ベースフォーマット</title>
+<style>
+:root{color-scheme:light;--ink:#22272b;--muted:#63696f;--line:#dde0e2;--accent:#bc2942;--paper:#fff;--bg:#f3f4f5}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.8 -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",sans-serif}
+main{max-width:1120px;margin:auto;padding:22px 32px 72px}a{color:var(--accent);text-underline-offset:4px}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(26px,3.5vw,36px);line-height:1.45;letter-spacing:.01em;margin-bottom:12px}h2{font-size:23px;line-height:1.5;margin-bottom:24px}h3{font-size:17px;margin:24px 0 10px}p:last-child{margin-bottom:0}.eyebrow{color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.08em;margin-bottom:8px}.demo{padding:8px 0;border-bottom:1px solid var(--line);color:var(--muted);margin-bottom:20px;font-size:12px}.meta{display:flex;gap:6px 20px;flex-wrap:wrap;color:var(--muted);font-size:13px}.status{display:inline-block;border:1px solid #dbb7be;color:#8f2736;background:#fff6f7;padding:0 8px;border-radius:4px;font-size:12px}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0;font-size:13px}nav a{background:#fff;border:1px solid var(--line);border-radius:5px;padding:6px 13px;color:var(--ink);text-decoration:none}nav a:hover{border-color:var(--accent);color:var(--accent)}
+section{background:var(--paper);padding:30px 32px;margin:0 0 20px;border:1px solid var(--line);border-radius:8px;scroll-margin-top:16px}.number{display:block;color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.06em;margin-bottom:5px}.section-note{color:var(--muted);font-size:14px;margin-top:-12px;margin-bottom:24px}.purpose-statement{font-size:24px;font-weight:700;line-height:1.65;margin:0;padding:0 0 22px;border-bottom:1px solid var(--line)}
+.overview-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin:22px 0}.current-state{padding-right:24px;border-right:1px solid var(--line)}.current-state h3,.next-focus h3{margin:0 0 10px;font-size:14px;color:var(--muted)}.current-state p,.next-focus p{margin:0}.next-focus{padding:0}.next-focus h3{color:var(--accent)}.next-focus strong{font-weight:700}.overview-bottom{display:grid;grid-template-columns:1fr 1fr;gap:24px;background:#f7f8f9;border-radius:5px;padding:18px 20px}.overview-bottom h3{font-size:14px;margin:0 0 8px}.overview-bottom p{font-size:14px;margin:0}.compact-list{padding-left:1.2em;margin:0}.compact-list li+li{margin-top:4px}
+.state{white-space:nowrap;display:inline-block;padding:1px 8px;background:#eff1f3;color:#525b65;border-radius:4px;font-size:12px;font-weight:600}.state.active{background:#fff0d7;color:#805200}.state.done{background:#e5f0e9;color:#28563c}.summary{border-left:3px solid var(--accent);padding-left:20px}.empty{color:var(--muted)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.box{background:#f7f8f9;border:1px solid #e8eaec;border-radius:5px;padding:20px}.box h3{margin-top:0}dl{margin:0}dt{font-weight:700;margin-top:14px}dt:first-child{margin-top:0}dd{margin:4px 0 0;overflow-wrap:anywhere}
+.plan-list{list-style:none;padding:0;margin:0;counter-reset:plan}.plan-step{counter-increment:plan;display:grid;grid-template-columns:34px 1fr;gap:16px;padding:18px 0;border-top:1px solid var(--line)}.plan-step:first-child{border-top:0;padding-top:0}.plan-step:before{content:counter(plan,decimal-leading-zero);font-size:13px;font-weight:700;color:#727982;border:1px solid var(--line);border-radius:50%;width:32px;height:32px;display:grid;place-items:center;margin-top:2px}.plan-step.active:before{background:var(--accent);border-color:var(--accent);color:#fff}.plan-heading{display:flex;align-items:baseline;gap:12px;justify-content:space-between}.plan-heading h3{margin:0;font-size:16px}.plan-step p{font-size:14px;color:var(--muted);margin:5px 0 0}.plan-step details{margin-top:10px;padding:0;border:0;font-size:13px}.plan-step summary{color:var(--muted);font-weight:400}.plan-step details[open] summary{margin-bottom:8px}
+.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;vertical-align:top;padding:13px 14px;border-bottom:1px solid var(--line);overflow-wrap:anywhere}th{background:#f1f3f4;font-weight:600}details{border:1px solid var(--line);border-radius:5px;padding:12px 16px;margin-top:18px}summary{cursor:pointer;font-weight:600;font-size:14px}details[open] summary{margin-bottom:18px}.small{font-size:13px;color:var(--muted)}
+.work-entry{border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-bottom:20px}.work-heading{padding:18px 22px;background:#f7f8f9;border-bottom:1px solid var(--line)}.work-heading h3{font-size:19px;margin:3px 0 6px}.work-heading p{font-size:14px;margin:0}.work-date{font-size:12px;font-weight:600;color:var(--muted)}.work-body{padding:22px}.work-pair{display:grid;grid-template-columns:1fr 1fr;gap:24px}.work-block h4,.reflection h4,.next-trial h4{font-size:14px;margin:0 0 8px}.work-block p{font-size:15px;margin:0}.failure-note{margin-top:16px;padding:14px 16px;background:#fff7eb;border-left:3px solid #c98927}.failure-note h4{color:#7f5518}.failure-note p{font-size:14px}.reflection{margin-top:24px;padding-top:22px;border-top:2px solid var(--accent)}.reflection h4{color:var(--accent);font-size:18px}.reflection dl{display:grid;grid-template-columns:150px 1fr;gap:10px 20px;font-size:15px}.reflection dt{margin:0;font-size:13px;color:var(--muted)}.reflection dd{margin:0}.next-trial{margin-top:22px;background:#f4f6f8;padding:16px 18px}.next-trial p{font-size:15px;margin:0}.source-line{font-size:12px;color:var(--muted);margin:18px 0 0}
+label{display:block;font-weight:600;margin-bottom:5px}textarea{display:block;width:100%;min-height:130px;padding:12px;font:inherit;line-height:1.6;border:1px solid #aeb4ba;border-radius:5px;resize:vertical;color:var(--ink);background:#fff}button,.file-label{display:inline-block;background:#fff;color:var(--ink);border:1px solid #aaa;border-radius:5px;padding:9px 16px;font:inherit;font-weight:600;font-size:14px;line-height:1.5;cursor:pointer;margin:0}.primary{background:var(--accent);border-color:var(--accent);color:#fff}.actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:18px}.file-label input{max-width:240px;font-weight:400;font-size:13px;display:block;margin-top:6px}button:focus-visible,a:focus-visible,textarea:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid #d88393;outline-offset:3px}button:disabled{opacity:.5;cursor:default}#memo-status{margin:16px 0 0;font-size:14px}#import-preview{white-space:pre-wrap;overflow-wrap:anywhere}#json-output{min-height:280px;font-family:ui-monospace,monospace;font-size:13px}footer{padding:6px 2px;color:var(--muted);font-size:12px}.no-print[hidden],[hidden]{display:none!important}
+@media(max-width:700px){main{padding:18px 12px 44px}section{padding:24px 18px}.grid,.overview-grid,.overview-bottom,.work-pair{grid-template-columns:1fr}.overview-grid{gap:20px}.current-state{border-right:0;border-bottom:1px solid var(--line);padding:0 0 20px}.overview-bottom{gap:18px;padding:16px}.purpose-statement{font-size:21px}nav{gap:6px}nav a{padding:5px 10px}th,td{padding:10px 8px}h2{font-size:21px}.plan-step{gap:10px}.plan-heading{align-items:start}.plan-heading h3{font-size:15px}.work-heading,.work-body{padding:18px}.reflection dl{grid-template-columns:1fr;gap:4px}.reflection dt:not(:first-child){margin-top:12px}.work-pair{gap:20px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{body{background:#fff;font-size:11pt}main{max-width:none;padding:0}.demo,nav,.no-print,.actions,#memo-status{display:none!important}section{border:0;border-radius:0;padding:16px 0;margin:0;break-inside:auto}h2,h3,h4{break-after:avoid}.box{background:#fff}textarea{border:1px solid #aaa;min-height:80px}a{color:inherit}.meta{font-size:10pt}.work-heading,.work-block,.reflection dd{break-inside:avoid}.overview-grid,.work-pair{grid-template-columns:1fr 1fr}.reflection dl{grid-template-columns:130px 1fr}}
+.tabs{display:flex;gap:24px;border-bottom:1px solid #cdd1d5;margin:22px 0}.tabs button{padding:12px 2px;border:0;border-bottom:3px solid transparent;border-radius:0;background:none;color:var(--muted);font-size:15px}.tabs button[aria-selected="true"]{border-bottom-color:var(--accent);color:var(--accent)}.tab-panel:focus-visible{outline:2px solid var(--accent);outline-offset:4px}.timeline{border-left:2px solid #e0e4e7;margin-left:7px;padding-left:24px}.timeline>.work-entry,.timeline>.log-event{position:relative}.timeline>.work-entry:before,.timeline>.log-event:before{content:"";position:absolute;left:-32px;top:21px;width:12px;height:12px;background:var(--accent);border:3px solid white;border-radius:50%}.timeline>.log-event{margin:0 0 20px;background:#fff}.timeline>.work-entry{overflow:visible}.work-heading{border-radius:6px 6px 0 0}.memo-entry p{white-space:pre-wrap}.memo-entry time{font-size:13px;color:var(--muted)}.tab-panel>section:last-child{margin-bottom:0}#import-memo{display:block;margin-top:8px;max-width:100%}
+@media(max-width:700px){.tabs{gap:0;justify-content:space-between}.tabs button{font-size:13px;padding:12px 6px}.timeline{padding-left:15px;margin-left:2px}.timeline>.work-entry:before,.timeline>.log-event:before{left:-23px}.work-body{padding:16px}.work-heading{padding:16px}.overview-bottom{font-size:14px}}
+@media print{.tabs{display:none}.tab-panel[hidden]{display:block!important}.timeline{border:0;margin:0;padding:0}.timeline>.work-entry:before,.timeline>.log-event:before{display:none}}
+.timeline-day{position:relative;margin:0 0 34px}.timeline-day:before{content:"";position:absolute;left:-32px;top:13px;width:12px;height:12px;background:var(--accent);border:3px solid white;border-radius:50%}.timeline-date{font-size:28px;font-weight:750;letter-spacing:.02em;line-height:1.35;margin:0 0 16px}.timeline-day .log-event{margin:0 0 14px}.timeline-day .log-event summary{font-size:16px}.timeline-day .work-heading h4{font-size:17px;margin:0}.timeline-day .work-body{padding:18px 22px}.log-points{display:grid;grid-template-columns:100px 1fr;gap:12px 20px;font-size:15px}.log-points dt{font-size:13px;color:var(--muted);margin:0}.log-points dd{margin:0}.log-points .log-insight{font-weight:600;color:var(--ink)}.log-more dl{font-size:14px}.timeline-day .memo-entry{margin-top:12px}.memo-entry h4{font-size:13px;color:var(--muted);margin-bottom:4px}.memo-entry p{margin-top:0}
+@media(max-width:700px){.timeline-date{font-size:25px}.timeline-day:before{left:-23px;top:11px}.log-points{grid-template-columns:1fr;gap:4px}.log-points dt:not(:first-child){margin-top:12px}.timeline-day .work-body{padding:16px}}
+@media print{.timeline-day:before{display:none}}
+.inline-memo{margin:0 0 28px;border-color:#c5c9cd}.inline-memo>summary{color:var(--accent);font-size:15px}.inline-memo #memo{border:0;padding:16px 0 0;margin:0}.inline-memo .grid{gap:16px}.inline-memo textarea{min-height:150px}.inline-memo label{font-size:14px}
+.seminar-date{font-size:28px;margin-bottom:20px}.seminar-purpose{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:18px}.seminar-purpose h3{font-size:13px;color:var(--muted);margin:0 0 4px}.seminar-purpose p{font-size:20px;font-weight:700}.seminar-points{display:grid;grid-template-columns:140px 1fr;gap:14px 24px}.seminar-points dt{font-size:14px;color:var(--muted);margin:0}.seminar-points dd{margin:0}.seminar-memo{margin:28px 0 0}.seminar-memo summary{font-size:16px}.seminar-report #memo>p{font-size:13px}.seminar-report #memo .grid{gap:12px 18px}
+@media(max-width:700px){.seminar-points{grid-template-columns:1fr;gap:4px}.seminar-points dt:not(:first-child){margin-top:12px}.seminar-date{font-size:25px}}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}#seminar-completion:empty,#memo-status:empty{display:none}.seminar-points dd p{margin:0}.seminar-points dd p+p{margin-top:6px}#memo{background:transparent}.seminar-report{max-width:960px;margin-left:auto;margin-right:auto}
+.timeline-kind{font-size:14px;font-weight:400;color:var(--muted);margin-left:10px}.paper-heading{margin:32px 0 8px;font-size:18px}.paper-outline{list-style:none;padding:0;margin:0}.paper-section{display:grid;grid-template-columns:160px 1fr;gap:24px;padding:22px 0;border-bottom:1px solid var(--line)}.paper-section:last-child{border-bottom:0;padding-bottom:0}.paper-section h4{font-size:16px;line-height:1.6;margin:0}.paper-number{display:block;font-size:12px;font-weight:400;color:var(--muted);margin-bottom:4px}.paper-content{margin:0;font-size:16px}.paper-gap{font-size:13px;color:var(--muted);line-height:1.65;margin:12px 0 0}.paper-gap strong{margin-right:10px;color:var(--ink)}.paper-sources{font-size:12px;margin:8px 0 0}.paper-sources a{display:inline-block;margin-right:14px}
+@media(max-width:700px){.paper-section{grid-template-columns:1fr;gap:12px;padding:20px 0}.paper-number{display:inline;margin-right:10px}.paper-content{font-size:15px}}
+
+.schedule-section{margin-top:28px;border-top:1px solid var(--line);padding-top:20px}.schedule-section>h3{margin:0 0 8px;font-size:18px}.schedule-overview{font-size:14px;margin-bottom:18px}.schedule-axis{margin-left:222px;display:flex;justify-content:space-between;color:var(--muted);font-size:11px;padding-bottom:6px}.schedule-list{list-style:none;margin:0;padding:0}.schedule-row{display:grid;grid-template-columns:200px minmax(0,1fr);gap:22px;padding:14px 0;border-top:1px solid var(--line)}.schedule-label h4{font-size:14px;line-height:1.6;margin:0 0 3px}.schedule-label p{font-size:12px;margin:0;color:var(--muted)}.schedule-now{font-size:11px;font-weight:400;color:var(--accent);margin-left:7px;white-space:nowrap}.schedule-track{height:18px;background:repeating-linear-gradient(to right,#f1f3f5 0,#f1f3f5 calc(11.111111% - 1px),#e1e4e6 calc(11.111111% - 1px),#e1e4e6 11.111111%);border-radius:3px;position:relative;margin:4px 0 8px}.schedule-bar{position:absolute;left:var(--start);width:var(--duration);height:100%;border-radius:3px;background:#9ca9b7}.schedule-row.current .schedule-bar{background:var(--accent)}.schedule-output{font-size:13px;line-height:1.65;margin:0}.schedule-output strong{font-weight:600}.schedule-handoff{color:var(--muted)}.schedule-note{font-size:12px;color:var(--muted);margin-top:10px}.schedule-section details{font-size:13px}
+@media(max-width:700px){.schedule-axis{margin-left:0}.schedule-row{grid-template-columns:1fr;gap:5px}.schedule-label{display:flex;justify-content:space-between;gap:12px;align-items:baseline}.schedule-label p{text-align:right;min-width:95px}.schedule-track{margin-top:0}.schedule-output{font-size:13px}}
+
+/* The diagram separates completed work from evidence for the research question. */
+.argument-map{margin-top:30px;padding-top:26px;border-top:1px solid var(--line)}.argument-map>h3{font-size:20px;line-height:1.5;margin:0 0 16px}.argument-question{background:#27343e;color:white;padding:16px 20px;border-radius:6px;margin:0 0 22px;font-size:19px;font-weight:650;line-height:1.6}.argument-question span{display:block;font-size:12px;font-weight:400;opacity:.8;margin-bottom:4px}.argument-route-title{font-size:13px;color:var(--muted);margin:0 0 10px}.argument-flow{display:grid;grid-template-columns:minmax(0,1fr) 96px minmax(0,1fr) 96px minmax(0,1fr);align-items:stretch}.argument-node{min-width:0;border:1px solid #bcc7ca;border-radius:6px;background:#fff;padding:17px 18px;line-height:1.65}.argument-node h4{font-size:12px;color:var(--muted);font-weight:500;margin:0 0 8px}.argument-node p{font-size:17px;font-weight:650;margin:0;overflow-wrap:anywhere}.argument-node .argument-state{font-size:12px;font-weight:400;margin-top:10px;color:var(--muted)}.argument-node.pending,.argument-node.unknown{border-style:dashed;background:#f7f8f9}.argument-node.answer{border-color:#b6bec5}.argument-edge{align-self:center;text-align:center;min-width:0;padding:6px 4px;color:#346361}.argument-edge svg{width:100%;height:26px;display:block;overflow:visible}.argument-edge span{font-size:11px;line-height:1.5;display:block;margin-top:5px}.argument-edge.gap{color:#b4253e;font-weight:700}.argument-edge.pending,.argument-edge.unknown{color:#68747e}.argument-break{margin:18px 0 0;border-left:4px solid #b4253e;padding:14px 18px;background:#fff5f6;line-height:1.7}.argument-break>strong{display:block;font-size:17px;color:#a11f37;margin-bottom:6px}.argument-break.unknown{border-left-color:#68747e;background:#f4f6f8}.argument-break.unknown>strong{color:#485863}.argument-break p{font-size:14px;margin:0}.argument-repair{margin:12px 0 0;font-size:14px;line-height:1.8}.argument-repair strong{color:var(--ink);margin-right:8px}.argument-evidence{font-size:12px;margin:10px 0 0;color:var(--muted)}.argument-evidence a{margin-right:14px}.argument-legend{display:flex;flex-wrap:wrap;gap:5px 20px;font-size:11px;color:var(--muted);margin:16px 0 0}.argument-legend span{display:flex;align-items:center;gap:6px}.argument-legend i{width:24px;border-top:2px solid #346361}.argument-legend .gap i{white-space:nowrap;width:30px;border:0;color:#b4253e;font-style:normal;font-weight:700;line-height:1}.argument-legend .pending i{border-top:2px dashed #68747e}.argument-footnote{font-size:11px;color:var(--muted);margin:10px 0 0}.argument-map details{background:white}.argument-map details>p{font-size:14px}.argument-chain{list-style:none;padding:0;margin:0}.argument-chain li{padding:0 0 18px 24px;margin:0;border-left:2px solid #c5cece;position:relative}.argument-chain li:before{content:'';position:absolute;left:-5px;top:6px;width:8px;height:8px;background:#607373;border-radius:50%}.argument-chain li:last-child{padding-bottom:0;border-left-color:transparent}.argument-chain h4{font-size:14px;margin:0 0 5px}.argument-chain p{font-size:14px;margin:0}.argument-chain .argument-relation{font-size:13px;margin-top:10px;padding:8px 12px;background:#f4f7f7}.argument-chain li.gap{border-left:2px dashed #b4253e}.argument-chain li.gap:before{background:#b4253e}.argument-chain li.gap .argument-relation{background:#fff5f6;color:#a11f37}.argument-chain li.pending,.argument-chain li.unknown{border-left-style:dashed}.argument-chain .argument-relation small{font-size:12px;display:block;margin-top:4px}.argument-reference{font-size:12px!important;margin-top:8px!important}
+@media(max-width:760px){.argument-flow{grid-template-columns:minmax(0,1fr)}.argument-edge{display:grid;grid-template-columns:30px minmax(0,1fr);gap:8px;align-items:center;justify-self:center;text-align:left;width:200px;max-width:100%;min-height:58px;padding:7px 0}.argument-edge svg{width:50px;height:26px;transform:rotate(90deg);transform-origin:15px 13px}.argument-edge span{font-size:12px;margin:0}.argument-node{padding:14px 16px}.argument-node p{font-size:16px}.argument-node h4{margin-bottom:4px}.argument-node .argument-state{margin-top:6px}.argument-question{font-size:17px;padding:14px 16px}.argument-map>h3{font-size:18px}.argument-break{padding:12px 14px}.argument-break>strong{font-size:16px}}
+@media print{.argument-flow{break-inside:avoid}.argument-question{background:#eee;color:#111}.argument-node,.argument-break{break-inside:avoid}.argument-map svg{print-color-adjust:exact}}
+</style>
+</head>
+<body>
+<main>
+<div class="demo" id="template-notice">ベースフォーマットの見本です。AIが学生と対話し、保存場所・ファイル名・研究内容を設定して使います。メモ欄はこの見本でも試せます。</div>
+<header>
+<p class="eyebrow">研究進捗 / ゼミ資料</p>
+<h1 data-field="research.title">研究進捗・ゼミ資料</h1>
+<div class="meta"><span data-field="student">学番・氏名：未設定</span></div>
+</header>
+<div class="tabs" role="tablist" aria-label="研究ノート"><button type="button" role="tab" id="tab-seminar" aria-controls="panel-seminar" aria-selected="true" tabindex="0">ゼミ用</button><button type="button" role="tab" id="tab-log" aria-controls="panel-log" aria-selected="false" tabindex="-1">タイムライン</button><button type="button" role="tab" id="tab-summary" aria-controls="panel-summary" aria-selected="false" tabindex="-1">研究まとめ</button></div>
+<div class="tab-panel" role="tabpanel" id="panel-seminar" aria-labelledby="tab-seminar" tabindex="0">
+<section class="seminar-report"><span class="number">ゼミ用</span><h2 class="seminar-date" data-field="seminarHeading">対象ゼミ：未設定</h2><p id="seminar-completion" class="small" role="status"></p>
+<div class="seminar-purpose"><h3>研究の目的</h3><p data-field="seminarPurpose">未確認</p></div>
+<dl class="seminar-points"><dt>現在地・残ること</dt><dd data-field="seminarStatus">未確認</dd><dt>今回やったこと</dt><dd><p data-field="seminarWork">未確認</p><p data-field="seminarReflection">未確認</p></dd><dt>今日の相談</dt><dd><span data-field="seminarQuestion">未確認</span> <a class="small" href="questions.md" download>相談メモ</a></dd></dl>
+<div class="schedule-section"><h3>今後の計画</h3><p class="schedule-overview" data-field="seminarNext">今の工程の終了見込みと、その先の工程・期間を学生と相談して整理します。</p><div data-field="seminarSchedule"><p class="empty">全体計画は未確認です。各工程で得るものと、次にどう使うかも確認します。</p></div></div>
+<details class="inline-memo seminar-memo" open><summary>このゼミのメモ（任意）</summary><div id="seminar-memo-slot"><section id="memo">
+
+
+<div class="grid"><div><label for="memo-text">メモ</label><textarea id="memo-text" placeholder="話したこと、考えたことを自由に。"></textarea></div><div><label for="memo-tasks">やること</label><textarea id="memo-tasks" placeholder="このあと、やること。"></textarea></div></div>
+<p class="small">別のアプリや紙のメモでもOK。次回AIに渡してください。ここに書いた場合は、ゼミの最後に保存します。</p><div class="actions no-print"><button class="primary" id="save-memo" type="button">保存</button></div>
+<p id="memo-status" role="status" aria-live="polite"></p>
+
+<noscript><p>研究の本文はそのまま読めます。タブ切り替えとメモの保存にはJavaScriptを有効にしてください。</p></noscript>
+</section></div></details>
+</section></div>
+<div class="tab-panel" role="tabpanel" id="panel-log" aria-labelledby="tab-log" tabindex="0"><section id="progress">
+<h2>タイムライン</h2>
+
+<details class="inline-memo"><summary>メモを書く</summary><div id="timeline-memo-slot"></div></details>
+<div class="timeline" data-field="workRecords"><p class="empty">実施記録は未確認です。AIが実施内容、期待したこと、結果・失敗、考察、次に試すことを学生に確認します。</p></div>
+<details><summary>成果・根拠資料</summary><div class="table-wrap"><table><thead><tr><th>資料・所在</th><th>この資料で説明すること</th><th>言えること・まだ言えないこと</th></tr></thead><tbody data-field="materials"><tr><td colspan="3" class="empty">未登録。</td></tr></tbody></table></div></details>
+<details><summary>前回の教員コメントと、その後の対応</summary><div class="table-wrap"><table><thead><tr><th>日付・原文と出典</th><th>学生の受け止め</th><th>AIの説明</th><th>対応と残る課題</th></tr></thead><tbody data-field="feedback"><tr><td colspan="4" class="empty">未記録。指摘がなかったことを意味しません。</td></tr></tbody></table></div><h3>前回の指摘からの変化</h3><p data-field="changes">前回の記録を確認してから整理します。</p></details>
+</section></div>
+<div class="tab-panel" role="tabpanel" id="panel-summary" aria-labelledby="tab-summary" tabindex="0"><section>
+<h2>研究まとめ</h2>
+<div class="seminar-purpose"><h3>研究の目的</h3><p data-field="researchPurpose">未確認</p></div>
+<dl class="seminar-points"><dt>今どこまで来たか</dt><dd data-field="currentStatus">資料を確認して整理します。</dd><dt>計画の見通し</dt><dd data-field="immediateAction">学生とAIの対話で決めます。</dd></dl>
+<div class="argument-map" id="argument-map"><h3>やっていることは、目的につながっているか</h3><div data-field="argumentMap"><p class="empty">AIが実際の作業・得られたもの・研究で答えたいことを並べ、どこまでつながるかを整理します。資料が足りない関係は、確認するまで未確認として示します。</p></div></div>
+<h3 class="paper-heading">論文・発表の構成</h3>
+<ol class="paper-outline" data-field="paperOutline"><li class="paper-section"><h4>背景・問題</h4><div><p class="paper-content">研究内容は未確認です。</p><p class="paper-gap"><strong>残ること</strong>AIが実際の資料を読み、背景・目的・方法・結果・考察・結論を文章でまとめます。</p></div></li></ol>
+</section></div>
+<footer>同じ研究ノートに、実施・失敗・考察と話し合いの記録を積み重ねます。</footer>
+</main>
+<script id="memo-config" type="application/json">{"isTemplate":true,"projectId":"template-demo","studentId":"","seminarDate":null,"revisionId":"template","memoName":"memo.json"}</script>
+<script id="memo-data" type="application/json">{"kind":"seminar-memos","formatVersion":1,"projectId":"template-demo","studentId":"","entries":[]}</script>
+<script id="research-data" type="application/json">{}</script>
+<script>
+(() => {
+  'use strict';
+  const tabs = [...document.querySelectorAll('[role="tab"]')];
+  const activate = (tab, focus=false) => {
+    for (const t of tabs) {
+      const selected = t === tab;
+      t.setAttribute('aria-selected', String(selected));t.tabIndex = selected ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !selected;
+    }
+    const memo=document.getElementById('memo');
+    const slot=document.getElementById(tab.id==='tab-log' ? 'timeline-memo-slot' : 'seminar-memo-slot');
+    if(memo && slot && memo.parentElement!==slot)slot.append(memo);
+    if (focus) tab.focus();
+  };
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => activate(tab));
+    tab.addEventListener('keydown', event => {
+      let next;
+      if(event.key==='ArrowRight') next=(i+1)%tabs.length;
+      if(event.key==='ArrowLeft') next=(i+tabs.length-1)%tabs.length;
+      if(event.key==='Home') next=0;
+      if(event.key==='End') next=tabs.length-1;
+      if(next!==undefined){event.preventDefault();activate(tabs[next],true);}
+    });
+  });
+  activate(tabs[0]);
+  const cfg = JSON.parse(document.getElementById('memo-config').textContent);
+  if(!cfg.isTemplate) document.getElementById('template-notice').hidden=true;
+  const fields = {text:'memo-text',tasks:'memo-tasks'};
+  const legacyLabels = {teacherComment:'教員のコメント',studentUnderstanding:'自分の理解',decisions:'決まったこと',nextActions:'次にすること'};
+  const legacyText = notes => Object.entries(legacyLabels).filter(([key])=>notes?.[key]?.trim()).map(([key,label])=>label+'：'+notes[key]).join('\n');
+  const textOf = entry => typeof entry.text==='string' ? entry.text : legacyText(entry.notes);
+  const state = document.getElementById('memo-status');
+  const saveButton = document.getElementById('save-memo');
+  const cacheKey = 'research-notebook-memo-v2:' + cfg.projectId;
+  const uid = () => 'MEMO-' + (typeof crypto.randomUUID === 'function' ? crypto.randomUUID() : Date.now().toString(36)+'-'+Math.random().toString(36).slice(2));
+  const notes = () => Object.fromEntries(Object.entries(fields).map(([key,id])=>[key,document.getElementById(id).value]));
+  const validNotes = x => x && Object.keys(legacyLabels).every(k=>typeof x[k]==='string');
+  const localDate = () => {const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');};
+  const dateOf = entry => entry.date || (entry.createdAt || '').slice(0,10);
+  const displayDateOf = entry => entry.seminarDate || dateOf(entry);
+  const dateLabel = date => {const [y,m,d]=date.split('-');return y+'年'+Number(m)+'月'+Number(d)+'日';};
+  const valid = x => x && x.kind==='seminar-memos' && x.formatVersion===1 && x.projectId===cfg.projectId && x.studentId===cfg.studentId && Array.isArray(x.entries) && x.entries.every(e=>typeof e.id==='string' && /^\d{4}-\d{2}-\d{2}$/.test(dateOf(e)) && Number.isFinite(Date.parse(dateOf(e))) && (typeof e.text==='string' || validNotes(e.notes))) && new Set(x.entries.map(e=>e.id)).size===x.entries.length;
+  let data=JSON.parse(document.getElementById('memo-data').textContent), draftId=uid(), handle=null, dirty=false;
+  let pendingDownloads=new Set();
+  if(!valid(data)){state.textContent='記録の設定を確認できません。AIにこの画面を見せてください。';saveButton.disabled=true;return;}
+  const confirmedEntries=new Map(data.entries.map(entry=>[entry.id,entry]));
+  const merge = (left,right) => {
+    if(!valid(right)) throw new Error('別の研究のメモ、または対応していない記録です。');
+    const entries=new Map(left.entries.map(e=>[e.id,e]));
+    for(const e of right.entries){
+      if(entries.has(e.id) && JSON.stringify(entries.get(e.id))!==JSON.stringify(e)) throw new Error('同じ記録に異なる内容があります。上書きせず、AIに確認してください。');
+      entries.set(e.id,e);
+    }
+    return {...left,entries:[...entries.values()].sort((a,b)=>dateOf(a).localeCompare(dateOf(b)))};
+  };
+  const cache = () => {try{localStorage.setItem(cacheKey,JSON.stringify({data,draftId,notes:notes(),pendingDownloadIds:[...pendingDownloads]}));}catch{}};
+  const render = () => {
+    const host=document.querySelector('[data-field="workRecords"]');
+    const completed=data.entries.some(entry=>entry.seminarDate===cfg.seminarDate && entry.seminarStatus==='completed' && !pendingDownloads.has(entry.id));
+    document.getElementById('seminar-completion').textContent=completed ? 'ゼミ完了' : '';
+    host.querySelectorAll('[data-memo-entry]').forEach(item=>item.remove());
+    host.querySelectorAll('[data-memo-day]').forEach(day=>day.remove());
+    const ordered=data.entries.map((entry,index)=>({entry,index})).sort((a,b)=>displayDateOf(b.entry).localeCompare(displayDateOf(a.entry)) || b.index-a.index);
+    for(const {entry} of ordered){
+      const date=displayDateOf(entry);
+      let day=[...host.children].find(item=>item.querySelector('.timeline-date time')?.dateTime===date);
+      if(!day){
+        day=document.createElement('div');day.className='timeline-day';day.dataset.memoDay='true';
+        const heading=document.createElement('h3');heading.className='timeline-date';const time=document.createElement('time');time.dateTime=date;time.textContent=dateLabel(date);heading.append(time);if(entry.seminarDate){const kind=document.createElement("span");kind.className="timeline-kind";kind.textContent="のゼミ";heading.append(kind);}day.append(heading);host.append(day);
+      }
+      const item=document.createElement('article');item.className='box memo-entry';item.dataset.memoEntry=entry.id;
+      const title=document.createElement('h4');title.textContent=pendingDownloads.has(entry.id) ? 'ゼミメモ（保存待ち）' : entry.seminarStatus==='completed' ? 'ゼミ完了・メモ' : 'ゼミメモ';item.append(title);
+      const preview=document.createElement('p');
+      const main=textOf(entry) || (entry.tasks ? 'やること：'+entry.tasks : '');
+      preview.textContent=main.length>120 ? main.slice(0,120)+'…' : main;item.append(preview);
+      const details=document.createElement('details');const summary=document.createElement('summary');summary.textContent='メモ全文';details.append(summary);
+      const full=document.createElement('p');full.textContent=textOf(entry);details.append(full);
+      if(entry.tasks){const h=document.createElement('h4');h.textContent='やること';const tasks=document.createElement('p');tasks.textContent=entry.tasks;details.append(h,tasks);}
+      item.append(details);
+      if(entry.reportSnapshot){
+        const report=document.createElement('details');const label=document.createElement('summary');label.textContent='このゼミの資料';report.append(label);
+        for(const [key,name] of Object.entries({purpose:'研究の目的',status:'現在の状況',work:'やったこと・結果',reflection:'考察・残る課題',question:'相談したいこと',next:'今後の計画',schedule:'当時の工程・期間・得るもの'})){
+          if(!entry.reportSnapshot[key])continue;
+          const h=document.createElement('h4');h.textContent=name;const p=document.createElement('p');p.textContent=entry.reportSnapshot[key];report.append(h,p);
+        }
+        item.append(report);
+      }
+      day.append(item);
+    }
+    const days=[...host.children].filter(item=>item.classList.contains('timeline-day')).sort((a,b)=>b.querySelector('time').dateTime.localeCompare(a.querySelector('time').dateTime));
+    days.forEach(day=>host.append(day));
+    if(days.length)host.querySelector(':scope > p.empty')?.remove();
+  };
+  try{
+    const saved=JSON.parse(localStorage.getItem(cacheKey)||'null');
+    if(saved && valid(saved.data)){
+      data=merge(data,saved.data);
+      pendingDownloads=new Set((Array.isArray(saved.pendingDownloadIds)?saved.pendingDownloadIds:[]).filter(id=>!confirmedEntries.has(id)));
+      if((typeof saved.notes?.text==='string' || validNotes(saved.notes)) && typeof saved.draftId==='string'){
+        draftId=saved.draftId;
+        document.getElementById('memo-text').value=typeof saved.notes.text==='string' ? saved.notes.text : legacyText(saved.notes);
+        document.getElementById('memo-tasks').value=saved.notes.tasks || '';
+        const confirmed=confirmedEntries.get(draftId);
+        if(confirmed && textOf(confirmed)===document.getElementById('memo-text').value && (confirmed.tasks || '')===document.getElementById('memo-tasks').value){
+          Object.values(fields).forEach(id=>{document.getElementById(id).value='';});draftId=uid();
+        }
+        dirty=Object.values(notes()).some(x=>x.trim());
+      }
+      if(dirty) state.textContent='書きかけのメモを復元しました。終わったら保存してください。';
+    }
+  }catch{state.textContent='以前の下書きは復元できませんでした。保存したメモをAIに渡してください。';}
+  render();
+  Object.values(fields).forEach(id=>document.getElementById(id).addEventListener('input',()=>{dirty=true;cache();state.textContent='まだ保存していないメモがあります。';}));
+  window.addEventListener('beforeunload',event=>{if(dirty){event.preventDefault();event.returnValue='';}});
+  const download = text => {
+    const url=URL.createObjectURL(new Blob([text],{type:'application/json;charset=utf-8'}));
+    const a=document.createElement('a');a.href=url;a.download=cfg.memoName;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);
+  };
+  saveButton.addEventListener('click',async()=>{
+    if(!Object.values(notes()).some(x=>x.trim())){state.textContent='メモを入力してから保存してください。';return;}
+    saveButton.disabled=true;
+    let wrote=false;
+    try{
+      if(typeof window.showSaveFilePicker==='function'){
+        if(!handle) handle=await window.showSaveFilePicker({suggestedName:cfg.memoName,types:[{description:'研究ノートのメモ',accept:{'application/json':['.json']}}]});
+        if(handle.name!==cfg.memoName){handle=null;throw new Error('研究フォルダの「'+cfg.memoName+'」を選んでください。');}
+        const content=await(await handle.getFile()).text();
+        if(content.trim()) data=merge(data,JSON.parse(content));
+      }
+      const reportSnapshot=Object.fromEntries(Object.entries({purpose:'seminarPurpose',status:'seminarStatus',work:'seminarWork',reflection:'seminarReflection',question:'seminarQuestion',next:'seminarNext',schedule:'seminarSchedule'}).map(([key,field])=>[key,document.querySelector('[data-field="'+field+'"]').textContent]));
+      let entry={id:draftId,date:localDate(),seminarDate:cfg.seminarDate,seminarStatus:'completed',reportSnapshot,text:notes().text,tasks:notes().tasks};
+      const previous=data.entries.find(x=>x.id===draftId);
+      if(previous){if(textOf(previous)!==entry.text || (previous.tasks || '')!==entry.tasks)entry.id=uid();else entry={...previous};}
+      const candidate=merge(data,{...data,entries:[entry]});
+      const content=JSON.stringify(candidate,null,2)+'\n';
+      if(handle){
+        const writer=await handle.createWritable();
+        try{await writer.write(content);await writer.close();}catch(error){try{await writer.abort();}catch{}throw error;}
+        wrote=true;
+      }else download(content);
+      data=candidate;
+      if(wrote)pendingDownloads.clear();else pendingDownloads.add(entry.id);
+      render();
+      if(wrote){
+        Object.values(fields).forEach(id=>{document.getElementById(id).value='';});draftId=uid();dirty=false;
+        state.textContent='保存しました。このゼミを完了にし、資料とメモをタイムラインに残しました。';
+      }else{
+        dirty=true;
+        state.textContent='保存用ファイルをダウンロードしました。研究フォルダの同名ファイルに置き換えてください。このブラウザからは保存先の確認はできません。';
+      }
+      cache();
+    }catch(error){
+      if(error.name==='AbortError') state.textContent='保存を取り消しました。入力したメモは残っています。';
+      else {handle=null;state.textContent='保存できませんでした。'+error.message+' 入力したメモは残っています。';}
+    }finally{saveButton.disabled=false;}
+  });
+
+})();
+
+</script>
+</body>
+</html>

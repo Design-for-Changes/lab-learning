@@ -1,0 +1,16 @@
+{
+  "kind": "seminar-memos",
+  "formatVersion": 1,
+  "projectId": "demo-signage-study",
+  "studentId": "DEMO001",
+  "entries": [
+    {
+      "id": "MEMO-DEMO-0909",
+      "date": "2026-09-09",
+      "seminarDate": "2026-09-09",
+      "seminarStatus": "completed",
+      "tasks": "観察項目を考えて、次のゼミで相談する。",
+      "text": "好まれる表示と、見落とされない表示は同じとは限らない。\n好みと見落としを分けて考える。\n見落としを確かめる方法を検討する。"
+    }
+  ]
+}

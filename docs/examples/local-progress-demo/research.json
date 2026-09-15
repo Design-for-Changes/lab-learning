@@ -1,0 +1,1899 @@
+{
+  "formatVersion": 2,
+  "revision": {
+    "id": "20260915-02",
+    "previousId": "20260909-01",
+    "savedAt": "2026-09-15",
+    "reason": "予備調査を追加し、目的と観察項目のずれを整理した（ダミー）"
+  },
+  "student": {
+    "studentId": "DEMO001",
+    "name": "サンプル学生（架空）"
+  },
+  "paths": {
+    "currentHtml": "index.html",
+    "currentData": "research.json",
+    "memoData": "memo.json",
+    "questionsDocument": "questions.md",
+    "packageDir": "exports"
+  },
+  "research": {
+    "title": "案内表示の見落としを減らすには",
+    "purpose": "移動中に必要な案内表示を見落とすことを減らす。",
+    "question": "行き先の名称と方向の矢印をまとめて配置すると、見落としは減るか。",
+    "contribution": "名称と矢印の配置について、見落としを減らすための設計原則を検討する。",
+    "hypothesis": "名称と矢印を近接させる配置は、離した配置より見落とされにくい。",
+    "currentPlan": "2種類の表示案を比較する。予備調査では好みを尋ねた。移動中の行動を観察する実験は未実施。",
+    "sourceIds": [
+      "SRC-01",
+      "SRC-02"
+    ],
+    "studentConfirmedAt": "2026-09-15"
+  },
+  "sources": [
+    {
+      "id": "SRC-01",
+      "title": "予備調査の回答（架空8件）",
+      "location": {
+        "relativePath": "materials/pretest.csv"
+      },
+      "locator": "全8行",
+      "readState": "確認済み"
+    },
+    {
+      "id": "SRC-02",
+      "title": "実験計画のたたき台（架空）",
+      "location": {
+        "relativePath": "materials/plan.txt"
+      },
+      "locator": "目的・比較条件・未決定事項",
+      "readState": "確認済み"
+    },
+    {
+      "id": "SRC-03",
+      "title": "9月9日の教員フィードバック（架空）",
+      "location": {
+        "relativePath": "materials/feedback.txt"
+      },
+      "locator": "全文",
+      "readState": "学生のメモ"
+    },
+    {
+      "id": "SRC-04",
+      "title": "予備調査を振り返った学生との対話（架空）",
+      "location": {
+        "relativePath": "materials/reflection.txt"
+      },
+      "locator": "全文",
+      "readState": "学生の説明（架空）"
+    }
+  ],
+  "workRecords": [
+    {
+      "id": "WORK-01",
+      "date": "2026-09-14",
+      "activity": "2種類の案内表示を8名に見せ、どちらを好むかを尋ねた（架空）。",
+      "result": "Aを選んだ人が3名、Bを選んだ人が5名。移動中の見落としは観察していない。",
+      "sourceIds": [
+        "SRC-01",
+        "SRC-04"
+      ],
+      "title": "2種類の表示案で、好みを尋ねた",
+      "purposeRelation": "見落としにくい表示を考えるため、比較する2案への反応を調べた。",
+      "expected": "好まれる案を選べば、見落としにくい案も選べると考えていた。",
+      "failures": [
+        {
+          "description": "好みは記録できたが、目的に必要な「見落とし」を記録していなかった。",
+          "conditions": "表示案を見せて好みを尋ねただけで、移動中の行動を観察していない。",
+          "impact": "配置によって見落としが減るかを、この調査からは判断できない。",
+          "sourceIds": [
+            "SRC-01",
+            "SRC-04"
+          ]
+        }
+      ],
+      "reflection": {
+        "studentInterpretation": "好みを尋ねることと、見落としにくさを確かめることを、同じだと思っていた。今回の方法では研究の問いに答えられない。",
+        "evidence": "得られた記録はA・Bどちらを好むかの回答だけで、見落としの回数や状況は含まれていない。",
+        "alternativeExplanations": "Bを好んだ理由は記録していない。文字の読みやすさや見た目など、配置以外を評価した可能性もある。",
+        "uncertainties": "Bが移動中にも見落とされにくいか、配置が好みの違いに関わったかは分からない。",
+        "purposeConnection": "予備調査の結果は残し、見落としを減らす設計原則を検討するための行動観察を別に計画する。",
+        "aiComment": "好みの回答を失敗データとして捨てず、この方法では何が分からないかを記録する。仮説が間違いだったと結論づける段階ではない。",
+        "studentConfirmedAt": "2026-09-15"
+      },
+      "nextTrial": {
+        "action": "見落としと数える行動を定義し、その行動を観察・記録できるか試す計画を作る。",
+        "reason": "目的に対応する情報が得られるかを、実施前に確かめるため。",
+        "output": "観察する行動・比較条件・記録方法をまとめた計画案。",
+        "position": "学生とAIで合意・計画案を作って教員に相談する",
+        "decisionState": "agreed",
+        "agreedAt": "2026-09-15"
+      }
+    }
+  ],
+  "feedback": [
+    {
+      "id": "FB-01",
+      "date": "2026-09-09",
+      "text": "好まれる表示と、移動中に見落とされない表示は、同じとは限らない。目的に対応する観察項目を考える。",
+      "recordType": "架空の教員コメント",
+      "studentUnderstanding": "好みだけでは見落としの減少を示せない。",
+      "aiInterpretation": "好みを尋ねた結果の役割と、見落としを確かめる実験を分けて整理する。",
+      "sourceIds": [
+        "SRC-03"
+      ],
+      "issueIds": [
+        "ISSUE-01"
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "id": "ISSUE-01",
+      "priority": "P1",
+      "criteria": [
+        "C1",
+        "C3"
+      ],
+      "firstRaisedAt": "2026-09-09",
+      "verification": "記録で確認",
+      "status": "一部対応",
+      "problem": "目的は見落としを減らすことだが、集めたのは表示の好みに関する回答のみ。",
+      "impact": "この結果だけでは、実際の見落としが減るかを判断できない。",
+      "task": "研究でいう見落としを定義し、行動として記録できる観察項目を考える。",
+      "nextAction": "通行時の注視・通過・選択行動のうち何を見落としの判断に使うか、実験計画案を作る。",
+      "doneWhen": "目的、観察する行動、判断方法の対応を教員が確認できる。",
+      "sourceIds": [
+        "SRC-01",
+        "SRC-02",
+        "SRC-03"
+      ],
+      "change": "目的と予備調査の役割は説明できた。行動を観察する計画はまだ未完成。",
+      "studentView": "好みは表示案を絞る材料にし、見落としは別の観察で確かめたい。"
+    }
+  ],
+  "inputRequests": [
+    {
+      "id": "REQ-01",
+      "requestedAt": "2026-09-15",
+      "items": [
+        "見落としと判断する行動",
+        "比較時にそろえる条件"
+      ],
+      "target": "materials/plan.txt",
+      "reason": "仮説を確かめる観察項目と条件を判断するため。",
+      "status": "依頼中",
+      "sourceIds": [
+        "SRC-02"
+      ]
+    }
+  ],
+  "seminars": [
+    {
+      "id": "SEMINAR-2026-09-16",
+      "date": "2026-09-16",
+      "studentReview": "学生確認済み（デモ設定）",
+      "teacherReview": "未確認",
+      "htmlPath": "index.html",
+      "overview": "予備調査を終えた段階。次の実験で観察する行動と条件を相談したい。",
+      "issueIds": [
+        "ISSUE-01"
+      ],
+      "checks": [
+        {
+          "id": "C1",
+          "result": "不整合あり",
+          "reason": "目的と好みの回答の関係を整理する必要がある。"
+        },
+        {
+          "id": "C2",
+          "result": "対応を確認",
+          "reason": "配置と見落としの関係を仮説にしている。"
+        },
+        {
+          "id": "C3",
+          "result": "情報不足",
+          "reason": "行動の観察項目と比較条件が未決定。"
+        },
+        {
+          "id": "C4",
+          "result": "対応を確認",
+          "reason": "好みの回答8件の架空データを参照できる。"
+        },
+        {
+          "id": "C5",
+          "result": "対応を確認",
+          "reason": "好みの回答から見落としの減少を主張していない。"
+        },
+        {
+          "id": "C6",
+          "result": "一部対応",
+          "reason": "指摘の意味は整理したが、新しい観察計画は未完成。"
+        }
+      ],
+      "purposeAlignment": {
+        "purpose": "移動中に必要な案内表示を見落とすことを減らす。",
+        "currentWork": "2種類の案内表示を8名に見せ、どちらを好むかを尋ねた（架空）。",
+        "whatWeLearn": "提示した2案についての、回答者の好み。",
+        "gap": "移動中に案内表示を見落とす回数や状況は分からない。",
+        "explanation": "目的は見落としを減らすことですね。今回の質問で分かるのは表示への好みです。好まれた表示が移動中にも見落とされにくいかは、まだ分かりません。好みの調査を案の選択に使いつつ、次は何を観察すれば見落としを確かめられるか考えましょう。",
+        "studentUnderstanding": "好みは表示案を絞る材料にし、見落としは別の観察で確かめたい。"
+      },
+      "discussion": {
+        "question": "「見落とし」をどの行動で判断し、どの条件をそろえて比較するか。",
+        "options": "表示に気づかず通過したか／進路選択を誤ったか、などの候補を比較する。どちらも状況や他の要因を検討する必要がある。",
+        "studentPreference": "まず観察の予備試行を行い、記録できる行動と条件を確かめたい。"
+      },
+      "nextActions": [
+        {
+          "action": "見落としの定義と観察項目を計画に追記する。",
+          "reason": "仮説を検討できる観察にする。",
+          "output": "観察する行動・比較条件・手順を書いた計画案。",
+          "position": "学生とAIで合意",
+          "decisionState": "agreed",
+          "agreedAt": "2026-09-15"
+        }
+      ]
+    }
+  ],
+  "handoff": {
+    "latestSeminarId": "SEMINAR-2026-09-16",
+    "unresolvedIssueIds": [
+      "ISSUE-01"
+    ],
+    "pendingRequestIds": [
+      "REQ-01"
+    ],
+    "nextQuestions": [
+      "見落としをどの行動で判断するか",
+      "9月16日の指摘をメモJSONから取り込む"
+    ],
+    "importedMemoIds": []
+  },
+  "projectId": "demo-signage-study",
+  "setup": {
+    "operatingSystem": "",
+    "agreedAt": null,
+    "sourceLocations": [],
+    "shortcut": {
+      "requested": null,
+      "name": "",
+      "targetHtml": "",
+      "destination": "",
+      "approval": {
+        "status": "not_asked",
+        "approvedAt": null
+      },
+      "createdAt": null
+    }
+  },
+  "submission": {
+    "seminarId": "SEMINAR-2026-09-16",
+    "targetDate": "2026-09-16",
+    "zipPath": "DEMO001_2026-09-16.zip",
+    "packagedRevisionId": "20260915-02",
+    "packagedAt": null,
+    "includedSourceIds": [
+      "SRC-01",
+      "SRC-02",
+      "SRC-03",
+      "SRC-04"
+    ],
+    "excludedSourceIds": [],
+    "notionPageUrl": "",
+    "uploadState": "not_uploaded",
+    "studentReportedAt": null
+  },
+  "researchStatus": {
+    "summary": "好みの予備調査は完了。見落としが減るかを確かめる方法は、まだ検討中。",
+    "updatedAt": "2026-09-15",
+    "sourceIds": [
+      "SRC-01",
+      "SRC-02"
+    ],
+    "nextTaskIds": [
+      "TASK-02"
+    ]
+  },
+  "researchPlan": [
+    {
+      "id": "TASK-01",
+      "title": "表示案を作り、予備調査をする",
+      "purposeRelation": "比較する表示案を用意するための準備。好みだけでは見落としの減少は分からない。",
+      "status": "done",
+      "completed": "2案を用意し、8件の好みの回答を整理した。",
+      "remaining": "この準備作業は完了。研究目的の検証はこれから。",
+      "sourceIds": [
+        "SRC-01",
+        "SRC-02"
+      ]
+    },
+    {
+      "id": "TASK-02",
+      "title": "「見落とし」を観察する方法を決める",
+      "purposeRelation": "見落としが減ったかを判断できるようにする。",
+      "status": "in_progress",
+      "completed": "比較する配置案と仮説を整理した。",
+      "remaining": "どの行動を見落としと数えるか、比較条件・記録方法を決める。",
+      "sourceIds": [
+        "SRC-02",
+        "SRC-03"
+      ],
+      "schedule": {
+        "label": "観察計画の修正",
+        "plannedStart": "2026-09-15",
+        "plannedEnd": "2026-09-25",
+        "forecastStart": "2026-09-15",
+        "forecastEnd": "2026-09-25",
+        "durationEstimate": "約2週間",
+        "expectedOutput": "見落としの判断基準・比較条件",
+        "nextUse": "試行で記録できるか確かめる",
+        "dependsOn": [
+          "TASK-01"
+        ],
+        "state": "proposed",
+        "basis": "ダミーの工程見積もり。前工程の内容が整うことを仮定した日程案。",
+        "actualStart": null,
+        "actualEnd": null,
+        "completionCriteria": "見落としの判断基準・比較条件・記録手順を示し、試行で確かめる点を説明できる。",
+        "agreedAt": null
+      },
+      "steps": [
+        {
+          "id": "STEP-01",
+          "action": "見落としと判断する行動の候補を整理する",
+          "dueDate": "2026-09-18",
+          "output": "候補と判断理由",
+          "completionCriteria": "候補ごとに何を記録し、何を判断できるかを説明できる。",
+          "dependsOn": [],
+          "status": "in_progress"
+        },
+        {
+          "id": "STEP-02",
+          "action": "比較条件・記録手順を計画にする",
+          "dueDate": "2026-09-22",
+          "output": "観察計画案",
+          "completionCriteria": "変える条件・揃える条件・記録項目を対応付けられる。",
+          "dependsOn": [
+            "STEP-01"
+          ],
+          "status": "unstarted"
+        },
+        {
+          "id": "STEP-03",
+          "action": "目的との対応を教員と確認し、試行案を整える",
+          "dueDate": "2026-09-25",
+          "output": "指摘を反映した試行計画",
+          "completionCriteria": "未解決の点を明示し、試行で確認することが決まっている。",
+          "dependsOn": [
+            "STEP-02"
+          ],
+          "status": "unstarted"
+        }
+      ],
+      "contingencies": [
+        {
+          "checkDate": "2026-09-22",
+          "trigger": "判断基準や比較条件が決まらず、何を確かめるか説明できない。",
+          "action": "未決の点と代替案を整理し、教員に相談する。本観察へ進む予定は確定しない。",
+          "decisionDueDate": "2026-09-25",
+          "downstreamImpact": "試行開始と後続工程を再見積もりし、11月13日の初稿見込みへの影響を示す。",
+          "decisionOwner": "学生が案を整理し、教員に確認",
+          "state": "proposed"
+        }
+      ]
+    },
+    {
+      "id": "TASK-03",
+      "title": "観察方法を少人数で試す",
+      "purposeRelation": "予定した方法で行動を記録できるか、実施前に確かめる。",
+      "status": "unstarted",
+      "completed": "未実施。",
+      "remaining": "観察方法を決めた後、試行し、記録できない点を修正する。",
+      "sourceIds": [
+        "SRC-02"
+      ],
+      "schedule": {
+        "label": "観察方法の試行",
+        "plannedStart": "2026-09-28",
+        "plannedEnd": "2026-10-02",
+        "forecastStart": "2026-09-28",
+        "forecastEnd": "2026-10-02",
+        "durationEstimate": "約1週間",
+        "expectedOutput": "記録できる観察方法と修正点",
+        "nextUse": "本観察の手順を固める",
+        "dependsOn": [
+          "TASK-02"
+        ],
+        "state": "proposed",
+        "basis": "ダミーの工程見積もり。前工程の内容が整うことを仮定した日程案。",
+        "actualStart": null,
+        "actualEnd": null,
+        "completionCriteria": "実際に観察・記録を試し、記録できなかった点を手順へ反映している。",
+        "agreedAt": null
+      }
+    },
+    {
+      "id": "TASK-04",
+      "title": "移動中の行動を観察し、表示案を比較する",
+      "purposeRelation": "配置の違いが見落としに関わるかを検討する。",
+      "status": "unstarted",
+      "completed": "未実施。",
+      "remaining": "試行を踏まえて条件を整え、実施方針を教員と確認する。",
+      "sourceIds": [
+        "SRC-02"
+      ],
+      "schedule": {
+        "label": "行動観察・比較",
+        "plannedStart": "2026-10-05",
+        "plannedEnd": "2026-10-16",
+        "forecastStart": "2026-10-05",
+        "forecastEnd": "2026-10-16",
+        "durationEstimate": "約2週間",
+        "expectedOutput": "条件ごとの行動データ",
+        "nextUse": "配置と見落としの関係を分析する",
+        "dependsOn": [
+          "TASK-03"
+        ],
+        "state": "proposed",
+        "basis": "ダミーの工程見積もり。前工程の内容が整うことを仮定した日程案。",
+        "actualStart": null,
+        "actualEnd": null,
+        "completionCriteria": "合意した対象・条件の記録が揃い、欠測や変更の理由も追える。",
+        "agreedAt": null
+      }
+    },
+    {
+      "id": "TASK-05",
+      "title": "結果を分析し、設計原則と限界をまとめる",
+      "purposeRelation": "どのような配置が、どの条件で有効かを研究成果として残す。",
+      "status": "unstarted",
+      "completed": "観察結果はまだない。",
+      "remaining": "観察後に結果を分析し、言える範囲と残る問いを整理する。",
+      "sourceIds": [
+        "SRC-02"
+      ],
+      "schedule": {
+        "label": "分析・設計原則の検討",
+        "plannedStart": "2026-10-19",
+        "plannedEnd": "2026-10-30",
+        "forecastStart": "2026-10-19",
+        "forecastEnd": "2026-10-30",
+        "durationEstimate": "約2週間",
+        "expectedOutput": "結果から言えること・限界",
+        "nextUse": "論文の主張と根拠を組み立てる",
+        "dependsOn": [
+          "TASK-04"
+        ],
+        "state": "proposed",
+        "basis": "ダミーの工程見積もり。前工程の内容が整うことを仮定した日程案。",
+        "actualStart": null,
+        "actualEnd": null,
+        "completionCriteria": "問いに対する解釈をデータと結び、別の説明と限界を示せる。",
+        "agreedAt": null
+      }
+    },
+    {
+      "id": "TASK-06",
+      "title": "論文の初稿をまとめる",
+      "purposeRelation": "分析した根拠から論を組み立て、研究全体を説明する。",
+      "status": "unstarted",
+      "completed": "構成案はある。初稿は未作成。",
+      "remaining": "分析を踏まえて根拠・考察・限界を文章にまとめる。",
+      "sourceIds": [
+        "SRC-02"
+      ],
+      "schedule": {
+        "label": "論文の初稿",
+        "plannedStart": "2026-11-02",
+        "plannedEnd": "2026-11-13",
+        "forecastStart": "2026-11-02",
+        "forecastEnd": "2026-11-13",
+        "durationEstimate": "約2週間",
+        "expectedOutput": "主張・根拠・考察をまとめた初稿",
+        "nextUse": "教員と論の妥当性を検討する",
+        "dependsOn": [
+          "TASK-05"
+        ],
+        "state": "proposed",
+        "basis": "ダミーの工程見積もり。前工程の内容が整うことを仮定した日程案。",
+        "actualStart": null,
+        "actualEnd": null,
+        "completionCriteria": "主張・根拠・考察のつながりと残る論点を教員が読んで検討できる。",
+        "agreedAt": null
+      }
+    }
+  ],
+  "paperOutline": [
+    {
+      "id": "background",
+      "title": "背景・問題",
+      "content": "移動中に必要な案内表示を見落とす問題を扱う。案内表示の中でも、行き先の名称と方向を示す矢印の配置に着目する。",
+      "remaining": "先行研究の知見をどう活かすか、何を引き継ぎ何を明らかにする研究かを整理する。",
+      "sourceIds": [
+        "SRC-02"
+      ]
+    },
+    {
+      "id": "purpose",
+      "title": "目的・問い・仮説",
+      "content": "目的は、移動中の案内表示の見落としを減らすことである。名称と矢印を近接させた配置は、離した配置よりも見落とされにくいのではないか、という仮説を確かめる。",
+      "remaining": "対象者と利用場面を定め、どの範囲について答える研究かを明確にする。",
+      "sourceIds": [
+        "SRC-02"
+      ]
+    },
+    {
+      "id": "method",
+      "title": "方法",
+      "content": "予備調査では2種類の表示案を8名に見せ、どちらを好むか尋ねた。今後は移動中の行動を観察し、配置によって見落としが変わるかを比較する計画である。",
+      "remaining": "見落としの判断基準・比較条件・記録方法を決め、少人数で方法を試す。",
+      "sourceIds": [
+        "SRC-01",
+        "SRC-02"
+      ]
+    },
+    {
+      "id": "results",
+      "title": "結果",
+      "content": "予備調査では、Aを3名、Bを5名が選んだ。この結果は表示案への好みを示す。移動中の見落としを調べる観察は未実施であり、配置の効果を示す結果はまだない。",
+      "remaining": "目的に対応した行動のデータを集め、比較結果を図表にまとめる。",
+      "sourceIds": [
+        "SRC-01"
+      ]
+    },
+    {
+      "id": "discussion",
+      "title": "考察",
+      "content": "好まれた表示が、見落とされにくい表示とは限らない。今回の回答だけでは仮説を判断できず、好みと見落としを同じものとして扱った計画を見直す必要がある。",
+      "remaining": "行動の観察結果から、配置の効果と別の要因の可能性、適用できる範囲を検討する。",
+      "sourceIds": [
+        "SRC-04",
+        "SRC-03"
+      ]
+    },
+    {
+      "id": "conclusion",
+      "title": "結論・今後の課題",
+      "content": "現時点では、どの配置が見落としを減らすかについて結論は出せない。今後の観察と分析を通して、名称と矢印の配置に関する設計原則と、その限界を示すことを目指す。",
+      "remaining": "検証後に研究の問いへの答えをまとめ、明らかになったことと残る課題を区別する。",
+      "sourceIds": [
+        "SRC-02",
+        "SRC-04"
+      ]
+    }
+  ],
+  "logs": [
+    {
+      "id": "LOG-20260909",
+      "type": "research_update",
+      "title": "研究の目的と、最初の計画を整理した",
+      "summary": "好みと見落としの関係を再検討することになった。",
+      "snapshot": {
+        "research": {
+          "title": "案内表示の見落としを減らすには",
+          "purpose": "移動中に必要な案内表示を見落とすことを減らす。",
+          "question": "行き先の名称と方向の矢印をまとめて配置すると、見落としは減るか。",
+          "contribution": "名称と矢印の配置について、見落としを減らすための設計原則を検討する。",
+          "hypothesis": "名称と矢印を近接させる配置は、離した配置より見落とされにくい。",
+          "currentPlan": "2種類の表示案を比較する計画を立てた。好みを尋ねる予備調査と、目的に対応する観察方法を検討している。調査・実験は未実施。",
+          "sourceIds": [
+            "SRC-02"
+          ],
+          "studentConfirmedAt": null
+        },
+        "researchStatus": {
+          "summary": "最初の実験案を検討している段階。好みを尋ねる計画と、見落としを減らす目的の関係を整理している。",
+          "updatedAt": "2026-09-09",
+          "sourceIds": [
+            "SRC-02",
+            "SRC-03"
+          ],
+          "nextTaskIds": [
+            "TASK-02"
+          ]
+        },
+        "researchPlan": [
+          {
+            "id": "TASK-01",
+            "title": "表示案を作り、予備調査をする",
+            "purposeRelation": "比較する表示案を用意するための準備。好みだけでは見落としの減少は分からない。",
+            "status": "in_progress",
+            "completed": "2種類の表示案を比べる計画を立てた。",
+            "remaining": "表示案の準備と、予備調査の実施はこれから。",
+            "sourceIds": [
+              "SRC-02"
+            ]
+          },
+          {
+            "id": "TASK-02",
+            "title": "「見落とし」を観察する方法を決める",
+            "purposeRelation": "見落としが減ったかを判断できるようにする。",
+            "status": "in_progress",
+            "completed": "比較する配置案と仮説を整理した。",
+            "remaining": "どの行動を見落としと数えるか、比較条件・記録方法を決める。",
+            "sourceIds": [
+              "SRC-02",
+              "SRC-03"
+            ]
+          },
+          {
+            "id": "TASK-03",
+            "title": "観察方法を少人数で試す",
+            "purposeRelation": "予定した方法で行動を記録できるか、実施前に確かめる。",
+            "status": "unstarted",
+            "completed": "未実施。",
+            "remaining": "観察方法を決めた後、試行し、記録できない点を修正する。",
+            "sourceIds": [
+              "SRC-02"
+            ]
+          },
+          {
+            "id": "TASK-04",
+            "title": "移動中の行動を観察し、表示案を比較する",
+            "purposeRelation": "配置の違いが見落としに関わるかを検討する。",
+            "status": "unstarted",
+            "completed": "未実施。",
+            "remaining": "試行を踏まえて条件を整え、実施方針を教員と確認する。",
+            "sourceIds": [
+              "SRC-02"
+            ]
+          },
+          {
+            "id": "TASK-05",
+            "title": "結果を分析し、設計原則と限界をまとめる",
+            "purposeRelation": "どのような配置が、どの条件で有効かを研究成果として残す。",
+            "status": "unstarted",
+            "completed": "観察結果はまだない。",
+            "remaining": "観察後に結果を分析し、言える範囲と残る問いを整理する。",
+            "sourceIds": [
+              "SRC-02"
+            ]
+          }
+        ],
+        "feedback": [
+          {
+            "id": "FB-01",
+            "date": "2026-09-09",
+            "text": "好まれる表示と、移動中に見落とされない表示は、同じとは限らない。目的に対応する観察項目を考える。",
+            "recordType": "架空の教員コメント",
+            "studentUnderstanding": "好みだけでは見落としの減少を示せない。",
+            "aiInterpretation": "好みを尋ねた結果の役割と、見落としを確かめる実験を分けて整理する。",
+            "sourceIds": [
+              "SRC-03"
+            ],
+            "issueIds": [
+              "ISSUE-01"
+            ]
+          }
+        ],
+        "seminar": {
+          "id": "SEMINAR-2026-09-16",
+          "date": "2026-09-16",
+          "studentReview": "下書き（デモ設定）",
+          "teacherReview": "未確認",
+          "htmlPath": "index.html",
+          "overview": "最初の計画段階。好みの調査と研究目的の関係を整理する必要がある。",
+          "issueIds": [
+            "ISSUE-01"
+          ],
+          "checks": [
+            {
+              "id": "C1",
+              "result": "不整合あり",
+              "reason": "目的と好みの回答の関係を整理する必要がある。"
+            },
+            {
+              "id": "C2",
+              "result": "対応を確認",
+              "reason": "配置と見落としの関係を仮説にしている。"
+            },
+            {
+              "id": "C3",
+              "result": "情報不足",
+              "reason": "行動の観察項目と比較条件が未決定。"
+            },
+            {
+              "id": "C4",
+              "result": "今回は対象外",
+              "reason": "実施前のため結果はまだない。"
+            },
+            {
+              "id": "C5",
+              "result": "対応を確認",
+              "reason": "好みの回答から見落としの減少を主張していない。"
+            },
+            {
+              "id": "C6",
+              "result": "一部対応",
+              "reason": "指摘の意味は整理したが、新しい観察計画は未完成。"
+            }
+          ],
+          "purposeAlignment": {
+            "purpose": "移動中に必要な案内表示を見落とすことを減らす。",
+            "currentWork": "2種類の表示案を見せて、どちらが好みか尋ねる調査を計画している。",
+            "whatWeLearn": "提示した2案についての、回答者の好み。",
+            "gap": "移動中に案内表示を見落とす回数や状況は分からない。",
+            "explanation": "目的は見落としを減らすことですね。今回の質問で分かるのは表示への好みです。好まれた表示が移動中にも見落とされにくいかは、まだ分かりません。好みの調査を案の選択に使いつつ、次は何を観察すれば見落としを確かめられるか考えましょう。",
+            "studentUnderstanding": "好きな表示は見落としにくいのではないかと考えていた。"
+          },
+          "discussion": {
+            "question": "「見落とし」をどの行動で判断し、どの条件をそろえて比較するか。",
+            "options": "表示に気づかず通過したか／進路選択を誤ったか、などの候補を比較する。どちらも状況や他の要因を検討する必要がある。",
+            "studentPreference": "まず観察の予備試行を行い、記録できる行動と条件を確かめたい。"
+          },
+          "nextActions": [
+            {
+              "action": "見落としの定義と観察項目を計画に追記する。",
+              "reason": "仮説を検討できる観察にする。",
+              "output": "観察する行動・比較条件・手順を書いた計画案。",
+              "position": "AIの提案・学生検討中"
+            }
+          ]
+        }
+      },
+      "date": "2026-09-09",
+      "seminarDate": "2026-09-09"
+    },
+    {
+      "id": "LOG-20260914",
+      "type": "work_record",
+      "title": "2種類の表示案で、好みを尋ねた",
+      "workRecordId": "WORK-01",
+      "record": {
+        "id": "WORK-01",
+        "date": "2026-09-14",
+        "activity": "2種類の案内表示を8名に見せ、どちらを好むかを尋ねた（架空）。",
+        "result": "Aを選んだ人が3名、Bを選んだ人が5名。移動中の見落としは観察していない。",
+        "sourceIds": [
+          "SRC-01",
+          "SRC-04"
+        ],
+        "title": "2種類の表示案で、好みを尋ねた",
+        "purposeRelation": "見落としにくい表示を考えるため、比較する2案への反応を調べた。",
+        "expected": "好まれる案を選べば、見落としにくい案も選べると考えていた。",
+        "failures": [
+          {
+            "description": "好みは記録できたが、目的に必要な「見落とし」を記録していなかった。",
+            "conditions": "表示案を見せて好みを尋ねただけで、移動中の行動を観察していない。",
+            "impact": "配置によって見落としが減るかを、この調査からは判断できない。",
+            "sourceIds": [
+              "SRC-01",
+              "SRC-04"
+            ]
+          }
+        ],
+        "reflection": {
+          "studentInterpretation": "好みを尋ねることと、見落としにくさを確かめることを、同じだと思っていた。今回の方法では研究の問いに答えられない。",
+          "evidence": "得られた記録はA・Bどちらを好むかの回答だけで、見落としの回数や状況は含まれていない。",
+          "alternativeExplanations": "Bを好んだ理由は記録していない。文字の読みやすさや見た目など、配置以外を評価した可能性もある。",
+          "uncertainties": "Bが移動中にも見落とされにくいか、配置が好みの違いに関わったかは分からない。",
+          "purposeConnection": "予備調査の結果は残し、見落としを減らす設計原則を検討するための行動観察を別に計画する。",
+          "aiComment": "好みの回答を失敗データとして捨てず、この方法では何が分からないかを記録する。仮説が間違いだったと結論づける段階ではない。",
+          "studentConfirmedAt": "2026-09-15"
+        },
+        "nextTrial": {
+          "action": "見落としと数える行動を定義し、その行動を観察・記録できるか試す計画を作る。",
+          "reason": "目的に対応する情報が得られるかを、実施前に確かめるため。",
+          "output": "観察する行動・比較条件・記録方法をまとめた計画案。",
+          "position": "学生とAIで合意・計画案を作って教員に相談する",
+          "decisionState": "agreed",
+          "agreedAt": "2026-09-15"
+        }
+      },
+      "date": "2026-09-14",
+      "seminarDate": "2026-09-16"
+    },
+    {
+      "id": "LOG-20260915",
+      "type": "research_update",
+      "title": "予備調査の意味を振り返り、観察計画を見直した",
+      "summary": "見落としが減るかは未検証。次は観察項目と比較条件を決める。",
+      "snapshot": {
+        "research": {
+          "title": "案内表示の見落としを減らすには",
+          "purpose": "移動中に必要な案内表示を見落とすことを減らす。",
+          "question": "行き先の名称と方向の矢印をまとめて配置すると、見落としは減るか。",
+          "contribution": "名称と矢印の配置について、見落としを減らすための設計原則を検討する。",
+          "hypothesis": "名称と矢印を近接させる配置は、離した配置より見落とされにくい。",
+          "currentPlan": "2種類の表示案を比較する。予備調査では好みを尋ねた。移動中の行動を観察する実験は未実施。",
+          "sourceIds": [
+            "SRC-01",
+            "SRC-02"
+          ],
+          "studentConfirmedAt": "2026-09-15"
+        },
+        "researchStatus": {
+          "summary": "好みの予備調査は完了。見落としが減るかを確かめる方法は、まだ検討中。",
+          "updatedAt": "2026-09-15",
+          "sourceIds": [
+            "SRC-01",
+            "SRC-02"
+          ],
+          "nextTaskIds": [
+            "TASK-02"
+          ]
+        },
+        "researchPlan": [
+          {
+            "id": "TASK-01",
+            "title": "表示案を作り、予備調査をする",
+            "purposeRelation": "比較する表示案を用意するための準備。好みだけでは見落としの減少は分からない。",
+            "status": "done",
+            "completed": "2案を用意し、8件の好みの回答を整理した。",
+            "remaining": "この準備作業は完了。研究目的の検証はこれから。",
+            "sourceIds": [
+              "SRC-01",
+              "SRC-02"
+            ]
+          },
+          {
+            "id": "TASK-02",
+            "title": "「見落とし」を観察する方法を決める",
+            "purposeRelation": "見落としが減ったかを判断できるようにする。",
+            "status": "in_progress",
+            "completed": "比較する配置案と仮説を整理した。",
+            "remaining": "どの行動を見落としと数えるか、比較条件・記録方法を決める。",
+            "sourceIds": [
+              "SRC-02",
+              "SRC-03"
+            ]
+          },
+          {
+            "id": "TASK-03",
+            "title": "観察方法を少人数で試す",
+            "purposeRelation": "予定した方法で行動を記録できるか、実施前に確かめる。",
+            "status": "unstarted",
+            "completed": "未実施。",
+            "remaining": "観察方法を決めた後、試行し、記録できない点を修正する。",
+            "sourceIds": [
+              "SRC-02"
+            ]
+          },
+          {
+            "id": "TASK-04",
+            "title": "移動中の行動を観察し、表示案を比較する",
+            "purposeRelation": "配置の違いが見落としに関わるかを検討する。",
+            "status": "unstarted",
+            "completed": "未実施。",
+            "remaining": "試行を踏まえて条件を整え、実施方針を教員と確認する。",
+            "sourceIds": [
+              "SRC-02"
+            ]
+          },
+          {
+            "id": "TASK-05",
+            "title": "結果を分析し、設計原則と限界をまとめる",
+            "purposeRelation": "どのような配置が、どの条件で有効かを研究成果として残す。",
+            "status": "unstarted",
+            "completed": "観察結果はまだない。",
+            "remaining": "観察後に結果を分析し、言える範囲と残る問いを整理する。",
+            "sourceIds": [
+              "SRC-02"
+            ]
+          }
+        ],
+        "seminar": {
+          "id": "SEMINAR-2026-09-16",
+          "date": "2026-09-16",
+          "studentReview": "学生確認済み（デモ設定）",
+          "teacherReview": "未確認",
+          "htmlPath": "index.html",
+          "overview": "予備調査を終えた段階。次の実験で観察する行動と条件を相談したい。",
+          "issueIds": [
+            "ISSUE-01"
+          ],
+          "checks": [
+            {
+              "id": "C1",
+              "result": "不整合あり",
+              "reason": "目的と好みの回答の関係を整理する必要がある。"
+            },
+            {
+              "id": "C2",
+              "result": "対応を確認",
+              "reason": "配置と見落としの関係を仮説にしている。"
+            },
+            {
+              "id": "C3",
+              "result": "情報不足",
+              "reason": "行動の観察項目と比較条件が未決定。"
+            },
+            {
+              "id": "C4",
+              "result": "対応を確認",
+              "reason": "好みの回答8件の架空データを参照できる。"
+            },
+            {
+              "id": "C5",
+              "result": "対応を確認",
+              "reason": "好みの回答から見落としの減少を主張していない。"
+            },
+            {
+              "id": "C6",
+              "result": "一部対応",
+              "reason": "指摘の意味は整理したが、新しい観察計画は未完成。"
+            }
+          ],
+          "purposeAlignment": {
+            "purpose": "移動中に必要な案内表示を見落とすことを減らす。",
+            "currentWork": "2種類の案内表示を8名に見せ、どちらを好むかを尋ねた（架空）。",
+            "whatWeLearn": "提示した2案についての、回答者の好み。",
+            "gap": "移動中に案内表示を見落とす回数や状況は分からない。",
+            "explanation": "目的は見落としを減らすことですね。今回の質問で分かるのは表示への好みです。好まれた表示が移動中にも見落とされにくいかは、まだ分かりません。好みの調査を案の選択に使いつつ、次は何を観察すれば見落としを確かめられるか考えましょう。",
+            "studentUnderstanding": "好みは表示案を絞る材料にし、見落としは別の観察で確かめたい。"
+          },
+          "discussion": {
+            "question": "「見落とし」をどの行動で判断し、どの条件をそろえて比較するか。",
+            "options": "表示に気づかず通過したか／進路選択を誤ったか、などの候補を比較する。どちらも状況や他の要因を検討する必要がある。",
+            "studentPreference": "まず観察の予備試行を行い、記録できる行動と条件を確かめたい。"
+          },
+          "nextActions": [
+            {
+              "action": "見落としの定義と観察項目を計画に追記する。",
+              "reason": "仮説を検討できる観察にする。",
+              "output": "観察する行動・比較条件・手順を書いた計画案。",
+              "position": "学生とAIで合意",
+              "decisionState": "agreed",
+              "agreedAt": "2026-09-15"
+            }
+          ]
+        },
+        "paperOutline": [
+          {
+            "id": "background",
+            "title": "背景・問題",
+            "content": "移動中に必要な案内表示を見落とす問題を扱う。案内表示の中でも、行き先の名称と方向を示す矢印の配置に着目する。",
+            "remaining": "先行研究の知見をどう活かすか、何を引き継ぎ何を明らかにする研究かを整理する。",
+            "sourceIds": [
+              "SRC-02"
+            ]
+          },
+          {
+            "id": "purpose",
+            "title": "目的・問い・仮説",
+            "content": "目的は、移動中の案内表示の見落としを減らすことである。名称と矢印を近接させた配置は、離した配置よりも見落とされにくいのではないか、という仮説を確かめる。",
+            "remaining": "対象者と利用場面を定め、どの範囲について答える研究かを明確にする。",
+            "sourceIds": [
+              "SRC-02"
+            ]
+          },
+          {
+            "id": "method",
+            "title": "方法",
+            "content": "予備調査では2種類の表示案を8名に見せ、どちらを好むか尋ねた。今後は移動中の行動を観察し、配置によって見落としが変わるかを比較する計画である。",
+            "remaining": "見落としの判断基準・比較条件・記録方法を決め、少人数で方法を試す。",
+            "sourceIds": [
+              "SRC-01",
+              "SRC-02"
+            ]
+          },
+          {
+            "id": "results",
+            "title": "結果",
+            "content": "予備調査では、Aを3名、Bを5名が選んだ。この結果は表示案への好みを示す。移動中の見落としを調べる観察は未実施であり、配置の効果を示す結果はまだない。",
+            "remaining": "目的に対応した行動のデータを集め、比較結果を図表にまとめる。",
+            "sourceIds": [
+              "SRC-01"
+            ]
+          },
+          {
+            "id": "discussion",
+            "title": "考察",
+            "content": "好まれた表示が、見落とされにくい表示とは限らない。今回の回答だけでは仮説を判断できず、好みと見落としを同じものとして扱った計画を見直す必要がある。",
+            "remaining": "行動の観察結果から、配置の効果と別の要因の可能性、適用できる範囲を検討する。",
+            "sourceIds": [
+              "SRC-04",
+              "SRC-03"
+            ]
+          },
+          {
+            "id": "conclusion",
+            "title": "結論・今後の課題",
+            "content": "現時点では、どの配置が見落としを減らすかについて結論は出せない。今後の観察と分析を通して、名称と矢印の配置に関する設計原則と、その限界を示すことを目指す。",
+            "remaining": "検証後に研究の問いへの答えをまとめ、明らかになったことと残る課題を区別する。",
+            "sourceIds": [
+              "SRC-02",
+              "SRC-04"
+            ]
+          }
+        ]
+      },
+      "date": "2026-09-15",
+      "seminarDate": "2026-09-16"
+    },
+    {
+      "id": "LOG-PLAN-20260915",
+      "date": "2026-09-15",
+      "seminarDate": "2026-09-16",
+      "type": "plan_update",
+      "title": "工程・期間・成果のつながりを計画した",
+      "summary": "観察計画は9月25日まで、論文初稿は11月13日を見込む日程案。試行と教員への相談を踏まえて見直す。",
+      "sourceIds": [
+        "SRC-02"
+      ],
+      "snapshot": {
+        "research": {
+          "title": "案内表示の見落としを減らすには",
+          "purpose": "移動中に必要な案内表示を見落とすことを減らす。",
+          "question": "行き先の名称と方向の矢印をまとめて配置すると、見落としは減るか。",
+          "contribution": "名称と矢印の配置について、見落としを減らすための設計原則を検討する。",
+          "hypothesis": "名称と矢印を近接させる配置は、離した配置より見落とされにくい。",
+          "currentPlan": "2種類の表示案を比較する。予備調査では好みを尋ねた。移動中の行動を観察する実験は未実施。",
+          "sourceIds": [
+            "SRC-01",
+            "SRC-02"
+          ],
+          "studentConfirmedAt": "2026-09-15"
+        },
+        "researchStatus": {
+          "summary": "好みの予備調査は完了。見落としが減るかを確かめる方法は、まだ検討中。",
+          "updatedAt": "2026-09-15",
+          "sourceIds": [
+            "SRC-01",
+            "SRC-02"
+          ],
+          "nextTaskIds": [
+            "TASK-02"
+          ]
+        },
+        "researchPlan": [
+          {
+            "id": "TASK-01",
+            "title": "表示案を作り、予備調査をする",
+            "purposeRelation": "比較する表示案を用意するための準備。好みだけでは見落としの減少は分からない。",
+            "status": "done",
+            "completed": "2案を用意し、8件の好みの回答を整理した。",
+            "remaining": "この準備作業は完了。研究目的の検証はこれから。",
+            "sourceIds": [
+              "SRC-01",
+              "SRC-02"
+            ]
+          },
+          {
+            "id": "TASK-02",
+            "title": "「見落とし」を観察する方法を決める",
+            "purposeRelation": "見落としが減ったかを判断できるようにする。",
+            "status": "in_progress",
+            "completed": "比較する配置案と仮説を整理した。",
+            "remaining": "どの行動を見落としと数えるか、比較条件・記録方法を決める。",
+            "sourceIds": [
+              "SRC-02",
+              "SRC-03"
+            ],
+            "schedule": {
+              "label": "観察計画の修正",
+              "plannedStart": "2026-09-15",
+              "plannedEnd": "2026-09-25",
+              "forecastStart": "2026-09-15",
+              "forecastEnd": "2026-09-25",
+              "durationEstimate": "約2週間",
+              "expectedOutput": "見落としの判断基準・比較条件",
+              "nextUse": "試行で記録できるか確かめる",
+              "dependsOn": [
+                "TASK-01"
+              ],
+              "state": "proposed",
+              "basis": "ダミーの工程見積もり。前工程の内容が整うことを仮定した日程案。",
+              "actualStart": null,
+              "actualEnd": null,
+              "completionCriteria": "見落としの判断基準・比較条件・記録手順を示し、試行で確かめる点を説明できる。",
+              "agreedAt": null
+            },
+            "steps": [
+              {
+                "id": "STEP-01",
+                "action": "見落としと判断する行動の候補を整理する",
+                "dueDate": "2026-09-18",
+                "output": "候補と判断理由",
+                "completionCriteria": "候補ごとに何を記録し、何を判断できるかを説明できる。",
+                "dependsOn": [],
+                "status": "in_progress"
+              },
+              {
+                "id": "STEP-02",
+                "action": "比較条件・記録手順を計画にする",
+                "dueDate": "2026-09-22",
+                "output": "観察計画案",
+                "completionCriteria": "変える条件・揃える条件・記録項目を対応付けられる。",
+                "dependsOn": [
+                  "STEP-01"
+                ],
+                "status": "unstarted"
+              },
+              {
+                "id": "STEP-03",
+                "action": "目的との対応を教員と確認し、試行案を整える",
+                "dueDate": "2026-09-25",
+                "output": "指摘を反映した試行計画",
+                "completionCriteria": "未解決の点を明示し、試行で確認することが決まっている。",
+                "dependsOn": [
+                  "STEP-02"
+                ],
+                "status": "unstarted"
+              }
+            ],
+            "contingencies": [
+              {
+                "checkDate": "2026-09-22",
+                "trigger": "判断基準や比較条件が決まらず、何を確かめるか説明できない。",
+                "action": "未決の点と代替案を整理し、教員に相談する。本観察へ進む予定は確定しない。",
+                "decisionDueDate": "2026-09-25",
+                "downstreamImpact": "試行開始と後続工程を再見積もりし、11月13日の初稿見込みへの影響を示す。",
+                "decisionOwner": "学生が案を整理し、教員に確認",
+                "state": "proposed"
+              }
+            ]
+          },
+          {
+            "id": "TASK-03",
+            "title": "観察方法を少人数で試す",
+            "purposeRelation": "予定した方法で行動を記録できるか、実施前に確かめる。",
+            "status": "unstarted",
+            "completed": "未実施。",
+            "remaining": "観察方法を決めた後、試行し、記録できない点を修正する。",
+            "sourceIds": [
+              "SRC-02"
+            ],
+            "schedule": {
+              "label": "観察方法の試行",
+              "plannedStart": "2026-09-28",
+              "plannedEnd": "2026-10-02",
+              "forecastStart": "2026-09-28",
+              "forecastEnd": "2026-10-02",
+              "durationEstimate": "約1週間",
+              "expectedOutput": "記録できる観察方法と修正点",
+              "nextUse": "本観察の手順を固める",
+              "dependsOn": [
+                "TASK-02"
+              ],
+              "state": "proposed",
+              "basis": "ダミーの工程見積もり。前工程の内容が整うことを仮定した日程案。",
+              "actualStart": null,
+              "actualEnd": null,
+              "completionCriteria": "実際に観察・記録を試し、記録できなかった点を手順へ反映している。",
+              "agreedAt": null
+            }
+          },
+          {
+            "id": "TASK-04",
+            "title": "移動中の行動を観察し、表示案を比較する",
+            "purposeRelation": "配置の違いが見落としに関わるかを検討する。",
+            "status": "unstarted",
+            "completed": "未実施。",
+            "remaining": "試行を踏まえて条件を整え、実施方針を教員と確認する。",
+            "sourceIds": [
+              "SRC-02"
+            ],
+            "schedule": {
+              "label": "行動観察・比較",
+              "plannedStart": "2026-10-05",
+              "plannedEnd": "2026-10-16",
+              "forecastStart": "2026-10-05",
+              "forecastEnd": "2026-10-16",
+              "durationEstimate": "約2週間",
+              "expectedOutput": "条件ごとの行動データ",
+              "nextUse": "配置と見落としの関係を分析する",
+              "dependsOn": [
+                "TASK-03"
+              ],
+              "state": "proposed",
+              "basis": "ダミーの工程見積もり。前工程の内容が整うことを仮定した日程案。",
+              "actualStart": null,
+              "actualEnd": null,
+              "completionCriteria": "合意した対象・条件の記録が揃い、欠測や変更の理由も追える。",
+              "agreedAt": null
+            }
+          },
+          {
+            "id": "TASK-05",
+            "title": "結果を分析し、設計原則と限界をまとめる",
+            "purposeRelation": "どのような配置が、どの条件で有効かを研究成果として残す。",
+            "status": "unstarted",
+            "completed": "観察結果はまだない。",
+            "remaining": "観察後に結果を分析し、言える範囲と残る問いを整理する。",
+            "sourceIds": [
+              "SRC-02"
+            ],
+            "schedule": {
+              "label": "分析・設計原則の検討",
+              "plannedStart": "2026-10-19",
+              "plannedEnd": "2026-10-30",
+              "forecastStart": "2026-10-19",
+              "forecastEnd": "2026-10-30",
+              "durationEstimate": "約2週間",
+              "expectedOutput": "結果から言えること・限界",
+              "nextUse": "論文の主張と根拠を組み立てる",
+              "dependsOn": [
+                "TASK-04"
+              ],
+              "state": "proposed",
+              "basis": "ダミーの工程見積もり。前工程の内容が整うことを仮定した日程案。",
+              "actualStart": null,
+              "actualEnd": null,
+              "completionCriteria": "問いに対する解釈をデータと結び、別の説明と限界を示せる。",
+              "agreedAt": null
+            }
+          },
+          {
+            "id": "TASK-06",
+            "title": "論文の初稿をまとめる",
+            "purposeRelation": "分析した根拠から論を組み立て、研究全体を説明する。",
+            "status": "unstarted",
+            "completed": "構成案はある。初稿は未作成。",
+            "remaining": "分析を踏まえて根拠・考察・限界を文章にまとめる。",
+            "sourceIds": [
+              "SRC-02"
+            ],
+            "schedule": {
+              "label": "論文の初稿",
+              "plannedStart": "2026-11-02",
+              "plannedEnd": "2026-11-13",
+              "forecastStart": "2026-11-02",
+              "forecastEnd": "2026-11-13",
+              "durationEstimate": "約2週間",
+              "expectedOutput": "主張・根拠・考察をまとめた初稿",
+              "nextUse": "教員と論の妥当性を検討する",
+              "dependsOn": [
+                "TASK-05"
+              ],
+              "state": "proposed",
+              "basis": "ダミーの工程見積もり。前工程の内容が整うことを仮定した日程案。",
+              "actualStart": null,
+              "actualEnd": null,
+              "completionCriteria": "主張・根拠・考察のつながりと残る論点を教員が読んで検討できる。",
+              "agreedAt": null
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "LOG-ARGUMENT-20260915",
+      "date": "2026-09-15",
+      "seminarDate": "2026-09-16",
+      "type": "argument_review",
+      "title": "作業・得られたもの・目的のつながりを確認した",
+      "summary": "好みの調査から好みの回答は得られた。一方、見落としの減少への接続はない。観察方法を直す計画と、これから確かめる部分を分けた。",
+      "sourceIds": [
+        "SRC-01",
+        "SRC-02",
+        "SRC-04"
+      ],
+      "snapshot": {
+        "research": {
+          "title": "案内表示の見落としを減らすには",
+          "purpose": "移動中に必要な案内表示を見落とすことを減らす。",
+          "question": "行き先の名称と方向の矢印をまとめて配置すると、見落としは減るか。",
+          "contribution": "名称と矢印の配置について、見落としを減らすための設計原則を検討する。",
+          "hypothesis": "名称と矢印を近接させる配置は、離した配置より見落とされにくい。",
+          "currentPlan": "2種類の表示案を比較する。予備調査では好みを尋ねた。移動中の行動を観察する実験は未実施。",
+          "sourceIds": [
+            "SRC-01",
+            "SRC-02"
+          ],
+          "studentConfirmedAt": "2026-09-15"
+        },
+        "researchStatus": {
+          "summary": "好みの予備調査は完了。見落としが減るかを確かめる方法は、まだ検討中。",
+          "updatedAt": "2026-09-15",
+          "sourceIds": [
+            "SRC-01",
+            "SRC-02"
+          ],
+          "nextTaskIds": [
+            "TASK-02"
+          ]
+        },
+        "argumentMap": {
+          "updatedAt": "2026-09-15",
+          "focusLinkId": "LINK-GAP",
+          "nodes": [
+            {
+              "id": "ARG-BACKGROUND",
+              "label": "背景・位置づけ",
+              "text": "案内表示の見落としを減らしたい。先行研究との関係は未整理。",
+              "state": "unknown",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "paperSectionIds": [
+                "background"
+              ]
+            },
+            {
+              "id": "ARG-QUESTION",
+              "label": "研究で答えたいこと",
+              "text": "名称と矢印をまとめると、見落としは減るか。",
+              "state": "recorded",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "paperSectionIds": [
+                "purpose"
+              ]
+            },
+            {
+              "id": "ARG-WORK",
+              "label": "やったこと",
+              "text": "2つの表示案を8名に見せ、好みを聞いた。",
+              "state": "recorded",
+              "sourceIds": [
+                "SRC-01",
+                "SRC-04"
+              ],
+              "workRecordIds": [
+                "WORK-01"
+              ],
+              "planIds": [
+                "TASK-01"
+              ],
+              "paperSectionIds": [
+                "method"
+              ]
+            },
+            {
+              "id": "ARG-DATA",
+              "label": "得られたもの",
+              "text": "Aを3名、Bを5名が選んだ。",
+              "note": "この8名の、表示案への好み。",
+              "state": "recorded",
+              "sourceIds": [
+                "SRC-01"
+              ],
+              "paperSectionIds": [
+                "results"
+              ]
+            },
+            {
+              "id": "ARG-ANSWER",
+              "label": "問いへの答え",
+              "text": "配置で見落としが減るかは、まだ判断できない。",
+              "state": "pending",
+              "sourceIds": [
+                "SRC-02",
+                "SRC-04"
+              ],
+              "paperSectionIds": [
+                "conclusion"
+              ]
+            },
+            {
+              "id": "ARG-PLAN",
+              "label": "計画を直す",
+              "text": "見落としの判断基準・比較条件を決め、方法を試す。",
+              "state": "planned",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "planIds": [
+                "TASK-02",
+                "TASK-03"
+              ],
+              "paperSectionIds": [
+                "method"
+              ]
+            },
+            {
+              "id": "ARG-OBSERVE",
+              "label": "集める予定のもの",
+              "text": "配置ごとの、移動中の行動と見落としの記録。",
+              "state": "pending",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "planIds": [
+                "TASK-04"
+              ],
+              "paperSectionIds": [
+                "results"
+              ]
+            },
+            {
+              "id": "ARG-DISCUSSION",
+              "label": "今ある結果の解釈",
+              "text": "好みは分かったが、見落としの減少を判断する根拠にはならない。",
+              "state": "recorded",
+              "sourceIds": [
+                "SRC-01",
+                "SRC-03",
+                "SRC-04"
+              ],
+              "paperSectionIds": [
+                "discussion"
+              ]
+            }
+          ],
+          "links": [
+            {
+              "id": "LINK-RECORD",
+              "from": "ARG-WORK",
+              "to": "ARG-DATA",
+              "state": "supported",
+              "label": "回答を記録",
+              "reason": "好みを聞いた8件の回答から、AとBを選んだ人数を数えられる。",
+              "needed": "",
+              "sourceIds": [
+                "SRC-01"
+              ]
+            },
+            {
+              "id": "LINK-GAP",
+              "from": "ARG-DATA",
+              "to": "ARG-ANSWER",
+              "state": "gap",
+              "label": "ここが切れ目",
+              "reason": "「好まれる」から「見落とされにくい」とは言えない。",
+              "detail": "回答に残っているのは好みだけ。移動中に見落としたかを記録していないため、この回答を集め続けても、見落としが減るかは判断できない。",
+              "needed": "何を見落としと数えるか、どの条件で比較するかを決める。計画案を相談し、方法を試してから行動を記録する。",
+              "sourceIds": [
+                "SRC-01",
+                "SRC-02",
+                "SRC-03",
+                "SRC-04"
+              ],
+              "issueIds": [
+                "ISSUE-01"
+              ],
+              "planIds": [
+                "TASK-02",
+                "TASK-03",
+                "TASK-04"
+              ]
+            },
+            {
+              "id": "LINK-TRIAL",
+              "from": "ARG-PLAN",
+              "to": "ARG-OBSERVE",
+              "state": "pending",
+              "label": "方法を試してから",
+              "reason": "判断基準と比較条件は検討中。試行で記録可能かを確かめてから本観察へ進む。",
+              "needed": "判断基準・比較条件・記録手順を決め、試行する。",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "planIds": [
+                "TASK-02",
+                "TASK-03"
+              ]
+            },
+            {
+              "id": "LINK-ANALYSE",
+              "from": "ARG-OBSERVE",
+              "to": "ARG-ANSWER",
+              "state": "pending",
+              "label": "比較・考察する",
+              "reason": "行動観察は未実施。記録が揃った後、条件の違いや別の説明も検討する。",
+              "needed": "結果と限界から言える範囲を検討し、仮説が支持されない場合も残す。",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "planIds": [
+                "TASK-04",
+                "TASK-05"
+              ]
+            },
+            {
+              "id": "LINK-POSITION",
+              "from": "ARG-BACKGROUND",
+              "to": "ARG-QUESTION",
+              "state": "unknown",
+              "label": "位置づけは未確認",
+              "reason": "先行研究に対して何を引き継ぎ、何を新たに示す問いなのかを判断する資料が足りない。",
+              "needed": "関連する文献と、問いに活かす知見・既知と未知の整理を確認する。",
+              "sourceIds": [
+                "SRC-02"
+              ]
+            },
+            {
+              "id": "LINK-METHOD",
+              "from": "ARG-QUESTION",
+              "to": "ARG-WORK",
+              "state": "gap",
+              "label": "問いと調べたものが違う",
+              "reason": "問いは見落としの変化。実施した調査は好みを尋ねており、見落としを記録する方法になっていない。",
+              "needed": "目的を変更して正当化せず、見落としを確かめる方法を検討する。",
+              "sourceIds": [
+                "SRC-01",
+                "SRC-02",
+                "SRC-04"
+              ],
+              "issueIds": [
+                "ISSUE-01"
+              ]
+            },
+            {
+              "id": "LINK-INTERPRET",
+              "from": "ARG-DATA",
+              "to": "ARG-DISCUSSION",
+              "state": "supported",
+              "label": "言える範囲を整理",
+              "reason": "回答の範囲と不足を照合している。仮説が否定されたとも、Bが見落とされにくいとも主張していない。",
+              "needed": "",
+              "sourceIds": [
+                "SRC-01",
+                "SRC-04"
+              ]
+            },
+            {
+              "id": "LINK-CONCLUDE",
+              "from": "ARG-DISCUSSION",
+              "to": "ARG-ANSWER",
+              "state": "pending",
+              "label": "問いに答える根拠はこれから",
+              "reason": "現状の限界は説明できているが、配置と見落としに関する観察結果はまだない。結論の捏造や論理の誤りと判定する箇所ではない。",
+              "needed": "計画を見直して観察・分析し、問いへの答えを検討する。",
+              "sourceIds": [
+                "SRC-02",
+                "SRC-04"
+              ]
+            }
+          ],
+          "routes": [
+            {
+              "id": "current",
+              "title": "いまある記録",
+              "nodeIds": [
+                "ARG-WORK",
+                "ARG-DATA",
+                "ARG-ANSWER"
+              ],
+              "linkIds": [
+                "LINK-RECORD",
+                "LINK-GAP"
+              ]
+            },
+            {
+              "id": "planned",
+              "title": "つなぎ直す計画（まだ実施していない）",
+              "nodeIds": [
+                "ARG-PLAN",
+                "ARG-OBSERVE",
+                "ARG-ANSWER"
+              ],
+              "linkIds": [
+                "LINK-TRIAL",
+                "LINK-ANALYSE"
+              ]
+            },
+            {
+              "id": "overview",
+              "title": "研究全体のつながりを見る",
+              "nodeIds": [
+                "ARG-BACKGROUND",
+                "ARG-QUESTION",
+                "ARG-WORK",
+                "ARG-DATA",
+                "ARG-DISCUSSION",
+                "ARG-ANSWER"
+              ],
+              "linkIds": [
+                "LINK-POSITION",
+                "LINK-METHOD",
+                "LINK-RECORD",
+                "LINK-INTERPRET",
+                "LINK-CONCLUDE"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "questions": {
+    "generatedAt": "2026-09-15",
+    "seminarDate": "2026-09-16",
+    "items": [
+      {
+        "id": "QUESTION-01",
+        "question": "「見落とし」をどの行動で判断し、どの条件をそろえて比較するか。",
+        "reason": "好みの回答では、研究の目的である見落としの減少を確かめられないため。",
+        "options": "表示に気づかず通過したか／進路選択を誤ったか、などの候補を比較する。どちらも状況や他の要因を検討する必要がある。",
+        "studentView": "まず観察の予備試行を行い、記録できる行動と条件を確かめたい。",
+        "sourceIds": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-04"
+        ],
+        "relatedLogIds": [
+          "LOG-20260914",
+          "LOG-20260915"
+        ],
+        "status": "相談予定"
+      }
+    ]
+  },
+  "argumentMap": {
+    "updatedAt": "2026-09-15",
+    "focusLinkId": "LINK-GAP",
+    "nodes": [
+      {
+        "id": "ARG-BACKGROUND",
+        "label": "背景・位置づけ",
+        "text": "案内表示の見落としを減らしたい。先行研究との関係は未整理。",
+        "state": "unknown",
+        "sourceIds": [
+          "SRC-02"
+        ],
+        "paperSectionIds": [
+          "background"
+        ]
+      },
+      {
+        "id": "ARG-QUESTION",
+        "label": "研究で答えたいこと",
+        "text": "名称と矢印をまとめると、見落としは減るか。",
+        "state": "recorded",
+        "sourceIds": [
+          "SRC-02"
+        ],
+        "paperSectionIds": [
+          "purpose"
+        ]
+      },
+      {
+        "id": "ARG-WORK",
+        "label": "やったこと",
+        "text": "2つの表示案を8名に見せ、好みを聞いた。",
+        "state": "recorded",
+        "sourceIds": [
+          "SRC-01",
+          "SRC-04"
+        ],
+        "workRecordIds": [
+          "WORK-01"
+        ],
+        "planIds": [
+          "TASK-01"
+        ],
+        "paperSectionIds": [
+          "method"
+        ]
+      },
+      {
+        "id": "ARG-DATA",
+        "label": "得られたもの",
+        "text": "Aを3名、Bを5名が選んだ。",
+        "note": "この8名の、表示案への好み。",
+        "state": "recorded",
+        "sourceIds": [
+          "SRC-01"
+        ],
+        "paperSectionIds": [
+          "results"
+        ]
+      },
+      {
+        "id": "ARG-ANSWER",
+        "label": "問いへの答え",
+        "text": "配置で見落としが減るかは、まだ判断できない。",
+        "state": "pending",
+        "sourceIds": [
+          "SRC-02",
+          "SRC-04"
+        ],
+        "paperSectionIds": [
+          "conclusion"
+        ]
+      },
+      {
+        "id": "ARG-PLAN",
+        "label": "計画を直す",
+        "text": "見落としの判断基準・比較条件を決め、方法を試す。",
+        "state": "planned",
+        "sourceIds": [
+          "SRC-02"
+        ],
+        "planIds": [
+          "TASK-02",
+          "TASK-03"
+        ],
+        "paperSectionIds": [
+          "method"
+        ]
+      },
+      {
+        "id": "ARG-OBSERVE",
+        "label": "集める予定のもの",
+        "text": "配置ごとの、移動中の行動と見落としの記録。",
+        "state": "pending",
+        "sourceIds": [
+          "SRC-02"
+        ],
+        "planIds": [
+          "TASK-04"
+        ],
+        "paperSectionIds": [
+          "results"
+        ]
+      },
+      {
+        "id": "ARG-DISCUSSION",
+        "label": "今ある結果の解釈",
+        "text": "好みは分かったが、見落としの減少を判断する根拠にはならない。",
+        "state": "recorded",
+        "sourceIds": [
+          "SRC-01",
+          "SRC-03",
+          "SRC-04"
+        ],
+        "paperSectionIds": [
+          "discussion"
+        ]
+      }
+    ],
+    "links": [
+      {
+        "id": "LINK-RECORD",
+        "from": "ARG-WORK",
+        "to": "ARG-DATA",
+        "state": "supported",
+        "label": "回答を記録",
+        "reason": "好みを聞いた8件の回答から、AとBを選んだ人数を数えられる。",
+        "needed": "",
+        "sourceIds": [
+          "SRC-01"
+        ]
+      },
+      {
+        "id": "LINK-GAP",
+        "from": "ARG-DATA",
+        "to": "ARG-ANSWER",
+        "state": "gap",
+        "label": "ここが切れ目",
+        "reason": "「好まれる」から「見落とされにくい」とは言えない。",
+        "detail": "回答に残っているのは好みだけ。移動中に見落としたかを記録していないため、この回答を集め続けても、見落としが減るかは判断できない。",
+        "needed": "何を見落としと数えるか、どの条件で比較するかを決める。計画案を相談し、方法を試してから行動を記録する。",
+        "sourceIds": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04"
+        ],
+        "issueIds": [
+          "ISSUE-01"
+        ],
+        "planIds": [
+          "TASK-02",
+          "TASK-03",
+          "TASK-04"
+        ]
+      },
+      {
+        "id": "LINK-TRIAL",
+        "from": "ARG-PLAN",
+        "to": "ARG-OBSERVE",
+        "state": "pending",
+        "label": "方法を試してから",
+        "reason": "判断基準と比較条件は検討中。試行で記録可能かを確かめてから本観察へ進む。",
+        "needed": "判断基準・比較条件・記録手順を決め、試行する。",
+        "sourceIds": [
+          "SRC-02"
+        ],
+        "planIds": [
+          "TASK-02",
+          "TASK-03"
+        ]
+      },
+      {
+        "id": "LINK-ANALYSE",
+        "from": "ARG-OBSERVE",
+        "to": "ARG-ANSWER",
+        "state": "pending",
+        "label": "比較・考察する",
+        "reason": "行動観察は未実施。記録が揃った後、条件の違いや別の説明も検討する。",
+        "needed": "結果と限界から言える範囲を検討し、仮説が支持されない場合も残す。",
+        "sourceIds": [
+          "SRC-02"
+        ],
+        "planIds": [
+          "TASK-04",
+          "TASK-05"
+        ]
+      },
+      {
+        "id": "LINK-POSITION",
+        "from": "ARG-BACKGROUND",
+        "to": "ARG-QUESTION",
+        "state": "unknown",
+        "label": "位置づけは未確認",
+        "reason": "先行研究に対して何を引き継ぎ、何を新たに示す問いなのかを判断する資料が足りない。",
+        "needed": "関連する文献と、問いに活かす知見・既知と未知の整理を確認する。",
+        "sourceIds": [
+          "SRC-02"
+        ]
+      },
+      {
+        "id": "LINK-METHOD",
+        "from": "ARG-QUESTION",
+        "to": "ARG-WORK",
+        "state": "gap",
+        "label": "問いと調べたものが違う",
+        "reason": "問いは見落としの変化。実施した調査は好みを尋ねており、見落としを記録する方法になっていない。",
+        "needed": "目的を変更して正当化せず、見落としを確かめる方法を検討する。",
+        "sourceIds": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-04"
+        ],
+        "issueIds": [
+          "ISSUE-01"
+        ]
+      },
+      {
+        "id": "LINK-INTERPRET",
+        "from": "ARG-DATA",
+        "to": "ARG-DISCUSSION",
+        "state": "supported",
+        "label": "言える範囲を整理",
+        "reason": "回答の範囲と不足を照合している。仮説が否定されたとも、Bが見落とされにくいとも主張していない。",
+        "needed": "",
+        "sourceIds": [
+          "SRC-01",
+          "SRC-04"
+        ]
+      },
+      {
+        "id": "LINK-CONCLUDE",
+        "from": "ARG-DISCUSSION",
+        "to": "ARG-ANSWER",
+        "state": "pending",
+        "label": "問いに答える根拠はこれから",
+        "reason": "現状の限界は説明できているが、配置と見落としに関する観察結果はまだない。結論の捏造や論理の誤りと判定する箇所ではない。",
+        "needed": "計画を見直して観察・分析し、問いへの答えを検討する。",
+        "sourceIds": [
+          "SRC-02",
+          "SRC-04"
+        ]
+      }
+    ],
+    "routes": [
+      {
+        "id": "current",
+        "title": "いまある記録",
+        "nodeIds": [
+          "ARG-WORK",
+          "ARG-DATA",
+          "ARG-ANSWER"
+        ],
+        "linkIds": [
+          "LINK-RECORD",
+          "LINK-GAP"
+        ]
+      },
+      {
+        "id": "planned",
+        "title": "つなぎ直す計画（まだ実施していない）",
+        "nodeIds": [
+          "ARG-PLAN",
+          "ARG-OBSERVE",
+          "ARG-ANSWER"
+        ],
+        "linkIds": [
+          "LINK-TRIAL",
+          "LINK-ANALYSE"
+        ]
+      },
+      {
+        "id": "overview",
+        "title": "研究全体のつながりを見る",
+        "nodeIds": [
+          "ARG-BACKGROUND",
+          "ARG-QUESTION",
+          "ARG-WORK",
+          "ARG-DATA",
+          "ARG-DISCUSSION",
+          "ARG-ANSWER"
+        ],
+        "linkIds": [
+          "LINK-POSITION",
+          "LINK-METHOD",
+          "LINK-RECORD",
+          "LINK-INTERPRET",
+          "LINK-CONCLUDE"
+        ]
+      }
+    ]
+  },
+  "demoNotice": "すべて架空のデータ。実際の研究結果・学生・教員の発言ではない。"
+}

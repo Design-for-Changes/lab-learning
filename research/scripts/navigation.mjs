@@ -7,7 +7,7 @@ export const guides = [
       { slug: 'process', title: '研究を進める', description: '問いを立てる、仮説を考える、検証して修正する。研究の基本的な進め方。' },
       { slug: 'writing', title: '論文を書く', description: '論文の構成・体裁・文章表現と、避けたい誤りを確認する。' },
       { slug: 'notes', title: '学生による補足ノート', description: '学生がまとめた、論文や図表を作成するときの補足を読む。' },
-      { slug: 'ai', title: 'AIと一緒につくる', description: 'AIが不足する記録を学生に依頼し、研究の目的・問題点・相談事項をまとめたゼミ用資料をNotionに生成する。' },
+      { slug: 'ai', title: 'AIと一緒につくる', description: 'AIと対話して研究の目的・現在地・次にやることを整理し、ローカルにJSONとゼミ用HTMLを蓄積する。' },
     ],
   },
 ];

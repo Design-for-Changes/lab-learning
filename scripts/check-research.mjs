@@ -15,7 +15,10 @@ async function htmlFiles(dir) {
   }
   return files;
 }
-const files = await htmlFiles(root);
+// The downloadable file is a standalone local report, not a guide route.
+const reportTemplate = resolve(root, 'downloads/research-progress-template.html');
+await access(reportTemplate);
+const files = (await htmlFiles(root)).filter(file => file !== reportTemplate);
 assert.equal(files.length, guides.reduce((total, guide) => total + 1 + guide.chapters.length, 0) + indesignRedirects.length, 'Missing entry, chapter, or legacy redirect pages');
 const pages = new Map();
 for (const file of files) {
