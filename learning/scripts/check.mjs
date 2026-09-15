@@ -1,3 +1,6 @@
+import { designStudyChapters, designStudyLinks, designStudyAliases, resolveDesignStudyRoute } from '../src/designStudyContent.js';
+import { designStudyHistory } from '../src/designStudyHistory.js';
+import { designStudySources } from '../src/designStudySources.js';
 import './check-psychology.mjs';
 import './check-economics.mjs';
 import { psychologyLinks } from '../src/psychologyContent.js';
@@ -344,6 +347,15 @@ for(const chapter of [...managementChapters,...managementLessons]){
  for(const id of ids){assert.ok(managementSources[id],`Missing management source: ${id}`);assert.equal(new URL(managementSources[id].url).protocol,'https:');}
 }
 
+// Check the course bibliography and redirects for merged chapters.
+for (const entry of [...designStudyChapters.flatMap(chapter => chapter.sections), ...designStudyHistory]) {
+ for (const id of entry.refs || []) assert.ok(designStudySources[id], `Missing design source: ${id}`);
+}
+for (const [oldPath, newPath] of Object.entries(designStudyAliases)) {
+ assert.equal(resolveDesignStudyRoute(oldPath), newPath);
+ assert.ok(designStudyLinks.some(([path]) => path === newPath));
+}
+
 // Render all routes without a browser to catch missing components and internal links.
 const {createServer}=await import('vite');
 const server=await createServer({server:{middlewareMode:true,watch:null,ws:false},appType:'custom'});
@@ -355,7 +367,7 @@ try{
  const {evolutionLinks,evolutionAliases}=await server.ssrLoadModule('/src/EvolutionCourse.jsx');
  const {default:React}=await import('react');const {renderToStaticMarkup}=await import('react-dom/server');
  const {aiIntroLinks}=await server.ssrLoadModule('/src/AiIntroCourse.jsx');
- const routes=['/','/science',...scienceLinks.map(([path])=>path),...Object.keys(economicsAliases),...economicsLinks.map(([path])=>path),...Object.keys(neuroscienceAliases),...neuroscienceLinks.map(([path])=>path),'/psychology',...psychologyLinks.map(([path])=>path),...Object.keys(managementAliases),...managementChapters.map(chapter=>`/management/${chapter.slug}`),...Object.keys(evolutionAliases),...evolutionLinks.map(([path])=>path),'/ai','/ai/discrete','/ai/graphs','/ai/learning','/ai/networks','/ai/training','/ai/practice','/ai/architectures','/ai/pretrained','/ai/systems','/ai-intro',...aiIntroLinks.map(([path])=>path),'/statistics','/statistics/basics','/statistics/inference','/statistics/variables','/statistics/experiments','/statistics/distributions','/statistics/choose','/statistics/methods','/statistics/checks','/statistics/tools','/statistics/python',...methods.map(m=>`/statistics/method/${m.id}`)];
+ const routes=['/', '/design', ...designStudyLinks.map(([path]) => path), ...Object.keys(designStudyAliases), '/science',...scienceLinks.map(([path])=>path),...Object.keys(economicsAliases),...economicsLinks.map(([path])=>path),...Object.keys(neuroscienceAliases),...neuroscienceLinks.map(([path])=>path),'/psychology',...psychologyLinks.map(([path])=>path),...Object.keys(managementAliases),...managementChapters.map(chapter=>`/management/${chapter.slug}`),...Object.keys(evolutionAliases),...evolutionLinks.map(([path])=>path),'/ai','/ai/discrete','/ai/graphs','/ai/learning','/ai/networks','/ai/training','/ai/practice','/ai/architectures','/ai/pretrained','/ai/systems','/ai-intro',...aiIntroLinks.map(([path])=>path),'/statistics','/statistics/basics','/statistics/inference','/statistics/variables','/statistics/experiments','/statistics/distributions','/statistics/choose','/statistics/methods','/statistics/checks','/statistics/tools','/statistics/python',...methods.map(m=>`/statistics/method/${m.id}`)];
  let homeHTML='',basicsHTML='',legacyDistributionHTML='',entryHTML='',inferenceHTML='',variablesHTML='',experimentsHTML='',chooseHTML='',legacyMethodsHTML='',checksHTML='';
  for(const route of routes){
   globalThis.location={hash:`#${route}`};
@@ -409,7 +421,7 @@ try{
  assert.ok(experimentsHTML.includes('確認実験'));assert.ok(!experimentsHTML.includes('タグチメソッド'));assert.ok(!experimentsHTML.includes('SN比'));
  assert.ok(experimentsHTML.includes('代表的な直交表一覧'));assert.ok(experimentsHTML.includes('線点図で、列の使い道を決める'));
  assert.equal(legacyDistributionHTML,basicsHTML,'Old distribution URL must open the merged basics lesson');
- assert.equal((homeHTML.match(/準備中/g)||[]).length,2);assert.ok(homeHTML.includes('href="#/science"'));assert.ok(homeHTML.includes('href="#/economics"'));assert.ok(homeHTML.includes('href="#/neuroscience"'));assert.ok(homeHTML.includes('href="#/psychology"'));assert.ok(homeHTML.includes('href="#/management"'));assert.ok(homeHTML.includes('href="#/evolution"'));assert.ok(homeHTML.includes('デザイン学入門'));assert.ok(homeHTML.includes('ウェブインタラクション入門'));
+ assert.equal((homeHTML.match(/準備中/g)||[]).length,1);assert.ok(homeHTML.includes('href="#/design"'));assert.ok(homeHTML.includes('href="#/science"'));assert.ok(homeHTML.includes('href="#/economics"'));assert.ok(homeHTML.includes('href="#/neuroscience"'));assert.ok(homeHTML.includes('href="#/psychology"'));assert.ok(homeHTML.includes('href="#/management"'));assert.ok(homeHTML.includes('href="#/evolution"'));assert.ok(homeHTML.includes('デザイン学入門'));assert.ok(homeHTML.includes('ウェブインタラクション入門'));
  const {default:Chooser}=await server.ssrLoadModule('/src/Chooser.jsx');
  const html=renderToStaticMarkup(React.createElement(Chooser,{answers:{...compare,dependency:'repeated'},setAnswers:()=>{}}));
  assert.ok(html.includes('対応のあるt検定'));assert.ok(html.includes('目的変数なし'));assert.ok(!html.includes('checked=""'));
