@@ -278,6 +278,8 @@ summary { cursor: pointer; touch-action: manipulation; }
 .prose .ai-request pre { margin: 0; padding: 20px; border: 0; background: transparent; color: var(--ink); white-space: pre-wrap; overflow-wrap: anywhere; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .875rem; line-height: 1.9; }
 .prose .manual-download { display: inline-flex; align-items: center; gap: 24px; padding: 16px 20px; border: 1px solid var(--blue); border-radius: 8px; color: var(--blue); font-weight: 700; text-decoration: none; }
 .prose .manual-download:hover { background: var(--pale); }
+.prose .seminar-flow h4 { margin: 0 0 8px; }
+.prose .seminar-flow > li + li { margin-top: 0; }
 @media (max-width: 600px) { .prose .ai-request pre { padding: 16px; } }
 
 .prose .ai-request code { display: block; padding: 0; border: 0; background: transparent; color: inherit; font: inherit; white-space: inherit; }
