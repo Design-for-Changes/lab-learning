@@ -822,14 +822,15 @@ Adobe Fontsで有効化したフォントは、通常のファイルコピーと
 <div class="student-note ai-guide">
 <section class="note-section"><h3 id="ai-student-request">5-1. 学生がAIに頼むプロンプト</h3>
 <p>PC内にひとつの研究ノートを作り、AIと一緒にゼミの準備を進めます。<strong>目的・現在地・次の作業を整理し、やったこと・失敗・考察を日付順に残します。</strong>同じノートをダブルクリックで開き、タブを切り替えて使えます。</p>
+<p><strong>AIがリンク先を読めない場合：</strong><a href="downloads/for-ai.md" download="for-ai.md">for AIマニュアルをダウンロード</a>し、AIのチャットに添付してから、下のプロンプトを送ってください。2回目以降も、このページから最新版を保存して添付できます。</p>
 <h4>初回：AIの質問に答え、保存場所と構成を決める</h4>
 <p>次のプロンプトをそのまま送ってください。学番・氏名、PC環境、保存場所、フォルダ構成、ファイル名、既存資料の場所は、AIが順番に質問します。資料がそろっていない状態から始めて構いません。</p>
-<div class="ai-request"><div class="code-toolbar"><span>text</span><button type="button" class="copy-code" hidden>コピー</button><div class="copy-status visually-hidden" role="status"></div></div><pre><code>次の「for AIマニュアル」を読み、初回の聞き取りから始めてください。&#10;https://design-for-changes.github.io/lab-learning/research/downloads/for-ai.md&#10;&#10;必要な情報は、私に1〜3点ずつ質問して確認してください。研究ノートの保存場所・名前と既存資料の場所を一緒に決め、マニュアルの基本フォーマットで用意してください。研究の目的・現在地を確認し、次の作業を会話しながら決めたいです。デスクトップのショートカットは、名前とリンク先を示して私の承認を得てから作成してください。</code></pre></div>
+<div class="ai-request"><div class="code-toolbar"><span>text</span><button type="button" class="copy-code" hidden>コピー</button><div class="copy-status visually-hidden" role="status"></div></div><pre><code>次の「for AIマニュアル」を読み、初回の聞き取りから始めてください。添付した for-ai.md があれば添付ファイルを、なければ以下のURLを読んでください。&#10;https://design-for-changes.github.io/lab-learning/research/downloads/for-ai.md&#10;&#10;必要な情報は、私に1〜3点ずつ質問して確認してください。研究ノートの保存場所・名前と既存資料の場所を一緒に決め、マニュアルの基本フォーマットで用意してください。研究の目的・現在地を確認し、次の作業を会話しながら決めたいです。デスクトップのショートカットは、名前とリンク先を示して私の承認を得てから作成してください。</code></pre></div>
 <p>AIは指定した場所を探し、研究に関係する資料を確認します。元のファイルを勝手に移動せず、所在を記録します。デスクトップのショートカットは、リンク先・名前・作成先を確認して承認した場合だけ作ります。</p>
 <h4>2回目以降：前回の記録・履歴・メモから再開する</h4>
 <p>毎回まずAIと「何月何日のゼミ分か」を確認し、その回に関係するファイルやメモを渡します。前回の指摘と今週の作業を振り返り、何を説明し、何を相談するかを一緒に決めます。AIが「ゼミ用」タブを組み立てるので、内容を確認し、当日はその画面をそのまま見せます。</p>
 <p>同じ研究進捗フォルダをAIで開き、次のプロンプトを送ります。保存場所が分からない場合や新しいAIを使う場合も、対話で確認してから再開します。</p>
-<div class="ai-request"><div class="code-toolbar"><span>text</span><button type="button" class="copy-code" hidden>コピー</button><div class="copy-status visually-hidden" role="status"></div></div><pre><code>次の「for AIマニュアル」の最新版を読み、今週のゼミの準備を進めてください。&#10;https://design-for-changes.github.io/lab-learning/research/downloads/for-ai.md&#10;&#10;前回と同じ研究ノートとメモを確認し、足りない情報を私に1〜3点ずつ質問してください。やったこと・失敗・考察を振り返り、目的とのつながりを確かめながら、次の作業を一緒に決めてください。同じノートに日付付きで記録し、先生への相談メモと提出用ファイルも用意してください。資料を渡したことが先生に伝わるところまで案内してください。</code></pre></div>
+<div class="ai-request"><div class="code-toolbar"><span>text</span><button type="button" class="copy-code" hidden>コピー</button><div class="copy-status visually-hidden" role="status"></div></div><pre><code>次の「for AIマニュアル」の最新版を読み、今週のゼミの準備を進めてください。添付した for-ai.md があれば添付ファイルを、なければ以下のURLを読んでください。&#10;https://design-for-changes.github.io/lab-learning/research/downloads/for-ai.md&#10;&#10;前回と同じ研究ノートとメモを確認し、足りない情報を私に1〜3点ずつ質問してください。やったこと・失敗・考察を振り返り、目的とのつながりを確かめながら、次の作業を一緒に決めてください。同じノートに日付付きで記録し、先生への相談メモと提出用ファイルも用意してください。資料を渡したことが先生に伝わるところまで案内してください。</code></pre></div>
 <p>実験や制作は、始める前に計画や図面などをAIに見せてください。その手順で何が記録でき、何を確かめられるかを一緒に検討します。問いに答えられない点があれば計画を直し、判断が必要なことはゼミで相談します。</p>
 <h4>ゼミ資料をNotionへ提出する</h4>
 <p>AIが研究ノート・全記録・メモ・相談事項と、必要な根拠資料をZIPにまとめます。<strong>ZIP名は「学番_YYYY-MM-DD.zip」、日付は対象ゼミ日です。</strong>内容を確認し、Notionの「研究進捗まとめノート」にある自分の学番・氏名ページへ添付してください。先生はZIPを展開してHTMLを開きます。</p>
@@ -840,7 +841,8 @@ Adobe Fontsで有効化したフォントは、通常のファイルコピーと
 <p>この画面に書く場合は、ゼミでは「ゼミ用」タブを見せ、話し合ったことを「メモ」に、次にすることを「やること」に自由に書きます。終わったら「保存」を押すと、そのゼミが完了になり、資料とメモが同じ日付のタイムラインに残ります。使い方はAIも最初に説明します。次回はAIと振り返り、次の作業を相談します。保存用のファイルがダウンロードされた場合は、画面の案内に従って研究フォルダの同名ファイルへ置き換えます。</p>
 </section>
 <section class="note-section"><h3 id="ai-manual">5-2. AI用のドキュメント</h3>
-<p><a class="manual-download" href="downloads/for-ai.md">for AIマニュアルを開く <span aria-hidden="true">↗</span></a></p>
+<p><a class="manual-download" href="downloads/for-ai.md" download="for-ai.md">マニュアルをダウンロード <span aria-hidden="true">↓</span></a></p>
+<p><a href="downloads/for-ai.md">ブラウザで読む</a>こともできます。ダウンロードした「for-ai.md」をAIに添付すれば、AIがURLから取得できない場合もマニュアルを渡せます。</p>
 <p>初回の聞き取り、資料の探索、目的と作業の確認、ゼミ資料の生成、履歴保存、メモの取り込み、ZIPでの提出を定めています。プロンプトにはこの公開URLを入れてあるので、細かな設定を先に書く必要はありません。</p>
 <dl class="note-definitions">
 <div><dt>共通の基本フォーマット</dt><dd>研究テーマ・目的・現在地・未着手の作業・次にやることを冒頭に揃える。問題の詳細・教員の指摘・成果資料・相談事項・履歴・ゼミ中メモも残す。研究ノートの保存場所と名前は学生と決め、メモと相談文書の名前はAIが固定の設定を使う。</dd></div>
