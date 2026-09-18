@@ -7,7 +7,7 @@
 | `research/` | 研究ガイド、InDesign・Wordによる論文作成ガイド | https://design-for-changes.github.io/lab-learning/research/ |
 | `learning/` | 既存の学習資料・統計解析入門 | https://design-for-changes.github.io/lab-learning/learning/ |
 
-研究ガイドは01の本文から始まる全5章です。05「AIと一緒につくる」は、学番ページの研究記録をAIが整理し、教員の判断に必要な状況をNotionにまとめる運用を扱います。各章にはサイドメニューから移動できます。InDesign・Wordの操作は「学生による補足ノート」の「論文を作成する前の準備」「いざ論文を書く」に統合しています。「いざ論文を書く」はNotionでの資料整理・原稿作成から始まり、InDesignでの組版へ進みます。旧 `research/indesign/` 以下のURLは該当箇所へ転送します。公開ルートは学習資料へ転送し、既存のハッシュ付き統計教材URLを引き継ぎます。
+研究ガイドは01の本文から始まる全5章です。05「AIと一緒につくる」は、ローカルの研究ノートを学生とAIが更新し、ゼミ後にZIPをNotionへ提出する運用を扱います。AI向けマニュアルは [サイト内のページ](https://design-for-changes.github.io/lab-learning/research/ai/manual/) で全文を読めます。各章にはサイドメニューから移動できます。InDesign・Wordの操作は「学生による補足ノート」の「論文を作成する前の準備」「いざ論文を書く」に統合しています。「いざ論文を書く」はNotionでの資料整理・原稿作成から始まり、InDesignでの組版へ進みます。旧 `research/indesign/` 以下のURLは該当箇所へ転送します。公開ルートは学習資料へ転送し、既存のハッシュ付き統計教材URLを引き継ぎます。
 
 ## ローカルで確認
 
@@ -29,8 +29,9 @@ npm run dev
 ## 編集と公開
 
 - `research/content/research.notion.md`：研究ガイド本文。InDesign・Wordの操作説明と05の学生向け依頼文もここで編集します。
-- `research/public/downloads/for-ai.md`：ゼミ前に学生と協働し、研究ガイドに基づく報告をNotionへ残すAI向けマニュアル。
+- `research/public/downloads/for-ai.md`：研究の整合性を批判的に検討し、学生との対話で研究ノート・ゼミ資料・計画を更新するAI向けマニュアル。Markdownを正本としてサイトの全文ページも生成します。
 - `docs/archive/indesign-before-merge.md`：統合前の操作ガイドの編集原稿。
+- `research/scripts/document-pages.mjs`：AIマニュアルと補助文書の公開ページ・全文コピーを同じMarkdownから生成します。
 - `research/scripts/navigation.mjs`：章のタイトル・説明・公開パス。
 - `research/scripts/build.mjs`：本文を静的HTMLへ変換します。
 - `research/scripts/indesign-redirects.mjs`：旧InDesignページとアンカーの転送先。

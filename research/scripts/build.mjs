@@ -4,6 +4,7 @@ import { marked } from 'marked';
 import katex from 'katex';
 import { guides } from './navigation.mjs';
 import { indesignRedirects } from './indesign-redirects.mjs';
+import { documentPages, renderDocument } from './document-pages.mjs';
 
 const escape = text => text.replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;');
 const plain = text => text.replace(/<[^>]*>|\*\*/g, '').trim();
@@ -109,7 +110,8 @@ function content(blocks, root, groupSections = true) {
 
 function sidebar(root, guide, current) {
   const links = chapters.filter(chapter => chapter.guide === guide).map(chapter => '<a href="' + root + chapter.path + '"' + (chapter === current ? ' aria-current="page"' : '') + '><span class="nav-number">' + number(chapter.number) + '</span><span>' + escape(chapter.title) + '</span></a>').join('');
-  return '<aside class="catalog-nav"><details class="guide-menu" open><summary>' + escape(guide.title) + 'のメニュー</summary><a class="back-index" href="' + root + guide.path + '">← ' + escape(guide.title) + '</a><nav class="chapter-nav guide-chapters" aria-label="章">' + links + '</nav></details></aside>';
+  const documents = current?.path === 'ai/' ? '<nav class="document-nav" aria-label="AIと一緒につくるの文書">' + documentPages.map(item => '<a href="' + root + item.path + '">' + escape(item.title) + '</a>').join('') + '</nav>' : '';
+  return '<aside class="catalog-nav"><details class="guide-menu" open><summary>' + escape(guide.title) + 'のメニュー</summary><a class="back-index" href="' + root + guide.path + '">← ' + escape(guide.title) + '</a><nav class="chapter-nav guide-chapters" aria-label="章">' + links + '</nav>' + documents + '</details></aside>';
 }
 
 function card(chapter, root, badge = number(chapter.number)) {
@@ -141,20 +143,25 @@ function chapterPage(chapter, root) {
   return '<article class="prose chapter-content">' + article + '</article><nav class="page-pagination" aria-label="前後の章">' + previous + following + '</nav>';
 }
 
-async function writePage(guide, chapter) {
-  const path = chapter?.path ?? guide.path;
+async function writePage(guide, chapter, document) {
+  const path = document?.path ?? chapter?.path ?? guide.path;
   const root = rootFrom(path);
-  const title = chapter?.title ?? guide.title;
-  const description = chapter?.description ?? guide.description;
+  const rendered = document ? await renderDocument(document, root) : null;
+  const title = rendered?.title ?? chapter?.title ?? guide.title;
+  const description = document?.description ?? chapter?.description ?? guide.description;
   const metadata = shareMetadata({title:[title, chapter && guide.title !== title ? guide.title : '', SITE_NAME].filter(Boolean).join('｜'),description,url:new URL('research/' + path, SITE_URL).href});
-  const breadcrumb = chapter ? '<nav class="breadcrumbs" aria-label="現在地"><a href="' + root + '">研究ガイド</a>' + (guide.id === 'indesign' ? '<span aria-hidden="true">/</span><a href="' + root + guide.path + '">InDesign</a>' : '') + '<span aria-hidden="true">/</span><span aria-current="page">' + escape(title) + '</span></nav>' : '';
+  const breadcrumb = chapter ? '<nav class="breadcrumbs" aria-label="現在地"><a href="' + root + '">研究ガイド</a>' + (document ? '<span aria-hidden="true">/</span><a href="' + root + chapter.path + '">' + escape(chapter.title) + '</a>' : '') + (guide.id === 'indesign' ? '<span aria-hidden="true">/</span><a href="' + root + guide.path + '">InDesign</a>' : '') + '<span aria-hidden="true">/</span><span aria-current="page">' + escape(title) + '</span></nav>' : '';
   const eyebrow = chapter ? number(chapter.number) + ' / ' + guide.title : guide.id === 'research' ? 'RESEARCH GUIDE' : 'WRITING WITH InDesign';
   const heading = '<div class="page-heading">' + breadcrumb + '<p class="eyebrow">' + escape(eyebrow) + '</p><h1' + (chapter ? ' id="' + chapter.id + '"' : '') + '>' + escape(title) + '</h1></div>';
   const html = `<!doctype html>
 <html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#ffffff">${metadata}<link rel="icon" href="${root}favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="${root}learning.css"><link rel="stylesheet" href="${root}style.css"><link rel="stylesheet" href="${root}katex/katex.min.css"><script defer src="${root}guide.js"></script></head>
-<body data-research-root="${root}" class="${chapter ? 'guide-reading' : 'guide-overview'}"><a class="skip" href="#main">本文へ</a><header class="site-header"><a class="wordmark" href="${root}">Research<span>動態デザイン研究室</span></a><nav aria-label="サイト"><a href="${root}" aria-current="page">研究ガイド</a><a href="${root}../learning/">学習資料</a></nav></header><div class="atlas">${sidebar(root, guide, chapter)}<main id="main" class="method-main" tabindex="-1">${heading}${chapter ? chapterPage(chapter, root) : overview(guide, root)}</main></div><footer class="site-footer"><span>動態デザイン研究室</span><a href="https://github.com/Design-for-Changes/lab-learning">GitHub ↗</a></footer></body></html>`;
+<body data-research-root="${root}" class="${chapter ? 'guide-reading' : 'guide-overview'}"><a class="skip" href="#main">本文へ</a><header class="site-header"><a class="wordmark" href="${root}">Research<span>動態デザイン研究室</span></a><nav aria-label="サイト"><a href="${root}" aria-current="page">研究ガイド</a><a href="${root}../learning/">学習資料</a></nav></header><div class="atlas">${sidebar(root, guide, chapter)}<main id="main" class="method-main" tabindex="-1">${heading}${rendered?.body ?? (chapter ? chapterPage(chapter, root) : overview(guide, root))}</main></div><footer class="site-footer"><span>動態デザイン研究室</span><a href="https://github.com/Design-for-Changes/lab-learning">GitHub ↗</a></footer></body></html>`;
   await mkdir('dist/' + path, { recursive: true });
   await writeFile('dist/' + path + 'index.html', html);
+  if (document) {
+    searchItems.push({ title: document.title, group: chapter.title, href: path, kind: '文書' });
+    for (const item of rendered.toc) searchItems.push({ title: item.title, group: document.title, href: path + '#' + item.id, kind: '文書内の項目' });
+  }
 }
 for (const guide of guides) {
   if (!guide.startAtFirstChapter) { await writePage(guide); continue; }
@@ -166,6 +173,8 @@ for (const guide of guides) {
   await writeFile('dist/' + guide.path + 'index.html', html);
 }
 for (const chapter of chapters) await writePage(chapter.guide, chapter);
+const aiChapter = chapters.find(chapter => chapter.path === 'ai/');
+for (const document of documentPages) await writePage(aiChapter.guide, aiChapter, document);
 const legacyAnchors = Object.fromEntries(indesignRedirects.flatMap(route => route.anchors.map(id => [id, route.target])));
 Object.assign(anchorPaths, legacyAnchors);
 for (const route of indesignRedirects) {

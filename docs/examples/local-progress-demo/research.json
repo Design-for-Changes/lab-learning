@@ -1,10 +1,10 @@
 {
   "formatVersion": 2,
   "revision": {
-    "id": "20260915-02",
-    "previousId": "20260909-01",
-    "savedAt": "2026-09-15",
-    "reason": "予備調査を追加し、目的と観察項目のずれを整理した（ダミー）"
+    "id": "20260918-layout05",
+    "previousId": "20260918-layout04",
+    "savedAt": "2026-09-18",
+    "reason": "研究の主軸・参考文献・今回の作業を実際の線で結び、各接続が何に貢献し、その結果を何の判断へ使うかを明示。研究の結果や合意した計画を追加したものではない。"
   },
   "student": {
     "studentId": "DEMO001",
@@ -19,16 +19,18 @@
   },
   "research": {
     "title": "案内表示の見落としを減らすには",
-    "purpose": "移動中に必要な案内表示を見落とすことを減らす。",
+    "purpose": "行き先の文字と矢印の置き方で、案内表示の見落としがどう変わるかを明らかにする。",
     "question": "行き先の名称と方向の矢印をまとめて配置すると、見落としは減るか。",
     "contribution": "名称と矢印の配置について、見落としを減らすための設計原則を検討する。",
-    "hypothesis": "名称と矢印を近接させる配置は、離した配置より見落とされにくい。",
+    "hypothesis": "行き先の文字と矢印を近くに置くと、離して置くよりも見落としが減るのではないか。",
     "currentPlan": "2種類の表示案を比較する。予備調査では好みを尋ねた。移動中の行動を観察する実験は未実施。",
     "sourceIds": [
       "SRC-01",
       "SRC-02"
     ],
-    "studentConfirmedAt": "2026-09-15"
+    "studentConfirmedAt": null,
+    "applicationGoal": "移動中に必要な案内表示を見落とすことを減らす。",
+    "purposeNote": "見本の既存の問いを、何を明らかにするかという形で整理した。元の狙いはapplicationGoalと過去ログに保持。実在の学生が確認した変更ではない。"
   },
   "sources": [
     {
@@ -233,7 +235,61 @@
           "decisionState": "agreed",
           "agreedAt": "2026-09-15"
         }
-      ]
+      ],
+      "progressSinceLast": {
+        "previousSeminarDate": "2026-09-09",
+        "comparisonStatus": "partial",
+        "previousSourceIds": [
+          "SRC-03"
+        ],
+        "previousLogIds": [],
+        "items": [
+          {
+            "previousState": "好みと見落としを分け、目的に対応する観察項目を考える。",
+            "workDone": "9/14に2案の好みを8名へ調査。Aを3名、Bを5名が選び、回答を整理した。",
+            "currentState": "好みの記録は得たが、見落としの減少を示す記録にはなっていない。",
+            "remaining": "見落としを数える基準と比較条件を決める。",
+            "reason": "前回の指摘に対して、目的を確かめる方法の修正がまだ残る。",
+            "sourceIds": [
+              "SRC-01",
+              "SRC-03",
+              "SRC-04"
+            ],
+            "workRecordIds": [
+              "WORK-01"
+            ],
+            "planIds": [
+              "TASK-02"
+            ]
+          },
+          {
+            "previousState": "具体的な観察手順・期日の合意は、前回資料から確認できない。",
+            "workDone": "9/15の振り返りで、行動を観察する計画案を作り、教員へ相談する方針を整理した。",
+            "currentState": "観察方法の試行から論文初稿までの工程を、日程案として整理した。",
+            "remaining": "観察計画の内容・完了条件・期日を相談し、実施前に方法を試す。",
+            "reason": "結果の反省を、次の方法と全体計画の見直しへつなぐ。",
+            "sourceIds": [
+              "SRC-02",
+              "SRC-03",
+              "SRC-04"
+            ],
+            "workRecordIds": [
+              "WORK-01"
+            ],
+            "planIds": [
+              "TASK-02",
+              "TASK-03"
+            ]
+          }
+        ],
+        "changedNodeIds": [
+          "ARG-WORK",
+          "ARG-DATA",
+          "ARG-DISCUSSION",
+          "ARG-PLAN"
+        ],
+        "changedLinkIds": []
+      }
     }
   ],
   "handoff": {
@@ -508,7 +564,7 @@
     {
       "id": "background",
       "title": "背景・問題",
-      "content": "移動中に必要な案内表示を見落とす問題を扱う。案内表示の中でも、行き先の名称と方向を示す矢印の配置に着目する。",
+      "content": "歩いているときに、必要な案内表示を見落とすことがある。この見落としを減らしたい。 案内表示の中でも、行き先の文字と方向を示す矢印の置き方を調べる。",
       "remaining": "先行研究の知見をどう活かすか、何を引き継ぎ何を明らかにする研究かを整理する。",
       "sourceIds": [
         "SRC-02"
@@ -517,7 +573,7 @@
     {
       "id": "purpose",
       "title": "目的・問い・仮説",
-      "content": "目的は、移動中の案内表示の見落としを減らすことである。名称と矢印を近接させた配置は、離した配置よりも見落とされにくいのではないか、という仮説を確かめる。",
+      "content": "行き先の文字と矢印の置き方で、案内表示の見落としがどう変わるかを明らかにする。 行き先の文字と矢印を近くに置くと、離して置くよりも見落としが減るのではないか。 という予想を確かめる。",
       "remaining": "対象者と利用場面を定め、どの範囲について答える研究かを明確にする。",
       "sourceIds": [
         "SRC-02"
@@ -1578,6 +1634,1725 @@
           ]
         }
       }
+    },
+    {
+      "id": "LOG-FORMAT-20260918",
+      "date": "2026-09-18",
+      "seminarDate": "2026-09-16",
+      "type": "format_update",
+      "title": "研究まとめとゼミ資料を統合した",
+      "summary": "目的・全体図・前回からの進捗を同じ画面に整理。既存の研究記録から比較できる範囲を表示した。研究結果の追加ではない。",
+      "sourceIds": [
+        "SRC-01",
+        "SRC-02",
+        "SRC-03",
+        "SRC-04"
+      ],
+      "snapshot": {
+        "revision": {
+          "id": "20260915-02",
+          "previousId": "20260909-01",
+          "savedAt": "2026-09-15",
+          "reason": "予備調査を追加し、目的と観察項目のずれを整理した（ダミー）"
+        }
+      }
+    },
+    {
+      "id": "LOG-FORMAT-20260918-02",
+      "date": "2026-09-18",
+      "seminarDate": "2026-09-16",
+      "type": "format_update",
+      "title": "研究の骨格・参考文献の用途と、工程ごとの相談を明示",
+      "summary": "研究の骨格と文献の用途、行動計画に付随する相談を明示。架空の研究例の表示改訂であり、新たな研究結果・学生合意は追加していない。",
+      "sourceIds": [
+        "SRC-02",
+        "SRC-03"
+      ],
+      "snapshot": {
+        "revision": {
+          "id": "20260918-layout01",
+          "previousId": "20260915-02",
+          "savedAt": "2026-09-18",
+          "reason": "画面を統合し、研究全体のネットワーク図と前回からの進捗を表示する（ダミー）。研究結果は追加していない。"
+        },
+        "argumentMap": {
+          "updatedAt": "2026-09-15",
+          "focusLinkId": "LINK-GAP",
+          "nodes": [
+            {
+              "id": "ARG-BACKGROUND",
+              "label": "背景・位置づけ",
+              "text": "案内表示の見落としを減らしたい。先行研究との関係は未整理。",
+              "state": "unknown",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "paperSectionIds": [
+                "background"
+              ]
+            },
+            {
+              "id": "ARG-QUESTION",
+              "label": "研究で答えたいこと",
+              "text": "名称と矢印をまとめると、見落としは減るか。",
+              "state": "recorded",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "paperSectionIds": [
+                "purpose"
+              ]
+            },
+            {
+              "id": "ARG-WORK",
+              "label": "やったこと",
+              "text": "2つの表示案を8名に見せ、好みを聞いた。",
+              "state": "recorded",
+              "sourceIds": [
+                "SRC-01",
+                "SRC-04"
+              ],
+              "workRecordIds": [
+                "WORK-01"
+              ],
+              "planIds": [
+                "TASK-01"
+              ],
+              "paperSectionIds": [
+                "method"
+              ]
+            },
+            {
+              "id": "ARG-DATA",
+              "label": "得られたもの",
+              "text": "Aを3名、Bを5名が選んだ。",
+              "note": "この8名の、表示案への好み。",
+              "state": "recorded",
+              "sourceIds": [
+                "SRC-01"
+              ],
+              "paperSectionIds": [
+                "results"
+              ]
+            },
+            {
+              "id": "ARG-ANSWER",
+              "label": "問いへの答え",
+              "text": "配置で見落としが減るかは、まだ判断できない。",
+              "state": "pending",
+              "sourceIds": [
+                "SRC-02",
+                "SRC-04"
+              ],
+              "paperSectionIds": [
+                "conclusion"
+              ]
+            },
+            {
+              "id": "ARG-PLAN",
+              "label": "計画を直す",
+              "text": "見落としの判断基準・比較条件を決め、方法を試す。",
+              "state": "planned",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "planIds": [
+                "TASK-02",
+                "TASK-03"
+              ],
+              "paperSectionIds": [
+                "method"
+              ]
+            },
+            {
+              "id": "ARG-OBSERVE",
+              "label": "集める予定のもの",
+              "text": "配置ごとの、移動中の行動と見落としの記録。",
+              "state": "pending",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "planIds": [
+                "TASK-04"
+              ],
+              "paperSectionIds": [
+                "results"
+              ]
+            },
+            {
+              "id": "ARG-DISCUSSION",
+              "label": "今ある結果の解釈",
+              "text": "好みは分かったが、見落としの減少を判断する根拠にはならない。",
+              "state": "recorded",
+              "sourceIds": [
+                "SRC-01",
+                "SRC-03",
+                "SRC-04"
+              ],
+              "paperSectionIds": [
+                "discussion"
+              ]
+            }
+          ],
+          "links": [
+            {
+              "id": "LINK-RECORD",
+              "from": "ARG-WORK",
+              "to": "ARG-DATA",
+              "state": "supported",
+              "label": "回答を記録",
+              "reason": "好みを聞いた8件の回答から、AとBを選んだ人数を数えられる。",
+              "needed": "",
+              "sourceIds": [
+                "SRC-01"
+              ]
+            },
+            {
+              "id": "LINK-GAP",
+              "from": "ARG-DATA",
+              "to": "ARG-ANSWER",
+              "state": "gap",
+              "label": "ここが切れ目",
+              "reason": "「好まれる」から「見落とされにくい」とは言えない。",
+              "detail": "回答に残っているのは好みだけ。移動中に見落としたかを記録していないため、この回答を集め続けても、見落としが減るかは判断できない。",
+              "needed": "何を見落としと数えるか、どの条件で比較するかを決める。計画案を相談し、方法を試してから行動を記録する。",
+              "sourceIds": [
+                "SRC-01",
+                "SRC-02",
+                "SRC-03",
+                "SRC-04"
+              ],
+              "issueIds": [
+                "ISSUE-01"
+              ],
+              "planIds": [
+                "TASK-02",
+                "TASK-03",
+                "TASK-04"
+              ]
+            },
+            {
+              "id": "LINK-TRIAL",
+              "from": "ARG-PLAN",
+              "to": "ARG-OBSERVE",
+              "state": "pending",
+              "label": "方法を試してから",
+              "reason": "判断基準と比較条件は検討中。試行で記録可能かを確かめてから本観察へ進む。",
+              "needed": "判断基準・比較条件・記録手順を決め、試行する。",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "planIds": [
+                "TASK-02",
+                "TASK-03"
+              ]
+            },
+            {
+              "id": "LINK-ANALYSE",
+              "from": "ARG-OBSERVE",
+              "to": "ARG-ANSWER",
+              "state": "pending",
+              "label": "比較・考察する",
+              "reason": "行動観察は未実施。記録が揃った後、条件の違いや別の説明も検討する。",
+              "needed": "結果と限界から言える範囲を検討し、仮説が支持されない場合も残す。",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "planIds": [
+                "TASK-04",
+                "TASK-05"
+              ]
+            },
+            {
+              "id": "LINK-POSITION",
+              "from": "ARG-BACKGROUND",
+              "to": "ARG-QUESTION",
+              "state": "unknown",
+              "label": "位置づけは未確認",
+              "reason": "先行研究に対して何を引き継ぎ、何を新たに示す問いなのかを判断する資料が足りない。",
+              "needed": "関連する文献と、問いに活かす知見・既知と未知の整理を確認する。",
+              "sourceIds": [
+                "SRC-02"
+              ]
+            },
+            {
+              "id": "LINK-METHOD",
+              "from": "ARG-QUESTION",
+              "to": "ARG-WORK",
+              "state": "gap",
+              "label": "問いと調べたものが違う",
+              "reason": "問いは見落としの変化。実施した調査は好みを尋ねており、見落としを記録する方法になっていない。",
+              "needed": "目的を変更して正当化せず、見落としを確かめる方法を検討する。",
+              "sourceIds": [
+                "SRC-01",
+                "SRC-02",
+                "SRC-04"
+              ],
+              "issueIds": [
+                "ISSUE-01"
+              ]
+            },
+            {
+              "id": "LINK-INTERPRET",
+              "from": "ARG-DATA",
+              "to": "ARG-DISCUSSION",
+              "state": "supported",
+              "label": "言える範囲を整理",
+              "reason": "回答の範囲と不足を照合している。仮説が否定されたとも、Bが見落とされにくいとも主張していない。",
+              "needed": "",
+              "sourceIds": [
+                "SRC-01",
+                "SRC-04"
+              ]
+            },
+            {
+              "id": "LINK-CONCLUDE",
+              "from": "ARG-DISCUSSION",
+              "to": "ARG-ANSWER",
+              "state": "pending",
+              "label": "問いに答える根拠はこれから",
+              "reason": "現状の限界は説明できているが、配置と見落としに関する観察結果はまだない。結論の捏造や論理の誤りと判定する箇所ではない。",
+              "needed": "計画を見直して観察・分析し、問いへの答えを検討する。",
+              "sourceIds": [
+                "SRC-02",
+                "SRC-04"
+              ]
+            }
+          ],
+          "routes": [
+            {
+              "id": "current",
+              "title": "いまある記録",
+              "nodeIds": [
+                "ARG-WORK",
+                "ARG-DATA",
+                "ARG-ANSWER"
+              ],
+              "linkIds": [
+                "LINK-RECORD",
+                "LINK-GAP"
+              ]
+            },
+            {
+              "id": "planned",
+              "title": "つなぎ直す計画（まだ実施していない）",
+              "nodeIds": [
+                "ARG-PLAN",
+                "ARG-OBSERVE",
+                "ARG-ANSWER"
+              ],
+              "linkIds": [
+                "LINK-TRIAL",
+                "LINK-ANALYSE"
+              ]
+            },
+            {
+              "id": "overview",
+              "title": "研究全体のつながりを見る",
+              "nodeIds": [
+                "ARG-BACKGROUND",
+                "ARG-QUESTION",
+                "ARG-WORK",
+                "ARG-DATA",
+                "ARG-DISCUSSION",
+                "ARG-ANSWER"
+              ],
+              "linkIds": [
+                "LINK-POSITION",
+                "LINK-METHOD",
+                "LINK-RECORD",
+                "LINK-INTERPRET",
+                "LINK-CONCLUDE"
+              ]
+            }
+          ]
+        },
+        "questions": {
+          "generatedAt": "2026-09-15",
+          "seminarDate": "2026-09-16",
+          "items": [
+            {
+              "id": "QUESTION-01",
+              "question": "「見落とし」をどの行動で判断し、どの条件をそろえて比較するか。",
+              "reason": "好みの回答では、研究の目的である見落としの減少を確かめられないため。",
+              "options": "表示に気づかず通過したか／進路選択を誤ったか、などの候補を比較する。どちらも状況や他の要因を検討する必要がある。",
+              "studentView": "まず観察の予備試行を行い、記録できる行動と条件を確かめたい。",
+              "sourceIds": [
+                "SRC-01",
+                "SRC-02",
+                "SRC-04"
+              ],
+              "relatedLogIds": [
+                "LOG-20260914",
+                "LOG-20260915"
+              ],
+              "status": "相談予定"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "LOG-FORMAT-20260918-03",
+      "date": "2026-09-18",
+      "seminarDate": "2026-09-16",
+      "type": "format_update",
+      "title": "研究の目的と全体のつながりを読み直せる形に整理",
+      "summary": "目的を何を明らかにするかの形に整理し、研究の4項目を順に読める見本へ変更。架空の例であり、新しい結果・学生の確認を追加していない。",
+      "sourceIds": [
+        "SRC-02"
+      ],
+      "snapshot": {
+        "revision": {
+          "id": "20260918-layout02",
+          "previousId": "20260918-layout01",
+          "savedAt": "2026-09-18",
+          "reason": "研究の骨格と文献の用途、行動計画に付随する相談を明示。架空の研究例の表示改訂であり、新たな研究結果・学生合意は追加していない。"
+        },
+        "research": {
+          "title": "案内表示の見落としを減らすには",
+          "purpose": "移動中に必要な案内表示を見落とすことを減らす。",
+          "question": "行き先の名称と方向の矢印をまとめて配置すると、見落としは減るか。",
+          "contribution": "名称と矢印の配置について、見落としを減らすための設計原則を検討する。",
+          "hypothesis": "名称と矢印を近接させる配置は、離した配置より見落とされにくい。",
+          "currentPlan": "2種類の表示案を比較する。予備調査では好みを尋ねた。移動中の行動を観察する実験は未実施。",
+          "sourceIds": [
+            "SRC-01",
+            "SRC-02"
+          ],
+          "studentConfirmedAt": "2026-09-15"
+        },
+        "argumentMap": {
+          "updatedAt": "2026-09-18",
+          "focusLinkId": "LINK-DESIGN",
+          "nodes": [
+            {
+              "id": "ARG-BACKGROUND",
+              "label": "背景・未解決の問題",
+              "text": "案内表示の見落としを減らしたい。既存研究で分かる範囲は未整理。",
+              "state": "unknown",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "paperSectionIds": [
+                "background"
+              ],
+              "role": "background"
+            },
+            {
+              "id": "ARG-QUESTION",
+              "label": "目的・明らかにしたいこと",
+              "text": "名称と矢印の配置が、見落としにどう関わるかを明らかにする。",
+              "state": "recorded",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "paperSectionIds": [
+                "purpose"
+              ],
+              "role": "purpose"
+            },
+            {
+              "id": "ARG-WORK",
+              "label": "やったこと",
+              "text": "2つの表示案を8名に見せ、好みを聞いた。",
+              "state": "recorded",
+              "sourceIds": [
+                "SRC-01",
+                "SRC-04"
+              ],
+              "workRecordIds": [
+                "WORK-01"
+              ],
+              "planIds": [
+                "TASK-01"
+              ],
+              "paperSectionIds": [
+                "method"
+              ],
+              "role": "activity"
+            },
+            {
+              "id": "ARG-DATA",
+              "label": "得られたもの",
+              "text": "Aを3名、Bを5名が選んだ。",
+              "note": "この8名の、表示案への好み。",
+              "state": "recorded",
+              "sourceIds": [
+                "SRC-01"
+              ],
+              "paperSectionIds": [
+                "results"
+              ],
+              "role": "result"
+            },
+            {
+              "id": "ARG-ANSWER",
+              "label": "問いへの答え",
+              "text": "配置で見落としが減るかは、まだ判断できない。",
+              "state": "pending",
+              "sourceIds": [
+                "SRC-02",
+                "SRC-04"
+              ],
+              "paperSectionIds": [
+                "conclusion"
+              ],
+              "role": "interpretation"
+            },
+            {
+              "id": "ARG-PLAN",
+              "label": "調査・実験の計画",
+              "text": "2配置を比べ、移動中の行動を観察する。判断基準・条件は検討中。",
+              "state": "planned",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "planIds": [
+                "TASK-02",
+                "TASK-03"
+              ],
+              "paperSectionIds": [
+                "method"
+              ],
+              "role": "method"
+            },
+            {
+              "id": "ARG-OBSERVE",
+              "label": "集める予定のもの",
+              "text": "配置ごとの、移動中の行動と見落としの記録。",
+              "state": "pending",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "planIds": [
+                "TASK-04"
+              ],
+              "paperSectionIds": [
+                "results"
+              ],
+              "role": "result"
+            },
+            {
+              "id": "ARG-DISCUSSION",
+              "label": "今ある結果の解釈",
+              "text": "好みは分かったが、見落としの減少を判断する根拠にはならない。",
+              "state": "recorded",
+              "sourceIds": [
+                "SRC-01",
+                "SRC-03",
+                "SRC-04"
+              ],
+              "paperSectionIds": [
+                "discussion"
+              ],
+              "role": "interpretation"
+            },
+            {
+              "id": "ARG-HYPOTHESIS",
+              "role": "hypothesis",
+              "label": "仮説・予想する知見",
+              "text": "名称と矢印を近接させる配置は、離した配置より見落とされにくい。",
+              "state": "recorded",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "paperSectionIds": [
+                "purpose"
+              ]
+            },
+            {
+              "id": "ARG-REFERENCE",
+              "role": "reference",
+              "label": "先行研究・参考文献",
+              "text": "未整理。利用する知見・原文・適用できる条件を確認する。",
+              "state": "unknown",
+              "sourceIds": [],
+              "note": "これは未整理の項目を示す仮置きです。確認済みの文献があるという意味ではありません。"
+            }
+          ],
+          "links": [
+            {
+              "id": "LINK-RECORD",
+              "from": "ARG-WORK",
+              "to": "ARG-DATA",
+              "state": "supported",
+              "label": "回答を記録",
+              "reason": "好みを聞いた8件の回答から、AとBを選んだ人数を数えられる。",
+              "needed": "",
+              "sourceIds": [
+                "SRC-01"
+              ]
+            },
+            {
+              "id": "LINK-GAP",
+              "from": "ARG-DATA",
+              "to": "ARG-ANSWER",
+              "state": "gap",
+              "label": "ここが切れ目",
+              "reason": "「好まれる」から「見落とされにくい」とは言えない。",
+              "detail": "回答に残っているのは好みだけ。移動中に見落としたかを記録していないため、この回答を集め続けても、見落としが減るかは判断できない。",
+              "needed": "何を見落としと数えるか、どの条件で比較するかを決める。計画案を相談し、方法を試してから行動を記録する。",
+              "sourceIds": [
+                "SRC-01",
+                "SRC-02",
+                "SRC-03",
+                "SRC-04"
+              ],
+              "issueIds": [
+                "ISSUE-01"
+              ],
+              "planIds": [
+                "TASK-02",
+                "TASK-03",
+                "TASK-04"
+              ]
+            },
+            {
+              "id": "LINK-TRIAL",
+              "from": "ARG-PLAN",
+              "to": "ARG-OBSERVE",
+              "state": "pending",
+              "label": "方法を試してから",
+              "reason": "判断基準と比較条件は検討中。試行で記録可能かを確かめてから本観察へ進む。",
+              "needed": "判断基準・比較条件・記録手順を決め、試行する。",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "planIds": [
+                "TASK-02",
+                "TASK-03"
+              ]
+            },
+            {
+              "id": "LINK-ANALYSE",
+              "from": "ARG-OBSERVE",
+              "to": "ARG-ANSWER",
+              "state": "pending",
+              "label": "比較・考察する",
+              "reason": "行動観察は未実施。記録が揃った後、条件の違いや別の説明も検討する。",
+              "needed": "結果と限界から言える範囲を検討し、仮説が支持されない場合も残す。",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "planIds": [
+                "TASK-04",
+                "TASK-05"
+              ]
+            },
+            {
+              "id": "LINK-POSITION",
+              "from": "ARG-BACKGROUND",
+              "to": "ARG-QUESTION",
+              "state": "unknown",
+              "label": "位置づけは未確認",
+              "reason": "先行研究に対して何を引き継ぎ、何を新たに示す問いなのかを判断する資料が足りない。",
+              "needed": "関連する文献と、問いに活かす知見・既知と未知の整理を確認する。",
+              "sourceIds": [
+                "SRC-02"
+              ]
+            },
+            {
+              "id": "LINK-METHOD",
+              "from": "ARG-QUESTION",
+              "to": "ARG-WORK",
+              "state": "gap",
+              "label": "問いと調べたものが違う",
+              "reason": "問いは見落としの変化。実施した調査は好みを尋ねており、見落としを記録する方法になっていない。",
+              "needed": "目的を変更して正当化せず、見落としを確かめる方法を検討する。",
+              "sourceIds": [
+                "SRC-01",
+                "SRC-02",
+                "SRC-04"
+              ],
+              "issueIds": [
+                "ISSUE-01"
+              ]
+            },
+            {
+              "id": "LINK-INTERPRET",
+              "from": "ARG-DATA",
+              "to": "ARG-DISCUSSION",
+              "state": "supported",
+              "label": "言える範囲を整理",
+              "reason": "回答の範囲と不足を照合している。仮説が否定されたとも、Bが見落とされにくいとも主張していない。",
+              "needed": "",
+              "sourceIds": [
+                "SRC-01",
+                "SRC-04"
+              ]
+            },
+            {
+              "id": "LINK-CONCLUDE",
+              "from": "ARG-DISCUSSION",
+              "to": "ARG-ANSWER",
+              "state": "pending",
+              "label": "問いに答える根拠はこれから",
+              "reason": "現状の限界は説明できているが、配置と見落としに関する観察結果はまだない。結論の捏造や論理の誤りと判定する箇所ではない。",
+              "needed": "計画を見直して観察・分析し、問いへの答えを検討する。",
+              "sourceIds": [
+                "SRC-02",
+                "SRC-04"
+              ]
+            },
+            {
+              "id": "LINK-HYPOTHESIS",
+              "from": "ARG-QUESTION",
+              "to": "ARG-HYPOTHESIS",
+              "label": "目的への答えの候補",
+              "reason": "配置が見落としにどう関わるかという目的に対し、近接配置の方が見落とされにくいという答えの候補を置いている。内容の対応であり、仮説を実証した意味ではない。",
+              "state": "supported",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "needed": ""
+            },
+            {
+              "id": "LINK-DESIGN",
+              "from": "ARG-HYPOTHESIS",
+              "to": "ARG-PLAN",
+              "label": "検証方法は要確認",
+              "reason": "配置を比較する計画はあるが、何を見落としと数えるかと、他の要因をどう揃えるかが未確定。仮説を確かめられる方法かはまだ判断できない。",
+              "state": "unknown",
+              "sourceIds": [
+                "SRC-02",
+                "SRC-03"
+              ],
+              "needed": "判断基準・比較条件・記録手順を具体化し、予想どおり／異なる場合に何が言えるかを点検する。"
+            },
+            {
+              "id": "LINK-REF-POSITION",
+              "from": "ARG-REFERENCE",
+              "to": "ARG-BACKGROUND",
+              "label": "位置づけへ？",
+              "reason": "何が既知で何が未解決かを示すための文献が未整理。",
+              "state": "unknown",
+              "sourceIds": [],
+              "needed": "実物の文献と該当箇所を読み、どの知見をどう使うか、条件と限界を確かめる。"
+            },
+            {
+              "id": "LINK-REF-HYPOTHESIS",
+              "from": "ARG-REFERENCE",
+              "to": "ARG-HYPOTHESIS",
+              "label": "仮説の検討へ？",
+              "reason": "どの知見をもとに仮説を考えるか、修正・限定が必要かは未確認。",
+              "state": "unknown",
+              "sourceIds": [],
+              "needed": "実物の文献と該当箇所を読み、どの知見をどう使うか、条件と限界を確かめる。"
+            },
+            {
+              "id": "LINK-REF-METHOD",
+              "from": "ARG-REFERENCE",
+              "to": "ARG-PLAN",
+              "label": "方法の参考へ？",
+              "reason": "比較条件・行動の測定方法の何を参考にできるかは未確認。",
+              "state": "unknown",
+              "sourceIds": [],
+              "needed": "実物の文献と該当箇所を読み、どの知見をどう使うか、条件と限界を確かめる。"
+            }
+          ],
+          "routes": [
+            {
+              "id": "current",
+              "title": "いまある記録",
+              "nodeIds": [
+                "ARG-WORK",
+                "ARG-DATA",
+                "ARG-ANSWER"
+              ],
+              "linkIds": [
+                "LINK-RECORD",
+                "LINK-GAP"
+              ]
+            },
+            {
+              "id": "planned",
+              "title": "つなぎ直す計画（まだ実施していない）",
+              "nodeIds": [
+                "ARG-PLAN",
+                "ARG-OBSERVE",
+                "ARG-ANSWER"
+              ],
+              "linkIds": [
+                "LINK-TRIAL",
+                "LINK-ANALYSE"
+              ]
+            },
+            {
+              "id": "overview",
+              "title": "研究全体のつながりを見る",
+              "nodeIds": [
+                "ARG-BACKGROUND",
+                "ARG-QUESTION",
+                "ARG-WORK",
+                "ARG-DATA",
+                "ARG-DISCUSSION",
+                "ARG-ANSWER"
+              ],
+              "linkIds": [
+                "LINK-POSITION",
+                "LINK-METHOD",
+                "LINK-RECORD",
+                "LINK-INTERPRET",
+                "LINK-CONCLUDE"
+              ]
+            },
+            {
+              "id": "backbone",
+              "title": "背景・目的・仮説・方法の整合性",
+              "nodeIds": [
+                "ARG-BACKGROUND",
+                "ARG-QUESTION",
+                "ARG-HYPOTHESIS",
+                "ARG-PLAN"
+              ],
+              "linkIds": [
+                "LINK-POSITION",
+                "LINK-HYPOTHESIS",
+                "LINK-DESIGN"
+              ]
+            }
+          ]
+        },
+        "paperOutline": [
+          {
+            "id": "background",
+            "title": "背景・問題",
+            "content": "移動中に必要な案内表示を見落とす問題を扱う。案内表示の中でも、行き先の名称と方向を示す矢印の配置に着目する。",
+            "remaining": "先行研究の知見をどう活かすか、何を引き継ぎ何を明らかにする研究かを整理する。",
+            "sourceIds": [
+              "SRC-02"
+            ]
+          },
+          {
+            "id": "purpose",
+            "title": "目的・問い・仮説",
+            "content": "目的は、移動中の案内表示の見落としを減らすことである。名称と矢印を近接させた配置は、離した配置よりも見落とされにくいのではないか、という仮説を確かめる。",
+            "remaining": "対象者と利用場面を定め、どの範囲について答える研究かを明確にする。",
+            "sourceIds": [
+              "SRC-02"
+            ]
+          },
+          {
+            "id": "method",
+            "title": "方法",
+            "content": "予備調査では2種類の表示案を8名に見せ、どちらを好むか尋ねた。今後は移動中の行動を観察し、配置によって見落としが変わるかを比較する計画である。",
+            "remaining": "見落としの判断基準・比較条件・記録方法を決め、少人数で方法を試す。",
+            "sourceIds": [
+              "SRC-01",
+              "SRC-02"
+            ]
+          },
+          {
+            "id": "results",
+            "title": "結果",
+            "content": "予備調査では、Aを3名、Bを5名が選んだ。この結果は表示案への好みを示す。移動中の見落としを調べる観察は未実施であり、配置の効果を示す結果はまだない。",
+            "remaining": "目的に対応した行動のデータを集め、比較結果を図表にまとめる。",
+            "sourceIds": [
+              "SRC-01"
+            ]
+          },
+          {
+            "id": "discussion",
+            "title": "考察",
+            "content": "好まれた表示が、見落とされにくい表示とは限らない。今回の回答だけでは仮説を判断できず、好みと見落としを同じものとして扱った計画を見直す必要がある。",
+            "remaining": "行動の観察結果から、配置の効果と別の要因の可能性、適用できる範囲を検討する。",
+            "sourceIds": [
+              "SRC-04",
+              "SRC-03"
+            ]
+          },
+          {
+            "id": "conclusion",
+            "title": "結論・今後の課題",
+            "content": "現時点では、どの配置が見落としを減らすかについて結論は出せない。今後の観察と分析を通して、名称と矢印の配置に関する設計原則と、その限界を示すことを目指す。",
+            "remaining": "検証後に研究の問いへの答えをまとめ、明らかになったことと残る課題を区別する。",
+            "sourceIds": [
+              "SRC-02",
+              "SRC-04"
+            ]
+          }
+        ],
+        "questions": {
+          "generatedAt": "2026-09-15",
+          "seminarDate": "2026-09-16",
+          "items": [
+            {
+              "id": "QUESTION-01",
+              "question": "「見落とし」をどの行動で判断し、どの条件をそろえて比較するか。",
+              "reason": "好みの回答では、研究の目的である見落としの減少を確かめられないため。",
+              "options": "表示に気づかず通過したか／進路選択を誤ったか、などの候補を比較する。どちらも状況や他の要因を検討する必要がある。",
+              "studentView": "まず観察の予備試行を行い、記録できる行動と条件を確かめたい。",
+              "sourceIds": [
+                "SRC-01",
+                "SRC-02",
+                "SRC-04"
+              ],
+              "relatedLogIds": [
+                "LOG-20260914",
+                "LOG-20260915"
+              ],
+              "status": "相談予定",
+              "planIds": [
+                "TASK-02"
+              ],
+              "decisionDueDate": "2026-09-25",
+              "decisionDateState": "proposed",
+              "afterDecision": "観察の判断基準・比較条件を試行計画に反映し、9/28からの試行へ使う。日程は案。",
+              "ifUnresolved": "本観察の予定は確定せず、候補と代替案を整理して相談する。試行開始と後続工程を再見積もりし、11/13の初稿見込みへの影響を示す。"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "LOG-FORMAT-20260918-04",
+      "date": "2026-09-18",
+      "seminarDate": "2026-09-16",
+      "type": "format_update",
+      "title": "図・説明・参考文献のリンクで番号を揃えた",
+      "summary": "図と説明の番号を主軸の順番に統一。研究内容・結果・計画の変更ではない。",
+      "sourceIds": [],
+      "snapshot": {
+        "revision": {
+          "id": "20260918-layout03",
+          "previousId": "20260918-layout02",
+          "savedAt": "2026-09-18",
+          "reason": "目的を何を明らかにするかの形に整理し、研究の4項目を順に読める見本へ変更。架空の例であり、新しい結果・学生の確認を追加していない。"
+        },
+        "argumentMap": {
+          "updatedAt": "2026-09-18",
+          "focusLinkId": "LINK-DESIGN",
+          "nodes": [
+            {
+              "id": "ARG-BACKGROUND",
+              "label": "背景",
+              "text": "歩いているときに、必要な案内表示を見落とすことがある。この見落としを減らしたい。",
+              "state": "unknown",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "paperSectionIds": [
+                "background"
+              ],
+              "role": "background",
+              "note": "どんな場面で起きるか、これまでの研究で何が分かっているかは、まだ整理できていない。"
+            },
+            {
+              "id": "ARG-QUESTION",
+              "label": "目的",
+              "text": "行き先の文字と矢印の置き方で、案内表示の見落としがどう変わるかを明らかにする。",
+              "state": "recorded",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "paperSectionIds": [
+                "purpose"
+              ],
+              "role": "purpose"
+            },
+            {
+              "id": "ARG-WORK",
+              "label": "今回やったこと",
+              "text": "2種類の表示を8人に見せて、どちらが好きかを聞いた。",
+              "state": "recorded",
+              "sourceIds": [
+                "SRC-01",
+                "SRC-04"
+              ],
+              "workRecordIds": [
+                "WORK-01"
+              ],
+              "planIds": [
+                "TASK-01"
+              ],
+              "paperSectionIds": [
+                "method"
+              ],
+              "role": "activity"
+            },
+            {
+              "id": "ARG-DATA",
+              "label": "その結果",
+              "text": "Aを3人、Bを5人が選んだ。",
+              "note": "この8名の、表示案への好み。",
+              "state": "recorded",
+              "sourceIds": [
+                "SRC-01"
+              ],
+              "paperSectionIds": [
+                "results"
+              ],
+              "role": "result"
+            },
+            {
+              "id": "ARG-ANSWER",
+              "label": "まだ分からないこと",
+              "text": "文字と矢印を近くに置くと見落としが減るかは、今回の回答だけでは分からない。",
+              "state": "pending",
+              "sourceIds": [
+                "SRC-02",
+                "SRC-04"
+              ],
+              "paperSectionIds": [
+                "conclusion"
+              ],
+              "role": "interpretation"
+            },
+            {
+              "id": "ARG-PLAN",
+              "label": "仮説を確かにするための実験",
+              "text": "文字と矢印の置き方が違う2種類の表示を使い、歩いている人の行動を比べる予定。",
+              "state": "planned",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "planIds": [
+                "TASK-02",
+                "TASK-03"
+              ],
+              "paperSectionIds": [
+                "method"
+              ],
+              "role": "method",
+              "note": "何を「見落とし」と数えるか、置き方以外の条件をどう揃えるかは、まだ決まっていない。"
+            },
+            {
+              "id": "ARG-OBSERVE",
+              "label": "実験で集めたい記録",
+              "text": "表示の置き方ごとの、人の行動と見落としの記録。まだ集めていない。",
+              "state": "pending",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "planIds": [
+                "TASK-04"
+              ],
+              "paperSectionIds": [
+                "results"
+              ],
+              "role": "result"
+            },
+            {
+              "id": "ARG-DISCUSSION",
+              "label": "結果から考えたこと",
+              "text": "どちらが好きかは分かった。でも、好きな表示が見落とされにくいとは限らない。",
+              "state": "recorded",
+              "sourceIds": [
+                "SRC-01",
+                "SRC-03",
+                "SRC-04"
+              ],
+              "paperSectionIds": [
+                "discussion"
+              ],
+              "role": "interpretation"
+            },
+            {
+              "id": "ARG-HYPOTHESIS",
+              "role": "hypothesis",
+              "label": "仮説",
+              "text": "行き先の文字と矢印を近くに置くと、離して置くよりも見落としが減るのではないか。",
+              "state": "recorded",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "paperSectionIds": [
+                "purpose"
+              ]
+            },
+            {
+              "id": "ARG-REFERENCE",
+              "role": "reference",
+              "label": "参考文献",
+              "text": "使う本・論文はまだ整理できていない。どの内容を研究に使えるかも、これから確認する。",
+              "state": "unknown",
+              "sourceIds": [],
+              "note": "文献があると確認できたわけではない。未整理の場所を示している。"
+            }
+          ],
+          "links": [
+            {
+              "id": "LINK-RECORD",
+              "from": "ARG-WORK",
+              "to": "ARG-DATA",
+              "state": "supported",
+              "label": "回答を記録",
+              "reason": "8人の回答から、AとBを選んだ人数を数えた。",
+              "needed": "",
+              "sourceIds": [
+                "SRC-01"
+              ]
+            },
+            {
+              "id": "LINK-GAP",
+              "from": "ARG-DATA",
+              "to": "ARG-ANSWER",
+              "state": "gap",
+              "label": "ここが切れ目",
+              "reason": "「好きな表示」と「見落としにくい表示」は同じとは限らない。好みを聞いただけでは、見落としが減るかは分からない。",
+              "detail": "回答に残っているのは好みだけ。移動中に見落としたかを記録していないため、この回答を集め続けても、見落としが減るかは判断できない。",
+              "needed": "見落としを数える方法を決め、計画を先生と相談してから試す。",
+              "sourceIds": [
+                "SRC-01",
+                "SRC-02",
+                "SRC-03",
+                "SRC-04"
+              ],
+              "issueIds": [
+                "ISSUE-01"
+              ],
+              "planIds": [
+                "TASK-02",
+                "TASK-03",
+                "TASK-04"
+              ]
+            },
+            {
+              "id": "LINK-TRIAL",
+              "from": "ARG-PLAN",
+              "to": "ARG-OBSERVE",
+              "state": "pending",
+              "label": "方法を試してから",
+              "reason": "見落としを数える方法や、揃える条件を決める。少人数で記録できるかを試してから、本番の実験へ進む予定。",
+              "needed": "数える行動・条件・手順を決め、実際に試す。",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "planIds": [
+                "TASK-02",
+                "TASK-03"
+              ]
+            },
+            {
+              "id": "LINK-ANALYSE",
+              "from": "ARG-OBSERVE",
+              "to": "ARG-ANSWER",
+              "state": "pending",
+              "label": "比較・考察する",
+              "reason": "人の行動を調べる実験はまだ行っていない。記録を集めてから置き方による違いを調べ、ほかの原因でも説明できないかを考える。",
+              "needed": "予想と違う結果も残し、どこまで言えるかを考える。",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "planIds": [
+                "TASK-04",
+                "TASK-05"
+              ]
+            },
+            {
+              "id": "LINK-POSITION",
+              "from": "ARG-BACKGROUND",
+              "to": "ARG-QUESTION",
+              "state": "unknown",
+              "label": "位置づけは未確認",
+              "reason": "案内表示の中でも、行き先の文字と矢印の置き方を調べたい。ただし、これまでの研究と比べて何を新しく明らかにするかは、まだ整理できていない。",
+              "needed": "関連する本・論文を読み、既に分かっていることと、この研究で知りたいことを分ける。",
+              "sourceIds": [
+                "SRC-02"
+              ]
+            },
+            {
+              "id": "LINK-METHOD",
+              "from": "ARG-QUESTION",
+              "to": "ARG-WORK",
+              "state": "gap",
+              "label": "問いと調べたものが違う",
+              "reason": "知りたいのは見落としが減るかどうかだが、今回聞いたのは好みだった。人が表示を見落としたかどうかは調べていない。",
+              "needed": "見落としを確かめる実験方法を考える。",
+              "sourceIds": [
+                "SRC-01",
+                "SRC-02",
+                "SRC-04"
+              ],
+              "issueIds": [
+                "ISSUE-01"
+              ]
+            },
+            {
+              "id": "LINK-INTERPRET",
+              "from": "ARG-DATA",
+              "to": "ARG-DISCUSSION",
+              "state": "supported",
+              "label": "言える範囲を整理",
+              "reason": "好みの回答から何が分かり、何が分からないかを整理した。「Bなら見落としが減る」とはまだ言っていない。",
+              "needed": "",
+              "sourceIds": [
+                "SRC-01",
+                "SRC-04"
+              ]
+            },
+            {
+              "id": "LINK-CONCLUDE",
+              "from": "ARG-DISCUSSION",
+              "to": "ARG-ANSWER",
+              "state": "pending",
+              "label": "問いに答える根拠はこれから",
+              "reason": "今の回答だけでは答えが出せないことは分かった。見落としを調べる実験の結果がないので、予想が合っているかはまだ分からない。",
+              "needed": "実験を計画し直し、得られた記録から答えを考える。",
+              "sourceIds": [
+                "SRC-02",
+                "SRC-04"
+              ]
+            },
+            {
+              "id": "LINK-HYPOTHESIS",
+              "from": "ARG-QUESTION",
+              "to": "ARG-HYPOTHESIS",
+              "label": "目的への答えの候補",
+              "reason": "知りたいのは、文字と矢印の置き方で見落としが変わるかどうか。その答えを「近くに置くと減るのではないか」と予想している。まだ確かめた答えではない。",
+              "state": "supported",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "needed": ""
+            },
+            {
+              "id": "LINK-DESIGN",
+              "from": "ARG-HYPOTHESIS",
+              "to": "ARG-PLAN",
+              "label": "検証方法は要確認",
+              "reason": "2種類の置き方を比べる予定はある。ただし、何を見落としと数え、ほかの条件をどう揃えるかが決まっていない。今の計画で予想を確かめられるかは、まだ分からない。",
+              "state": "unknown",
+              "sourceIds": [
+                "SRC-02",
+                "SRC-03"
+              ],
+              "needed": "数える行動・揃える条件・記録する手順を決める。予想どおりでも違っても、何が言えるかを考える。"
+            },
+            {
+              "id": "LINK-REF-POSITION",
+              "from": "ARG-REFERENCE",
+              "to": "ARG-BACKGROUND",
+              "label": "位置づけへ？",
+              "reason": "これまでの研究で何が分かり、何がまだ分かっていないかを調べるために使いたい。使う文献は未整理。",
+              "state": "unknown",
+              "sourceIds": [],
+              "needed": "実際の本・論文を読み、必要な箇所を確かめる。"
+            },
+            {
+              "id": "LINK-REF-HYPOTHESIS",
+              "from": "ARG-REFERENCE",
+              "to": "ARG-HYPOTHESIS",
+              "label": "仮説の検討へ？",
+              "reason": "「近くに置くと見落としが減る」と考えられる理由や、そうならない場合を考えるために使いたい。使う文献は未整理。",
+              "state": "unknown",
+              "sourceIds": [],
+              "needed": "文献のどの内容が役立つか、今回も当てはまるかを確認する。"
+            },
+            {
+              "id": "LINK-REF-METHOD",
+              "from": "ARG-REFERENCE",
+              "to": "ARG-PLAN",
+              "label": "方法の参考へ？",
+              "reason": "人の行動をどう調べ、何を記録するかを考えるために使いたい。参考にする方法は未確認。",
+              "state": "unknown",
+              "sourceIds": [],
+              "needed": "文献の方法を読み、今回の研究に使えるか、変える必要があるかを確認する。"
+            }
+          ],
+          "routes": [
+            {
+              "id": "current",
+              "title": "いまある記録",
+              "nodeIds": [
+                "ARG-WORK",
+                "ARG-DATA",
+                "ARG-ANSWER"
+              ],
+              "linkIds": [
+                "LINK-RECORD",
+                "LINK-GAP"
+              ]
+            },
+            {
+              "id": "planned",
+              "title": "つなぎ直す計画（まだ実施していない）",
+              "nodeIds": [
+                "ARG-PLAN",
+                "ARG-OBSERVE",
+                "ARG-ANSWER"
+              ],
+              "linkIds": [
+                "LINK-TRIAL",
+                "LINK-ANALYSE"
+              ]
+            },
+            {
+              "id": "overview",
+              "title": "研究全体のつながりを見る",
+              "nodeIds": [
+                "ARG-BACKGROUND",
+                "ARG-QUESTION",
+                "ARG-WORK",
+                "ARG-DATA",
+                "ARG-DISCUSSION",
+                "ARG-ANSWER"
+              ],
+              "linkIds": [
+                "LINK-POSITION",
+                "LINK-METHOD",
+                "LINK-RECORD",
+                "LINK-INTERPRET",
+                "LINK-CONCLUDE"
+              ]
+            },
+            {
+              "id": "backbone",
+              "title": "背景・目的・仮説・方法の整合性",
+              "nodeIds": [
+                "ARG-BACKGROUND",
+                "ARG-QUESTION",
+                "ARG-HYPOTHESIS",
+                "ARG-PLAN"
+              ],
+              "linkIds": [
+                "LINK-POSITION",
+                "LINK-HYPOTHESIS",
+                "LINK-DESIGN"
+              ]
+            }
+          ],
+          "presentation": {
+            "primaryRouteId": "backbone",
+            "referenceNodeIds": [
+              "ARG-REFERENCE"
+            ],
+            "activityRouteIds": [
+              "current"
+            ],
+            "readingOrder": "背景・目的・仮説・仮説を確かにするための実験を先に読み、文献の使い先と今回の作業を対応づける。"
+          }
+        }
+      }
+    },
+    {
+      "id": "LOG-FORMAT-20260918-05",
+      "date": "2026-09-18",
+      "seminarDate": "2026-09-16",
+      "type": "format_update",
+      "title": "研究の項目を線でつなぐ図を戻した",
+      "summary": "研究の主軸・参考文献・今回の作業を実際の線で結び、各接続が何に貢献し、その結果を何の判断へ使うかを明示。研究の結果や合意した計画を追加したものではない。",
+      "sourceIds": [
+        "SRC-01",
+        "SRC-02",
+        "SRC-04"
+      ],
+      "snapshot": {
+        "revision": {
+          "id": "20260918-layout04",
+          "previousId": "20260918-layout03",
+          "savedAt": "2026-09-18",
+          "reason": "図と説明の番号を主軸の順番に統一。研究内容・結果・計画の変更ではない。"
+        },
+        "argumentMap": {
+          "updatedAt": "2026-09-18",
+          "focusLinkId": "LINK-DESIGN",
+          "nodes": [
+            {
+              "id": "ARG-BACKGROUND",
+              "label": "背景",
+              "text": "歩いているときに、必要な案内表示を見落とすことがある。この見落としを減らしたい。",
+              "state": "unknown",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "paperSectionIds": [
+                "background"
+              ],
+              "role": "background",
+              "note": "どんな場面で起きるか、これまでの研究で何が分かっているかは、まだ整理できていない。"
+            },
+            {
+              "id": "ARG-QUESTION",
+              "label": "目的",
+              "text": "行き先の文字と矢印の置き方で、案内表示の見落としがどう変わるかを明らかにする。",
+              "state": "recorded",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "paperSectionIds": [
+                "purpose"
+              ],
+              "role": "purpose"
+            },
+            {
+              "id": "ARG-WORK",
+              "label": "今回やったこと",
+              "text": "2種類の表示を8人に見せて、どちらが好きかを聞いた。",
+              "state": "recorded",
+              "sourceIds": [
+                "SRC-01",
+                "SRC-04"
+              ],
+              "workRecordIds": [
+                "WORK-01"
+              ],
+              "planIds": [
+                "TASK-01"
+              ],
+              "paperSectionIds": [
+                "method"
+              ],
+              "role": "activity"
+            },
+            {
+              "id": "ARG-DATA",
+              "label": "その結果",
+              "text": "Aを3人、Bを5人が選んだ。",
+              "note": "この8名の、表示案への好み。",
+              "state": "recorded",
+              "sourceIds": [
+                "SRC-01"
+              ],
+              "paperSectionIds": [
+                "results"
+              ],
+              "role": "result"
+            },
+            {
+              "id": "ARG-ANSWER",
+              "label": "まだ分からないこと",
+              "text": "文字と矢印を近くに置くと見落としが減るかは、今回の回答だけでは分からない。",
+              "state": "pending",
+              "sourceIds": [
+                "SRC-02",
+                "SRC-04"
+              ],
+              "paperSectionIds": [
+                "conclusion"
+              ],
+              "role": "interpretation"
+            },
+            {
+              "id": "ARG-PLAN",
+              "label": "仮説を確かにするための実験",
+              "text": "文字と矢印の置き方が違う2種類の表示を使い、歩いている人の行動を比べる予定。",
+              "state": "planned",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "planIds": [
+                "TASK-02",
+                "TASK-03"
+              ],
+              "paperSectionIds": [
+                "method"
+              ],
+              "role": "method",
+              "note": "何を「見落とし」と数えるか、置き方以外の条件をどう揃えるかは、まだ決まっていない。"
+            },
+            {
+              "id": "ARG-OBSERVE",
+              "label": "実験で集めたい記録",
+              "text": "表示の置き方ごとの、人の行動と見落としの記録。まだ集めていない。",
+              "state": "pending",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "planIds": [
+                "TASK-04"
+              ],
+              "paperSectionIds": [
+                "results"
+              ],
+              "role": "result"
+            },
+            {
+              "id": "ARG-DISCUSSION",
+              "label": "結果から考えたこと",
+              "text": "どちらが好きかは分かった。でも、好きな表示が見落とされにくいとは限らない。",
+              "state": "recorded",
+              "sourceIds": [
+                "SRC-01",
+                "SRC-03",
+                "SRC-04"
+              ],
+              "paperSectionIds": [
+                "discussion"
+              ],
+              "role": "interpretation"
+            },
+            {
+              "id": "ARG-HYPOTHESIS",
+              "role": "hypothesis",
+              "label": "仮説",
+              "text": "行き先の文字と矢印を近くに置くと、離して置くよりも見落としが減るのではないか。",
+              "state": "recorded",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "paperSectionIds": [
+                "purpose"
+              ]
+            },
+            {
+              "id": "ARG-REFERENCE",
+              "role": "reference",
+              "label": "参考文献",
+              "text": "使う本・論文はまだ整理できていない。どの内容を研究に使えるかも、これから確認する。",
+              "state": "unknown",
+              "sourceIds": [],
+              "note": "文献があると確認できたわけではない。未整理の場所を示している。"
+            }
+          ],
+          "links": [
+            {
+              "id": "LINK-RECORD",
+              "from": "ARG-WORK",
+              "to": "ARG-DATA",
+              "state": "supported",
+              "label": "回答を記録",
+              "reason": "8人の回答から、AとBを選んだ人数を数えた。",
+              "needed": "",
+              "sourceIds": [
+                "SRC-01"
+              ]
+            },
+            {
+              "id": "LINK-GAP",
+              "from": "ARG-DATA",
+              "to": "ARG-ANSWER",
+              "state": "gap",
+              "label": "ここが切れ目",
+              "reason": "「好きな表示」と「見落としにくい表示」は同じとは限らない。好みを聞いただけでは、見落としが減るかは分からない。",
+              "detail": "回答に残っているのは好みだけ。移動中に見落としたかを記録していないため、この回答を集め続けても、見落としが減るかは判断できない。",
+              "needed": "見落としを数える方法を決め、計画を先生と相談してから試す。",
+              "sourceIds": [
+                "SRC-01",
+                "SRC-02",
+                "SRC-03",
+                "SRC-04"
+              ],
+              "issueIds": [
+                "ISSUE-01"
+              ],
+              "planIds": [
+                "TASK-02",
+                "TASK-03",
+                "TASK-04"
+              ]
+            },
+            {
+              "id": "LINK-TRIAL",
+              "from": "ARG-PLAN",
+              "to": "ARG-OBSERVE",
+              "state": "pending",
+              "label": "方法を試してから",
+              "reason": "見落としを数える方法や、揃える条件を決める。少人数で記録できるかを試してから、本番の実験へ進む予定。",
+              "needed": "数える行動・条件・手順を決め、実際に試す。",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "planIds": [
+                "TASK-02",
+                "TASK-03"
+              ]
+            },
+            {
+              "id": "LINK-ANALYSE",
+              "from": "ARG-OBSERVE",
+              "to": "ARG-ANSWER",
+              "state": "pending",
+              "label": "比較・考察する",
+              "reason": "人の行動を調べる実験はまだ行っていない。記録を集めてから置き方による違いを調べ、ほかの原因でも説明できないかを考える。",
+              "needed": "予想と違う結果も残し、どこまで言えるかを考える。",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "planIds": [
+                "TASK-04",
+                "TASK-05"
+              ]
+            },
+            {
+              "id": "LINK-POSITION",
+              "from": "ARG-BACKGROUND",
+              "to": "ARG-QUESTION",
+              "state": "unknown",
+              "label": "位置づけは未確認",
+              "reason": "案内表示の中でも、行き先の文字と矢印の置き方を調べたい。ただし、これまでの研究と比べて何を新しく明らかにするかは、まだ整理できていない。",
+              "needed": "関連する本・論文を読み、既に分かっていることと、この研究で知りたいことを分ける。",
+              "sourceIds": [
+                "SRC-02"
+              ]
+            },
+            {
+              "id": "LINK-METHOD",
+              "from": "ARG-QUESTION",
+              "to": "ARG-WORK",
+              "state": "gap",
+              "label": "問いと調べたものが違う",
+              "reason": "知りたいのは見落としが減るかどうかだが、今回聞いたのは好みだった。人が表示を見落としたかどうかは調べていない。",
+              "needed": "見落としを確かめる実験方法を考える。",
+              "sourceIds": [
+                "SRC-01",
+                "SRC-02",
+                "SRC-04"
+              ],
+              "issueIds": [
+                "ISSUE-01"
+              ]
+            },
+            {
+              "id": "LINK-INTERPRET",
+              "from": "ARG-DATA",
+              "to": "ARG-DISCUSSION",
+              "state": "supported",
+              "label": "言える範囲を整理",
+              "reason": "好みの回答から何が分かり、何が分からないかを整理した。「Bなら見落としが減る」とはまだ言っていない。",
+              "needed": "",
+              "sourceIds": [
+                "SRC-01",
+                "SRC-04"
+              ]
+            },
+            {
+              "id": "LINK-CONCLUDE",
+              "from": "ARG-DISCUSSION",
+              "to": "ARG-ANSWER",
+              "state": "pending",
+              "label": "問いに答える根拠はこれから",
+              "reason": "今の回答だけでは答えが出せないことは分かった。見落としを調べる実験の結果がないので、予想が合っているかはまだ分からない。",
+              "needed": "実験を計画し直し、得られた記録から答えを考える。",
+              "sourceIds": [
+                "SRC-02",
+                "SRC-04"
+              ]
+            },
+            {
+              "id": "LINK-HYPOTHESIS",
+              "from": "ARG-QUESTION",
+              "to": "ARG-HYPOTHESIS",
+              "label": "目的への答えの候補",
+              "reason": "知りたいのは、文字と矢印の置き方で見落としが変わるかどうか。その答えを「近くに置くと減るのではないか」と予想している。まだ確かめた答えではない。",
+              "state": "supported",
+              "sourceIds": [
+                "SRC-02"
+              ],
+              "needed": ""
+            },
+            {
+              "id": "LINK-DESIGN",
+              "from": "ARG-HYPOTHESIS",
+              "to": "ARG-PLAN",
+              "label": "検証方法は要確認",
+              "reason": "2種類の置き方を比べる予定はある。ただし、何を見落としと数え、ほかの条件をどう揃えるかが決まっていない。今の計画で予想を確かめられるかは、まだ分からない。",
+              "state": "unknown",
+              "sourceIds": [
+                "SRC-02",
+                "SRC-03"
+              ],
+              "needed": "数える行動・揃える条件・記録する手順を決める。予想どおりでも違っても、何が言えるかを考える。"
+            },
+            {
+              "id": "LINK-REF-POSITION",
+              "from": "ARG-REFERENCE",
+              "to": "ARG-BACKGROUND",
+              "label": "位置づけへ？",
+              "reason": "これまでの研究で何が分かり、何がまだ分かっていないかを調べるために使いたい。使う文献は未整理。",
+              "state": "unknown",
+              "sourceIds": [],
+              "needed": "実際の本・論文を読み、必要な箇所を確かめる。"
+            },
+            {
+              "id": "LINK-REF-HYPOTHESIS",
+              "from": "ARG-REFERENCE",
+              "to": "ARG-HYPOTHESIS",
+              "label": "仮説の検討へ？",
+              "reason": "「近くに置くと見落としが減る」と考えられる理由や、そうならない場合を考えるために使いたい。使う文献は未整理。",
+              "state": "unknown",
+              "sourceIds": [],
+              "needed": "文献のどの内容が役立つか、今回も当てはまるかを確認する。"
+            },
+            {
+              "id": "LINK-REF-METHOD",
+              "from": "ARG-REFERENCE",
+              "to": "ARG-PLAN",
+              "label": "方法の参考へ？",
+              "reason": "人の行動をどう調べ、何を記録するかを考えるために使いたい。参考にする方法は未確認。",
+              "state": "unknown",
+              "sourceIds": [],
+              "needed": "文献の方法を読み、今回の研究に使えるか、変える必要があるかを確認する。"
+            }
+          ],
+          "routes": [
+            {
+              "id": "current",
+              "title": "いまある記録",
+              "nodeIds": [
+                "ARG-WORK",
+                "ARG-DATA",
+                "ARG-DISCUSSION",
+                "ARG-ANSWER"
+              ],
+              "linkIds": [
+                "LINK-RECORD",
+                "LINK-INTERPRET",
+                "LINK-CONCLUDE"
+              ]
+            },
+            {
+              "id": "planned",
+              "title": "つなぎ直す計画（まだ実施していない）",
+              "nodeIds": [
+                "ARG-PLAN",
+                "ARG-OBSERVE",
+                "ARG-ANSWER"
+              ],
+              "linkIds": [
+                "LINK-TRIAL",
+                "LINK-ANALYSE"
+              ]
+            },
+            {
+              "id": "overview",
+              "title": "今回の作業と結果のつながり（補足）",
+              "nodeIds": [
+                "ARG-BACKGROUND",
+                "ARG-QUESTION",
+                "ARG-WORK",
+                "ARG-DATA",
+                "ARG-DISCUSSION",
+                "ARG-ANSWER"
+              ],
+              "linkIds": [
+                "LINK-POSITION",
+                "LINK-METHOD",
+                "LINK-RECORD",
+                "LINK-INTERPRET",
+                "LINK-CONCLUDE"
+              ]
+            },
+            {
+              "id": "backbone",
+              "title": "背景・目的・仮説・方法の整合性",
+              "nodeIds": [
+                "ARG-BACKGROUND",
+                "ARG-QUESTION",
+                "ARG-HYPOTHESIS",
+                "ARG-PLAN"
+              ],
+              "linkIds": [
+                "LINK-POSITION",
+                "LINK-HYPOTHESIS",
+                "LINK-DESIGN"
+              ]
+            }
+          ],
+          "presentation": {
+            "primaryRouteId": "backbone",
+            "referenceNodeIds": [
+              "ARG-REFERENCE"
+            ],
+            "activityRouteIds": [
+              "current"
+            ],
+            "readingOrder": "背景・目的・仮説・仮説を確かにするための実験を先に読み、文献の使い先と今回の作業を対応づける。",
+            "numbering": "primary_route_nodes"
+          }
+        }
+      }
     }
   ],
   "questions": {
@@ -1586,10 +3361,10 @@
     "items": [
       {
         "id": "QUESTION-01",
-        "question": "「見落とし」をどの行動で判断し、どの条件をそろえて比較するか。",
-        "reason": "好みの回答では、研究の目的である見落としの減少を確かめられないため。",
+        "question": "何を「見落とした」と数えるか、置き方以外の条件をどう揃えるかを相談したい。",
+        "reason": "今回聞いたのは好みで、表示を見落としたかどうかは調べていないから。",
         "options": "表示に気づかず通過したか／進路選択を誤ったか、などの候補を比較する。どちらも状況や他の要因を検討する必要がある。",
-        "studentView": "まず観察の予備試行を行い、記録できる行動と条件を確かめたい。",
+        "studentView": "まず少人数で試して、人の行動を記録できるか、どんな条件が必要かを確かめたい。",
         "sourceIds": [
           "SRC-01",
           "SRC-02",
@@ -1599,42 +3374,52 @@
           "LOG-20260914",
           "LOG-20260915"
         ],
-        "status": "相談予定"
+        "status": "相談予定",
+        "planIds": [
+          "TASK-02"
+        ],
+        "decisionDueDate": "2026-09-25",
+        "decisionDateState": "proposed",
+        "afterDecision": "数える行動と揃える条件を計画に書き、9/28から少人数で試したい。日付は相談中。",
+        "ifUnresolved": "本番の実験へは進まず、方法の案を整理して先生と相談する。試す日とその後の予定を組み直し、11/13の初稿予定がどう変わるかを確認する。"
       }
     ]
   },
   "argumentMap": {
-    "updatedAt": "2026-09-15",
-    "focusLinkId": "LINK-GAP",
+    "updatedAt": "2026-09-18",
+    "focusLinkId": "LINK-REFLECTION-METHOD",
     "nodes": [
       {
         "id": "ARG-BACKGROUND",
-        "label": "背景・位置づけ",
-        "text": "案内表示の見落としを減らしたい。先行研究との関係は未整理。",
+        "label": "背景",
+        "text": "歩いているときに、必要な案内表示を見落とすことがある。この見落としを減らしたい。",
         "state": "unknown",
         "sourceIds": [
           "SRC-02"
         ],
         "paperSectionIds": [
           "background"
-        ]
+        ],
+        "role": "background",
+        "note": "どんな場面で起きるか、これまでの研究で何が分かっているかは、まだ整理できていない。"
       },
       {
         "id": "ARG-QUESTION",
-        "label": "研究で答えたいこと",
-        "text": "名称と矢印をまとめると、見落としは減るか。",
+        "label": "目的",
+        "text": "行き先の文字と矢印の置き方で、案内表示の見落としがどう変わるかを明らかにする。",
         "state": "recorded",
         "sourceIds": [
           "SRC-02"
         ],
         "paperSectionIds": [
           "purpose"
-        ]
+        ],
+        "role": "purpose"
       },
       {
         "id": "ARG-WORK",
-        "label": "やったこと",
-        "text": "2つの表示案を8名に見せ、好みを聞いた。",
+        "label": "今回やったこと",
+        "text": "2種類の表示を8人に見せて、どちらが好きかを聞いた。",
         "state": "recorded",
         "sourceIds": [
           "SRC-01",
@@ -1648,12 +3433,13 @@
         ],
         "paperSectionIds": [
           "method"
-        ]
+        ],
+        "role": "activity"
       },
       {
         "id": "ARG-DATA",
-        "label": "得られたもの",
-        "text": "Aを3名、Bを5名が選んだ。",
+        "label": "その結果",
+        "text": "Aを3人、Bを5人が選んだ。",
         "note": "この8名の、表示案への好み。",
         "state": "recorded",
         "sourceIds": [
@@ -1661,12 +3447,13 @@
         ],
         "paperSectionIds": [
           "results"
-        ]
+        ],
+        "role": "result"
       },
       {
         "id": "ARG-ANSWER",
-        "label": "問いへの答え",
-        "text": "配置で見落としが減るかは、まだ判断できない。",
+        "label": "まだ分からないこと",
+        "text": "文字と矢印を近くに置くと見落としが減るかは、今回の回答だけでは分からない。",
         "state": "pending",
         "sourceIds": [
           "SRC-02",
@@ -1674,12 +3461,13 @@
         ],
         "paperSectionIds": [
           "conclusion"
-        ]
+        ],
+        "role": "interpretation"
       },
       {
         "id": "ARG-PLAN",
-        "label": "計画を直す",
-        "text": "見落としの判断基準・比較条件を決め、方法を試す。",
+        "label": "仮説を確かにするための実験",
+        "text": "文字と矢印の置き方が違う2種類の表示を使い、歩いている人の行動を比べる予定。",
         "state": "planned",
         "sourceIds": [
           "SRC-02"
@@ -1690,12 +3478,14 @@
         ],
         "paperSectionIds": [
           "method"
-        ]
+        ],
+        "role": "method",
+        "note": "何を「見落とし」と数えるか、置き方以外の条件をどう揃えるかは、まだ決まっていない。"
       },
       {
         "id": "ARG-OBSERVE",
-        "label": "集める予定のもの",
-        "text": "配置ごとの、移動中の行動と見落としの記録。",
+        "label": "実験で集めたい記録",
+        "text": "表示の置き方ごとの、人の行動と見落としの記録。まだ集めていない。",
         "state": "pending",
         "sourceIds": [
           "SRC-02"
@@ -1705,12 +3495,13 @@
         ],
         "paperSectionIds": [
           "results"
-        ]
+        ],
+        "role": "result"
       },
       {
         "id": "ARG-DISCUSSION",
-        "label": "今ある結果の解釈",
-        "text": "好みは分かったが、見落としの減少を判断する根拠にはならない。",
+        "label": "結果から考えたこと",
+        "text": "どちらが好きかは分かった。でも、好きな表示が見落とされにくいとは限らない。",
         "state": "recorded",
         "sourceIds": [
           "SRC-01",
@@ -1719,7 +3510,30 @@
         ],
         "paperSectionIds": [
           "discussion"
+        ],
+        "role": "interpretation"
+      },
+      {
+        "id": "ARG-HYPOTHESIS",
+        "role": "hypothesis",
+        "label": "仮説",
+        "text": "行き先の文字と矢印を近くに置くと、離して置くよりも見落としが減るのではないか。",
+        "state": "recorded",
+        "sourceIds": [
+          "SRC-02"
+        ],
+        "paperSectionIds": [
+          "purpose"
         ]
+      },
+      {
+        "id": "ARG-REFERENCE",
+        "role": "reference",
+        "label": "参考文献",
+        "text": "使う本・論文はまだ整理できていない。どの内容を研究に使えるかも、これから確認する。",
+        "state": "unknown",
+        "sourceIds": [],
+        "note": "文献があると確認できたわけではない。未整理の場所を示している。"
       }
     ],
     "links": [
@@ -1729,7 +3543,7 @@
         "to": "ARG-DATA",
         "state": "supported",
         "label": "回答を記録",
-        "reason": "好みを聞いた8件の回答から、AとBを選んだ人数を数えられる。",
+        "reason": "8人の回答から、AとBを選んだ人数を数えた。",
         "needed": "",
         "sourceIds": [
           "SRC-01"
@@ -1741,9 +3555,9 @@
         "to": "ARG-ANSWER",
         "state": "gap",
         "label": "ここが切れ目",
-        "reason": "「好まれる」から「見落とされにくい」とは言えない。",
+        "reason": "「好きな表示」と「見落としにくい表示」は同じとは限らない。好みを聞いただけでは、見落としが減るかは分からない。",
         "detail": "回答に残っているのは好みだけ。移動中に見落としたかを記録していないため、この回答を集め続けても、見落としが減るかは判断できない。",
-        "needed": "何を見落としと数えるか、どの条件で比較するかを決める。計画案を相談し、方法を試してから行動を記録する。",
+        "needed": "見落としを数える方法を決め、計画を先生と相談してから試す。",
         "sourceIds": [
           "SRC-01",
           "SRC-02",
@@ -1765,8 +3579,8 @@
         "to": "ARG-OBSERVE",
         "state": "pending",
         "label": "方法を試してから",
-        "reason": "判断基準と比較条件は検討中。試行で記録可能かを確かめてから本観察へ進む。",
-        "needed": "判断基準・比較条件・記録手順を決め、試行する。",
+        "reason": "見落としを数える方法や、揃える条件を決める。少人数で記録できるかを試してから、本番の実験へ進む予定。",
+        "needed": "数える行動・条件・手順を決め、実際に試す。",
         "sourceIds": [
           "SRC-02"
         ],
@@ -1781,8 +3595,8 @@
         "to": "ARG-ANSWER",
         "state": "pending",
         "label": "比較・考察する",
-        "reason": "行動観察は未実施。記録が揃った後、条件の違いや別の説明も検討する。",
-        "needed": "結果と限界から言える範囲を検討し、仮説が支持されない場合も残す。",
+        "reason": "人の行動を調べる実験はまだ行っていない。記録を集めてから置き方による違いを調べ、ほかの原因でも説明できないかを考える。",
+        "needed": "予想と違う結果も残し、どこまで言えるかを考える。",
         "sourceIds": [
           "SRC-02"
         ],
@@ -1797,8 +3611,8 @@
         "to": "ARG-QUESTION",
         "state": "unknown",
         "label": "位置づけは未確認",
-        "reason": "先行研究に対して何を引き継ぎ、何を新たに示す問いなのかを判断する資料が足りない。",
-        "needed": "関連する文献と、問いに活かす知見・既知と未知の整理を確認する。",
+        "reason": "案内表示の中でも、行き先の文字と矢印の置き方を調べたい。ただし、これまでの研究と比べて何を新しく明らかにするかは、まだ整理できていない。",
+        "needed": "関連する本・論文を読み、既に分かっていることと、この研究で知りたいことを分ける。",
         "sourceIds": [
           "SRC-02"
         ]
@@ -1809,8 +3623,8 @@
         "to": "ARG-WORK",
         "state": "gap",
         "label": "問いと調べたものが違う",
-        "reason": "問いは見落としの変化。実施した調査は好みを尋ねており、見落としを記録する方法になっていない。",
-        "needed": "目的を変更して正当化せず、見落としを確かめる方法を検討する。",
+        "reason": "知りたいのは見落としが減るかどうかだが、今回聞いたのは好みだった。人が表示を見落としたかどうかは調べていない。",
+        "needed": "見落としを確かめる実験方法を考える。",
         "sourceIds": [
           "SRC-01",
           "SRC-02",
@@ -1826,7 +3640,7 @@
         "to": "ARG-DISCUSSION",
         "state": "supported",
         "label": "言える範囲を整理",
-        "reason": "回答の範囲と不足を照合している。仮説が否定されたとも、Bが見落とされにくいとも主張していない。",
+        "reason": "好みの回答から何が分かり、何が分からないかを整理した。「Bなら見落としが減る」とはまだ言っていない。",
         "needed": "",
         "sourceIds": [
           "SRC-01",
@@ -1839,12 +3653,115 @@
         "to": "ARG-ANSWER",
         "state": "pending",
         "label": "問いに答える根拠はこれから",
-        "reason": "現状の限界は説明できているが、配置と見落としに関する観察結果はまだない。結論の捏造や論理の誤りと判定する箇所ではない。",
-        "needed": "計画を見直して観察・分析し、問いへの答えを検討する。",
+        "reason": "今の回答だけでは答えが出せないことは分かった。見落としを調べる実験の結果がないので、予想が合っているかはまだ分からない。",
+        "needed": "実験を計画し直し、得られた記録から答えを考える。",
         "sourceIds": [
           "SRC-02",
           "SRC-04"
         ]
+      },
+      {
+        "id": "LINK-HYPOTHESIS",
+        "from": "ARG-QUESTION",
+        "to": "ARG-HYPOTHESIS",
+        "label": "目的への答えの候補",
+        "reason": "知りたいのは、文字と矢印の置き方で見落としが変わるかどうか。その答えを「近くに置くと減るのではないか」と予想している。まだ確かめた答えではない。",
+        "state": "supported",
+        "sourceIds": [
+          "SRC-02"
+        ],
+        "needed": ""
+      },
+      {
+        "id": "LINK-DESIGN",
+        "from": "ARG-HYPOTHESIS",
+        "to": "ARG-PLAN",
+        "label": "検証方法は要確認",
+        "reason": "2種類の置き方を比べる予定はある。ただし、何を見落としと数え、ほかの条件をどう揃えるかが決まっていない。今の計画で予想を確かめられるかは、まだ分からない。",
+        "state": "unknown",
+        "sourceIds": [
+          "SRC-02",
+          "SRC-03"
+        ],
+        "needed": "数える行動・揃える条件・記録する手順を決める。予想どおりでも違っても、何が言えるかを考える。"
+      },
+      {
+        "id": "LINK-REF-POSITION",
+        "from": "ARG-REFERENCE",
+        "to": "ARG-BACKGROUND",
+        "label": "位置づけへ？",
+        "reason": "これまでの研究で何が分かり、何がまだ分かっていないかを調べるために使いたい。使う文献は未整理。",
+        "state": "unknown",
+        "sourceIds": [],
+        "needed": "実際の本・論文を読み、必要な箇所を確かめる。",
+        "targetAspect": "01 背景の「これまでに何が分かり、何が未解決か」",
+        "contribution": "文献の知見と未解決点を、自分の研究で新しく明らかにしたいことを考えるために使う。文献はまだ未整理。",
+        "nextDecision": "文献を確認後、02の目的が既に答えの出ていることではないかを点検し、必要なら問いの範囲を考え直す。"
+      },
+      {
+        "id": "LINK-REF-HYPOTHESIS",
+        "from": "ARG-REFERENCE",
+        "to": "ARG-HYPOTHESIS",
+        "label": "仮説の検討へ？",
+        "reason": "「近くに置くと見落としが減る」と考えられる理由や、そうならない場合を考えるために使いたい。使う文献は未整理。",
+        "state": "unknown",
+        "sourceIds": [],
+        "needed": "文献のどの内容が役立つか、今回も当てはまるかを確認する。",
+        "targetAspect": "03 仮説の「文字と矢印を近くに置くと見落としが減る」理由",
+        "contribution": "文献のどの知見が、この予想の理由になるかを調べる。反する知見も調べる。まだ原文を確認していない。",
+        "nextDecision": "得られた知見から、予想の理由を説明できるか、予想や対象とする場面を考え直す必要があるかを判断する。"
+      },
+      {
+        "id": "LINK-REF-METHOD",
+        "from": "ARG-REFERENCE",
+        "to": "ARG-PLAN",
+        "label": "方法の参考へ？",
+        "reason": "人の行動をどう調べ、何を記録するかを考えるために使いたい。参考にする方法は未確認。",
+        "state": "unknown",
+        "sourceIds": [],
+        "needed": "文献の方法を読み、今回の研究に使えるか、変える必要があるかを確認する。",
+        "targetAspect": "04 実験で「見落とし」をどう数え、比較条件をどう揃えるか",
+        "contribution": "文献の観察・記録方法を、自分の実験方法を考える参考にする。使える方法はまだ未確認。",
+        "nextDecision": "方法が今回の条件に使えるかを確認し、必要な変更を加えて実験計画にする。その方法で記録できるかを試す。"
+      },
+      {
+        "id": "LINK-PREFERENCE-HYPOTHESIS",
+        "from": "ARG-DATA",
+        "to": "ARG-HYPOTHESIS",
+        "state": "gap",
+        "label": "好みの回答では、予想を確かめられない",
+        "reason": "Aを3人、Bを5人が選んだのは、どちらが好きかへの回答。文字と矢印を近くに置くと見落としが減る、という予想を確かめる記録ではない。",
+        "needed": "見落としを数える方法と比較条件を決め、実験で記録を集める。",
+        "sourceIds": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-04"
+        ],
+        "targetAspect": "03 仮説の「近くに置くと見落としが減る」という予想",
+        "contribution": "好みの人数は分かるが、この予想を判断する根拠にはならない。",
+        "nextDecision": "予想は未確認のまま保ち、04の実験方法を考え直す。"
+      },
+      {
+        "id": "LINK-REFLECTION-METHOD",
+        "from": "ARG-DISCUSSION",
+        "to": "ARG-PLAN",
+        "state": "supported",
+        "label": "見落としを記録する方法へ直す",
+        "reason": "好みの回答では見落としを判断できないという振り返りを、04の実験方法を見直すために使う。見直しが必要だと分かったことと、実験方法が確定したことは別。",
+        "needed": "何を見落としと数えるか、どの条件を揃えるかを先生と相談し、少人数で試す。",
+        "sourceIds": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04"
+        ],
+        "planIds": [
+          "TASK-02",
+          "TASK-03"
+        ],
+        "targetAspect": "04 実験で何を観察し、何を記録するか",
+        "contribution": "好みを聞く調査から、見落としを記録する方法へ直す必要があると分かった。",
+        "nextDecision": "記録する行動と比較条件を決めて試す。試して記録できなければ、方法と後の予定を見直す。"
       }
     ],
     "routes": [
@@ -1854,11 +3771,13 @@
         "nodeIds": [
           "ARG-WORK",
           "ARG-DATA",
+          "ARG-DISCUSSION",
           "ARG-ANSWER"
         ],
         "linkIds": [
           "LINK-RECORD",
-          "LINK-GAP"
+          "LINK-INTERPRET",
+          "LINK-CONCLUDE"
         ]
       },
       {
@@ -1876,7 +3795,7 @@
       },
       {
         "id": "overview",
-        "title": "研究全体のつながりを見る",
+        "title": "今回の作業と結果のつながり（補足）",
         "nodeIds": [
           "ARG-BACKGROUND",
           "ARG-QUESTION",
@@ -1892,8 +3811,47 @@
           "LINK-INTERPRET",
           "LINK-CONCLUDE"
         ]
+      },
+      {
+        "id": "backbone",
+        "title": "背景・目的・仮説・方法の整合性",
+        "nodeIds": [
+          "ARG-BACKGROUND",
+          "ARG-QUESTION",
+          "ARG-HYPOTHESIS",
+          "ARG-PLAN"
+        ],
+        "linkIds": [
+          "LINK-POSITION",
+          "LINK-HYPOTHESIS",
+          "LINK-DESIGN"
+        ]
       }
-    ]
+    ],
+    "presentation": {
+      "primaryRouteId": "backbone",
+      "referenceNodeIds": [
+        "ARG-REFERENCE"
+      ],
+      "activityRouteIds": [
+        "current"
+      ],
+      "readingOrder": "背景・目的・仮説・仮説を確かにするための実験を先に読み、文献の使い先と今回の作業を対応づける。",
+      "numbering": "primary_route_nodes",
+      "layout": "connected_diagram_with_numbered_details",
+      "displayLinkIds": [
+        "LINK-POSITION",
+        "LINK-HYPOTHESIS",
+        "LINK-DESIGN",
+        "LINK-REF-POSITION",
+        "LINK-REF-HYPOTHESIS",
+        "LINK-REF-METHOD",
+        "LINK-RECORD",
+        "LINK-INTERPRET",
+        "LINK-PREFERENCE-HYPOTHESIS",
+        "LINK-REFLECTION-METHOD"
+      ]
+    }
   },
   "demoNotice": "すべて架空のデータ。実際の研究結果・学生・教員の発言ではない。"
 }

@@ -67,3 +67,23 @@ for (const block of document.querySelectorAll('.ai-request')) {
     reset = setTimeout(() => { button.textContent = 'コピー'; status.textContent = ''; }, 3000);
   });
 }
+
+const documentButton = document.querySelector('.copy-document');
+if (documentButton) {
+  const source = document.getElementById('document-markdown');
+  const fallback = document.querySelector('.document-copy-fallback');
+  const status = document.querySelector('.document-copy-status');
+  documentButton.hidden = false;
+  documentButton.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(source.value);
+      status.textContent = '全文をコピーしました。AIのチャットに貼り付けてください。';
+      fallback.hidden = true;
+    } catch {
+      fallback.hidden = false;
+      source.focus();
+      source.select();
+      status.textContent = '全文を選択しました。コピーのショートカットを使ってください。';
+    }
+  });
+}

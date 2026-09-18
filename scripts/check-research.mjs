@@ -4,6 +4,7 @@ import { resolve, dirname } from 'node:path';
 import { runInNewContext } from 'node:vm';
 import { guides } from '../research/scripts/navigation.mjs';
 import { indesignRedirects } from '../research/scripts/indesign-redirects.mjs';
+import { documentPages } from '../research/scripts/document-pages.mjs';
 
 const root = resolve('research/dist');
 async function htmlFiles(dir) {
@@ -19,7 +20,7 @@ async function htmlFiles(dir) {
 const reportTemplate = resolve(root, 'downloads/research-progress-template.html');
 await access(reportTemplate);
 const files = (await htmlFiles(root)).filter(file => file !== reportTemplate);
-assert.equal(files.length, guides.reduce((total, guide) => total + 1 + guide.chapters.length, 0) + indesignRedirects.length, 'Missing entry, chapter, or legacy redirect pages');
+assert.equal(files.length, guides.reduce((total, guide) => total + 1 + guide.chapters.length, 0) + indesignRedirects.length + documentPages.length, 'Missing entry, chapter, document, or legacy redirect pages');
 const pages = new Map();
 for (const file of files) {
   const html = await readFile(file, 'utf8');
@@ -57,6 +58,50 @@ for (const guide of guides) {
   for (const chapter of guide.chapters) assert.ok(pages.has(resolve(root, guide.path, chapter.slug, 'index.html')), `Missing ${chapter.slug}`);
 }
 const research = guides[0].chapters.map(chapter => pages.get(resolve(root, chapter.slug, 'index.html')).html).join('\n');
+const unescape = text => text.replace(/&(amp|lt|gt|quot|apos);|&#39;/g, token => ({ '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&apos;': "'", '&#39;': "'" })[token]);
+for (const document of documentPages) {
+  const html = pages.get(resolve(root, document.path, 'index.html'))?.html;
+  assert.ok(html, 'Missing document: ' + document.path);
+  const original = await readFile(resolve('research/public/downloads', document.file), 'utf8');
+  const copy = html.match(/<textarea id="document-markdown" readonly>([\s\S]*?)<\/textarea>/)?.[1];
+  assert.equal(unescape(copy || ''), original, document.file + ': full-text copy differs from Markdown');
+  assert.equal(await readFile(resolve(root, 'downloads', document.file), 'utf8'), original, document.file + ': download differs from original');
+  const article = html.match(/<article id="document-content" class="prose document-content">([\s\S]*?)<\/article>/)?.[1];
+  assert.ok(article?.includes('<h2 id="document-section-'), document.file + ': body must be readable without JavaScript');
+  assert.ok(!article.includes('<details'), document.file + ': full document must not require expanding details');
+}
+const studentAIPage = pages.get(resolve(root, 'ai/index.html')).html;
+const prompts = [...studentAIPage.matchAll(/<pre><code>([\s\S]*?)<\/code><\/pre>/g)].map(match => unescape(match[1]));
+assert.equal(prompts.length, 3, 'Three student prompts expected');
+for (const prompt of prompts) {
+  assert.ok(prompt.includes('https://design-for-changes.github.io/lab-learning/research/ai/manual/'), 'Prompt must point to the readable manual page');
+  assert.ok(!prompt.includes('/downloads/for-ai.md'), 'Prompt still requires direct Markdown access');
+}
+// Full-text handoff must also work when clipboard permission is unavailable.
+const guideScript = await readFile('research/public/guide.js', 'utf8');
+const manualSource = await readFile('research/public/downloads/for-ai.md', 'utf8');
+for (const clipboardAllowed of [true, false]) {
+  let click, copied, selected = false;
+  const field = { value: manualSource, focus() {}, select() { selected = true; } };
+  const button = { hidden: true, addEventListener(type, handler) { if (type === 'click') click = handler; } };
+  const fallback = { hidden: true }, status = { textContent: '' };
+  const selectors = { '.copy-document': button, '.document-copy-fallback': fallback, '.document-copy-status': status };
+  runInNewContext(guideScript, {
+    document: { body: { dataset: { researchRoot: '../../' } }, querySelectorAll: () => [], querySelector: selector => selectors[selector], getElementById: id => id === 'document-markdown' ? field : null },
+    window: { matchMedia: () => ({ matches: false, addEventListener() {} }), addEventListener() {} },
+    location: { hash: '' },
+    navigator: { clipboard: { async writeText(value) { if (!clipboardAllowed) throw new Error('Clipboard unavailable'); copied = value; } } },
+  });
+  assert.equal(button.hidden, false);
+  await click();
+  if (clipboardAllowed) {
+    assert.equal(copied, manualSource, 'Full-text copy must preserve the entire Markdown');
+    assert.equal(fallback.hidden, true);
+  } else {
+    assert.equal(fallback.hidden, false, 'Fallback must expose the full text');
+    assert.equal(selected, true, 'Fallback must select the full text');
+  }
+}
 assert.equal((research.match(/<details id=/g) || []).length, 30, 'Research explanations or references missing');
 assert.equal((research.match(/<img /g) || []).length, 2, 'Research figures missing');
 assert.ok(!/class="guide-search"|class="toc"|class="related-guide"|class="source-link"/.test(research), 'Removed sidebar content returned');

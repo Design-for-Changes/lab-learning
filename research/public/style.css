@@ -284,6 +284,28 @@ summary { cursor: pointer; touch-action: manipulation; }
 
 .prose .ai-request code { display: block; padding: 0; border: 0; background: transparent; color: inherit; font: inherit; white-space: inherit; }
 
+.document-nav { display: grid; gap: 10px; margin: 20px 0; padding-top: 20px; border-top: 1px solid var(--line); font-size: .875rem; }
+.document-nav a { color: var(--muted); text-decoration: none; }
+.document-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin: 24px 0; font-size: .875rem; }
+.copy-document { padding: 10px 18px; border: 1px solid var(--blue); border-radius: 6px; background: var(--paper); color: var(--blue); font: inherit; font-weight: 700; cursor: pointer; }
+.copy-document:hover { background: var(--pale); }
+.document-copy-status { flex-basis: 100%; color: var(--muted); }
+.document-copy-status:empty { display: none; }
+.document-copy-fallback label { display: block; margin-bottom: 8px; }
+.document-copy-fallback textarea { display: block; width: 100%; min-height: 200px; margin-bottom: 24px; padding: 16px; border: 1px solid var(--line); border-radius: 6px; font: .875rem/1.8 ui-monospace, monospace; }
+.document-contents { margin: 24px 0 40px; padding: 16px 20px; border: 1px solid var(--line); border-radius: 6px; }
+.document-contents summary { cursor: pointer; font-weight: 700; }
+.document-contents ol { display: grid; gap: 10px; margin: 20px 0 0; padding-left: 24px; font-size: .875rem; }
+.document-content h2 { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); }
+.document-content h3 { margin-top: 32px; }
+.document-content pre { max-width: 100%; padding: 20px; background: var(--pale); white-space: pre-wrap; overflow-wrap: anywhere; font: .875rem/1.8 ui-monospace, monospace; }
+.document-content pre code { background: none; font: inherit; }
+.document-content th { padding: 12px 16px; text-align: left; background: var(--pale); }
+.document-content th, .document-content td { overflow-wrap: anywhere; }
+.document-related { display: flex; flex-wrap: wrap; gap: 16px 24px; margin: 48px 0 24px; padding-top: 24px; border-top: 1px solid var(--line); font-size: .875rem; }
+.document-related [aria-current="page"] { color: var(--ink); font-weight: 700; }
+@media print { .document-actions, .document-copy-fallback, .document-related { display: none; } }
+
 .code-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 8px 16px; border-bottom: 1px solid var(--line); background: #eaeaea; color: var(--muted); font-family: ui-monospace, monospace; font-size: .75rem; }
 .code-toolbar .copy-code { padding: 4px 8px; min-height: 32px; border: 1px solid transparent; border-radius: 4px; background: transparent; color: var(--ink); font: inherit; cursor: pointer; }
 .code-toolbar .copy-code:hover { background: var(--paper); border-color: var(--line); }
