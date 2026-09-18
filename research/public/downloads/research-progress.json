@@ -4,7 +4,13 @@
     "id": null,
     "previousId": null,
     "savedAt": null,
-    "reason": ""
+    "reason": "",
+    "manual": {
+      "version": null,
+      "updatedAt": null,
+      "url": "https://design-for-changes.github.io/lab-learning/research/ai/manual/",
+      "readAt": null
+    }
   },
   "student": {
     "studentId": "",

@@ -39,6 +39,8 @@ npm run dev
 - `learning/`：既存のReact/Viteアプリ。教材本文・図の計算・解析選択は維持しています。
 - `scripts/assemble.mjs`：2つのビルドを `dist/research/` と `dist/learning/` へ集めます。
 
+公開文書のバージョンと更新日は各Markdown冒頭で管理し、HTML表示・全文コピーへ引き継ぎます。仕様セットを改訂するときは4文書の版を揃え、同日内も末尾番号を進めます。更新日・参照日・ゼミ日は区別します。
+
 `main`へのpush時にGitHub Actionsがチェック・ビルドし、ルートの`dist/`のみを公開します。現在のVite baseは `/lab-learning/learning/` です。Notionの原本や非公開エクスポートは公開ディレクトリに含めません。
 
 移行時の原本・変更点・取得できない添付資料については [移行記録](docs/migration.md) を参照してください。

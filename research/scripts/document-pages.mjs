@@ -9,9 +9,16 @@ export const documentPages = [
   { path: 'ai/questions/', file: 'questions.md', title: '教員への相談文書の雛形', description: '行動計画に結び付けて、教員に判断してほしいことを整理する雛形。' },
 ];
 
+export function documentMetadata(source) {
+  const match = source.match(/^# [^\n]+\n\n(バージョン：`(\d{4}-\d{2}-\d{2}-\d{2})` · 更新日：(\d{4}-\d{2}-\d{2}))\n/);
+  if (!match) throw new Error('Document version or update date missing');
+  return { line: match[1], version: match[2], updatedAt: match[3] };
+}
+
 // Both the readable page and full-text copy are generated from the downloadable original.
 export async function renderDocument(document, root) {
   const source = await readFile('public/downloads/' + document.file, 'utf8');
+  const metadata = documentMetadata(source);
   const toc = [];
   let headingIndex = 0;
   const renderer = {
@@ -24,7 +31,7 @@ export async function renderDocument(document, root) {
     },
   };
   const parser = new Marked({ renderer });
-  const tokens = parser.lexer(source);
+  const tokens = parser.lexer(source.replace(metadata.line + '\n', ''));
   if (tokens[0]?.type !== 'heading' || tokens[0].depth !== 1) throw new Error('Document title missing: ' + document.file);
   const title = plainText(parser.parseInline(tokens.shift().text));
   const article = parser.parser(tokens).replace(/href="https:\/\/design-for-changes\.github\.io\/lab-learning\/research\//g, 'href="' + root);
@@ -33,5 +40,6 @@ export async function renderDocument(document, root) {
   const fallback = `<div class="document-copy-fallback" hidden><label for="document-markdown">全文を選択しています。コピーしてAIに貼り付けてください。</label><textarea id="document-markdown" readonly>${escapeHtml(source)}</textarea></div>`;
   const links = documentPages.map(item => `<a href="${root}${item.path}"${item.path === document.path ? ' aria-current="page"' : ''}>${escapeHtml(item.title)}</a>`).join('');
   const related = `<nav class="document-related" aria-label="AIと一緒につくるの文書">${links}</nav>`;
-  return { title, source, toc, body: toolbar + fallback + contents + `<article id="document-content" class="prose document-content">${article}</article>` + related, url: new URL('research/' + document.path, SITE_URL).href };
+  const version = `<p class="document-version" data-document-version="${metadata.version}">バージョン：<code>${metadata.version}</code><span>更新日：<time datetime="${metadata.updatedAt}">${metadata.updatedAt}</time></span></p>`;
+  return { title, source, toc, body: version + toolbar + fallback + contents + `<article id="document-content" class="prose document-content">${article}</article>` + related, url: new URL('research/' + document.path, SITE_URL).href };
 }

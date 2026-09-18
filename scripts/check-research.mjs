@@ -4,7 +4,7 @@ import { resolve, dirname } from 'node:path';
 import { runInNewContext } from 'node:vm';
 import { guides } from '../research/scripts/navigation.mjs';
 import { indesignRedirects } from '../research/scripts/indesign-redirects.mjs';
-import { documentPages } from '../research/scripts/document-pages.mjs';
+import { documentPages, documentMetadata } from '../research/scripts/document-pages.mjs';
 
 const root = resolve('research/dist');
 async function htmlFiles(dir) {
@@ -59,10 +59,16 @@ for (const guide of guides) {
 }
 const research = guides[0].chapters.map(chapter => pages.get(resolve(root, chapter.slug, 'index.html')).html).join('\n');
 const unescape = text => text.replace(/&(amp|lt|gt|quot|apos);|&#39;/g, token => ({ '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&apos;': "'", '&#39;': "'" })[token]);
+let specificationVersion;
 for (const document of documentPages) {
   const html = pages.get(resolve(root, document.path, 'index.html'))?.html;
   assert.ok(html, 'Missing document: ' + document.path);
   const original = await readFile(resolve('research/public/downloads', document.file), 'utf8');
+  const metadata = documentMetadata(original);
+  specificationVersion ??= metadata.version;
+  assert.equal(metadata.version, specificationVersion, 'Specification document versions must agree');
+  assert.ok(html.includes(`data-document-version="${metadata.version}"`), 'Visible version differs from Markdown');
+  assert.ok(html.includes(`<time datetime="${metadata.updatedAt}">${metadata.updatedAt}</time>`), 'Visible update date differs from Markdown');
   const copy = html.match(/<textarea id="document-markdown" readonly>([\s\S]*?)<\/textarea>/)?.[1];
   assert.equal(unescape(copy || ''), original, document.file + ': full-text copy differs from Markdown');
   assert.equal(await readFile(resolve(root, 'downloads', document.file), 'utf8'), original, document.file + ': download differs from original');

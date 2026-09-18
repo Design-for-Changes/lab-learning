@@ -285,6 +285,8 @@ summary { cursor: pointer; touch-action: manipulation; }
 .prose .ai-request code { display: block; padding: 0; border: 0; background: transparent; color: inherit; font: inherit; white-space: inherit; }
 
 .document-nav { display: grid; gap: 10px; margin: 20px 0; padding-top: 20px; border-top: 1px solid var(--line); font-size: .875rem; }
+.document-version { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; color: var(--muted); font-size: .875rem; }
+.document-version code { color: var(--ink); font-size: inherit; }
 .document-nav a { color: var(--muted); text-decoration: none; }
 .document-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin: 24px 0; font-size: .875rem; }
 .copy-document { padding: 10px 18px; border: 1px solid var(--blue); border-radius: 6px; background: var(--paper); color: var(--blue); font: inherit; font-weight: 700; cursor: pointer; }
