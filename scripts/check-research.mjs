@@ -19,6 +19,29 @@ async function htmlFiles(dir) {
 // The downloadable file is a standalone local report, not a guide route.
 const reportTemplate = resolve(root, 'downloads/research-progress-template.html');
 await access(reportTemplate);
+// The full manual and downloadable artifacts must describe the same data contract.
+const manual = await readFile(resolve(root, 'downloads/for-ai.md'), 'utf8');
+const reportSpec = await readFile(resolve(root, 'downloads/ai-research-status.md'), 'utf8');
+const dataTemplate = JSON.parse(await readFile(resolve(root, 'downloads/research-progress.json'), 'utf8'));
+const embeddedReport = manual.split('<!-- REPORT_TEMPLATE_START -->')[1]?.split('<!-- REPORT_TEMPLATE_END -->')[0];
+assert.equal(embeddedReport?.trim(), reportSpec.trim(), 'Manual embeds an outdated report specification');
+const embeddedTemplate = manual.split('<!-- LOCAL_DATA_TEMPLATE_START -->')[1]?.split('<!-- LOCAL_DATA_TEMPLATE_END -->')[0]?.match(/```json\n([\s\S]*?)\n```/)?.[1];
+assert.deepEqual(JSON.parse(embeddedTemplate || 'null'), dataTemplate, 'Manual embeds an outdated data template');
+assert.equal(dataTemplate.researchStatus.alignment.state, 'unreviewed', 'An empty report must not pass review');
+assert.equal(dataTemplate.researchStatus.alignment.checkedAt, null, 'An empty report has not been reviewed');
+const demoData = JSON.parse(await readFile(resolve('docs/examples/local-progress-demo/research.json'), 'utf8'));
+const demoHtml = await readFile(resolve('docs/examples/local-progress-demo/index.html'), 'utf8');
+const embeddedDemo = demoHtml.match(/<script id="research-data" type="application\/json">([\s\S]*?)<\/script>/)?.[1];
+assert.deepEqual(JSON.parse(embeddedDemo || 'null'), demoData, 'Demo HTML and research JSON disagree');
+for (const [html, data] of [[await readFile(reportTemplate, 'utf8'), dataTemplate], [demoHtml, demoData]]) {
+  const verdict = html.match(/<section class="research-verdict" data-state="([^"]+)"[\s\S]*?<\/section>/);
+  assert.equal(verdict?.[1], data.researchStatus.alignment.state, 'Visible verdict disagrees with recorded review');
+  assert.ok(verdict && verdict.index < html.indexOf('id="argument-map"'), 'Whole-research verdict must precede the diagram');
+  assert.ok(!/\bhidden\b|<details\b/.test(verdict[0]), 'The main verdict must not be hidden or collapsed');
+  for (const [field, items] of [['linkIds', data.argumentMap.links], ['issueIds', data.issues], ['questionIds', data.questions.items]]) {
+    for (const id of data.researchStatus.alignment[field]) assert.ok(items.some(item => item.id === id), `Alignment references missing ${field}: ${id}`);
+  }
+}
 const files = (await htmlFiles(root)).filter(file => file !== reportTemplate);
 assert.equal(files.length, guides.reduce((total, guide) => total + 1 + guide.chapters.length, 0) + indesignRedirects.length + documentPages.length, 'Missing entry, chapter, document, or legacy redirect pages');
 const pages = new Map();

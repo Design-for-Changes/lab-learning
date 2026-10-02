@@ -79,7 +79,15 @@
     "summary": "",
     "updatedAt": null,
     "sourceIds": [],
-    "nextTaskIds": []
+    "nextTaskIds": [],
+    "alignment": {
+      "state": "unreviewed",
+      "explanation": "",
+      "linkIds": [],
+      "issueIds": [],
+      "questionIds": [],
+      "checkedAt": null
+    }
   },
   "researchPlan": [],
   "paperOutline": [],

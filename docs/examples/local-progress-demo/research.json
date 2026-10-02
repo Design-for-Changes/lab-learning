@@ -1,10 +1,16 @@
 {
   "formatVersion": 2,
   "revision": {
-    "id": "20260918-layout05",
-    "previousId": "20260918-layout04",
-    "savedAt": "2026-09-18",
-    "reason": "研究の主軸・参考文献・今回の作業を実際の線で結び、各接続が何に貢献し、その結果を何の判断へ使うかを明示。研究の結果や合意した計画を追加したものではない。"
+    "id": "20261002-layout01",
+    "previousId": "20260918-layout05",
+    "savedAt": "2026-10-02",
+    "reason": "架空見本の表示を更新。全体の筋の判定と目的・作業の役割・ゼミで決めることを冒頭へ。研究成果や本人・教員の合意は追加していない。",
+    "manual": {
+      "version": "2026-10-02-01",
+      "updatedAt": "2026-10-02",
+      "url": "https://design-for-changes.github.io/lab-learning/research/ai/manual/",
+      "readAt": "2026-10-02"
+    }
   },
   "student": {
     "studentId": "DEMO001",
@@ -349,7 +355,22 @@
     ],
     "nextTaskIds": [
       "TASK-02"
-    ]
+    ],
+    "alignment": {
+      "state": "needs_revision",
+      "explanation": "今回集めたのは表示の好みの回答で、見落としたかは記録していない。好みは表示案を絞る材料になるが、見落としの変化を確かめる方法は未完成。",
+      "linkIds": [
+        "LINK-GAP",
+        "LINK-METHOD"
+      ],
+      "issueIds": [
+        "ISSUE-01"
+      ],
+      "questionIds": [
+        "QUESTION-01"
+      ],
+      "checkedAt": "2026-10-02"
+    }
   },
   "researchPlan": [
     {
@@ -3351,6 +3372,38 @@
             "readingOrder": "背景・目的・仮説・仮説を確かにするための実験を先に読み、文献の使い先と今回の作業を対応づける。",
             "numbering": "primary_route_nodes"
           }
+        }
+      }
+    },
+    {
+      "id": "LOG-FORMAT-20261002-01",
+      "date": "2026-10-02",
+      "seminarDate": "2026-09-16",
+      "type": "format_update",
+      "title": "研究全体の筋と今回の判断を冒頭へ",
+      "summary": "架空見本の表示を更新。全体の筋の判定と目的・作業の役割・ゼミで決めることを冒頭へ。研究成果や本人・教員の合意は追加していない。",
+      "manual": {
+        "version": "2026-10-02-01",
+        "updatedAt": "2026-10-02",
+        "url": "https://design-for-changes.github.io/lab-learning/research/ai/manual/",
+        "readAt": "2026-10-02"
+      },
+      "sourceIds": [
+        "SRC-01",
+        "SRC-02",
+        "SRC-04"
+      ],
+      "snapshot": {
+        "researchStatus": {
+          "summary": "好みの予備調査は完了。見落としが減るかを確かめる方法は、まだ検討中。",
+          "updatedAt": "2026-09-15",
+          "sourceIds": [
+            "SRC-01",
+            "SRC-02"
+          ],
+          "nextTaskIds": [
+            "TASK-02"
+          ]
         }
       }
     }
