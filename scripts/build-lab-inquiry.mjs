@@ -15,7 +15,7 @@ export async function buildLabInquiry() {
     await cp('lab-inquiry/content/' + from, output + '/downloads/' + to);
   }
   await cp('lab-inquiry/content/guidance.html', output + '/guidance/index.html');
-  const sidebar = root => `<aside class="catalog-nav"><nav class="chapter-nav guide-chapters" aria-label="ラボ探究の資料"><a href="${root}">ラボ探究</a><a href="${root}guidance/">授業ガイダンス</a><a href="${root}manual/">AI向け対話進行仕様</a></nav></aside>`;
+  const sidebar = root => `<aside class="catalog-nav"><nav class="chapter-nav" aria-label="ラボ探究の資料"><a href="${root}">ラボ探究</a><a href="${root}guidance/">授業ガイダンス</a><a href="${root}manual/">AI向け対話進行仕様</a></nav></aside>`;
   const page = (path, title, body) => {
     const root = path ? '../' : './';
     const metadata = shareMetadata({ title: title + '｜' + SITE_NAME, description: 'ラボ探究：研究分野紹介動画を見て、AIとの対話で理解と興味を深める。', url: new URL('lab-inquiry/' + path, SITE_URL).href });
