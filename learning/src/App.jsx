@@ -20,7 +20,7 @@ export default function App({ initialRoute = '/', Course }) {
     <PageLink className="skip" href="#main" onClick={event => { event.preventDefault(); document.getElementById('main')?.focus(); }}>本文へ</PageLink>
     <header className="site-header">
       <PageLink className="wordmark" href="#/">Learning<span>動態デザイン研究室</span></PageLink>
-      <nav aria-label="サイト"><PageLink href="../research/">研究ガイド</PageLink><PageLink href="#/" aria-current="page">学習資料</PageLink></nav>
+      <nav aria-label="サイト"><PageLink href="../lab-inquiry/">ラボ探究</PageLink><PageLink href="../research/">研究ガイド</PageLink><PageLink href="#/" aria-current="page">学習資料</PageLink></nav>
     </header>
     {route === '/' ? <Portal/> : <div className="atlas">
       <Sidebar route={route}/>
