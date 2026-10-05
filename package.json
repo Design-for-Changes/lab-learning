@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "build": "npm run build --workspaces && node scripts/assemble.mjs",
-    "check": "npm run check --workspace learning && npm run build --workspace research && node scripts/check-research.mjs",
+    "check": "npm run check --workspace learning && npm run build && node scripts/check-research.mjs && node scripts/check-lab-inquiry.mjs",
     "dev": "npm run build && node scripts/preview.mjs",
     "dev:learning": "npm run dev --workspace learning"
   }

@@ -65,6 +65,7 @@ async function checkReference(from, href) {
   const path = pathname ? resolve(dirname(from), pathname.endsWith('/') ? pathname + 'index.html' : pathname) : from;
   // The sibling learning app is built and validated by its workspace.
   if (path === resolve('research/learning/index.html')) return;
+  if (path === resolve('research/lab-inquiry/index.html')) { await access('dist/lab-inquiry/index.html'); return; }
   await access(path);
   if (anchor) assert.ok(pages.get(path)?.ids.includes(anchor), `${from}: missing anchor ${href}`);
   if (path.endsWith('.png')) {
