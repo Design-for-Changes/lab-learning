@@ -1,64 +1,1689 @@
 {
   "students": 129,
   "minimumGroup": 5,
-  "islands": [
+  "groups": [
     {
-      "id": "type-1",
-      "label": "感じ方 × 心地よく",
-      "count": 30,
-      "x": -0.12087,
-      "y": 0.22374,
-      "color": "feeling",
-      "description": "感じ方はどう変わる？／心地よさ・魅力。主な題材は画面・情報・表現。"
+      "id": "g1",
+      "count": 34,
+      "label": "感情・印象 / 計測・センサー",
+      "terms": [
+        {
+          "label": "感情・印象",
+          "count": 23,
+          "category": "perception"
+        },
+        {
+          "label": "計測・センサー",
+          "count": 31,
+          "category": "method"
+        },
+        {
+          "label": "他への適用・動物と人",
+          "count": 27,
+          "category": "question"
+        },
+        {
+          "label": "測り方の妥当性",
+          "count": 23,
+          "category": "question"
+        },
+        {
+          "label": "脳・生理反応",
+          "count": 22,
+          "category": "method"
+        },
+        {
+          "label": "視線・注視",
+          "count": 20,
+          "category": "method"
+        },
+        {
+          "label": "評価・アンケート",
+          "count": 27,
+          "category": "method"
+        },
+        {
+          "label": "条件の違い",
+          "count": 31,
+          "category": "question"
+        }
+      ]
     },
     {
-      "id": "type-2",
-      "label": "認知・行動 × 使いやすく",
-      "count": 19,
-      "x": -0.06666,
-      "y": -0.52643,
-      "color": "cognition",
-      "description": "どう見て、判断・行動する？／使いやすさ・伝わりやすさ。主な題材は画面・情報・表現。"
+      "id": "g2",
+      "count": 25,
+      "label": "モデル・再現 / 疲労・負担",
+      "terms": [
+        {
+          "label": "モデル・再現",
+          "count": 20,
+          "category": "method"
+        },
+        {
+          "label": "疲労・負担",
+          "count": 15,
+          "category": "body"
+        },
+        {
+          "label": "筋肉・力",
+          "count": 15,
+          "category": "body"
+        },
+        {
+          "label": "姿勢・動作",
+          "count": 17,
+          "category": "body"
+        },
+        {
+          "label": "安全・予防",
+          "count": 16,
+          "category": "body"
+        },
+        {
+          "label": "評価・アンケート",
+          "count": 20,
+          "category": "method"
+        },
+        {
+          "label": "条件の違い",
+          "count": 24,
+          "category": "question"
+        },
+        {
+          "label": "医療・支援",
+          "count": 12,
+          "category": "body"
+        }
+      ]
     },
     {
-      "id": "type-3",
-      "label": "身体の働き × 負担を減らす",
-      "count": 20,
-      "x": 0.04864,
-      "y": 0.66136,
-      "color": "body",
-      "description": "身体に何が起きる？／安全・負担の軽減。主な題材は製品・道具・モノ。"
+      "id": "g3",
+      "count": 21,
+      "label": "色・配色 / 無意識・直感",
+      "terms": [
+        {
+          "label": "色・配色",
+          "count": 14,
+          "category": "perception"
+        },
+        {
+          "label": "無意識・直感",
+          "count": 16,
+          "category": "perception"
+        },
+        {
+          "label": "好み・魅力",
+          "count": 13,
+          "category": "perception"
+        },
+        {
+          "label": "製品・道具",
+          "count": 13,
+          "category": "subject"
+        },
+        {
+          "label": "条件の違い",
+          "count": 19,
+          "category": "question"
+        },
+        {
+          "label": "ボタン・操作",
+          "count": 8,
+          "category": "subject"
+        },
+        {
+          "label": "計測・センサー",
+          "count": 14,
+          "category": "method"
+        },
+        {
+          "label": "日常生活",
+          "count": 12,
+          "category": "subject"
+        }
+      ]
     },
     {
-      "id": "type-4",
-      "label": "使い勝手 × 使いやすく",
-      "count": 12,
-      "x": -0.7868,
-      "y": -0.07226,
-      "color": "usability",
-      "description": "どう使いやすくする？／使いやすさ・伝わりやすさ。主な題材は製品・道具・モノ。"
+      "id": "g4",
+      "count": 17,
+      "label": "錯覚・思い込み / 情報・伝達",
+      "terms": [
+        {
+          "label": "錯覚・思い込み",
+          "count": 13,
+          "category": "cognition"
+        },
+        {
+          "label": "情報・伝達",
+          "count": 14,
+          "category": "subject"
+        },
+        {
+          "label": "日常生活",
+          "count": 14,
+          "category": "subject"
+        },
+        {
+          "label": "習慣・行動",
+          "count": 10,
+          "category": "cognition"
+        },
+        {
+          "label": "条件の違い",
+          "count": 16,
+          "category": "question"
+        },
+        {
+          "label": "実験・比較",
+          "count": 13,
+          "category": "method"
+        },
+        {
+          "label": "判断・選択",
+          "count": 11,
+          "category": "cognition"
+        },
+        {
+          "label": "仕組みを知る",
+          "count": 10,
+          "category": "question"
+        }
+      ]
     },
     {
-      "id": "type-5",
-      "label": "認知・行動 × 負担を減らす",
-      "count": 8,
-      "x": 0.53345,
-      "y": 0.10815,
-      "color": "cognition",
-      "description": "どう見て、判断・行動する？／安全・負担の軽減。主な題材は空間・移動。"
+      "id": "g5",
+      "count": 11,
+      "label": "画面・UI / 認知の負荷",
+      "terms": [
+        {
+          "label": "画面・UI",
+          "count": 9,
+          "category": "subject"
+        },
+        {
+          "label": "認知の負荷",
+          "count": 9,
+          "category": "cognition"
+        },
+        {
+          "label": "習慣・行動",
+          "count": 8,
+          "category": "cognition"
+        },
+        {
+          "label": "注意・集中",
+          "count": 7,
+          "category": "cognition"
+        },
+        {
+          "label": "試作・検証",
+          "count": 7,
+          "category": "method"
+        },
+        {
+          "label": "ボタン・操作",
+          "count": 6,
+          "category": "subject"
+        },
+        {
+          "label": "実験・比較",
+          "count": 9,
+          "category": "method"
+        },
+        {
+          "label": "無意識・直感",
+          "count": 6,
+          "category": "perception"
+        }
+      ]
     },
     {
-      "id": "type-6",
-      "label": "認知・行動 × 判断を支える",
-      "count": 15,
-      "x": 0.39224,
-      "y": -0.39455,
-      "color": "cognition",
-      "description": "どう見て、判断・行動する？／判断・行動を支える。主な題材は人の判断・反応。"
+      "id": "g6",
+      "count": 7,
+      "label": "他への適用・動物と人 / 評価・アンケート",
+      "terms": [
+        {
+          "label": "他への適用・動物と人",
+          "count": 6,
+          "category": "question"
+        },
+        {
+          "label": "評価・アンケート",
+          "count": 6,
+          "category": "method"
+        },
+        {
+          "label": "使いやすくする",
+          "count": 5,
+          "category": "question"
+        },
+        {
+          "label": "条件の違い",
+          "count": 6,
+          "category": "question"
+        },
+        {
+          "label": "実験・比較",
+          "count": 5,
+          "category": "method"
+        }
+      ]
     }
   ],
-  "unclassified": 19,
-  "smallGroups": 6,
-  "explainedVariance": 0.5697,
-  "method": "既存の仮分類（問い・題材・価値）を使用。問いと価値の組み合わせが5人以上の集団を作り、各集団の3軸の構成比を同じ重みで比較。構成比ベクトルのユークリッド距離を古典的MDSで2次元に縮約。集団を同じ重みで配置し、面積のみ人数を反映。個人の座標・原文・少人数の分類内訳は公開しません。"
+  "lenses": {
+    "interests": {
+      "positions": [
+        {
+          "id": "g1",
+          "x": -0.19118,
+          "y": -0.1382,
+          "available": true
+        },
+        {
+          "id": "g2",
+          "x": -0.29379,
+          "y": -0.81853,
+          "available": true
+        },
+        {
+          "id": "g3",
+          "x": -0.07975,
+          "y": -0.0243,
+          "available": true
+        },
+        {
+          "id": "g4",
+          "x": 0.55761,
+          "y": 0.95122,
+          "available": true
+        },
+        {
+          "id": "g5",
+          "x": 1.0,
+          "y": -0.3862,
+          "available": true
+        },
+        {
+          "id": "g6",
+          "x": -0.99289,
+          "y": 0.41601,
+          "available": true
+        }
+      ],
+      "context": [
+        {
+          "id": "g1",
+          "terms": [
+            {
+              "label": "感情・印象",
+              "count": 23
+            },
+            {
+              "label": "計測・センサー",
+              "count": 31
+            },
+            {
+              "label": "他への適用・動物と人",
+              "count": 27
+            },
+            {
+              "label": "測り方の妥当性",
+              "count": 23
+            },
+            {
+              "label": "脳・生理反応",
+              "count": 22
+            },
+            {
+              "label": "視線・注視",
+              "count": 20
+            }
+          ]
+        },
+        {
+          "id": "g2",
+          "terms": [
+            {
+              "label": "モデル・再現",
+              "count": 20
+            },
+            {
+              "label": "疲労・負担",
+              "count": 15
+            },
+            {
+              "label": "筋肉・力",
+              "count": 15
+            },
+            {
+              "label": "姿勢・動作",
+              "count": 17
+            },
+            {
+              "label": "安全・予防",
+              "count": 16
+            },
+            {
+              "label": "評価・アンケート",
+              "count": 20
+            }
+          ]
+        },
+        {
+          "id": "g3",
+          "terms": [
+            {
+              "label": "色・配色",
+              "count": 14
+            },
+            {
+              "label": "無意識・直感",
+              "count": 16
+            },
+            {
+              "label": "好み・魅力",
+              "count": 13
+            },
+            {
+              "label": "製品・道具",
+              "count": 13
+            },
+            {
+              "label": "条件の違い",
+              "count": 19
+            },
+            {
+              "label": "ボタン・操作",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "id": "g4",
+          "terms": [
+            {
+              "label": "錯覚・思い込み",
+              "count": 13
+            },
+            {
+              "label": "情報・伝達",
+              "count": 14
+            },
+            {
+              "label": "日常生活",
+              "count": 14
+            },
+            {
+              "label": "習慣・行動",
+              "count": 10
+            },
+            {
+              "label": "条件の違い",
+              "count": 16
+            },
+            {
+              "label": "実験・比較",
+              "count": 13
+            }
+          ]
+        },
+        {
+          "id": "g5",
+          "terms": [
+            {
+              "label": "画面・UI",
+              "count": 9
+            },
+            {
+              "label": "認知の負荷",
+              "count": 9
+            },
+            {
+              "label": "習慣・行動",
+              "count": 8
+            },
+            {
+              "label": "注意・集中",
+              "count": 7
+            },
+            {
+              "label": "試作・検証",
+              "count": 7
+            },
+            {
+              "label": "ボタン・操作",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "id": "g6",
+          "terms": [
+            {
+              "label": "他への適用・動物と人",
+              "count": 6
+            },
+            {
+              "label": "評価・アンケート",
+              "count": 6
+            },
+            {
+              "label": "使いやすくする",
+              "count": 5
+            },
+            {
+              "label": "条件の違い",
+              "count": 6
+            },
+            {
+              "label": "実験・比較",
+              "count": 5
+            }
+          ]
+        }
+      ],
+      "retained": 0.5565,
+      "coverage": 103
+    },
+    "video": {
+      "positions": [
+        {
+          "id": "g1",
+          "x": 0.00623,
+          "y": -0.21702,
+          "available": true
+        },
+        {
+          "id": "g2",
+          "x": 0.07465,
+          "y": -0.26152,
+          "available": true
+        },
+        {
+          "id": "g3",
+          "x": 0.12945,
+          "y": -0.28361,
+          "available": true
+        },
+        {
+          "id": "g4",
+          "x": 0.57478,
+          "y": 0.51285,
+          "available": true
+        },
+        {
+          "id": "g5",
+          "x": 0.21489,
+          "y": -0.09873,
+          "available": true
+        },
+        {
+          "id": "g6",
+          "x": -1.0,
+          "y": 0.34803,
+          "available": true
+        }
+      ],
+      "context": [
+        {
+          "id": "g1",
+          "terms": [
+            {
+              "label": "医療・支援",
+              "count": 22
+            },
+            {
+              "label": "言葉にする",
+              "count": 17
+            },
+            {
+              "label": "安全・予防",
+              "count": 20
+            },
+            {
+              "label": "モデル・再現",
+              "count": 20
+            },
+            {
+              "label": "筋肉・力",
+              "count": 15
+            },
+            {
+              "label": "脳・生理反応",
+              "count": 20
+            }
+          ]
+        },
+        {
+          "id": "g2",
+          "terms": [
+            {
+              "label": "安全・予防",
+              "count": 18
+            },
+            {
+              "label": "モデル・再現",
+              "count": 18
+            },
+            {
+              "label": "認知の負荷",
+              "count": 13
+            },
+            {
+              "label": "医療・支援",
+              "count": 14
+            },
+            {
+              "label": "筋肉・力",
+              "count": 12
+            },
+            {
+              "label": "使いやすくする",
+              "count": 15
+            }
+          ]
+        },
+        {
+          "id": "g3",
+          "terms": [
+            {
+              "label": "医療・支援",
+              "count": 15
+            },
+            {
+              "label": "安全・予防",
+              "count": 15
+            },
+            {
+              "label": "筋肉・力",
+              "count": 11
+            },
+            {
+              "label": "運動・技能",
+              "count": 8
+            },
+            {
+              "label": "移動・交通",
+              "count": 9
+            },
+            {
+              "label": "言葉にする",
+              "count": 10
+            }
+          ]
+        },
+        {
+          "id": "g4",
+          "terms": [
+            {
+              "label": "運動・技能",
+              "count": 9
+            },
+            {
+              "label": "医療・支援",
+              "count": 9
+            },
+            {
+              "label": "錯覚・思い込み",
+              "count": 9
+            },
+            {
+              "label": "情報・伝達",
+              "count": 10
+            },
+            {
+              "label": "視線・注視",
+              "count": 9
+            },
+            {
+              "label": "使いやすくする",
+              "count": 10
+            }
+          ]
+        },
+        {
+          "id": "g5",
+          "terms": [
+            {
+              "label": "医療・支援",
+              "count": 6
+            },
+            {
+              "label": "安全・予防",
+              "count": 6
+            },
+            {
+              "label": "使いやすくする",
+              "count": 7
+            },
+            {
+              "label": "製品・道具",
+              "count": 6
+            },
+            {
+              "label": "加齢・身体差",
+              "count": 5
+            },
+            {
+              "label": "モデル・再現",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "id": "g6",
+          "terms": [
+            {
+              "label": "使いやすくする",
+              "count": 6
+            },
+            {
+              "label": "製品・道具",
+              "count": 5
+            },
+            {
+              "label": "他への適用・動物と人",
+              "count": 5
+            },
+            {
+              "label": "条件の違い",
+              "count": 6
+            }
+          ]
+        }
+      ],
+      "retained": 0.6838,
+      "coverage": 98
+    },
+    "questions": {
+      "positions": [
+        {
+          "id": "g1",
+          "x": 0.0226,
+          "y": -0.52144,
+          "available": true
+        },
+        {
+          "id": "g2",
+          "x": 0.15193,
+          "y": -0.55276,
+          "available": true
+        },
+        {
+          "id": "g3",
+          "x": 0.07895,
+          "y": -0.33312,
+          "available": true
+        },
+        {
+          "id": "g4",
+          "x": 0.74652,
+          "y": 0.82125,
+          "available": true
+        },
+        {
+          "id": "g5",
+          "x": 0,
+          "y": 0,
+          "available": false
+        },
+        {
+          "id": "g6",
+          "x": -1.0,
+          "y": 0.58607,
+          "available": true
+        }
+      ],
+      "context": [
+        {
+          "id": "g1",
+          "terms": [
+            {
+              "label": "計測・センサー",
+              "count": 19
+            },
+            {
+              "label": "感情・印象",
+              "count": 13
+            },
+            {
+              "label": "条件の違い",
+              "count": 22
+            },
+            {
+              "label": "脳・生理反応",
+              "count": 14
+            },
+            {
+              "label": "モデル・再現",
+              "count": 11
+            },
+            {
+              "label": "評価・アンケート",
+              "count": 14
+            }
+          ]
+        },
+        {
+          "id": "g2",
+          "terms": [
+            {
+              "label": "モデル・再現",
+              "count": 11
+            },
+            {
+              "label": "筋肉・力",
+              "count": 7
+            },
+            {
+              "label": "測り方の妥当性",
+              "count": 7
+            },
+            {
+              "label": "姿勢・動作",
+              "count": 6
+            },
+            {
+              "label": "仕組みを知る",
+              "count": 7
+            },
+            {
+              "label": "評価・アンケート",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "id": "g3",
+          "terms": [
+            {
+              "label": "加齢・身体差",
+              "count": 7
+            },
+            {
+              "label": "条件の違い",
+              "count": 12
+            },
+            {
+              "label": "評価・アンケート",
+              "count": 9
+            },
+            {
+              "label": "計測・センサー",
+              "count": 9
+            },
+            {
+              "label": "無意識・直感",
+              "count": 6
+            },
+            {
+              "label": "個人差・文化差",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "id": "g4",
+          "terms": [
+            {
+              "label": "錯覚・思い込み",
+              "count": 7
+            },
+            {
+              "label": "条件の違い",
+              "count": 11
+            },
+            {
+              "label": "情報・伝達",
+              "count": 6
+            },
+            {
+              "label": "使いやすくする",
+              "count": 6
+            },
+            {
+              "label": "仕組みを知る",
+              "count": 6
+            },
+            {
+              "label": "判断・選択",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "id": "g5",
+          "terms": []
+        },
+        {
+          "id": "g6",
+          "terms": []
+        }
+      ],
+      "retained": 0.701,
+      "coverage": 76
+    },
+    "proposal": {
+      "positions": [
+        {
+          "id": "g1",
+          "x": -0.14314,
+          "y": 0.13278,
+          "available": true
+        },
+        {
+          "id": "g2",
+          "x": -0.25475,
+          "y": -0.9366,
+          "available": true
+        },
+        {
+          "id": "g3",
+          "x": -0.11178,
+          "y": 0.3884,
+          "available": true
+        },
+        {
+          "id": "g4",
+          "x": 0.57999,
+          "y": 0.75982,
+          "available": true
+        },
+        {
+          "id": "g5",
+          "x": 0.92968,
+          "y": -0.49014,
+          "available": true
+        },
+        {
+          "id": "g6",
+          "x": -1.0,
+          "y": 0.14573,
+          "available": true
+        }
+      ],
+      "context": [
+        {
+          "id": "g1",
+          "terms": [
+            {
+              "label": "判断・選択",
+              "count": 22
+            },
+            {
+              "label": "視線・注視",
+              "count": 17
+            },
+            {
+              "label": "計測・センサー",
+              "count": 22
+            },
+            {
+              "label": "条件の違い",
+              "count": 27
+            },
+            {
+              "label": "評価・アンケート",
+              "count": 20
+            },
+            {
+              "label": "脳・生理反応",
+              "count": 15
+            }
+          ]
+        },
+        {
+          "id": "g2",
+          "terms": [
+            {
+              "label": "疲労・負担",
+              "count": 14
+            },
+            {
+              "label": "モデル・再現",
+              "count": 17
+            },
+            {
+              "label": "安全・予防",
+              "count": 14
+            },
+            {
+              "label": "条件の違い",
+              "count": 24
+            },
+            {
+              "label": "筋肉・力",
+              "count": 11
+            },
+            {
+              "label": "姿勢・動作",
+              "count": 13
+            }
+          ]
+        },
+        {
+          "id": "g3",
+          "terms": [
+            {
+              "label": "色・配色",
+              "count": 13
+            },
+            {
+              "label": "無意識・直感",
+              "count": 11
+            },
+            {
+              "label": "条件の違い",
+              "count": 16
+            },
+            {
+              "label": "実験・比較",
+              "count": 13
+            },
+            {
+              "label": "ボタン・操作",
+              "count": 7
+            },
+            {
+              "label": "好み・魅力",
+              "count": 8
+            }
+          ]
+        },
+        {
+          "id": "g4",
+          "terms": [
+            {
+              "label": "情報・伝達",
+              "count": 14
+            },
+            {
+              "label": "錯覚・思い込み",
+              "count": 10
+            },
+            {
+              "label": "実験・比較",
+              "count": 13
+            },
+            {
+              "label": "条件の違い",
+              "count": 15
+            },
+            {
+              "label": "判断・選択",
+              "count": 11
+            },
+            {
+              "label": "日常生活",
+              "count": 9
+            }
+          ]
+        },
+        {
+          "id": "g5",
+          "terms": [
+            {
+              "label": "画面・UI",
+              "count": 9
+            },
+            {
+              "label": "認知の負荷",
+              "count": 7
+            },
+            {
+              "label": "ボタン・操作",
+              "count": 6
+            },
+            {
+              "label": "習慣・行動",
+              "count": 7
+            },
+            {
+              "label": "試作・検証",
+              "count": 6
+            },
+            {
+              "label": "視線・注視",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "id": "g6",
+          "terms": [
+            {
+              "label": "評価・アンケート",
+              "count": 5
+            },
+            {
+              "label": "条件の違い",
+              "count": 5
+            }
+          ]
+        }
+      ],
+      "retained": 0.541,
+      "coverage": 103
+    },
+    "choice": {
+      "positions": [
+        {
+          "id": "g1",
+          "x": -0.41545,
+          "y": 0.29419,
+          "available": true
+        },
+        {
+          "id": "g2",
+          "x": 0.07974,
+          "y": -1.0,
+          "available": true
+        },
+        {
+          "id": "g3",
+          "x": -0.33126,
+          "y": 0.29984,
+          "available": true
+        },
+        {
+          "id": "g4",
+          "x": 0.81905,
+          "y": 0.06397,
+          "available": true
+        },
+        {
+          "id": "g5",
+          "x": 0.67254,
+          "y": 0.13387,
+          "available": true
+        },
+        {
+          "id": "g6",
+          "x": -0.82461,
+          "y": 0.20814,
+          "available": true
+        }
+      ],
+      "context": [
+        {
+          "id": "g1",
+          "terms": [
+            {
+              "label": "感性を選んだ記録",
+              "count": 20
+            },
+            {
+              "label": "認知を選んだ記録",
+              "count": 9
+            }
+          ]
+        },
+        {
+          "id": "g2",
+          "terms": [
+            {
+              "label": "認知を選んだ記録",
+              "count": 5
+            },
+            {
+              "label": "身体を選んだ記録",
+              "count": 12
+            }
+          ]
+        },
+        {
+          "id": "g3",
+          "terms": [
+            {
+              "label": "感性を選んだ記録",
+              "count": 11
+            },
+            {
+              "label": "認知を選んだ記録",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "id": "g4",
+          "terms": [
+            {
+              "label": "認知を選んだ記録",
+              "count": 13
+            }
+          ]
+        },
+        {
+          "id": "g5",
+          "terms": [
+            {
+              "label": "認知を選んだ記録",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "id": "g6",
+          "terms": [
+            {
+              "label": "感性を選んだ記録",
+              "count": 5
+            }
+          ]
+        }
+      ],
+      "retained": 0.9828,
+      "coverage": 90
+    }
+  },
+  "videoCells": [
+    {
+      "video": "感性の動画",
+      "label": "評価・アンケート",
+      "count": 65
+    },
+    {
+      "video": "感性の動画",
+      "label": "計測・センサー",
+      "count": 54
+    },
+    {
+      "video": "感性の動画",
+      "label": "製品・道具",
+      "count": 53
+    },
+    {
+      "video": "感性の動画",
+      "label": "脳・生理反応",
+      "count": 53
+    },
+    {
+      "video": "感性の動画",
+      "label": "視線・注視",
+      "count": 48
+    },
+    {
+      "video": "感性の動画",
+      "label": "使いやすくする",
+      "count": 47
+    },
+    {
+      "video": "感性の動画",
+      "label": "条件の違い",
+      "count": 42
+    },
+    {
+      "video": "感性の動画",
+      "label": "言葉にする",
+      "count": 42
+    },
+    {
+      "video": "感性の動画",
+      "label": "無意識・直感",
+      "count": 36
+    },
+    {
+      "video": "感性の動画",
+      "label": "測り方の妥当性",
+      "count": 32
+    },
+    {
+      "video": "感性の動画",
+      "label": "感情・印象",
+      "count": 27
+    },
+    {
+      "video": "感性の動画",
+      "label": "他への適用・動物と人",
+      "count": 24
+    },
+    {
+      "video": "認知の動画",
+      "label": "条件の違い",
+      "count": 49
+    },
+    {
+      "video": "認知の動画",
+      "label": "情報・伝達",
+      "count": 42
+    },
+    {
+      "video": "認知の動画",
+      "label": "錯覚・思い込み",
+      "count": 35
+    },
+    {
+      "video": "認知の動画",
+      "label": "仕組みを知る",
+      "count": 29
+    },
+    {
+      "video": "認知の動画",
+      "label": "注意・集中",
+      "count": 27
+    },
+    {
+      "video": "認知の動画",
+      "label": "使いやすくする",
+      "count": 27
+    },
+    {
+      "video": "認知の動画",
+      "label": "習慣・行動",
+      "count": 26
+    },
+    {
+      "video": "認知の動画",
+      "label": "他への適用・動物と人",
+      "count": 26
+    },
+    {
+      "video": "認知の動画",
+      "label": "実験・比較",
+      "count": 19
+    },
+    {
+      "video": "認知の動画",
+      "label": "無意識・直感",
+      "count": 18
+    },
+    {
+      "video": "認知の動画",
+      "label": "製品・道具",
+      "count": 17
+    },
+    {
+      "video": "認知の動画",
+      "label": "判断・選択",
+      "count": 14
+    },
+    {
+      "video": "身体の動画",
+      "label": "安全・予防",
+      "count": 64
+    },
+    {
+      "video": "身体の動画",
+      "label": "医療・支援",
+      "count": 58
+    },
+    {
+      "video": "身体の動画",
+      "label": "モデル・再現",
+      "count": 52
+    },
+    {
+      "video": "身体の動画",
+      "label": "筋肉・力",
+      "count": 45
+    },
+    {
+      "video": "身体の動画",
+      "label": "条件の違い",
+      "count": 39
+    },
+    {
+      "video": "身体の動画",
+      "label": "加齢・身体差",
+      "count": 37
+    },
+    {
+      "video": "身体の動画",
+      "label": "日常生活",
+      "count": 27
+    },
+    {
+      "video": "身体の動画",
+      "label": "評価・アンケート",
+      "count": 26
+    },
+    {
+      "video": "身体の動画",
+      "label": "他への適用・動物と人",
+      "count": 26
+    },
+    {
+      "video": "身体の動画",
+      "label": "使いやすくする",
+      "count": 26
+    },
+    {
+      "video": "身体の動画",
+      "label": "姿勢・動作",
+      "count": 25
+    },
+    {
+      "video": "身体の動画",
+      "label": "運動・技能",
+      "count": 24
+    }
+  ],
+  "videoCoverage": {
+    "感性の動画": 94,
+    "認知の動画": 75,
+    "身体の動画": 79
+  },
+  "questionCells": [
+    {
+      "question": "仕組みを知る",
+      "method": "計測・センサー",
+      "count": 17
+    },
+    {
+      "question": "仕組みを知る",
+      "method": "視線・注視",
+      "count": 8
+    },
+    {
+      "question": "仕組みを知る",
+      "method": "脳・生理反応",
+      "count": 14
+    },
+    {
+      "question": "仕組みを知る",
+      "method": "実験・比較",
+      "count": 20
+    },
+    {
+      "question": "仕組みを知る",
+      "method": "評価・アンケート",
+      "count": 16
+    },
+    {
+      "question": "仕組みを知る",
+      "method": "観察・聞き取り",
+      "count": 7
+    },
+    {
+      "question": "仕組みを知る",
+      "method": "モデル・再現",
+      "count": 12
+    },
+    {
+      "question": "仕組みを知る",
+      "method": "試作・検証",
+      "count": 5
+    },
+    {
+      "question": "条件の違い",
+      "method": "計測・センサー",
+      "count": 43
+    },
+    {
+      "question": "条件の違い",
+      "method": "視線・注視",
+      "count": 24
+    },
+    {
+      "question": "条件の違い",
+      "method": "脳・生理反応",
+      "count": 23
+    },
+    {
+      "question": "条件の違い",
+      "method": "実験・比較",
+      "count": 49
+    },
+    {
+      "question": "条件の違い",
+      "method": "評価・アンケート",
+      "count": 40
+    },
+    {
+      "question": "条件の違い",
+      "method": "観察・聞き取り",
+      "count": 19
+    },
+    {
+      "question": "条件の違い",
+      "method": "モデル・再現",
+      "count": 25
+    },
+    {
+      "question": "条件の違い",
+      "method": "試作・検証",
+      "count": 15
+    },
+    {
+      "question": "他への適用・動物と人",
+      "method": "計測・センサー",
+      "count": 20
+    },
+    {
+      "question": "他への適用・動物と人",
+      "method": "視線・注視",
+      "count": 13
+    },
+    {
+      "question": "他への適用・動物と人",
+      "method": "脳・生理反応",
+      "count": 12
+    },
+    {
+      "question": "他への適用・動物と人",
+      "method": "実験・比較",
+      "count": 22
+    },
+    {
+      "question": "他への適用・動物と人",
+      "method": "評価・アンケート",
+      "count": 20
+    },
+    {
+      "question": "他への適用・動物と人",
+      "method": "観察・聞き取り",
+      "count": 10
+    },
+    {
+      "question": "他への適用・動物と人",
+      "method": "モデル・再現",
+      "count": 14
+    },
+    {
+      "question": "他への適用・動物と人",
+      "method": "試作・検証",
+      "count": 7
+    },
+    {
+      "question": "測り方の妥当性",
+      "method": "計測・センサー",
+      "count": 19
+    },
+    {
+      "question": "測り方の妥当性",
+      "method": "視線・注視",
+      "count": 10
+    },
+    {
+      "question": "測り方の妥当性",
+      "method": "脳・生理反応",
+      "count": 12
+    },
+    {
+      "question": "測り方の妥当性",
+      "method": "実験・比較",
+      "count": 17
+    },
+    {
+      "question": "測り方の妥当性",
+      "method": "評価・アンケート",
+      "count": 17
+    },
+    {
+      "question": "測り方の妥当性",
+      "method": "モデル・再現",
+      "count": 11
+    },
+    {
+      "question": "測り方の妥当性",
+      "method": "試作・検証",
+      "count": 5
+    },
+    {
+      "question": "使いやすくする",
+      "method": "計測・センサー",
+      "count": 17
+    },
+    {
+      "question": "使いやすくする",
+      "method": "視線・注視",
+      "count": 6
+    },
+    {
+      "question": "使いやすくする",
+      "method": "脳・生理反応",
+      "count": 12
+    },
+    {
+      "question": "使いやすくする",
+      "method": "実験・比較",
+      "count": 20
+    },
+    {
+      "question": "使いやすくする",
+      "method": "評価・アンケート",
+      "count": 16
+    },
+    {
+      "question": "使いやすくする",
+      "method": "観察・聞き取り",
+      "count": 10
+    },
+    {
+      "question": "使いやすくする",
+      "method": "モデル・再現",
+      "count": 10
+    },
+    {
+      "question": "使いやすくする",
+      "method": "試作・検証",
+      "count": 6
+    },
+    {
+      "question": "言葉にする",
+      "method": "計測・センサー",
+      "count": 6
+    },
+    {
+      "question": "言葉にする",
+      "method": "実験・比較",
+      "count": 7
+    },
+    {
+      "question": "言葉にする",
+      "method": "評価・アンケート",
+      "count": 6
+    },
+    {
+      "question": "言葉にする",
+      "method": "モデル・再現",
+      "count": 6
+    },
+    {
+      "question": "個人差・文化差",
+      "method": "計測・センサー",
+      "count": 12
+    },
+    {
+      "question": "個人差・文化差",
+      "method": "視線・注視",
+      "count": 9
+    },
+    {
+      "question": "個人差・文化差",
+      "method": "脳・生理反応",
+      "count": 7
+    },
+    {
+      "question": "個人差・文化差",
+      "method": "実験・比較",
+      "count": 14
+    },
+    {
+      "question": "個人差・文化差",
+      "method": "評価・アンケート",
+      "count": 12
+    },
+    {
+      "question": "個人差・文化差",
+      "method": "モデル・再現",
+      "count": 9
+    }
+  ],
+  "choices": [
+    {
+      "group": "g1",
+      "video": "感性",
+      "count": 20
+    },
+    {
+      "group": "g1",
+      "video": "認知",
+      "count": 9
+    },
+    {
+      "group": "g1",
+      "video": "未確認",
+      "count": 5
+    },
+    {
+      "group": "g2",
+      "video": "未確認",
+      "count": 6
+    },
+    {
+      "group": "g2",
+      "video": "身体",
+      "count": 12
+    },
+    {
+      "group": "g2",
+      "video": "認知",
+      "count": 5
+    },
+    {
+      "group": "g3",
+      "video": "感性",
+      "count": 11
+    },
+    {
+      "group": "g3",
+      "video": "認知",
+      "count": 6
+    },
+    {
+      "group": "g4",
+      "video": "認知",
+      "count": 13
+    },
+    {
+      "group": "g5",
+      "video": "認知",
+      "count": 6
+    },
+    {
+      "group": "g6",
+      "video": "感性",
+      "count": 5
+    }
+  ],
+  "coverage": {
+    "video": 110,
+    "questions": 77,
+    "proposal": 104,
+    "choice": 85,
+    "ai": 58
+  },
+  "mapped": 115,
+  "unmapped": 14,
+  "quality": {
+    "silhouette": 0.097,
+    "features": 50,
+    "candidateGroups": [
+      5,
+      9
+    ],
+    "stability": "群の境界は弱く、書式やAIによるまとめ方の影響も残る。確定的なタイプ分類ではない。"
+  },
+  "method": "見出しで動画説明・疑問・研究案・選択理由・AI説明を分離し、事前に定義した語彙の有無を抽出。各欄の特徴を正規化して長い記述の影響を抑え、1人の複数提出はまとめ、同じ語の反復で人数を増やさない。説明はAIがまとめた記録を含む。本人の発言原文とAIによる言い換えは分離できない。AI説明欄は関心の類似度から除外。研究案55%、疑問30%、選択理由15%の特徴から、重み付きコサイン類似度によるk-meansを実施。5〜9群・各12初期値を比較し、全群5人以上でシルエット係数が最大の分割を採用。各見方で5人以上に特徴が拾える集団だけを対象とし、集団の平均特徴を再計算し、古典的MDSと等価な中心化SVDで2次元配置。選択動画の見方は既存の確認済み分野の構成比を使い、未確認は距離の特徴にしない。見方の間で不要な回転を抑えるよう位置を整列。各配置は別の尺度なので距離の絶対値を見方の間で比較しない。軸の向きは意味や優劣を表さない。少人数の語・交差セルは非公開。"
 }

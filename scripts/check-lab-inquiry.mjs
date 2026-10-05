@@ -32,12 +32,15 @@ assert.ok(!/CY\d{5}|@|\.zip|\.xlsx|\/Users\//i.test(aggregateText), 'No student 
 const interestHtml = await readFile('dist/lab-inquiry/interests/index.html', 'utf8');
 assert.ok(!/CY\d{5}|\/Users\/|fetch\(|<iframe/i.test(interestHtml));
 const map = JSON.parse(await readFile('lab-inquiry/content/interest-map.json', 'utf8'));
-assert.deepEqual(Object.keys(map).sort(), ['students','minimumGroup','islands','unclassified','smallGroups','explainedVariance','method'].sort());
-assert.equal(map.students, aggregate.students);
-assert.equal(map.islands.reduce((s,n)=>s+n.count,0)+map.unclassified+map.smallGroups,map.students);
-assert.ok(map.explainedVariance>0 && map.explainedVariance<=1);
-for(const node of map.islands){assert.ok(node.count>=5);assert.ok(Number.isFinite(node.x)&&Number.isFinite(node.y));assert.deepEqual(Object.keys(node).sort(),['id','label','count','x','y','color','description'].sort());}
+assert.deepEqual(Object.keys(map).sort(), ['students','minimumGroup','groups','lenses','videoCells','videoCoverage','questionCells','choices','coverage','mapped','unmapped','quality','method'].sort());
+assert.equal(map.students,aggregate.students);
+assert.equal(map.groups.reduce((s,g)=>s+g.count,0),map.mapped);
+assert.equal(map.mapped+map.unmapped,map.students);
+for(const g of map.groups){assert.ok(g.count>=5);assert.deepEqual(Object.keys(g).sort(),['id','count','label','terms'].sort());for(const t of g.terms)assert.ok(t.count>=5&&t.count<=g.count);}
+for(const cells of [map.videoCells,map.questionCells,map.choices])for(const c of cells)assert.ok(Number.isInteger(c.count)&&c.count>=5&&c.count<=map.students);
+for(const view of Object.values(map.lenses)){assert.equal(view.positions.length,map.groups.length);assert.ok(view.retained>0&&view.retained<=1);for(const p of view.positions){assert.ok(Number.isFinite(p.x)&&Math.abs(p.x)<=1);assert.ok(Number.isFinite(p.y)&&Math.abs(p.y)<=1);}for(const c of view.context)for(const t of c.terms)assert.ok(t.count>=5&&t.count<=map.groups.find(g=>g.id===c.id).count);}
+assert.notDeepEqual(map.lenses.interests.positions,map.lenses.video.positions);
 assert.ok(!/CY\d{5}|@|\/Users\/|\.zip/i.test(JSON.stringify(map)));
-assert.equal((interestHtml.match(/data-node="/g) || []).length,map.islands.length);
+assert.equal((interestHtml.match(/data-node="/g) || []).length,map.groups.length);
 for (const asset of ['interest-map.css','interest-map.js']) await access('dist/lab-inquiry/assets/'+asset);
 console.log('Interest page: aggregate-only schema, totals and minimum group size passed.');
