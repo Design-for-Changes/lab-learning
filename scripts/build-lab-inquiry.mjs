@@ -1,3 +1,4 @@
+import { renderInterestMap } from './render-interest-map.mjs';
 import { readFile, writeFile, mkdir, cp } from 'node:fs/promises';
 import { marked } from 'marked';
 import { escapeHtml, shareMetadata, SITE_URL, SITE_NAME } from './share-metadata.mjs';
@@ -33,14 +34,8 @@ export async function buildLabInquiry() {
     if (groups.reduce((n, item) => n + item.count, 0) !== summary.students) throw new Error('Interest totals inconsistent');
     if (groups.some(item => !Number.isInteger(item.count) || item.count < 5)) throw new Error('Small groups must not be published');
   }
-  const chart = (groups, title) => {
-    const ceiling = Math.ceil(Math.max(...groups.map(item => item.count)) / 10) * 10;
-    return `<section class="interest-section"><h2>${escapeHtml(title)}</h2><p class="interest-scale">横軸：人数（0–${ceiling}人） / 割合の分母：${summary.students}人</p><div class="interest-chart" role="list" aria-label="${escapeHtml(title)}、集計対象${summary.students}人">${groups.map(item => {
-    const pct = item.count / summary.students * 100;
-    return `<div class="interest-row${item.unconfirmed ? ' interest-unknown' : ''}" role="listitem"><div class="interest-label"><span>${escapeHtml(item.label)}</span><span class="interest-value">${item.count}人 <small>(${pct.toFixed(1)}%)</small></span></div><div class="interest-track" aria-hidden="true"><div class="interest-bar" style="width:${(item.count / ceiling * 100).toFixed(3)}%"></div></div></div>`;
-  }).join('')}</div></section>`;
-  };
-  const interestStyle = `<style>.interest-meta{display:flex;flex-wrap:wrap;gap:12px 28px;margin:0 0 32px}.interest-meta strong{font-size:1.5rem}.interest-section{margin-block:36px}.interest-chart{display:grid;gap:20px;max-width:780px}.interest-label{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:8px}.interest-value{white-space:nowrap;font-variant-numeric:tabular-nums}.interest-value small{color:var(--muted)}.interest-track{height:16px;background:color-mix(in srgb,var(--blue) 9%,transparent)}.interest-bar{height:100%;background:var(--blue)}.interest-unknown .interest-bar{background:var(--muted)}.interest-method{max-width:780px}.interest-method summary{cursor:pointer}.interest-method p{margin:12px 0}@media(max-width:480px){.interest-chart{gap:18px}.interest-label{display:block}.interest-value{display:block;margin-top:4px}}</style>`;
-  const interests = interestStyle + `<article class="prose"><p class="eyebrow">${escapeHtml(summary.session)} / ${escapeHtml(summary.status)} / 更新 ${escapeHtml(summary.updatedAt)}</p><div class="interest-meta"><span>集計対象 <strong>${summary.students}</strong> 人</span><span>提出ファイル <strong>${summary.markdownFiles}</strong> 件</span></div><p>提出済みの資料に記載された関心と研究案の、現時点での広がりです。履修者全員の傾向を表すものではありません。</p><p>個人別の表示・検索・原文へのリンクはありません。集計値だけを公開しています。</p>${chart(summary.domains, '選んだ研究分野')}${chart(summary.themes, '研究案で注目していること')}<details class="interest-method"><summary>集計方法と、この図で分かる範囲</summary><p>${escapeHtml(summary.domainMethod)}</p><p>${escapeHtml(summary.themeMethod)}</p><p>同じ人の複数ファイルはまとめて1人として集計しています。各グラフは1人1分類、割合の分母は集計対象${summary.students}人です。</p><p>「確認できない」は、提出物から選択や研究案を読み取れない状態です。関心がない、理解していない、という評価ではありません。分類は暫定で、今後の提出と確認によって変わります。</p><p>${escapeHtml(summary.privacy)}</p></details></article>`;
+  const map = JSON.parse(await readFile('lab-inquiry/content/interest-map.json', 'utf8'));
+  await cp('lab-inquiry/assets', output + '/assets', { recursive: true });
+  const interests = renderInterestMap(summary, map);
   await writeFile(output + '/interests/index.html', page('interests/', 'みんなの関心', interests));
 }

@@ -1,0 +1,237 @@
+{
+  "students": 129,
+  "minimumGroup": 5,
+  "nodes": [
+    {
+      "id": "q-cognition",
+      "axis": "q",
+      "label": "どう見て、判断・行動する？",
+      "count": 44,
+      "unconfirmed": false
+    },
+    {
+      "id": "q-feeling",
+      "axis": "q",
+      "label": "感じ方はどう変わる？",
+      "count": 34,
+      "unconfirmed": false
+    },
+    {
+      "id": "q-body",
+      "axis": "q",
+      "label": "身体に何が起きる？",
+      "count": 20,
+      "unconfirmed": false
+    },
+    {
+      "id": "q-usability",
+      "axis": "q",
+      "label": "どう使いやすくする？",
+      "count": 13,
+      "unconfirmed": false
+    },
+    {
+      "id": "q-unknown",
+      "axis": "q",
+      "label": "その他・未確認",
+      "count": 18,
+      "unconfirmed": true
+    },
+    {
+      "id": "s-objects",
+      "axis": "s",
+      "label": "製品・道具・モノ",
+      "count": 37,
+      "unconfirmed": false
+    },
+    {
+      "id": "s-media",
+      "axis": "s",
+      "label": "画面・情報・表現",
+      "count": 29,
+      "unconfirmed": false
+    },
+    {
+      "id": "s-spaces",
+      "axis": "s",
+      "label": "空間・移動",
+      "count": 18,
+      "unconfirmed": false
+    },
+    {
+      "id": "s-body",
+      "axis": "s",
+      "label": "身体・技能",
+      "count": 11,
+      "unconfirmed": false
+    },
+    {
+      "id": "s-reactions",
+      "axis": "s",
+      "label": "人の判断・反応",
+      "count": 18,
+      "unconfirmed": false
+    },
+    {
+      "id": "s-unknown",
+      "axis": "s",
+      "label": "その他・未確認",
+      "count": 16,
+      "unconfirmed": true
+    },
+    {
+      "id": "v-ease",
+      "axis": "v",
+      "label": "使いやすさ・伝わりやすさ",
+      "count": 35,
+      "unconfirmed": false
+    },
+    {
+      "id": "v-comfort",
+      "axis": "v",
+      "label": "心地よさ・魅力",
+      "count": 32,
+      "unconfirmed": false
+    },
+    {
+      "id": "v-safety",
+      "axis": "v",
+      "label": "安全・負担の軽減",
+      "count": 30,
+      "unconfirmed": false
+    },
+    {
+      "id": "v-judgment",
+      "axis": "v",
+      "label": "判断・行動を支える",
+      "count": 16,
+      "unconfirmed": false
+    },
+    {
+      "id": "v-unknown",
+      "axis": "v",
+      "label": "その他・未確認",
+      "count": 16,
+      "unconfirmed": true
+    }
+  ],
+  "links": [
+    {
+      "source": "q-feeling",
+      "target": "s-media",
+      "count": 9
+    },
+    {
+      "source": "q-cognition",
+      "target": "s-media",
+      "count": 19
+    },
+    {
+      "source": "q-feeling",
+      "target": "s-spaces",
+      "count": 8
+    },
+    {
+      "source": "q-body",
+      "target": "s-objects",
+      "count": 10
+    },
+    {
+      "source": "q-usability",
+      "target": "s-objects",
+      "count": 13
+    },
+    {
+      "source": "q-body",
+      "target": "s-body",
+      "count": 8
+    },
+    {
+      "source": "q-cognition",
+      "target": "s-spaces",
+      "count": 8
+    },
+    {
+      "source": "q-cognition",
+      "target": "s-reactions",
+      "count": 11
+    },
+    {
+      "source": "q-feeling",
+      "target": "s-reactions",
+      "count": 7
+    },
+    {
+      "source": "q-feeling",
+      "target": "s-objects",
+      "count": 9
+    },
+    {
+      "source": "s-media",
+      "target": "v-comfort",
+      "count": 9
+    },
+    {
+      "source": "s-media",
+      "target": "v-ease",
+      "count": 17
+    },
+    {
+      "source": "s-spaces",
+      "target": "v-safety",
+      "count": 9
+    },
+    {
+      "source": "s-objects",
+      "target": "v-safety",
+      "count": 11
+    },
+    {
+      "source": "s-objects",
+      "target": "v-ease",
+      "count": 16
+    },
+    {
+      "source": "s-body",
+      "target": "v-safety",
+      "count": 8
+    },
+    {
+      "source": "s-reactions",
+      "target": "v-judgment",
+      "count": 10
+    },
+    {
+      "source": "s-spaces",
+      "target": "v-comfort",
+      "count": 7
+    },
+    {
+      "source": "s-reactions",
+      "target": "v-comfort",
+      "count": 7
+    },
+    {
+      "source": "s-objects",
+      "target": "v-comfort",
+      "count": 8
+    }
+  ],
+  "coverage": [
+    {
+      "axes": [
+        "q",
+        "s"
+      ],
+      "shown": 102
+    },
+    {
+      "axes": [
+        "s",
+        "v"
+      ],
+      "shown": 102
+    }
+  ],
+  "method": "提出物の研究案を「知りたいこと・題材・つなげたい価値」の3軸で仮分類。各軸は1人1分類。線は隣り合う2軸の組み合わせ人数で、3軸を通る同一人物の経路ではありません。5人未満の組み合わせと未確認に関係する線は非表示。個人別の記録や原文は含めません。"
+}

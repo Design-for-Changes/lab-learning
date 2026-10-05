@@ -31,5 +31,13 @@ const aggregateText = JSON.stringify(aggregate);
 assert.ok(!/CY\d{5}|@|\.zip|\.xlsx|\/Users\//i.test(aggregateText), 'No student IDs, contact data or source files in published aggregate');
 const interestHtml = await readFile('dist/lab-inquiry/interests/index.html', 'utf8');
 assert.ok(!/CY\d{5}|\/Users\/|fetch\(|<iframe/i.test(interestHtml));
-assert.equal((interestHtml.match(/role="listitem"/g) || []).length, aggregate.domains.length + aggregate.themes.length);
+const map = JSON.parse(await readFile('lab-inquiry/content/interest-map.json', 'utf8'));
+assert.deepEqual(Object.keys(map).sort(), ['students','minimumGroup','nodes','links','coverage','method'].sort());
+assert.equal(map.students, aggregate.students);
+for (const axis of ['q','s','v']) assert.equal(map.nodes.filter(node => node.axis === axis).reduce((sum,node)=>sum+node.count,0),map.students);
+for (const node of map.nodes) { assert.ok(node.count >= 5); assert.deepEqual(Object.keys(node).sort(), ['id','axis','label','count','unconfirmed'].sort()); }
+for (const link of map.links) { assert.ok(link.count >= 5); assert.deepEqual(Object.keys(link).sort(), ['source','target','count'].sort()); assert.ok(map.nodes.some(n=>n.id===link.source)); assert.ok(map.nodes.some(n=>n.id===link.target)); }
+assert.ok(!/CY\d{5}|@|\/Users\/|\.zip/i.test(JSON.stringify(map)));
+assert.equal((interestHtml.match(/data-node="/g) || []).length,map.nodes.length);
+for (const asset of ['interest-map.css','interest-map.js']) await access('dist/lab-inquiry/assets/'+asset);
 console.log('Interest page: aggregate-only schema, totals and minimum group size passed.');
