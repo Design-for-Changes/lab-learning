@@ -1,0 +1,75 @@
+{
+  "updatedAt": "2026-10-05",
+  "session": "第01回",
+  "students": 129,
+  "markdownFiles": 135,
+  "multipleFileStudents": 6,
+  "status": "提出途中の暫定集計",
+  "domainMethod": "選択した分野、選んだ動画、最も関心を持った分野が明記された記述を確認。動画番号だけの場合や、選択が不明な場合は未確認。",
+  "themeMethod": "提出物に書かれた研究案の主題を、広い8分類へ人手で仮分類。1人につき主な1分類。一般的な提案例だけの出力や、研究案が読み取れない場合は未確認。学生本人が独力で立案したことを保証する集計ではありません。",
+  "privacy": "個人名・学籍番号・ファイル名・原文・個別のエピソード・個人別データを含みません。5人未満の細分は表示しません。",
+  "domains": [
+    {
+      "label": "感性工学・感性デザイン",
+      "count": 41,
+      "unconfirmed": false
+    },
+    {
+      "label": "認知心理学・認知デザイン",
+      "count": 40,
+      "unconfirmed": false
+    },
+    {
+      "label": "生体力学",
+      "count": 13,
+      "unconfirmed": false
+    },
+    {
+      "label": "選択分野を確認できない",
+      "count": 35,
+      "unconfirmed": true
+    }
+  ],
+  "themes": [
+    {
+      "label": "印象・感情・感覚・表現",
+      "count": 27,
+      "unconfirmed": false
+    },
+    {
+      "label": "情報・UI・伝わりやすさ",
+      "count": 25,
+      "unconfirmed": false
+    },
+    {
+      "label": "身体・医療・負担・安全",
+      "count": 20,
+      "unconfirmed": false
+    },
+    {
+      "label": "認知・判断・行動・技能",
+      "count": 19,
+      "unconfirmed": false
+    },
+    {
+      "label": "製品・道具の使いやすさ",
+      "count": 13,
+      "unconfirmed": false
+    },
+    {
+      "label": "空間・居場所の心地よさ",
+      "count": 7,
+      "unconfirmed": false
+    },
+    {
+      "label": "その他の問い",
+      "count": 5,
+      "unconfirmed": false
+    },
+    {
+      "label": "研究案のテーマを確認できない",
+      "count": 13,
+      "unconfirmed": true
+    }
+  ]
+}

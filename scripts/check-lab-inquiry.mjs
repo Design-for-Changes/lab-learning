@@ -17,3 +17,19 @@ for (const name of ['index.html', 'manual/index.html']) {
 }
 assert.equal((source.match(/^#### 動画の内容$/gm) || []).length, 3);
 console.log('Lab inquiry: full copy source, version, three video templates, navigation and links passed.');
+
+const aggregate = JSON.parse(await readFile('lab-inquiry/content/interests-summary.json', 'utf8'));
+assert.deepEqual(Object.keys(aggregate).sort(), ['updatedAt','session','students','markdownFiles','multipleFileStudents','status','domainMethod','themeMethod','privacy','domains','themes'].sort());
+for (const groups of [aggregate.domains, aggregate.themes]) {
+  assert.equal(groups.reduce((sum, group) => sum + group.count, 0), aggregate.students);
+  for (const group of groups) {
+    assert.deepEqual(Object.keys(group).sort(), ['label','count','unconfirmed'].sort());
+    assert.ok(group.count >= 5);
+  }
+}
+const aggregateText = JSON.stringify(aggregate);
+assert.ok(!/CY\d{5}|@|\.zip|\.xlsx|\/Users\//i.test(aggregateText), 'No student IDs, contact data or source files in published aggregate');
+const interestHtml = await readFile('dist/lab-inquiry/interests/index.html', 'utf8');
+assert.ok(!/CY\d{5}|\/Users\/|fetch\(|<iframe/i.test(interestHtml));
+assert.equal((interestHtml.match(/role="listitem"/g) || []).length, aggregate.domains.length + aggregate.themes.length);
+console.log('Interest page: aggregate-only schema, totals and minimum group size passed.');
