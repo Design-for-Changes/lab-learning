@@ -29,8 +29,11 @@ if len(rows)<30:raise SystemExit('At least 30 records are required for this work
 N=len(rows)
 def chosen_field(text):
  candidates=[]
- for line in text.splitlines():
-  match=re.match(r'^\s*[-・]?\s*(?:選択した(?:動画|分野)|選んだ動画|最も(?:興味|関心)を持った(?:動画|分野|研究分野))\s*[：:]\s*(.+)',line)
+ lines=text.splitlines()
+ for i,line in enumerate(lines):
+  if re.match(r'^\s*#{1,6}\s*(?:\d+[.．]\s*)?(?:選択した(?:研究)?分野|選んだ研究分野|最も関心を持ったテーマ・動画)\s*$',line):
+   value=next((l.strip() for l in lines[i+1:i+5] if l.strip()),'');candidates.append(value)
+  match=re.match(r'^\s*[-・]?\s*(?:選択した(?:動画|研究分野|分野)|選んだ(?:動画|研究分野)|選択(?:動画|分野)|最も(?:興味|関心)を持った(?:テーマ・動画|動画|分野|研究分野))\s*[：:]\s*(.+)',line)
   if match:candidates.append(match[1])
  found=[]
  for t in candidates:
