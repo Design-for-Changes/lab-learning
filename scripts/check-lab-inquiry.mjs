@@ -6,7 +6,8 @@ const source = await readFile('lab-inquiry/content/manual.md', 'utf8');
 for (const name of ['index.html', 'manual/index.html']) {
   const file = resolve('dist/lab-inquiry', name);
   const html = await readFile(file, 'utf8');
-  assert.equal(html.match(/<textarea[^>]*>([\s\S]*?)<\/textarea>/)?.[1], escapeHtml(source), 'Copy source must match full manual');
+  if (name === 'manual/index.html') assert.equal(html.match(/<textarea[^>]*>([\s\S]*?)<\/textarea>/)?.[1], escapeHtml(source), 'Copy source must match full manual');
+  else assert.ok(!html.includes('copy-document') && !html.includes('<textarea'), 'Overview must not contain manual copy controls');
   assert.ok(html.includes('data-document-version="2026-10-05-01"'));
   const nav = html.match(/<nav aria-label="サイト">([\s\S]*?)<\/nav>/)[1];
   assert.deepEqual([...nav.matchAll(/<a[^>]*>([^<]+)<\/a>/g)].map(m => m[1]), ['ラボ探究', '研究ガイド', '学習資料']);
