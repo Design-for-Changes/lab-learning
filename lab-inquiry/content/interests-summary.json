@@ -5,28 +5,28 @@
   "markdownFiles": 131,
   "multipleFileStudents": 2,
   "status": "提供された提出物の暫定集計",
-  "domainMethod": "明示された選択欄・選択見出しを動画名と分野名で判定。動画番号だけでは分野に割り振らない。前週の内容のみの記録、分析できない形式は本文の類似度から除外。",
+  "domainMethod": "明示された選択欄を判定し、書式が異なる記録は本文を読み、同じ提出物の動画名と選択記述を照合した。研究案のテーマから選択を推測しない。前週の内容のみの記録、分析できない形式は本文の類似度から除外。",
   "themeMethod": "同じ重みと探索条件で、今週の分野語彙を追加して再計算。対話や理解の達成度の採点ではない。",
   "privacy": "個人名・学番・UUID・原文・個人別特徴・座標は公開しない。5人未満の集団・語・交差セルは非公開。",
   "domains": [
     {
       "label": "インサイトデザイン",
-      "count": 57,
+      "count": 85,
       "unconfirmed": false
     },
     {
       "label": "コンテクスチュアルデザイン",
-      "count": 8,
+      "count": 13,
       "unconfirmed": false
     },
     {
       "label": "デライトデザイン",
-      "count": 8,
+      "count": 18,
       "unconfirmed": false
     },
     {
       "label": "選択を確認できない記録",
-      "count": 56,
+      "count": 13,
       "unconfirmed": true
     }
   ],

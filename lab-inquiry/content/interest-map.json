@@ -1212,45 +1212,45 @@
       "positions": [
         {
           "id": "g1",
-          "x": -0.3564,
-          "y": -0.19939,
+          "x": -0.34441,
+          "y": 0.05452,
           "available": true
         },
         {
           "id": "g2",
-          "x": -0.43243,
-          "y": 0.19335,
+          "x": -0.18633,
+          "y": -0.2565,
           "available": true
         },
         {
           "id": "g3",
           "x": 1.0,
-          "y": 0.28238,
+          "y": 0.26985,
           "available": true
         },
         {
           "id": "g4",
-          "x": -0.38677,
-          "y": -0.10702,
+          "x": -0.30154,
+          "y": -0.09932,
           "available": true
         },
         {
           "id": "g5",
-          "x": 0.1756,
-          "y": -0.16932,
+          "x": 0.29554,
+          "y": 0.05494,
           "available": true
         },
         {
           "id": "g6",
-          "x": 0,
-          "y": 0,
-          "available": false
+          "x": -0.18452,
+          "y": 0.14053,
+          "available": true
         },
         {
           "id": "g7",
-          "x": 0,
-          "y": 0,
-          "available": false
+          "x": -0.27873,
+          "y": -0.16402,
+          "available": true
         }
       ],
       "context": [
@@ -1259,7 +1259,7 @@
           "terms": [
             {
               "label": "インサイトを選んだ記録",
-              "count": 25
+              "count": 37
             }
           ]
         },
@@ -1268,7 +1268,7 @@
           "terms": [
             {
               "label": "インサイトを選んだ記録",
-              "count": 13
+              "count": 16
             },
             {
               "label": "コンテクストを選んだ記録",
@@ -1281,7 +1281,7 @@
           "terms": [
             {
               "label": "デライトを選んだ記録",
-              "count": 5
+              "count": 12
             }
           ]
         },
@@ -1290,7 +1290,7 @@
           "terms": [
             {
               "label": "インサイトを選んだ記録",
-              "count": 9
+              "count": 11
             }
           ]
         },
@@ -1300,15 +1300,20 @@
         },
         {
           "id": "g6",
-          "terms": []
+          "terms": [
+            {
+              "label": "インサイトを選んだ記録",
+              "count": 5
+            }
+          ]
         },
         {
           "id": "g7",
           "terms": []
         }
       ],
-      "retained": 0.9751,
-      "coverage": 70
+      "retained": 0.9707,
+      "coverage": 108
     }
   },
   "videoCells": [
@@ -1739,17 +1744,12 @@
     {
       "group": "g1",
       "video": "インサイト",
-      "count": 25
-    },
-    {
-      "group": "g1",
-      "video": "未確認",
-      "count": 13
+      "count": 37
     },
     {
       "group": "g2",
       "video": "インサイト",
-      "count": 13
+      "count": 16
     },
     {
       "group": "g2",
@@ -1758,18 +1758,18 @@
     },
     {
       "group": "g3",
-      "video": "未確認",
-      "count": 10
-    },
-    {
-      "group": "g3",
       "video": "デライト",
-      "count": 5
+      "count": 12
     },
     {
       "group": "g4",
       "video": "インサイト",
-      "count": 9
+      "count": 11
+    },
+    {
+      "group": "g6",
+      "video": "インサイト",
+      "count": 5
     }
   ],
   "coverage": {
