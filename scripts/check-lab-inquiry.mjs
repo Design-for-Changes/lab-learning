@@ -31,9 +31,9 @@ for (const groups of [aggregate.domains, aggregate.themes]) {
 const aggregateText = JSON.stringify(aggregate);
 assert.ok(!/CY\d{5}|@|\.zip|\.xlsx|\/Users\//i.test(aggregateText), 'No student IDs, contact data or source files in published aggregate');
 const interestHtml = await readFile('dist/lab-inquiry/interests/index.html', 'utf8');
-assert.ok(!/CY\d{5}|\/Users\/|fetch\(|<iframe/i.test(interestHtml));
+assert.ok(!/CY\d{5}|\/Users\/|fetch\(|<iframe|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i.test(interestHtml));
 const map = JSON.parse(await readFile('lab-inquiry/content/interest-map.json', 'utf8'));
-assert.deepEqual(Object.keys(map).sort(), ['students','minimumGroup','groups','lenses','videoCells','videoCoverage','questionCells','choices','coverage','mapped','unmapped','quality','method',...(map.analysisVersion?['analysisVersion']:[])].sort());
+assert.deepEqual(Object.keys(map).sort(), ['students','minimumGroup','groups','lenses','videoCells','videoCoverage','questionCells','choices','coverage','mapped','unmapped','quality','method',...(map.analysisVersion?['analysisVersion']:[]),...(map.videos?['videos']:[])].sort());
 assert.equal(map.students,aggregate.students);
 assert.equal(map.groups.reduce((s,g)=>s+g.count,0),map.mapped);
 assert.equal(map.mapped+map.unmapped,map.students);
@@ -41,7 +41,13 @@ for(const g of map.groups){assert.ok(g.count>=5);assert.deepEqual(Object.keys(g)
 for(const cells of [map.videoCells,map.questionCells,map.choices])for(const c of cells)assert.ok(Number.isInteger(c.count)&&c.count>=5&&c.count<=map.students);
 for(const view of Object.values(map.lenses)){assert.equal(view.positions.length,map.groups.length);assert.ok(view.retained>=0&&view.retained<=1);for(const p of view.positions){assert.ok(Number.isFinite(p.x)&&Math.abs(p.x)<=1);assert.ok(Number.isFinite(p.y)&&Math.abs(p.y)<=1);}for(const c of view.context)for(const t of c.terms)assert.ok(t.count>=5&&t.count<=map.groups.find(g=>g.id===c.id).count);}
 assert.notDeepEqual(map.lenses.interests.positions,map.lenses.video.positions);
-assert.ok(!/CY\d{5}|@|\/Users\/|\.zip/i.test(JSON.stringify(map)));
+assert.ok(!/CY\d{5}|@|\/Users\/|\.zip|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i.test(JSON.stringify(map)), 'No private IDs or UUIDs in public data');
+assert.ok(interestHtml.includes('aria-label="実施回"'));
+await access('dist/lab-inquiry/interests-01/index.html');
+for(const v of map.videos||[])assert.ok(interestHtml.includes(escapeHtml(v.label)));
 assert.equal((interestHtml.match(/data-node="/g) || []).length,map.groups.length);
 for (const asset of ['interest-map.css','interest-map.js']) await access('dist/lab-inquiry/assets/'+asset);
 console.log('Interest page: aggregate-only schema, totals and minimum group size passed.');
+
+const priorHtml = await readFile('dist/lab-inquiry/interests-01/index.html','utf8');
+assert.ok(!/CY\d{5}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i.test(priorHtml));

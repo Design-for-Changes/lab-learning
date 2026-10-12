@@ -6,3 +6,9 @@ node_modules/
 __pycache__/
 dist/
 local/ai-manual-study/
+
+# Student identities must never be published.
+interest-private/
+**/uuid-registry*.json
+**/student-uuid*.csv
+**/student-mapping*.json

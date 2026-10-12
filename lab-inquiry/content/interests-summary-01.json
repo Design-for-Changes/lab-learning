@@ -1,0 +1,80 @@
+{
+  "updatedAt": "2026-10-12",
+  "session": "第01回",
+  "students": 157,
+  "markdownFiles": 165,
+  "multipleFileStudents": 10,
+  "status": "提供された提出物の暫定集計",
+  "domainMethod": "明示された選択欄・選択見出しを動画名と分野名で判定。動画番号だけでは分野に割り振らない。前週の内容のみの記録、分析できない形式は本文の類似度から除外。",
+  "themeMethod": "同じ重みと探索条件で、今週の分野語彙を追加して再計算。対話や理解の達成度の採点ではない。",
+  "privacy": "個人名・学番・UUID・原文・個人別特徴・座標は公開しない。5人未満の集団・語・交差セルは非公開。",
+  "domains": [
+    {
+      "label": "感性工学・感性デザイン",
+      "count": 32,
+      "unconfirmed": false
+    },
+    {
+      "label": "認知心理学・認知デザイン",
+      "count": 32,
+      "unconfirmed": false
+    },
+    {
+      "label": "生体力学",
+      "count": 11,
+      "unconfirmed": false
+    },
+    {
+      "label": "選択を確認できない記録",
+      "count": 82,
+      "unconfirmed": true
+    }
+  ],
+  "themes": [
+    {
+      "label": "視線・注視 / 計測・センサー",
+      "count": 28,
+      "unconfirmed": false
+    },
+    {
+      "label": "画面・UI / 無意識・直感",
+      "count": 25,
+      "unconfirmed": false
+    },
+    {
+      "label": "製品・道具 / 条件の違い",
+      "count": 21,
+      "unconfirmed": false
+    },
+    {
+      "label": "錯覚・思い込み / 情報・伝達",
+      "count": 20,
+      "unconfirmed": false
+    },
+    {
+      "label": "疲労・負担 / 形・形状",
+      "count": 17,
+      "unconfirmed": false
+    },
+    {
+      "label": "感情・印象 / 音・音楽",
+      "count": 12,
+      "unconfirmed": false
+    },
+    {
+      "label": "安全・予防 / 筋肉・力",
+      "count": 9,
+      "unconfirmed": false
+    },
+    {
+      "label": "画面・UI / 認知の負荷",
+      "count": 7,
+      "unconfirmed": false
+    },
+    {
+      "label": "特徴を十分に拾えない記録",
+      "count": 18,
+      "unconfirmed": true
+    }
+  ]
+}

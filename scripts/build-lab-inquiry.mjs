@@ -36,6 +36,11 @@ export async function buildLabInquiry() {
   }
   const map = JSON.parse(await readFile('lab-inquiry/content/interest-map.json', 'utf8'));
   await cp('lab-inquiry/assets', output + '/assets', { recursive: true });
-  const interests = renderInterestMap(summary, map);
+  const sessionNavigation = active => `<nav class="atlas-session-nav" aria-label="実施回"><a href="../interests-01/"${active==='01'?' aria-current="page"':''}>第01回</a><a href="../interests/"${active==='02'?' aria-current="page"':''}>第02回</a></nav>`;
+  const interests = sessionNavigation('02') + renderInterestMap(summary, map);
+  const previousSummary = JSON.parse(await readFile('lab-inquiry/content/interests-summary-01.json','utf8'));
+  const previousMap = JSON.parse(await readFile('lab-inquiry/content/interest-map-01.json','utf8'));
+  await mkdir(output+'/interests-01',{recursive:true});
+  await writeFile(output+'/interests-01/index.html',page('interests-01/','みんなの関心 / 第01回',sessionNavigation('01')+renderInterestMap(previousSummary,previousMap)));
   await writeFile(output + '/interests/index.html', page('interests/', 'みんなの関心', interests));
 }
