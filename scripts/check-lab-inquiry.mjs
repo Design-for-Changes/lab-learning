@@ -8,7 +8,7 @@ for (const name of ['index.html', 'manual/index.html']) {
   const html = await readFile(file, 'utf8');
   if (name === 'manual/index.html') assert.equal(html.match(/<textarea[^>]*>([\s\S]*?)<\/textarea>/)?.[1], escapeHtml(source), 'Copy source must match full manual');
   else assert.ok(!html.includes('copy-document') && !html.includes('<textarea'), 'Overview must not contain manual copy controls');
-  assert.ok(html.includes('data-document-version="2026-10-05-01"'));
+  assert.ok(html.includes('data-document-version="2026-10-13-01"'));
   const nav = html.match(/<nav aria-label="サイト">([\s\S]*?)<\/nav>/)[1];
   assert.deepEqual([...nav.matchAll(/<a[^>]*>([^<]+)<\/a>/g)].map(m => m[1]), ['ラボ探究', '研究ガイド', '学習資料']);
   for (const [, href] of html.matchAll(/\b(?:href|src)="([^"]+)"/g)) {
@@ -17,6 +17,9 @@ for (const name of ['index.html', 'manual/index.html']) {
   }
 }
 assert.equal((source.match(/^#### 動画の内容$/gm) || []).length, 3);
+assert.ok(source.includes('## LEARNING_EVIDENCE_GATE') && source.includes('### LEARNING_LOOP_E'));
+assert.equal((source.match(/^- 確認した問い：$/gm) || []).length, 3);
+assert.equal((source.match(/^- 本人の回答：$/gm) || []).length, 3);
 console.log('Lab inquiry: full copy source, version, three video templates, navigation and links passed.');
 
 const aggregate = JSON.parse(await readFile('lab-inquiry/content/interests-summary.json', 'utf8'));
