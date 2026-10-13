@@ -1,12 +1,12 @@
 {
   "updatedAt": "2026-10-13",
-  "session": "第02回",
+  "session": "累積 / 第02回まで",
   "students": 157,
   "markdownFiles": 157,
   "multipleFileStudents": 2,
-  "status": "提供された提出物の暫定集計",
+  "status": "最新版の提出者を対象にした累積集計",
   "domainMethod": "明示された選択欄・選択見出し・本文の最終選択を動画名と分野名で確認。動画番号だけでは分野に割り振らない。前週の内容のみの記録、分析できない形式は本文の類似度から除外。",
-  "themeMethod": "同じ重みと探索条件で、今週の分野語彙を追加して再計算。対話や理解の達成度の採点ではない。",
+  "themeMethod": "同じUUIDの全回の記述を欄別に重ね、1人につき各特徴は1回だけ数える。まとまりは累積記述で決め、時点を切り替えても同じ集団を追う。対話や理解の達成度の採点ではない。",
   "privacy": "個人名・学番・UUID・原文・個人別特徴・座標は公開しない。5人未満の集団・語・交差セルは非公開。",
   "domains": [
     {
@@ -32,48 +32,48 @@
   ],
   "themes": [
     {
-      "label": "判断・選択 / 習慣・行動",
+      "label": "視線・注視 / 測り方の妥当性",
       "count": 31,
       "unconfirmed": false
     },
     {
-      "label": "感情・印象 / 弔い・記憶の継承",
-      "count": 27,
-      "unconfirmed": false
-    },
-    {
-      "label": "画面・UI / 使いやすくする",
+      "label": "ニーズ・インサイト / 世代・流行・消費",
       "count": 24,
       "unconfirmed": false
     },
     {
-      "label": "文化・コミュニティ / 個人差・文化差",
-      "count": 17,
+      "label": "弔い・記憶の継承 / 疲労・負担",
+      "count": 22,
       "unconfirmed": false
     },
     {
-      "label": "数値解析・CAE / モデル・再現",
-      "count": 13,
+      "label": "触感・素材 / 心地よさ",
+      "count": 22,
       "unconfirmed": false
     },
     {
-      "label": "現場・ユーザー調査 / 疲労・負担",
-      "count": 9,
+      "label": "ボタン・操作 / 画面・UI",
+      "count": 20,
       "unconfirmed": false
     },
     {
-      "label": "衣服・身につける / 色・配色",
-      "count": 9,
+      "label": "錯覚・思い込み / 誤操作・ミス",
+      "count": 15,
       "unconfirmed": false
     },
     {
-      "label": "音・音楽 / 破壊・変形",
+      "label": "現場・ユーザー調査 / 椅子・座り方",
+      "count": 12,
+      "unconfirmed": false
+    },
+    {
+      "label": "音・音楽 / 日常生活",
       "count": 6,
       "unconfirmed": false
     },
     {
       "label": "特徴を十分に拾えない記録",
-      "count": 21,
+      "count": 5,
       "unconfirmed": true
     }
   ]

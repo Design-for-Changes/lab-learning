@@ -37,7 +37,7 @@ assert.ok(!/CY\d{5}|@|\.zip|\.xlsx|\/Users\//i.test(aggregateText), 'No student 
 const interestHtml = await readFile('dist/lab-inquiry/interests/index.html', 'utf8');
 assert.ok(!/CY\d{5}|\/Users\/|fetch\(|<iframe|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i.test(interestHtml));
 const map = JSON.parse(await readFile('lab-inquiry/content/interest-map.json', 'utf8'));
-assert.deepEqual(Object.keys(map).sort(), ['students','minimumGroup','groups','lenses','videoCells','videoCoverage','questionCells','choices','coverage','mapped','unmapped','quality','method',...(map.analysisVersion?['analysisVersion']:[]),...(map.videos?['videos']:[])].sort());
+assert.deepEqual(Object.keys(map).sort(), ['students','minimumGroup','groups','lenses','videoCells','videoCoverage','questionCells','choices','coverage','mapped','unmapped','quality','method',...(map.analysisVersion?['analysisVersion']:[]),...(map.videos?['videos']:[]),...(map.history?['history','timeline','explanationVideos']:[])].sort());
 assert.equal(map.students,aggregate.students);
 assert.equal(map.groups.reduce((s,g)=>s+g.count,0),map.mapped);
 assert.equal(map.mapped+map.unmapped,map.students);
@@ -55,3 +55,18 @@ console.log('Interest page: aggregate-only schema, totals and minimum group size
 
 const priorHtml = await readFile('dist/lab-inquiry/interests-01/index.html','utf8');
 assert.ok(!/CY\d{5}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i.test(priorHtml));
+
+if(map.history){
+ assert.equal(map.analysisVersion,'atlas-4-cumulative');
+ assert.ok(interestHtml.includes('関心の蓄積を比較'));
+ assert.equal(map.timeline.length,map.history.sessions.length);
+ for(const t of map.timeline){
+  assert.equal(t.view.positions.length,map.groups.length);
+  for(const p of t.view.positions){assert.ok(Number.isFinite(p.x)&&Math.abs(p.x)<=1);assert.ok(Number.isFinite(p.y)&&Math.abs(p.y)<=1);}
+  for(const c of t.view.context)for(const term of c.terms)assert.ok(term.count>=5&&term.count<=map.groups.find(g=>g.id===c.id).count);
+ }
+ assert.deepEqual(map.timeline.at(-1).view,map.lenses.interests);
+ assert.notDeepEqual(map.timeline[0].view.positions,map.timeline.at(-1).view.positions);
+ for(const v of map.explanationVideos)assert.ok(interestHtml.includes(escapeHtml(v.label)));
+ console.log('Cumulative atlas: same cohort and groups across time, aggregate-only timeline and minimum disclosure passed.');
+}
