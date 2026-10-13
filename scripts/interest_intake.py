@@ -32,12 +32,22 @@ def intake_archive(source,private_dir,session):
    if key in pairs and pairs[key]!=uid:raise ValueError('Existing UUID mapping disagrees with the registry.')
    pairs[key]=uid
    text='';kind='unsupported';body=archive.read(entry)
-   if extension=='.md':
+   if extension in ['.md','.txt']:
     for enc in ['utf-8-sig']+(['utf-16'] if body.startswith((b'\xff\xfe',b'\xfe\xff')) else [])+['cp932']:
      try:text=body.decode(enc);break
      except UnicodeError:pass
     if not text:errors+=1
-    kind='markdown'
+    kind='markdown' if extension=='.md' else 'text'
+   elif extension=='.docx':
+    import xml.etree.ElementTree as ET
+    with zipfile.ZipFile(io.BytesIO(body)) as document:
+     root=ET.fromstring(document.read('word/document.xml'))
+    ns={'w':'http://schemas.openxmlformats.org/wordprocessingml/2006/main'};paras=[]
+    for paragraph in root.findall('.//w:body//w:p',ns):
+     value=''.join(node.text or '' for node in paragraph.findall('.//w:t',ns))
+     style=paragraph.find('./w:pPr/w:pStyle',ns);heading=re.search(r'(?:Heading|見出し)([1-6])',style.get('{'+ns['w']+'}val',''),re.I) if style is not None else None
+     paras.append(('#'*int(heading[1])+' ' if heading else '')+value)
+    text='\n'.join(paras);kind='docx'
    elif extension=='.xlsx':
     from openpyxl import load_workbook
     workbook=load_workbook(io.BytesIO(body),read_only=True,data_only=True)
@@ -62,7 +72,7 @@ def intake_archive(source,private_dir,session):
  records=[]
  for uid,docs in by_person.items():
   # Prefer the submission report; cumulative logs are separate evidence, never concatenated into the research vector.
-  reports=[d for d in docs if d['role']=='report' and d['kind']=='markdown'];candidates=reports or [d for d in docs if d['kind']=='markdown'] or docs
+  reports=[d for d in docs if d['role']=='report' and d['kind'] in ['markdown','text','docx']];candidates=reports or [d for d in docs if d['kind'] in ['markdown','text','docx']] or docs
   current=[d for d in candidates if d['bodySession']==session or (not d['bodySession'] and d['filenameSession']==session)]
   candidates=current or candidates;chosen=max(candidates,key=lambda d:(d['modified'],len(d['text'])))
   records.append({'uuid':uid,'session':session,'text':chosen['text'],'kind':chosen['kind'],'role':chosen['role'],'bodySession':chosen['bodySession'],'filenameSession':chosen['filenameSession'],'documentCount':len(docs),'hasSeparateLog':any(d['role']=='log' for d in docs),'duplicateContent':len(set(d['digest'] for d in docs))<len(docs)})

@@ -1,74 +1,79 @@
 {
-  "updatedAt": "2026-10-12",
+  "updatedAt": "2026-10-13",
   "session": "第02回",
-  "students": 129,
-  "markdownFiles": 131,
+  "students": 157,
+  "markdownFiles": 157,
   "multipleFileStudents": 2,
   "status": "提供された提出物の暫定集計",
-  "domainMethod": "明示された選択欄を判定し、書式が異なる記録は本文を読み、同じ提出物の動画名と選択記述を照合した。研究案のテーマから選択を推測しない。前週の内容のみの記録、分析できない形式は本文の類似度から除外。",
+  "domainMethod": "明示された選択欄・選択見出し・本文の最終選択を動画名と分野名で確認。動画番号だけでは分野に割り振らない。前週の内容のみの記録、分析できない形式は本文の類似度から除外。",
   "themeMethod": "同じ重みと探索条件で、今週の分野語彙を追加して再計算。対話や理解の達成度の採点ではない。",
   "privacy": "個人名・学番・UUID・原文・個人別特徴・座標は公開しない。5人未満の集団・語・交差セルは非公開。",
   "domains": [
     {
       "label": "インサイトデザイン",
-      "count": 85,
+      "count": 100,
       "unconfirmed": false
     },
     {
       "label": "コンテクスチュアルデザイン",
-      "count": 13,
-      "unconfirmed": false
-    },
-    {
-      "label": "デライトデザイン",
       "count": 18,
       "unconfirmed": false
     },
     {
+      "label": "デライトデザイン",
+      "count": 23,
+      "unconfirmed": false
+    },
+    {
       "label": "選択を確認できない記録",
-      "count": 13,
+      "count": 16,
       "unconfirmed": true
     }
   ],
   "themes": [
     {
-      "label": "実験・比較 / ニーズ・インサイト",
-      "count": 38,
+      "label": "判断・選択 / 習慣・行動",
+      "count": 31,
       "unconfirmed": false
     },
     {
-      "label": "文化・コミュニティ / 破壊・変形",
-      "count": 23,
+      "label": "感情・印象 / 弔い・記憶の継承",
+      "count": 27,
       "unconfirmed": false
     },
     {
-      "label": "数値解析・CAE / 認知の負荷",
-      "count": 15,
+      "label": "画面・UI / 使いやすくする",
+      "count": 24,
       "unconfirmed": false
     },
     {
-      "label": "仮説・探索 / 試作・検証",
-      "count": 14,
+      "label": "文化・コミュニティ / 個人差・文化差",
+      "count": 17,
       "unconfirmed": false
     },
     {
-      "label": "触感・素材 / 心地よさ",
+      "label": "数値解析・CAE / モデル・再現",
+      "count": 13,
+      "unconfirmed": false
+    },
+    {
+      "label": "現場・ユーザー調査 / 疲労・負担",
       "count": 9,
       "unconfirmed": false
     },
     {
-      "label": "現場・ユーザー調査 / 個人差・文化差",
-      "count": 7,
+      "label": "衣服・身につける / 色・配色",
+      "count": 9,
       "unconfirmed": false
     },
     {
-      "label": "文脈・関係 / 弔い・記憶の継承",
+      "label": "音・音楽 / 破壊・変形",
       "count": 6,
       "unconfirmed": false
     },
     {
       "label": "特徴を十分に拾えない記録",
-      "count": 17,
+      "count": 21,
       "unconfirmed": true
     }
   ]

@@ -3,6 +3,7 @@ import { readFile, access } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
 import { escapeHtml } from './share-metadata.mjs';
 const source = await readFile('lab-inquiry/content/manual.md', 'utf8');
+assert.equal(new TextDecoder('shift_jis').decode(await readFile('lab-inquiry/content/manual-shiftjis.md')), source, 'UTF-8 and Shift-JIS manuals must contain the same text');
 for (const name of ['index.html', 'manual/index.html']) {
   const file = resolve('dist/lab-inquiry', name);
   const html = await readFile(file, 'utf8');

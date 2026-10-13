@@ -91,9 +91,9 @@ for r in rows:
  text=r['text']
  current=any(re.search(v['pattern'],text) for v in settings['videos'])
  prior_only=args.session.zfill(2)!='01' and not current and bool(re.search('感性工学|認知心理|生体力学|バイオメカ',text))
- if r['meta']['kind']!='markdown' or prior_only:text=''
+ if r['meta']['kind'] not in ['markdown','text','docx'] or prior_only:text=''
  sec,vid=segment(text);parsed.append((sec,vid))
- r['excludedReason']='前週の内容のみ' if prior_only else '本文を分析できない形式' if r['meta']['kind']!='markdown' else None
+ r['excludedReason']='前週の内容のみ' if prior_only else '本文を分析できない形式' if r['meta']['kind'] not in ['markdown','text','docx'] else None
 # Binary incidence once per record per concept and channel. No repeated-word inflation.
 X={c:np.array([[int(bool(p.search(sec[c]))) for p in patterns] for sec,_ in parsed],float) for c in ['video','questions','proposal','choice','ai']}
 # Discard universal classroom vocabulary and rare terms from similarity calculations.
@@ -201,7 +201,7 @@ domains.append({'label':'選択を確認できない記録','count':sum(c['domai
 if any(0<d['count']<5 for d in domains):raise SystemExit('A selection group has fewer than five records; review disclosure before exporting.')
 themes=[{'label':g['label'],'count':g['count'],'unconfirmed':False} for g in groups]
 if result['unmapped']:themes.append({'label':'特徴を十分に拾えない記録','count':result['unmapped'],'unconfirmed':True})
-summary={'updatedAt':args.updated_at,'session':settings['label'],'students':N,'markdownFiles':manifest['formats'].get('.md',0),'multipleFileStudents':manifest['multiplePeople'],'status':'提供された提出物の暫定集計','domainMethod':'明示された選択欄・選択見出しを動画名と分野名で判定。動画番号だけでは分野に割り振らない。前週の内容のみの記録、分析できない形式は本文の類似度から除外。','themeMethod':'同じ重みと探索条件で、今週の分野語彙を追加して再計算。対話や理解の達成度の採点ではない。','privacy':'個人名・学番・UUID・原文・個人別特徴・座標は公開しない。5人未満の集団・語・交差セルは非公開。','domains':[d for d in domains if d['count']],'themes':themes}
+summary={'updatedAt':args.updated_at,'session':settings['label'],'students':N,'markdownFiles':manifest['formats'].get('.md',0),'multipleFileStudents':manifest['multiplePeople'],'status':'提供された提出物の暫定集計','domainMethod':'明示された選択欄・選択見出し・本文の最終選択を動画名と分野名で確認。動画番号だけでは分野に割り振らない。前週の内容のみの記録、分析できない形式は本文の類似度から除外。','themeMethod':'同じ重みと探索条件で、今週の分野語彙を追加して再計算。対話や理解の達成度の採点ではない。','privacy':'個人名・学番・UUID・原文・個人別特徴・座標は公開しない。5人未満の集団・語・交差セルは非公開。','domains':[d for d in domains if d['count']],'themes':themes}
 if args.summary_output:args.summary_output.parent.mkdir(parents=True,exist_ok=True);args.summary_output.write_text(json.dumps(summary,ensure_ascii=False,indent=2))
 private_write(args.private_dir/'sessions'/args.session.zfill(2)/'analysis.json',{'analysisVersion':'atlas-3','archiveDigest':manifest['archiveDigest'],'membership':[{'uuid':rows[int(i)]['n'],'group':g['id']} for g,ix in zip(groups,members) for i in ix],'excluded':[{'uuid':r['n'],'reason':r['excludedReason']} for r in rows if r['excludedReason']]})
 args.output.parent.mkdir(parents=True,exist_ok=True)
