@@ -23,9 +23,9 @@ def extract_record(record):
         title = unicodedata.normalize('NFKC', match[2]).strip()
         body = text[match.end():headings[index + 1].start() if index + 1 < len(headings) else len(text)].strip()
         level = len(match[1])
-        video_match = re.search(r'(?:動画|ビデオ)\s*([123])\s*(?:[：:(】]|$)', title)
+        video_match = re.search(r'(?:(?:動画|ビデオ)\s*([123])(?=\D|$)|([123])本目(?:の動画)?\s*[：:]|^1[-－]([123])[.．]?\s+)', title)
         if video_match:
-            current = video_match[1]
+            current = next(value for value in video_match.groups() if value)
             current_level = level
             videos.setdefault(current, {'number': current, 'title': title, 'fields': {}})
         elif current is not None and level <= current_level:

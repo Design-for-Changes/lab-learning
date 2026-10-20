@@ -7,6 +7,7 @@ parser.add_argument('zip',type=Path)
 parser.add_argument('--output',type=Path,required=True)
 parser.add_argument('--private-dir',type=Path,required=True)
 parser.add_argument('--session',default='01')
+parser.add_argument('--cohort-session',help='Keep the prior map cohort even when some people have no current submission')
 parser.add_argument('--history-session',action='append',default=[],help='Earlier private sessions joined to the current cohort by persistent UUID')
 parser.add_argument('--updated-at',required=True)
 parser.add_argument('--summary-output',type=Path)
@@ -22,27 +23,43 @@ if args.private_dir.resolve().is_relative_to(repo):raise SystemExit('UUID regist
 settings=json.loads((repo/'lab-inquiry/content/interest-session-config.json').read_text())[args.session.zfill(2)]
 private_records,manifest=intake_archive(args.zip,args.private_dir,args.session.zfill(2))
 collected={r['uuid']:r['text'] for r in private_records}
-rows=[{'n':r['uuid'],'text':r['text'],'meta':r} for r in sorted(private_records,key=lambda r:r['uuid'])]
+cohort_records={r['uuid']:r for r in private_records}
+if args.cohort_session:
+ cohort_session=args.cohort_session.zfill(2)
+ if cohort_session>=args.session.zfill(2):raise SystemExit('Cohort anchor must precede this session.')
+ anchor=json.loads((args.private_dir/'sessions'/cohort_session/'records.json').read_text())
+ for r in anchor:
+  cohort_records.setdefault(r['uuid'],{'uuid':r['uuid'],'text':'','kind':'missing','role':'missing','bodySession':None,'filenameSession':None,'session':args.session.zfill(2)})
+rows=[{'n':r['uuid'],'text':r['text'],'meta':r} for r in sorted(cohort_records.values(),key=lambda r:r['uuid'])]
 if len(rows)<30:raise SystemExit('At least 30 records are required for this workflow.')
 N=len(rows)
 def chosen_field(text):
- candidates=[]
- lines=text.splitlines()
+ candidates=[];lines=text.splitlines();number_codes=collections.defaultdict(set)
+ labels=r'(?:選択した(?:講義動画|研究分野|研究テーマ|分野|動画(?:・研究分野)?)|選んだ(?:動画|研究分野)|選択(?:動画|分野|テーマ)|選定テーマ|最も(?:興味|関心)(?:を持った|のある)(?:テーマ・動画|テーマ|動画|分野|研究分野|研究室))'
  for i,line in enumerate(lines):
-  if re.match(r'^\s*#{1,6}\s*(?:\d+[.．]\s*)?(?:選択した(?:研究)?分野|選んだ研究分野|最も関心を持ったテーマ・動画)\s*$',line):
-   value=next((l.strip() for l in lines[i+1:i+5] if l.strip()),'');candidates.append(value)
-  match=re.match(r'^\s*[-・]?\s*(?:選択した(?:動画|研究分野|分野)|選んだ(?:動画|研究分野)|選択(?:動画|分野)|最も(?:興味|関心)を持った(?:テーマ・動画|動画|分野|研究分野))\s*[：:]\s*(.+)',line)
+  h=re.match(r'^\s*#{1,6}\s*(?:[0-9.．]+\s*)?'+labels+r'\s*$',line)
+  if h:
+   value=next((l.strip() for l in lines[i+1:i+5] if l.strip() and not l.lstrip().startswith('#')),'');candidates.append(value)
+  match=re.match(r'^\s*[-・]?\s*'+labels+r'\s*[：:]\s*(.+)',line)
   if match:candidates.append(match[1])
+  if line.lstrip().startswith('#'):
+   num=re.search(r'動画\s*([123１２３])',line)
+   hits=[v['code'] for v in settings['videos'] if re.search(v['pattern'],line)]
+   if num and len(hits)==1:number_codes[str(int(num[1]))].add(hits[0])
  found=[]
  for t in candidates:
-  hits=[d for d,pattern in [(v['code'],v['pattern']) for v in settings['videos']] if re.search(pattern,t)]
+  hits=[v['code'] for v in settings['videos'] if re.search(v['pattern'],t)]
   if len(hits)==1:found.extend(hits)
+  elif not hits:
+   num=re.search(r'動画\s*([123１２３])',t)
+   if num and len(number_codes[str(int(num[1]))])==1:found.extend(number_codes[str(int(num[1]))])
  return found[0] if found and len(set(found))==1 else 'U'
+
 coding={r['n']:{'domain':chosen_field(r['text'])} for r in rows}
 if args.selection_codes:
  verified=json.loads(args.selection_codes.read_text())
- if set(r['uuid'] for r in verified)!=set(coding):raise SystemExit('Verification codes do not match the record count.')
- coding={r['uuid']:r for r in verified}
+ if set(r['uuid'] for r in verified)!={r['uuid'] for r in private_records}:raise SystemExit('Verification codes do not match the record count.')
+ coding.update({r['uuid']:r for r in verified})
 # Closed vocabulary: personal names, uncommon anecdotes, filenames never become public labels.
 D=[
 ('色・配色','配色|カラー|色彩|色の|色が|色を|色と|色や|赤色|青色','perception'),('形・形状','形状|形の|形が|フォルム','perception'),('音・音楽','音楽|音色|音の|音が|聴覚|サウンド','perception'),('触感・素材','触感|触覚|手触り|質感|素材','perception'),('香り・味','香り|嗅覚|匂い|臭い|味覚','perception'),('感情・印象','感情|印象|感動|気持ち','perception'),('好み・魅力','好み|好き|魅力|美し|かわい|可愛','perception'),('無意識・直感','無意識|直感|意識の前|意識する前','perception'),('心地よさ','心地|快適|居心地','perception'),
@@ -53,6 +70,7 @@ D=[
 ('仕組みを知る','仕組み|メカニズム|なぜ|どうして','question'),('条件の違い','条件|違い|変わる|変化|影響|どのよう','question'),('他への適用・動物と人','当てはめ|適用|応用|一般化|カエル|蛙|動物|人間に|人に','question'),('測り方の妥当性','どう測|測れる|測れるの|定量|客観|数値|信頼|妥当','question'),('使いやすくする','使いやす|使いづら|使いにく|改善|設計','question'),('言葉にする','言語化|言葉に|説明できない|説明しにく','question'),('個人差・文化差','人によ|個人差|多様|人それぞれ|文化|性別','question')]
 D += [
 ('ニーズ・インサイト','ニーズ|インサイト|潜在|本音','perception'),('世代・流行・消費','Z世代|Ｚ世代|世代|流行|トレンド|消費|購買|マーケティング','subject'),('文脈・関係','文脈|コンテ[クキ]ス|コンテクスト|関係性|状況','subject'),('対話・共創','共創|参加型|ワークショップ|対話の場','method'),('弔い・記憶の継承','弔い|弔う|供養|葬|追悼|喪失|遺品|故人|死者','subject'),('文化・コミュニティ','文化|コミュニティ|地域|つながり|繋がり','subject'),('メディア・HCI','HCI|インタラク|メディア','subject'),('破壊・変形','破壊|変形|き裂|亀裂|壊れ|壊す|応力|ひずみ','subject'),('材料・構造','材料|構造|材料力学|構造強度','subject'),('数値解析・CAE','有限要素|CAE|FEM|数値解析|計算力学','method'),('現場・ユーザー調査','現場|フィールド|実地|ユーザー調査|消費者調査','method'),('仮説・探索','仮説|探索|発想|創造','question')]
+D += [('体験・インタラクション','体験|インタラクション|インタラクティブ','subject'),('デジタルと現実','IoT|CPS|サイバーフィジカル|デジタル技術|実空間','subject'),('行動を変える','行動変容|行動を変|ナッジ|促す|働きかけ','question'),('参加・協働','協働|参加|共に|巻き込|巻きこ','method'),('社会・未来','社会|未来|将来|社会課題','subject'),('仮想・拡張現実','AR|VR|拡張現実|仮想現実','method')]
 patterns=[re.compile(p,re.I) for _,p,_ in D]
 
 def segment(t,config=None):
@@ -92,10 +110,10 @@ parsed=[]
 for r in rows:
  text=r['text']
  current=any(re.search(v['pattern'],text) for v in settings['videos'])
- prior_only=args.session.zfill(2)!='01' and not current and bool(re.search('感性工学|認知心理|生体力学|バイオメカ',text))
- if r['meta']['kind'] not in ['markdown','text','docx'] or prior_only:text=''
+ prior_only=(r['meta'].get('bodySession') not in [None,args.session.zfill(2)]) or (args.session.zfill(2)!='01' and not current and bool(re.search('感性工学|認知心理|生体力学|バイオメカ',text)))
+ if r['meta']['kind'] not in ['markdown','text','docx','pdf'] or prior_only:text=''
  sec,vid=segment(text);parsed.append((sec,vid))
- r['excludedReason']='前週の内容のみ' if prior_only else '本文を分析できない形式' if r['meta']['kind'] not in ['markdown','text','docx'] else None
+ r['excludedReason']='今回の提出なし（過去記録を保持）' if r['meta']['kind']=='missing' else '前週の内容のみ' if prior_only else '本文を分析できない形式' if r['meta']['kind'] not in ['markdown','text','docx','pdf'] else None
 # Binary incidence once per record per concept and channel. No repeated-word inflation.
 X={c:np.array([[int(bool(p.search(sec[c]))) for p in patterns] for sec,_ in parsed],float) for c in ['video','questions','proposal','choice','ai']}
 # Join each current participant's earlier submissions by UUID, never by row number.
@@ -115,7 +133,7 @@ for previous_session in sorted(set(args.history_session)):
  previous={r['uuid']:r for r in json.loads((folder/'records.json').read_text())}
  old_settings=all_settings[previous_session];old_parsed=[]
  for i,row in enumerate(rows):
-  r=previous.get(row['n']);text=r['text'] if r and r['kind'] in ['markdown','text','docx'] else ''
+  r=previous.get(row['n']);text=r['text'] if r and r['kind'] in ['markdown','text','docx','pdf'] else ''
   sec,vid=segment(text,old_settings);old_parsed.append((sec,vid))
   for c in X:
    if sec[c]:history_sections[i][c].append(sec[c])
@@ -253,8 +271,8 @@ if args.history_session:
   result['timeline'].append({'label':label+'まで','view':history_view(hm,hx)})
  result['timeline'].append({'label':settings['label']+'まで','view':profiles['interests']})
  result['explanationVideos']=[{'label':v['label'],'session':cfg['label']} for cfg,_ in history_video_sets+[(settings,current_parsed)] for v in cfg['videos']]
- result['history']={'sessions':[all_settings[x['session']]['label'] for x in history_provenance]+[settings['label']],'cohort':'最新版の提出者を対象に、UUIDで過去提出を照合。集団は累積記述で決め、過去回の表示でも所属・色・人数を固定する。過去回の位置と共通語はその時点の記述だけで再計算。未提出を無関心とは扱わない。','selectionScope':'動画選択は今回の最終選択、説明欄の図はこれまでの各動画、疑問と研究案は同じUUIDの全回の記述。回をまたぐ共起は記述の蓄積であり、疑問への回答や学習の成立を示さない。'}
- result['method']='最新版の提出者を基準に、同じUUIDの過去提出を結合。各人・各欄・各特徴語の有無を回をまたいで統合し、何回書いても1人として数える。'+result['method']
+ result['history']={'sessions':[all_settings[x['session']]['label'] for x in history_provenance]+[settings['label']],'cohort':'前回のマップ対象者と今回の提出者をUUIDで照合し、今回未提出の人の過去記録も保持。集団は累積記述で決め、過去回の表示でも所属・色・人数を固定する。過去回の位置と共通語はその時点の記述だけで再計算。未提出を無関心とは扱わない。','selectionScope':'動画選択は今回の最終選択、説明欄の図はこれまでの各動画、疑問と研究案は同じUUIDの全回の記述。回をまたぐ共起は記述の蓄積であり、疑問への回答や学習の成立を示さない。'}
+ result['method']='前回から同じ対象者をUUIDで引き継ぎ、今回の提出と過去提出を結合。各人・各欄・各特徴語の有無を回をまたいで統合し、何回書いても1人として数える。'+result['method']
 result['analysisVersion']='atlas-4-cumulative' if args.history_session else 'atlas-3'
 
 result['videos']=[{'label':v['label'],'short':v['short'],'glyph':v['glyph']} for v in settings['videos']]
@@ -264,9 +282,9 @@ domains.append({'label':'選択を確認できない記録','count':sum(c['domai
 if any(0<d['count']<5 for d in domains):raise SystemExit('A selection group has fewer than five records; review disclosure before exporting.')
 themes=[{'label':g['label'],'count':g['count'],'unconfirmed':False} for g in groups]
 if result['unmapped']:themes.append({'label':'特徴を十分に拾えない記録','count':result['unmapped'],'unconfirmed':True})
-summary={'updatedAt':args.updated_at,'session':('累積 / '+settings['label']+'まで') if args.history_session else settings['label'],'students':N,'markdownFiles':manifest['formats'].get('.md',0),'multipleFileStudents':manifest['multiplePeople'],'status':'最新版の提出者を対象にした累積集計' if args.history_session else '提供された提出物の暫定集計','domainMethod':'明示された選択欄・選択見出し・本文の最終選択を動画名と分野名で確認。動画番号だけでは分野に割り振らない。前週の内容のみの記録、分析できない形式は本文の類似度から除外。','themeMethod':('同じUUIDの全回の記述を欄別に重ね、1人につき各特徴は1回だけ数える。まとまりは累積記述で決め、時点を切り替えても同じ集団を追う。' if args.history_session else '同じ重みと探索条件で、今週の分野語彙を追加して再計算。')+'対話や理解の達成度の採点ではない。','privacy':'個人名・学番・UUID・原文・個人別特徴・座標は公開しない。5人未満の集団・語・交差セルは非公開。','domains':[d for d in domains if d['count']],'themes':themes}
+summary={'updatedAt':args.updated_at,'session':('累積 / '+settings['label']+'まで') if args.history_session else settings['label'],'students':N,'markdownFiles':manifest['formats'].get('.md',0),'multipleFileStudents':manifest['multiplePeople'],'status':'過去の対象者を保持した累積集計' if args.history_session else '提供された提出物の暫定集計','domainMethod':'明示された選択欄・選択見出し・本文の最終選択を動画名と分野名で確認。動画番号だけでは分野に割り振らない。前週の内容のみの記録、分析できない形式は本文の類似度から除外。','themeMethod':('同じUUIDの全回の記述を欄別に重ね、1人につき各特徴は1回だけ数える。まとまりは累積記述で決め、時点を切り替えても同じ集団を追う。' if args.history_session else '同じ重みと探索条件で、今週の分野語彙を追加して再計算。')+'対話や理解の達成度の採点ではない。','privacy':'個人名・学番・UUID・原文・個人別特徴・座標は公開しない。5人未満の集団・語・交差セルは非公開。','domains':[d for d in domains if d['count']],'themes':themes}
 if args.summary_output:args.summary_output.parent.mkdir(parents=True,exist_ok=True);args.summary_output.write_text(json.dumps(summary,ensure_ascii=False,indent=2))
-private_write(args.private_dir/'sessions'/args.session.zfill(2)/('cumulative-analysis.json' if args.history_session else 'analysis.json'),{'analysisVersion':result['analysisVersion'],'historySources':history_provenance,'archiveDigest':manifest['archiveDigest'],'membership':[{'uuid':rows[int(i)]['n'],'group':g['id']} for g,ix in zip(groups,members) for i in ix],'excluded':[{'uuid':r['n'],'reason':r['excludedReason']} for r in rows if r['excludedReason']]})
+private_write(args.private_dir/'sessions'/args.session.zfill(2)/('cumulative-analysis.json' if args.history_session else 'analysis.json'),{'analysisVersion':result['analysisVersion'],'historySources':history_provenance,'archiveDigest':manifest['archiveDigest'],'cohortSession':args.cohort_session,'membership':[{'uuid':rows[int(i)]['n'],'group':g['id']} for g,ix in zip(groups,members) for i in ix],'excluded':[{'uuid':r['n'],'reason':r['excludedReason']} for r in rows if r['excludedReason']]})
 args.output.parent.mkdir(parents=True,exist_ok=True)
 args.output.write_text(json.dumps(result,ensure_ascii=False,indent=2))
 # Local audit only: no IDs or raw text in printed output.

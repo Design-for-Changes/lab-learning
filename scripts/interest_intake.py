@@ -48,6 +48,11 @@ def intake_archive(source,private_dir,session):
      style=paragraph.find('./w:pPr/w:pStyle',ns);heading=re.search(r'(?:Heading|見出し)([1-6])',style.get('{'+ns['w']+'}val',''),re.I) if style is not None else None
      paras.append(('#'*int(heading[1])+' ' if heading else '')+value)
     text='\n'.join(paras);kind='docx'
+   elif extension=='.pdf':
+    from pypdf import PdfReader
+    reader=PdfReader(io.BytesIO(body))
+    text='\n'.join(page.extract_text() or '' for page in reader.pages);kind='pdf'
+    if not text.strip():errors+=1
    elif extension=='.xlsx':
     from openpyxl import load_workbook
     workbook=load_workbook(io.BytesIO(body),read_only=True,data_only=True)
@@ -72,7 +77,7 @@ def intake_archive(source,private_dir,session):
  records=[]
  for uid,docs in by_person.items():
   # Prefer the submission report; cumulative logs are separate evidence, never concatenated into the research vector.
-  reports=[d for d in docs if d['role']=='report' and d['kind'] in ['markdown','text','docx']];candidates=reports or [d for d in docs if d['kind'] in ['markdown','text','docx']] or docs
+  reports=[d for d in docs if d['role']=='report' and d['kind'] in ['markdown','text','docx','pdf']];candidates=reports or [d for d in docs if d['kind'] in ['markdown','text','docx','pdf']] or docs
   current=[d for d in candidates if d['bodySession']==session or (not d['bodySession'] and d['filenameSession']==session)]
   candidates=current or candidates;chosen=max(candidates,key=lambda d:(d['modified'],len(d['text'])))
   records.append({'uuid':uid,'session':session,'text':chosen['text'],'kind':chosen['kind'],'role':chosen['role'],'bodySession':chosen['bodySession'],'filenameSession':chosen['filenameSession'],'documentCount':len(docs),'hasSeparateLog':any(d['role']=='log' for d in docs),'duplicateContent':len(set(d['digest'] for d in docs))<len(docs)})

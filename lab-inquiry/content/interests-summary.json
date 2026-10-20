@@ -1,80 +1,75 @@
 {
-  "updatedAt": "2026-10-13",
-  "session": "累積 / 第02回まで",
+  "updatedAt": "2026-10-20",
+  "session": "累積 / 第03回まで",
   "students": 157,
-  "markdownFiles": 157,
-  "multipleFileStudents": 2,
-  "status": "最新版の提出者を対象にした累積集計",
+  "markdownFiles": 152,
+  "multipleFileStudents": 0,
+  "status": "過去の対象者を保持した累積集計",
   "domainMethod": "明示された選択欄・選択見出し・本文の最終選択を動画名と分野名で確認。動画番号だけでは分野に割り振らない。前週の内容のみの記録、分析できない形式は本文の類似度から除外。",
   "themeMethod": "同じUUIDの全回の記述を欄別に重ね、1人につき各特徴は1回だけ数える。まとまりは累積記述で決め、時点を切り替えても同じ集団を追う。対話や理解の達成度の採点ではない。",
   "privacy": "個人名・学番・UUID・原文・個人別特徴・座標は公開しない。5人未満の集団・語・交差セルは非公開。",
   "domains": [
     {
-      "label": "インサイトデザイン",
-      "count": 100,
+      "label": "エモーショナルデザイン",
+      "count": 43,
       "unconfirmed": false
     },
     {
-      "label": "コンテクスチュアルデザイン",
-      "count": 18,
+      "label": "メディア体験デザイン",
+      "count": 38,
       "unconfirmed": false
     },
     {
-      "label": "デライトデザイン",
-      "count": 23,
+      "label": "動態デザイン",
+      "count": 49,
       "unconfirmed": false
     },
     {
       "label": "選択を確認できない記録",
-      "count": 16,
+      "count": 27,
       "unconfirmed": true
     }
   ],
   "themes": [
     {
-      "label": "視線・注視 / 測り方の妥当性",
-      "count": 31,
+      "label": "現場・ユーザー調査 / 文脈・関係",
+      "count": 32,
       "unconfirmed": false
     },
     {
-      "label": "ニーズ・インサイト / 世代・流行・消費",
-      "count": 24,
+      "label": "観察・聞き取り / 日常生活",
+      "count": 26,
       "unconfirmed": false
     },
     {
-      "label": "弔い・記憶の継承 / 疲労・負担",
-      "count": 22,
+      "label": "認知の負荷 / 数値解析・CAE",
+      "count": 25,
       "unconfirmed": false
     },
     {
-      "label": "触感・素材 / 心地よさ",
-      "count": 22,
+      "label": "測り方の妥当性 / 空間・居場所",
+      "count": 23,
       "unconfirmed": false
     },
     {
-      "label": "ボタン・操作 / 画面・UI",
-      "count": 20,
+      "label": "錯覚・思い込み / 参加・協働",
+      "count": 21,
       "unconfirmed": false
     },
     {
-      "label": "錯覚・思い込み / 誤操作・ミス",
-      "count": 15,
+      "label": "参加・協働 / 空間・居場所",
+      "count": 11,
       "unconfirmed": false
     },
     {
-      "label": "現場・ユーザー調査 / 椅子・座り方",
-      "count": 12,
+      "label": "衣服・身につける / 触感・素材",
+      "count": 10,
       "unconfirmed": false
     },
     {
-      "label": "音・音楽 / 日常生活",
-      "count": 6,
+      "label": "音・音楽 / ゲーム・映像",
+      "count": 9,
       "unconfirmed": false
-    },
-    {
-      "label": "特徴を十分に拾えない記録",
-      "count": 5,
-      "unconfirmed": true
     }
   ]
 }
